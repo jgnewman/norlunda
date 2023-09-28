@@ -51,4 +51,9 @@ gyldan - to gild
 dȳtsh - dutch / native language
 ```
 
-Two options:
+Idea: yy becomes au (maybe uu does too).
+
+Beyond that, 2 options:
+
+1. /e:/ becomes /ai/, /a:/ becomes /e:/. So we'd have /folkhaim/ and /he:tan/. This would leave us with no more long a.
+2. Or /a:/ becomes /ai/ which also leaves us with no long a
