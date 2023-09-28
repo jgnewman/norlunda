@@ -53,6 +53,8 @@ const dropFinalZ = (word) => {
   const newLastChar = lastOf(newLastSyllable)
   const newLastCharFollowsCons = isConsonant(lastOf(allButLastOf(newLastSyllable)))
 
+  console.log({ newLastChar, lastSyllable, newLastSyllable })
+
   if (newLastChar === 'j' && newLastCharFollowsCons) {
     newLastSyllable = allButLastOf(newLastSyllable) + 'i'
   }

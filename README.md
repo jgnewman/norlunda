@@ -9,3 +9,46 @@ npm start -- wrītaną
 ```
 
 You will get output telling you the generated Norlunda word as well as how the word changed with each step in the process.
+
+## Todo
+
+- handle `ww` as in triwwiz. there appears to be a bug in z-loss
+
+The language current lacks any diphthongs but has no shortage of vowels. Currently we have:
+
+```
+a, æ, e, i, o, ø, u, y
+ā, ǣ, ē, ī, ō, _, ū, ȳ
+
+Note, ø is theoretically in there, but maybe not actually.
+```
+
+Some words as they currently stand:
+
+```
+dag - day
+hātan - to be called
+
+???
+bǣr - berry
+
+???
+hēm - home
+
+bindan - to bind
+rītan - to write
+
+hond - dog
+bōk - book
+
+???
+???
+
+???
+ūt - out
+
+gyldan - to gild
+dȳtsh - dutch / native language
+```
+
+Two options:
