@@ -2,72 +2,56 @@ const syllableize = require('./syllableize')
 const {
   allButLastOf,
   lastOf,
-  separateInitialConsonants,
-  separateFinalConsonants,
-  isUncomfortableConsonantCluster,
   isConsonant,
+  separateFinalVowels,
+  endsWithUncomfortableConsonantCluster,
 } = require('./utils')
 
-const fixUnconfortableEndClusters = (word) => {
-  const [leadingCluster, finalConsonants] = separateFinalConsonants(word)
-  if (finalConsonants.length < 2) return word
+const removeZ = (word) => {
+  const syllables = syllableize(word)
+  let newWord = word.replace(/z$/g, '')
 
-  let lead = leadingCluster
-  let endCluster = finalConsonants
-
-  if (endCluster.length > 2) {
-    lead = lead + endCluster.slice(0, -2)
-    endCluster = endCluster.slice(-2)
-  }
-
-  const [first, second] = finalConsonants.split('')
-
-  if (isUncomfortableConsonantCluster(first, second)) {
-    endCluster = first + 'a' + second
+  if (syllables.length > 1) {
+    const [stem, _] = separateFinalVowels(newWord)
+    newWord = stem
   }
   
-  return lead + endCluster
+  return newWord
+}
+
+const removeS = (word) => {
+  const nextToLastCharIsCons = isConsonant(lastOf(allButLastOf(word)))
+  if (!nextToLastCharIsCons) return word
+  return allButLastOf(word)
 }
 
 const dropFinalZ = (word) => {
   const lastChar = lastOf(word)
-  const nextToLastCharIsCons = isConsonant(lastOf(allButLastOf(word)))
-  if (lastChar !== 'z' && !(lastChar === 's' && nextToLastCharIsCons)) return word
+  let newWord = lastChar === 'z' ? removeZ(word) :
+                lastChar === 's' ? removeS(word) :
+                word
+              
+  if (word === newWord) return newWord
 
-  const syllables = syllableize(word)
-  const leadingSyllables = allButLastOf(syllables)
-  const lastSyllable = lastOf(syllables)
+  const newLastChar = lastOf(newWord)
+  const nextToLastCharIsCons = isConsonant(lastOf(allButLastOf(newWord)))
 
-  let newLastSyllable = lastSyllable
-  if (lastChar === 'z') {
-    newLastSyllable = lastSyllable.replace(/z$/g, '')
-  } else if (lastChar === 's' && nextToLastCharIsCons) {
-    newLastSyllable = lastSyllable.replace(/s$/g, '')
-  }
-  
-  if (syllables.length > 1) {
-    const [initialConsonantsOfLastSyllable] = separateInitialConsonants(newLastSyllable)
-    newLastSyllable = initialConsonantsOfLastSyllable
+  if (newLastChar === 'j' && nextToLastCharIsCons) {
+    newWord = allButLastOf(newWord) + 'i'
   }
 
-  const newLastChar = lastOf(newLastSyllable)
-  const newLastCharFollowsCons = isConsonant(lastOf(allButLastOf(newLastSyllable)))
-
-  console.log({ newLastChar, lastSyllable, newLastSyllable })
-
-  if (newLastChar === 'j' && newLastCharFollowsCons) {
-    newLastSyllable = allButLastOf(newLastSyllable) + 'i'
+  if (newLastChar === 'w' && nextToLastCharIsCons) {
+    newWord = allButLastOf(newWord) + 'u'
   }
 
-  if (newLastChar === 'w' && newLastCharFollowsCons) {
-    newLastSyllable = allButLastOf(newLastSyllable) + 'u'
+  if (endsWithUncomfortableConsonantCluster(newWord)) {
+    newWord = allButLastOf(newWord) + 'a' + lastOf(newWord)
   }
 
-  return leadingSyllables.join('') + newLastSyllable
+  return newWord.replace(/wu$/, 'u')
 }
 
 module.exports = (word) => {
   const phase1 = dropFinalZ(word)
-  const phase2 = fixUnconfortableEndClusters(phase1)
-  return phase2.replace(/z/g, 'r')
+  return phase1.replace(/z/g, 'r')
 }
