@@ -1,5 +1,6 @@
+const { pgmcFricatives } = require('./consonants')
 const syllableize = require('./syllableize')
-const { lastOf, allButLastOf, containsUncomfortableConsonantCluster, endsWithUncomfortableConsonantCluster } = require('./utils')
+const { lastOf, allButLastOf, containsUncomfortableConsonantCluster, endsWithUncomfortableConsonantCluster, isConsonant, fixUncomfortableEndCluster, separateInitialConsonants, firstOf } = require('./utils')
 const {
   allShortVowels,
   allNasalVowels,
@@ -9,6 +10,7 @@ const {
   longNasalVowels,
   overlongVowels,
   overlongNasalVowels,
+  shortVowelVariantOf,
 } = require('./vowels')
 
 const overlongRegex = new RegExp(`(${overlongVowels.join('|')})`, 'g')
@@ -35,13 +37,14 @@ const dropWordFinalShortVowels = (word) => {
 
   const result = allButLastOf(word)
   const newLastChar = lastOf(result)
+  const nextToLastCharIsCons = isConsonant(lastOf(allButLastOf(result)))
 
-  if (newLastChar === 'j') return allButLastOf(result) + 'i'
-  if (newLastChar === 'w') return allButLastOf(result) + 'u'
+  if (newLastChar === 'j' && nextToLastCharIsCons) return allButLastOf(result) + 'i'
+  if (newLastChar === 'w' && nextToLastCharIsCons) return allButLastOf(result) + 'u'
 
   if (!endsWithUncomfortableConsonantCluster(result)) return result
 
-  return allButLastOf(result) + 'a' + lastOf(result)
+  return fixUncomfortableEndCluster(result)
 }
 
 const shortenFinalSyllableLongVowels = (word) => {
@@ -60,6 +63,38 @@ const shortenFinalSyllableLongVowels = (word) => {
   return newWord.replace(/jo$/, 'ja').replace(/wo$/, 'u')
 }
 
+const shortenPreClusterLongVowels = (word) => {
+  let newWord = ''
+  
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i]
+    
+    if (longVowels.includes(char) || longNasalVowels.includes(char)) {
+      const [followingConsonants, _] = separateInitialConsonants(word.slice(i + 1))
+      const consLength = followingConsonants.length
+      
+      if (consLength >= 3) {
+        newWord += shortVowelVariantOf(char)
+
+        let newConsonants = followingConsonants
+        const firstConsIsFricative = pgmcFricatives.includes(followingConsonants[0])
+
+        if (firstConsIsFricative) {
+          newConsonants = firstOf(newConsonants) + newConsonants.slice(2)
+        }
+
+        newWord += newConsonants
+        i += consLength
+        continue
+      }
+    }
+
+    newWord += char
+  }
+
+  return newWord
+}
+
 const mergeWordFinalNasals = (word) => {
   const lastChar = lastOf(word)
   if (!allNasalVowels.includes(lastChar)) return word
@@ -71,6 +106,7 @@ module.exports = (word) => {
   const phase2 = monophthongizeNonInitialDiphthongs(phase1)
   const phase3 = dropWordFinalShortVowels(phase2)
   const phase4 = shortenFinalSyllableLongVowels(phase3)
-  const phase5 = mergeWordFinalNasals(phase4)
-  return phase5
+  const phase5 = shortenPreClusterLongVowels(phase4)
+  const phase6 = mergeWordFinalNasals(phase5)
+  return phase6
 }

@@ -5,6 +5,7 @@ const {
   isConsonant,
   separateFinalVowels,
   endsWithUncomfortableConsonantCluster,
+  fixUncomfortableEndCluster,
 } = require('./utils')
 
 const removeZ = (word) => {
@@ -45,13 +46,18 @@ const dropFinalZ = (word) => {
   }
 
   if (endsWithUncomfortableConsonantCluster(newWord)) {
-    newWord = allButLastOf(newWord) + 'a' + lastOf(newWord)
+    newWord = fixUncomfortableEndCluster(newWord)
   }
 
-  return newWord.replace(/wu$/, 'u')
+  return newWord
+}
+
+const fixSemiVowelsAndZ = (word) => {
+  return word.replace(/wu$/, 'u').replace(/ij$/, 'i').replace(/z/g, 'r')
 }
 
 module.exports = (word) => {
   const phase1 = dropFinalZ(word)
-  return phase1.replace(/z/g, 'r')
+  const phase2 = fixSemiVowelsAndZ(phase1)
+  return phase2
 }

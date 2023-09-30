@@ -143,6 +143,10 @@ const isDoubleStopCluster = (a, b) => {
   return pgmcStops.includes(a) && pgmcStops.includes(b)
 }
 
+const isStopNasalCluster = (a, b) => {
+  return pgmcStops.includes(a) && pgmcNasals.includes(b)
+}
+
 const isDoubleNasalCluster = (a, b) => {
   return pgmcNasals.includes(a) && pgmcNasals.includes(b)
 }
@@ -154,6 +158,7 @@ const isHCluster = (a, b) => {
 const isUncomfortableConsonantCluster = (a, b) => {
   return isNonApproximantApproximantCluster(a, b) ||
     isDoubleStopCluster(a, b) ||
+    isStopNasalCluster(a, b) ||
     isDoubleNasalCluster(a, b) ||
     isHCluster(a, b)
 }
@@ -186,6 +191,10 @@ const containsUncomfortableConsonantCluster = (word) => {
 const endsWithUncomfortableConsonantCluster = (word) => {
   const [_, cluster] = separateFinalConsonants(word)
   return containsUncomfortableConsonantCluster(cluster)
+}
+
+const fixUncomfortableEndCluster = (word) => {
+  return allButLastOf(word) + 'a' + lastOf(word)
 }
 
 const applySpellingConventions = (word) => {
@@ -223,5 +232,6 @@ module.exports = {
   isUncomfortableConsonantCluster,
   containsUncomfortableConsonantCluster,
   endsWithUncomfortableConsonantCluster,
+  fixUncomfortableEndCluster,
   applySpellingConventions,
 }
