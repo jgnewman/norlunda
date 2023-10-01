@@ -95,37 +95,45 @@ What if:
 - u:
 - y:
 
-1. something
+Notes:
 
-- /a/ [a] dag
-- /a:/ -> /au/ [au] folkhaum
-- /æ/ ?
-- /ǣ/ ?
-- /e/ -> /ɛ/ [e] bed
-- /e:/ [ee]
-- /o/ [o]
-- /o:/ -> /ʊ/ [u]
-- /u/ appears from /o:/
-- /u:/ [uu]
-- /y/ -> /ø/ [oe]
-- /y:/ -> /ai/ [ei]
+- i-mutation
+- a-mutation
 
-2. something else
+- ô (overlongs should be shortened)
+- ǭ (all nasals de-nasalize)
+- monophthongize all diphthongs
 
-- /a/
-- /a:/
-- /æ/
-- /ǣ/
-- /e/
-- /e:/
-- /o/
-- /o:/
-- /u/
-- /u:/
-- /y/
-- /y:/
+(suffixes containing w or long ō become a in most cases, )
 
-To fix:
+- wijō -> wa if after a vowel, otherwise a
+- ijō -> ī if only vowels in word, otherwise a
+- wō -> a if after a consonant, otherwise drop
+- jō -> a if after a consonant, otherwise drop
+- ō -> a if prev syllable contains short vowel, otherwise drop
+- wijo -> wa if after a vowel, otherwise a
+- ijo -> drop
+- wo -> drop
+- jo -> drop
+- o -> drop
 
-- iskaz is a suffix meaning "ish". We don't need a rule for that right? Why does it turn theudo into thiudiskaz?
--
+- wijā -> a after a consonant, otherwise drop
+- ijā -> ī if only vowels in word, otherwise a
+- wā -> drop
+- jā -> drop
+- ā -> drop
+- wija -> a after a consonant, otherwise drop
+- ija -> drop
+- wa -> drop
+- ja -> drop
+- a -> drop
+
+- i -> drop
+
+- iwaz -> a
+- ijaz -> drop
+- waz -> a after a consonant, otherwise drop
+- az -> drop
+- iwiz -> a after a consonant, otherwise drop
+- iz -> drop
+- uz ->drop

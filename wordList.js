@@ -21,6 +21,7 @@ const list = [
   ['fleuganą', 'to fly'],
   ['fleuhaną', 'to flee'],
   ['gāną', 'to go'],
+  ['gulþą', 'gold'],
   ['gulþijaną', 'to gild'],
   ['habjaną', 'to have'],
   ['hagatusjō', 'witch'],
