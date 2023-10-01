@@ -34,7 +34,6 @@ const list = [
   ['hwar', 'where'],
   ['kwemaną', 'to come'],
   ['kwēniz', 'queen'],
-  ['putōną', 'to put'],
   ['sagǭ', 'saw/saga'],
   ['skadwaz', 'shadow'],
   ['stainaz', 'stone'],
@@ -43,7 +42,6 @@ const list = [
   ['ūt', 'out'],
   ['þeudō', 'people'],
   ['þunraz', 'thunder'],
-  ['wodanaz', 'Odin'],
   ['wrītaną', 'to write'],
 ]
 
@@ -60,7 +58,7 @@ const output = list.map(([base, meaning]) => {
 })
 
 const formatOutput = output => {
-  return output.map(([base, result, meaning]) => {
+  return [['PGmc', 'Norl.', 'Definition'], ['---', '---', '---'], ...output].map(([base, result, meaning]) => {
     return `${base.padEnd(longestBase + 1)} ${result.padEnd(longestResult + 1)} ${meaning}`
   }).join('\n')
 }
