@@ -1,18 +1,24 @@
-const { lastOf, applySpellingConventions } = require('./src/utils')
-const iMutation = require('./src/iMutation')
-const aMutation = require('./src/aMutation')
-const vowelLaxing = require('./src/vowelLaxing')
-const zLoss = require('./src/zLoss')
-const wgHardening = require('./src/wgHardening')
-const syllableReduction = require('./src/syllableReduction')
-const vowelSmoothing = require('./src/vowelSmoothing')
-const modernization = require('./src/modernization')
+const { lastOf, applySpellingConventions } = require('./utils')
+const iMutation = require('./iMutation')
+const aMutation = require('./aMutation')
+const vowelLaxing = require('./vowelLaxing')
+const zLoss = require('./zLoss')
+const wgHardening = require('./wgHardening')
+const syllableReduction = require('./syllableReduction')
+const vowelSmoothing = require('./vowelSmoothing')
+const modernization = require('./modernization')
+const massageOutliers = require('./massageOutliers')
 
 const init = (baseWord) => {
   const steps = [{
     step: 'Input',
     result: baseWord.toLowerCase().replace(/^\*/, ''),
   }];
+
+  steps.push({
+    step: 'Massage Known Outliers',
+    result: massageOutliers(lastOf(steps).result),
+  })
 
   steps.push({
     step: 'I-Mutation',
@@ -54,14 +60,12 @@ const init = (baseWord) => {
     result: modernization(lastOf(steps).result),
   })
 
-  steps.push({
-    step: 'Output',
-    result: applySpellingConventions(lastOf(steps).result),
-  })
-
-  console.log(steps)
+  // steps.push({
+  //   step: 'Output',
+  //   result: applySpellingConventions(lastOf(steps).result),
+  // })
 
   return steps
 }
 
-init(process.argv.slice(2)[0])
+module.exports = init

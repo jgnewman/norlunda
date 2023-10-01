@@ -5,7 +5,7 @@ An algorithmically generated conlang merging north and west Germanic linguistic 
 This is still a work in progress but to run things for now you need node.js and npm. Then you can run the script by passing in a Proto-Germanic word like this:
 
 ```
-npm start -- wrītaną
+npm run word -- wrītaną
 ```
 
 You will get output telling you the generated Norlunda word as well as how the word changed with each step in the process.
@@ -53,12 +53,79 @@ dȳtsh - dutch / native language
 
 Ideas:
 
-- y could restore back to u
-- ū could shorten to u (but this is long across the board)
+Desired vowel phonology:
 
-Idea: yy becomes au (maybe uu does too).
+a, ɔ, ɛ, e:, ɪ, i:, o, ø, u, y, ai, au
 
-Beyond that, 2 options:
+Actual phonology:
 
-1. /e:/ becomes /ai/, /a:/ becomes /e:/. So we'd have /folkhaim/ and /he:tan/. This would leave us with no more long a.
-2. Or /a:/ becomes /ai/ which also leaves us with no long a
+a, a:, æ, æ:, e, e:, i, i:, o, o:, u:, y, y:
+
+Feedback:
+
+> it would be the most logical for ū and ȳ to be dipthongs
+> ā and ǣ are rather suitable canadites for becoming ai and au
+> based off of the fact of norlunda follows the IPA shifts going downwards or upwards
+
+```
+i/y----------------u
+  \  ɪ/ʏ        ʊ  |
+  e/ø              o
+     \      ə      |
+      ɛ/œ          ɔ
+        æ          |
+          a--------ɑ
+```
+
+What if:
+
+- a stays a (dag)
+- æ merges to a (habban)
+- e shelves into ɛ
+- i shelves into ɪ
+- o does not change
+- no u ?
+- y does not change or shelves into ø (gyldan, goeldan)
+
+- a: becomes ɔ or diphthongizes to ai (haatan, folkhaam; heitan, folkheim)
+- æ: becomes ø or merges to e: (boer, beer)
+- e: does not change
+- i: does not change or diphthongizes to ai (rietan)
+  - There's no need for this to happen. Nothing's pushing it and it's not pulling anything.
+- u:
+- y:
+
+1. something
+
+- /a/ [a] dag
+- /a:/ -> /au/ [au] folkhaum
+- /æ/ ?
+- /ǣ/ ?
+- /e/ -> /ɛ/ [e] bed
+- /e:/ [ee]
+- /o/ [o]
+- /o:/ -> /ʊ/ [u]
+- /u/ appears from /o:/
+- /u:/ [uu]
+- /y/ -> /ø/ [oe]
+- /y:/ -> /ai/ [ei]
+
+2. something else
+
+- /a/
+- /a:/
+- /æ/
+- /ǣ/
+- /e/
+- /e:/
+- /o/
+- /o:/
+- /u/
+- /u:/
+- /y/
+- /y:/
+
+To fix:
+
+- iskaz is a suffix meaning "ish". We don't need a rule for that right? Why does it turn theudo into thiudiskaz?
+-

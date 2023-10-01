@@ -55,6 +55,7 @@ const mutateE = (syllable, nextSyllable) => {
   return `${syllable.slice(0, position)}${'i'}${syllable.slice(position + 1)}`
 }
 
+
 module.exports = (word) => {
   const syllables = syllableize(word)
   

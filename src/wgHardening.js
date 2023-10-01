@@ -35,8 +35,8 @@ const doubleConsonants = (word) => {
       return result + char
     }
 
-    // Ensure a non-r consonant followed by j
-    if (!isConsonant(char) || char === 'r' || !nextCharIsJ) return result + char
+    // Ensure a non-r/w consonant followed by j
+    if (!isConsonant(char) || char === 'r' || char === 'w' || !nextCharIsJ) return result + char
 
     // Ensure preceded by a short vowel
     const [_, prevVowels] = separateFinalVowels(result)

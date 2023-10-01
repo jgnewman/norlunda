@@ -27,7 +27,7 @@ const relaxOverlongs = (word) => {
 const monophthongizeNonInitialDiphthongs = (word) => {
   const [firstSyllable, ...restSyllables] = syllableize(word)
   return firstSyllable + restSyllables.map(syllable => {
-    return syllable.replace(/ai/g, 'ē').replace(/au/g, 'ō')
+    return syllable.replace(/ai/g, 'ā').replace(/au/g, 'ō')
   }).join('')
 }
 
