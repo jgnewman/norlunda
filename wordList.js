@@ -31,6 +31,7 @@ const list = [
   ['hertô', 'heart'],
   ['hrussą', 'horse'],
   ['hundaz', 'dog'],
+  ['hwar', 'where'],
   ['kwemaną', 'to come'],
   ['kwēniz', 'queen'],
   ['putōną', 'to put'],
