@@ -5,7 +5,6 @@ const vowelLaxing = require('./vowelLaxing')
 const zLoss = require('./zLoss')
 const wgHardening = require('./wgHardening')
 const syllableReduction = require('./syllableReduction')
-const vowelSmoothing = require('./vowelSmoothing')
 const modernization = require('./modernization')
 const massageOutliers = require('./massageOutliers')
 
@@ -48,11 +47,6 @@ const init = (baseWord) => {
   steps.push({
     step: 'Syllable Reduction',
     result: syllableReduction(lastOf(steps).result),
-  })
-
-  steps.push({
-    step: 'Vowel Smoothing',
-    result: vowelSmoothing(lastOf(steps).result),
   })
 
   steps.push({

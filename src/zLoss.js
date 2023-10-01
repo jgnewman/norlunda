@@ -1,63 +1,39 @@
-const syllableize = require('./syllableize')
 const {
   allButLastOf,
   lastOf,
   isConsonant,
-  separateFinalVowels,
   endsWithUncomfortableConsonantCluster,
   fixUncomfortableEndCluster,
 } = require('./utils')
 
-const removeZ = (word) => {
-  const syllables = syllableize(word)
-  let newWord = word.replace(/z$/g, '')
-
-  if (syllables.length > 1) {
-    const [stem, _] = separateFinalVowels(newWord)
-    newWord = stem
-  }
-  
-  return newWord
-}
-
-const removeS = (word) => {
-  const nextToLastCharIsCons = isConsonant(lastOf(allButLastOf(word)))
-  if (!nextToLastCharIsCons) return word
-  return allButLastOf(word)
-}
-
 const dropFinalZ = (word) => {
   const lastChar = lastOf(word)
-  let newWord = lastChar === 'z' ? removeZ(word) :
-                lastChar === 's' ? removeS(word) :
-                word
-              
-  if (word === newWord) return newWord
+  const nextToLastChar = lastOf(allButLastOf(word))
+  if (lastChar === 's' && nextToLastChar !== 's' && isConsonant(nextToLastChar)) return word.slice(0, -1)
+  
+  if (/iwaz$/.test(word)) return word.replace(/iwaz$/, 'a')
+  if (/ijaz$/.test(word)) return word.replace(/ijaz$/, '')
+  if (/waz$/.test(word)) return word.replace(/waz$/, isConsonant(word.slice(-4)[0]) ? 'a' : '')
+  if (/az$/.test(word)) return word.replace(/az$/, '')
+  if (/iwiz$/.test(word)) return word.replace(/iwiz$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
+  if (/iz$/.test(word)) return word.replace(/iz$/, '')
+  if (/uz$/.test(word)) return word.replace(/uz$/, '')
 
-  const newLastChar = lastOf(newWord)
-  const nextToLastCharIsCons = isConsonant(lastOf(allButLastOf(newWord)))
-
-  if (newLastChar === 'j' && nextToLastCharIsCons) {
-    newWord = allButLastOf(newWord) + 'i'
-  }
-
-  if (newLastChar === 'w' && nextToLastCharIsCons) {
-    newWord = allButLastOf(newWord) + 'u'
-  }
-
-  if (endsWithUncomfortableConsonantCluster(newWord)) {
-    newWord = fixUncomfortableEndCluster(newWord)
-  }
-
-  return newWord
+  return word
 }
 
-const fixSemiVowelsAndZ = (word) => {
-  return word.replace(/wu$/, 'u').replace(/ij$/, 'i').replace(/z/g, 'r')
+const rhoticizeRemainingZs = (word) => {
+  return word.replace(/z/g, 'r')
+}
+
+const handleUncomfortableEndCluster = (word) => {
+  if (!endsWithUncomfortableConsonantCluster(word)) return word
+  return fixUncomfortableEndCluster(word)
 }
 
 module.exports = (word) => {
   const phase1 = dropFinalZ(word)
-  const phase2 = fixSemiVowelsAndZ(phase1)
-  return phase2
+  const phase2 = rhoticizeRemainingZs(phase1)
+  const phase3 = handleUncomfortableEndCluster(phase2)
+  return phase3
 }
