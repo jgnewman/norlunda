@@ -1,6 +1,7 @@
 const { lastOf, applySpellingConventions } = require('./utils')
 const iMutation = require('./iMutation')
 const aMutation = require('./aMutation')
+const gemination = require('./gemination.js')
 const vowelLaxing = require('./vowelLaxing')
 const zLoss = require('./zLoss')
 const wgHardening = require('./wgHardening')
@@ -9,14 +10,12 @@ const modernization = require('./modernization')
 const massageOutliers = require('./massageOutliers')
 
 const init = (baseWord) => {
-  const steps = [{
-    step: 'Input',
-    result: baseWord.toLowerCase().replace(/^\*/, ''),
-  }];
+  const normalizedWord = baseWord.toLowerCase().replace(/^\*/, '')
+  const steps = []
 
   steps.push({
     step: 'Massage Known Outliers',
-    result: massageOutliers(lastOf(steps).result),
+    result: massageOutliers(normalizedWord),
   })
 
   steps.push({
@@ -27,6 +26,11 @@ const init = (baseWord) => {
   steps.push({
     step: 'A-Mutation',
     result: aMutation(lastOf(steps).result),
+  })
+
+  steps.push({
+    step: 'Gemination',
+    result: gemination(lastOf(steps).result),
   })
 
   steps.push({
