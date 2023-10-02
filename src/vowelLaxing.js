@@ -31,9 +31,23 @@ const nasalRegex = new RegExp(`(${nasalVowels.join('|')})`, 'g')
 const longNasalRegex = new RegExp(`(${longNasalVowels.join('|')})`, 'g')
 
 const relaxOverlongs = (word) => {
-  return word
-    .replace(overlongRegex, (_, p1) => longVowels[overlongVowels.indexOf(p1)])
-    .replace(overlongNasalRegex, (_, p1) => longNasalVowels[overlongNasalVowels.indexOf(p1)])
+  const syllables = syllableize(word)
+
+  return syllables.map((syllable, index) => {
+    const nextSyllable = syllables[index + 1] ?? ''
+    let newSyllable = syllable
+
+    if (overlongRegex.test(nextSyllable) || overlongNasalRegex.test(nextSyllable)) {
+      newSyllable = syllable
+        .replace(shortRegex, (_, p1) => longVowelVariantOf(p1))
+        .replace(nasalRegex, (_, p1) => longVowelVariantOf(p1))
+    }
+    
+    return newSyllable
+      .replace(overlongRegex, (_, p1) => longVowelVariantOf(p1))
+      .replace(overlongNasalRegex, (_, p1) => longVowelVariantOf(p1))
+
+  }).join('')
 }
 
 const monophthongize = (word) => {
@@ -59,11 +73,6 @@ const finalSylHasShortVowel = (word) => {
   return baseVowels.includes(vowelCluster)
 }
 
-const prevSylHasShortVowel = (word, beforeSuffixRegex) => {
-  const withoutSuffix = word.replace(beforeSuffixRegex, '')
-  return finalSylHasShortVowel(withoutSuffix)
-}
-
 const lengthenFinalSylShortVowel = (word) => {
   if (!finalSylHasShortVowel(word)) return word
   const syllables = syllableize(word)
@@ -77,14 +86,13 @@ const reduceVowelBasedSuffixes = (word) => {
   if (/ij(ō|ǭ)$/.test(word)) return word.replace(/ij(ō|ǭ)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
   if (/w(ō|ǭ)$/.test(word)) return word.replace(/w(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
   if (/j(ō|ǭ)$/.test(word)) return word.replace(/j(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
-  if (/(ō|ǭ)$/.test(word)) return word.replace(/(ō|ǭ)$/, prevSylHasShortVowel(word, /(ō|ǭ)$/) ? 'a' : '')
+  if (/(ō|ǭ)$/.test(word)) return word.replace(/(ō|ǭ)$/, '')
 
   if (/wij(o|ǫ)$/.test(word)) return word.replace(/wij(o|ǫ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(o|ǫ)$/.test(word)) return word.replace(/ij(o|ǫ)$/, '')
   if (/w(o|ǫ)$/.test(word)) return word.replace(/w(o|ǫ)$/, '')
   if (/j(o|ǫ)$/.test(word)) return lengthenFinalSylShortVowel(word.replace(/j(o|ǫ)$/, ''))
-  if (/ǫ$/.test(word)) return word.replace(/ǫ$/, 'a')
-  if (/o$/.test(word)) return word.replace(/o$/, '')
+  if (/(ǫ|o)$/.test(word)) return word.replace(/(ǫ|o)$/, 'a')
 
   if (/wij(ā|ą̄)$/.test(word)) return word.replace(/wij(ā|ą̄)$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
   if (/ij(ā|ą̄)$/.test(word)) return word.replace(/ij(ā|ą̄)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
@@ -96,8 +104,7 @@ const reduceVowelBasedSuffixes = (word) => {
   if (/ij(a|ą)$/.test(word)) return word.replace(/ij(a|ą)$/, '')
   if (/w(a|ą)$/.test(word)) return word.replace(/w(a|ą)$/, '')
   if (/j(a|ą)$/.test(word)) return lengthenFinalSylShortVowel(word.replace(/j(a|ą)$/, ''))
-  if (/ą$/.test(word)) return word.replace(/ą$/, '')
-  if (/a$/.test(word)) return word.replace(/a$/, '')
+  if (/(ą|a)$/.test(word)) return word.replace(/(ą|a)$/, '')
 
   if (/(į|į̄)$/.test(word)) return word.replace(/(į|į̄)$/, 'a')
   if (/i$/.test(word)) return word.replace(/i$/, '')
@@ -155,8 +162,8 @@ const shortenPreClusterLongVowels = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = relaxOverlongs(word)
-  const phase2 = monophthongize(phase1)
+  const phase1 = monophthongize(word)
+  const phase2 = relaxOverlongs(phase1)
   const phase3 = mergeInfinitives(phase2)
   const phase4 = reduceVowelBasedSuffixes(phase3)
   const phase5 = denasalize(phase4)

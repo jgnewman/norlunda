@@ -11,16 +11,19 @@ const { longVowelVariantOf } = require("./vowels")
 
 const shortenThreeSyllablesPlus = (word) => {
   const syllables = syllableize(word)
-  if (syllables.length <= 3) return word
+  if (syllables.length < 3) return word
 
   const firstSyllable = firstOf(syllables)
+  const secondSyllable = syllables[1]
   const lastSyllable = lastOf(syllables)
 
   // In theory, the first letter of the second syllable will always be
   // a consonant in words with this many syllables.
-  const firstConsOfSecondSyllable = firstOf(syllables[1])
+  const firstConsOfSecondSyllable = firstOf(secondSyllable)
+  const [lastSyllPrefix, finalVowels] = separateFinalVowels(lastSyllable)
+  const lastConsOfLastSyllable = lastOf(lastSyllPrefix)
 
-  return firstSyllable + firstConsOfSecondSyllable + lastSyllable
+  return firstSyllable + firstConsOfSecondSyllable + lastConsOfLastSyllable + finalVowels
 }
 
 const softConsToLongVowel = (word) => {
