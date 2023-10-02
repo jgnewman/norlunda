@@ -5,6 +5,7 @@ const {
   isVowel,
   separateFinalVowels,
   allButLastOf,
+  isConsonant,
 } = require("./utils")
 const { longVowelVariantOf } = require("./vowels")
 
@@ -52,8 +53,31 @@ const softConsToLongVowel = (word) => {
   }, '')
 }
 
+const fixDoubleStops = (word) => {
+  let newWord = ''
+
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i]
+    const nextChar = word[i + 1]
+    const thirdChar = word[i + 2]
+
+    if (char === 'd' && nextChar === 'g' && !isConsonant(thirdChar)) {
+      newWord += 'gg'
+      i++
+    } else if (char === 't' && nextChar === 'g' && !isConsonant(thirdChar)) {
+      newWord += 'kk'
+      i++
+    } else {
+      newWord += char
+    }
+  }
+ 
+  return newWord
+}
+
 module.exports = (word) => {
   const phase1 = shortenThreeSyllablesPlus(word)
   const phase2 = softConsToLongVowel(phase1)
-  return phase2
+  const phase3 = fixDoubleStops(phase2)
+  return phase3
 }

@@ -7,7 +7,7 @@ const list = [
   ['bakiz', 'back'],
   ['barwijǭ', 'barrow'],
   ['bazją', 'berry'],
-  ['bedą', 'bed'],
+  ['badją', 'bed'],
   ['berô', 'bear'],
   ['bijǭ', 'bee'],
   ['bindaną', 'to bind'],
