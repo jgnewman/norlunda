@@ -63,7 +63,16 @@ const monophthongize = (word) => {
 }
 
 const mergeInfinitives = (word) => {
-  return word.replace(/(ijaną|janą|aną|ōną)$/, 'an').replace(/ną$/, 'n')
+  const newWord = word.replace(/(ijaną|janą|aną|ōną)$/, 'an')
+  if (!/ną$/.test(newWord)) return newWord
+
+  const withoutSuffix = newWord.slice(0, -2)
+  const [stem, finalVowels] = separateFinalVowels(withoutSuffix)
+  const hasPrecedingLongVowel = longVowels.includes(finalVowels) || longNasalVowels.includes(finalVowels)
+
+  return hasPrecedingLongVowel 
+    ? stem + shortVowelVariantOf(finalVowels) + 'han'
+    : withoutSuffix + 'han'
 }
 
 const finalSylHasShortVowel = (word) => {

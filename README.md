@@ -80,6 +80,8 @@ i/y----------------u
 Things we **_don't_** want:
 
 - ā not becoming ai under some circumstances (there is strong desire for "heim")
+  - we want haitan and stain but not gain
+  - to be fair, we would probably be ok with /e:/ as well
 - ā becoming ai under _all_ circumstances (gān would become gain, which is undesired)
 - ǣ and ē merging, because this would merge berry and bear
 - ī moving anywhere other than ai (otherwise we get into unusual phonological patterns)
@@ -87,18 +89,7 @@ Things we **_don't_** want:
 
 What if:
 
-- a stays a (dag)
-- æ merges to a (habban)
-- e shelves into ɛ
-- i shelves into ɪ
-- o does not change
-- no u ?
-- y does not change or shelves into ø (gyldan, goeldan)
+- /æ:/ raises to /ø:/ giving boer=berry
+- /æ/ raises to merge with /ɛ/ giving end=and, bera=barrow, bedd=bed
 
-- a: becomes ɔ or diphthongizes to ai (haatan, folkhaam; heitan, folkheim)
-- æ: becomes ø or merges to e: (boer, beer)
-- e: does not change
-- i: does not change or diphthongizes to ai (rietan)
-  - There's no need for this to happen. Nothing's pushing it and it's not pulling anything.
-- u:
-- y:
+-

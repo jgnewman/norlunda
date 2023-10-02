@@ -40,7 +40,7 @@ const softConsToLongVowel = (word) => {
       return result
     }
 
-    if (!/[hw]/.test(char)) return result + char
+    if (char !== 'w') return result + char
 
     const prevChar = lastOf(result)
     if (!isVowel(prevChar) || !nextCharIsVowel) return result + char
