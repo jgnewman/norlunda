@@ -140,7 +140,7 @@ const isNonApproximantApproximantCluster = (a, b) => {
 }
 
 const isDoubleStopCluster = (a, b) => {
-  return pgmcStops.includes(a) && pgmcStops.includes(b) && a !== b
+  return `${a}${b}` !== 'kt' && pgmcStops.includes(a) && pgmcStops.includes(b) && a !== b
 }
 
 const isStopNasalCluster = (a, b) => {
@@ -152,7 +152,7 @@ const isDoubleNasalCluster = (a, b) => {
 }
 
 const isHCluster = (a, b) => {
-  return isConsonant(a) && isConsonant(b) && (a === 'h' || b === 'h')
+  return `${a}${b}` !== 'ht' && isConsonant(a) && isConsonant(b) && (a === 'h' || b === 'h')
 }
 
 const isUncomfortableConsonantCluster = (a, b) => {

@@ -8,8 +8,8 @@ const {
   removeVowels,
   separateFinalConsonants,
   separateInitialConsonants,
-  containsUncomfortableConsonantCluster,
   separateFinalVowels,
+  endsWithUncomfortableConsonantCluster,
 } = require("./utils")
 const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require("./vowels")
 
@@ -47,7 +47,7 @@ const tryToShortenSecondSyllable = (word) => {
   if (!endCons.length && !beginCons.length) return word
   
   const newWord = firstOf(syllables) + removeVowels(secondSyllable) + syllables.slice(2).join('')
-  if (containsUncomfortableConsonantCluster(newWord)) return word
+  if (endsWithUncomfortableConsonantCluster(newWord)) return word
 
   return newWord + (hasInfinitiveSuffix ? 'an' : '')
 }
