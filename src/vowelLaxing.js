@@ -1,4 +1,4 @@
-const { pgmcFricatives } = require('./consonants')
+const { pgmcFricatives, pgmcVelars } = require('./consonants')
 const syllableize = require('./syllableize')
 const {
   lastOf,
@@ -86,7 +86,7 @@ const reduceVowelBasedSuffixes = (word) => {
   if (/ij(ō|ǭ)$/.test(word)) return word.replace(/ij(ō|ǭ)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
   if (/w(ō|ǭ)$/.test(word)) return word.replace(/w(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
   if (/j(ō|ǭ)$/.test(word)) return word.replace(/j(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
-  if (/(ō|ǭ)$/.test(word)) return word.replace(/(ō|ǭ)$/, '')
+  if (/(ō|ǭ)$/.test(word)) return word.replace(/(ō|ǭ)$/, pgmcVelars.includes(word.slice(-2)[0]) ? 'a' : '')
 
   if (/wij(o|ǫ)$/.test(word)) return word.replace(/wij(o|ǫ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(o|ǫ)$/.test(word)) return word.replace(/ij(o|ǫ)$/, '')

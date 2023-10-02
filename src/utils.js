@@ -1,4 +1,11 @@
-const { allConsonants, pgmcApproximants, pgmcNonApproximants, pgmcStops, pgmcNasals } = require('./consonants')
+const {
+  allConsonants,
+  pgmcApproximants,
+  pgmcNonApproximants,
+  pgmcStops,
+  pgmcNasals,
+  pgmcFricatives,
+} = require('./consonants')
 const { singularVowels } = require('./vowels')
 
 const lastOf = (arr) => arr[arr.length - 1]
@@ -143,12 +150,8 @@ const isDoubleStopCluster = (a, b) => {
   return `${a}${b}` !== 'kt' && pgmcStops.includes(a) && pgmcStops.includes(b) && a !== b
 }
 
-const isStopNasalCluster = (a, b) => {
-  return pgmcStops.includes(a) && pgmcNasals.includes(b)
-}
-
-const isDoubleNasalCluster = (a, b) => {
-  return pgmcNasals.includes(a) && pgmcNasals.includes(b) && a !== b
+const isNasalEndingCluster = (a, b) => {
+  return isConsonant(a) && pgmcNasals.includes(b)
 }
 
 const isHCluster = (a, b) => {
@@ -158,8 +161,7 @@ const isHCluster = (a, b) => {
 const isUncomfortableConsonantCluster = (a, b) => {
   return isNonApproximantApproximantCluster(a, b) ||
     isDoubleStopCluster(a, b) ||
-    isStopNasalCluster(a, b) ||
-    isDoubleNasalCluster(a, b) ||
+    isNasalEndingCluster(a, b) ||
     isHCluster(a, b)
 }
 

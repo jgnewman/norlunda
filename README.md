@@ -77,6 +77,14 @@ i/y----------------u
           a--------ɑ
 ```
 
+Things we **_don't_** want:
+
+- ā not becoming ai under some circumstances (there is strong desire for "heim")
+- ā becoming ai under _all_ circumstances (gān would become gain, which is undesired)
+- ǣ and ē merging, because this would merge berry and bear
+- ī moving anywhere other than ai (otherwise we get into unusual phonological patterns)
+- o moving anywhere other than u (hond/hund, koman/kuman, etc)
+
 What if:
 
 - a stays a (dag)
