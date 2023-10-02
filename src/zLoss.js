@@ -22,8 +22,8 @@ const dropFinalZ = (word) => {
   return word
 }
 
-const rhoticizeRemainingZs = (word) => {
-  return word.replace(/z/g, 'r')
+const fixRemainingZAndHs = (word) => {
+  return word.replace(/z/g, 'r').replace(/hs/, 'ks')
 }
 
 const handleUncomfortableEndCluster = (word) => {
@@ -33,7 +33,7 @@ const handleUncomfortableEndCluster = (word) => {
 
 module.exports = (word) => {
   const phase1 = dropFinalZ(word)
-  const phase2 = rhoticizeRemainingZs(phase1)
+  const phase2 = fixRemainingZAndHs(phase1)
   const phase3 = handleUncomfortableEndCluster(phase2)
   return phase3
 }
