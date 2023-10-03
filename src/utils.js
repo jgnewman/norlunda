@@ -199,18 +199,6 @@ const fixUncomfortableEndCluster = (word) => {
   return allButLastOf(word) + 'a' + lastOf(word)
 }
 
-const applySpellingConventions = (word) => {
-  return word
-    .replace(/ā/g, 'aa')
-    .replace(/ē/g, 'ee')
-    .replace(/ī/g, 'ii')
-    .replace(/ō/g, 'oo')
-    .replace(/ū/g, 'uu')
-    .replace(/ȳ/g, 'yy')
-    .replace(/æ/g, 'ae')
-    .replace(/ai/g, 'ei')
-}
-
 module.exports = {
   lastOf,
   firstOf,
@@ -235,5 +223,4 @@ module.exports = {
   containsUncomfortableConsonantCluster,
   endsWithUncomfortableConsonantCluster,
   fixUncomfortableEndCluster,
-  applySpellingConventions,
 }

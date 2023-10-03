@@ -37,11 +37,14 @@ const list = [
   ['sagǭ', 'saw/saga'],
   ['skadwaz', 'shadow'],
   ['stainaz', 'stone'],
+  ['swa', 'so'],
   ['swemmaną', 'to swim'],
   ['triwwiz', 'true'],
   ['ūt', 'out'],
   ['þeudō', 'people'],
+  ['þiudiskaz', 'native language'],
   ['þunraz', 'thunder'],
+  ['wōdanaz', 'Odin'],
   ['wrītaną', 'to write'],
 ]
 

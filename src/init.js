@@ -1,4 +1,4 @@
-const { lastOf, applySpellingConventions } = require('./utils')
+const { lastOf } = require('./utils')
 const iMutation = require('./iMutation')
 const aMutation = require('./aMutation')
 const gemination = require('./gemination.js')
@@ -57,11 +57,6 @@ const init = (baseWord) => {
     step: 'Modernization',
     result: modernization(lastOf(steps).result),
   })
-
-  // steps.push({
-  //   step: 'Output',
-  //   result: applySpellingConventions(lastOf(steps).result),
-  // })
 
   return steps
 }

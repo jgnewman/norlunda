@@ -96,24 +96,25 @@ const reduceVowelBasedSuffixes = (word) => {
   if (/w(ō|ǭ)$/.test(word)) return word.replace(/w(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
   if (/j(ō|ǭ)$/.test(word)) return word.replace(/j(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
   if (/(ō|ǭ)$/.test(word)) return word.replace(/(ō|ǭ)$/, pgmcVelars.includes(word.slice(-2)[0]) ? 'a' : '')
-
+  
   if (/wij(o|ǫ)$/.test(word)) return word.replace(/wij(o|ǫ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(o|ǫ)$/.test(word)) return word.replace(/ij(o|ǫ)$/, '')
   if (/w(o|ǫ)$/.test(word)) return word.replace(/w(o|ǫ)$/, '')
   if (/j(o|ǫ)$/.test(word)) return lengthenFinalSylShortVowel(word.replace(/j(o|ǫ)$/, ''))
   if (/(ǫ|o)$/.test(word)) return word.replace(/(ǫ|o)$/, 'a')
-
+  
   if (/wij(ā|ą̄)$/.test(word)) return word.replace(/wij(ā|ą̄)$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
   if (/ij(ā|ą̄)$/.test(word)) return word.replace(/ij(ā|ą̄)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
-  if (/w(ā|ą̄)$/.test(word)) return word.replace(/w(ā|ą̄)$/, '')
+  if (/w(ā|ą̄)$/.test(word)) return word.replace(/w(ā|ą̄)$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
   if (/j(ā|ą̄)$/.test(word)) return word.replace(/j(ā|ą̄)$/, '')
   if (/(ā|ą̄)$/.test(word)) return word.replace(/(ā|ą̄)$/, '')
-
+  
   if (/wij(a|ą)$/.test(word)) return word.replace(/wij(a|ą)$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
   if (/ij(a|ą)$/.test(word)) return word.replace(/ij(a|ą)$/, '')
-  if (/w(a|ą)$/.test(word)) return word.replace(/w(a|ą)$/, '')
+  if (/w(a|ą)$/.test(word)) return word.replace(/w(a|ą)$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
   if (/j(a|ą)$/.test(word)) return lengthenFinalSylShortVowel(word.replace(/j(a|ą)$/, ''))
   if (/(ą|a)$/.test(word)) return word.replace(/(ą|a)$/, '')
+
 
   if (/(į|į̄)$/.test(word)) return word.replace(/(į|į̄)$/, 'a')
   if (/i$/.test(word)) return word.replace(/i$/, '')

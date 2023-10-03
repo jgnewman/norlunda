@@ -10,8 +10,10 @@ const {
   separateInitialConsonants,
   separateFinalVowels,
   endsWithUncomfortableConsonantCluster,
+  containsVowels,
 } = require("./utils")
 const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require("./vowels")
+const { pgmcNasals, pgmcApproximants } = require("./consonants")
 
 const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
 const longPlusWRegex = new RegExp(`(${longVowels.join('|')})w`, 'g')
@@ -52,9 +54,28 @@ const tryToShortenSecondSyllable = (word) => {
   return newWord + (hasInfinitiveSuffix ? 'an' : '')
 }
 
+const isNasalOrApproximant = (char) => {
+  return pgmcNasals.includes(char) || pgmcApproximants.includes(char)
+}
+
+const shiftVowels = (word) => {
+  return word
+    .replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? 'a' : 'aa')
+    .replace(/æ/g, 'e')
+    .replace(/i/g, 'i')
+    .replace(/y/g, 'u')
+    .replace(/ā/g, (_, index, src) => !!src[index + 1] ? 'ei' : 'aa')
+    .replace(/ǣ/g, 'oe')
+    .replace(/ē/g, 'ee')
+    .replace(/ī/g, 'ie')
+    .replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? 'oe' : 'o')
+    .replace(/[ūȳ]/g, 'au')
+}
+
 module.exports = (word) => {
   const phase1 = dropWAndModVowels(word)
   const phase2 = tryToShortenSecondSyllable(phase1)
   const phase3 = shiftFricatives(phase2)
-  return phase3
+  const phase4 = shiftVowels(phase3)
+  return phase4
 }

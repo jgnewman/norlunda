@@ -92,4 +92,12 @@ What if:
 - /æ:/ raises to /ø:/ giving boer=berry
 - /æ/ raises to merge with /ɛ/ giving end=and, bera=barrow, bedd=bed
 
--
+- /y:/ merges with /u:/ then diphthongizes to /au/ giving dautsh=language, haus=house
+- /y/ restores to /u/ giving guldan=gild
+
+- /o:/ shortens to /o/ except before a nasal or an approximant in which case it merges with /ø:/ giving hoeran=hear, brod=bread, droem=dream,
+- /a:/ becomes /ɔː/ when word-final and otherwise diphthongizes to /ai/ giving stein=stone, heim=home saa=so
+
+Discovery:
+
+/iu/ seems only to exist as an i-mutated form of /eu/ when a root containing /eu/ gets appended with an i-mutating suffix. For example þeudō vs þiudiskaz or hleuþą vs hliuþijaną.
