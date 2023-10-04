@@ -8,6 +8,7 @@ const wgHardening = require('./wgHardening')
 const syllableReduction = require('./syllableReduction')
 const modernization = require('./modernization')
 const massageOutliers = require('./massageOutliers')
+const sanitizePhonology = require('./sanitizePhonology')
 
 const init = (baseWord) => {
   const normalizedWord = baseWord.toLowerCase().replace(/^\*/, '')
@@ -16,6 +17,11 @@ const init = (baseWord) => {
   steps.push({
     step: 'Massage Known Outliers',
     result: massageOutliers(normalizedWord),
+  })
+
+  steps.push({
+    step: 'Sanitize Phonology',
+    result: sanitizePhonology(lastOf(steps).result),
   })
 
   steps.push({

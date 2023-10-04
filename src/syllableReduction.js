@@ -26,7 +26,7 @@ const shortenThreeSyllablesPlus = (word) => {
   return firstSyllable + firstConsOfSecondSyllable + lastConsOfLastSyllable + finalVowels
 }
 
-const softConsToLongVowel = (word) => {
+const medialWToLongVowel = (word) => {
   let trackingChange = false
 
   return word.split('').reduce((result, char, index, charList) => {
@@ -51,8 +51,10 @@ const softConsToLongVowel = (word) => {
     const [_, prevVowel] = separateFinalVowels(result)
     if (prevVowel.length > 1) return result
 
-    return allButLastOf(result) + longVowelVariantOf(prevVowel);
-
+    switch (prevVowel) {
+      case 'æ': return allButLastOf(result) + 'au'
+      default: return allButLastOf(result) + longVowelVariantOf(prevVowel)
+    }
   }, '')
 }
 
@@ -80,7 +82,7 @@ const fixDoubleStops = (word) => {
 
 module.exports = (word) => {
   const phase1 = shortenThreeSyllablesPlus(word)
-  const phase2 = softConsToLongVowel(phase1)
+  const phase2 = medialWToLongVowel(phase1)
   const phase3 = fixDoubleStops(phase2)
   return phase3
 }

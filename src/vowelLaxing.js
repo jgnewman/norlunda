@@ -19,14 +19,12 @@ const {
   nasalVowels,
   longNasalVowels,
   overlongVowels,
-  overlongNasalVowels,
   shortVowelVariantOf,
   longVowelVariantOf,
 } = require('./vowels')
 
 const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
 const overlongRegex = new RegExp(`(${overlongVowels.join('|')})`, 'g')
-const overlongNasalRegex = new RegExp(`(${overlongNasalVowels.join('|')})`, 'g')
 const nasalRegex = new RegExp(`(${nasalVowels.join('|')})`, 'g')
 const longNasalRegex = new RegExp(`(${longNasalVowels.join('|')})`, 'g')
 
@@ -37,7 +35,7 @@ const relaxOverlongs = (word) => {
     const nextSyllable = syllables[index + 1] ?? ''
     let newSyllable = syllable
 
-    if (overlongRegex.test(nextSyllable) || overlongNasalRegex.test(nextSyllable)) {
+    if (overlongRegex.test(nextSyllable)) {
       newSyllable = syllable
         .replace(shortRegex, (_, p1) => longVowelVariantOf(p1))
         .replace(nasalRegex, (_, p1) => longVowelVariantOf(p1))
@@ -45,7 +43,6 @@ const relaxOverlongs = (word) => {
     
     return newSyllable
       .replace(overlongRegex, (_, p1) => longVowelVariantOf(p1))
-      .replace(overlongNasalRegex, (_, p1) => longVowelVariantOf(p1))
 
   }).join('')
 }
@@ -103,11 +100,11 @@ const reduceVowelBasedSuffixes = (word) => {
   if (/j(o|ǫ)$/.test(word)) return lengthenFinalSylShortVowel(word.replace(/j(o|ǫ)$/, ''))
   if (/(ǫ|o)$/.test(word)) return word.replace(/(ǫ|o)$/, 'a')
   
-  if (/wij(ā|ą̄)$/.test(word)) return word.replace(/wij(ā|ą̄)$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
-  if (/ij(ā|ą̄)$/.test(word)) return word.replace(/ij(ā|ą̄)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
-  if (/w(ā|ą̄)$/.test(word)) return word.replace(/w(ā|ą̄)$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
-  if (/j(ā|ą̄)$/.test(word)) return word.replace(/j(ā|ą̄)$/, '')
-  if (/(ā|ą̄)$/.test(word)) return word.replace(/(ā|ą̄)$/, '')
+  if (/wijā$/.test(word)) return word.replace(/wijā$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
+  if (/ijā$/.test(word)) return word.replace(/ijā$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
+  if (/wā$/.test(word)) return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
+  if (/jā$/.test(word)) return word.replace(/jā$/, '')
+  if (/ā$/.test(word)) return word.replace(/ā$/, '')
   
   if (/wij(a|ą)$/.test(word)) return word.replace(/wij(a|ą)$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
   if (/ij(a|ą)$/.test(word)) return word.replace(/ij(a|ą)$/, '')
@@ -116,7 +113,7 @@ const reduceVowelBasedSuffixes = (word) => {
   if (/(ą|a)$/.test(word)) return word.replace(/(ą|a)$/, '')
 
 
-  if (/(į|į̄)$/.test(word)) return word.replace(/(į|į̄)$/, 'a')
+  if (/į$/.test(word)) return word.replace(/į$/, 'a')
   if (/i$/.test(word)) return word.replace(/i$/, '')
   if (/u/.test(word)) return word.replace(/u$/, 'a')
   if (/w$/.test(word)) return isVowel(word.slice(-2)[0]) ? lengthenFinalSylShortVowel(word.replace(/w$/, '')) : word
@@ -128,6 +125,10 @@ const denasalize = (word) => {
   return word
     .replace(nasalRegex, (_, p1) => baseVowels[nasalVowels.indexOf(p1)])
     .replace(longNasalRegex, (_, p1) => longVowels[longNasalVowels.indexOf(p1)])
+}
+
+const handleLZ = (word) => {
+  return word.replace(/lz$/, 'zz').replace(/zl$/, 'll')
 }
 
 const handleUncomfortableEndCluster = (word) => {
@@ -177,7 +178,8 @@ module.exports = (word) => {
   const phase3 = mergeInfinitives(phase2)
   const phase4 = reduceVowelBasedSuffixes(phase3)
   const phase5 = denasalize(phase4)
-  const phase6 = handleUncomfortableEndCluster(phase5)
-  const phase7 = shortenPreClusterLongVowels(phase6)
-  return phase7
+  const phase6 = handleLZ(phase5)
+  const phase7 = handleUncomfortableEndCluster(phase6)
+  const phase8 = shortenPreClusterLongVowels(phase7)
+  return phase8
 }
