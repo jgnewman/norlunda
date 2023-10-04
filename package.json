@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "esbuild --bundle src/index.js --outfile=www/main.js",
+    "start": "npm run build -- --servedir=www",
     "word": "node ./singleWord.js",
-    "wordlist": "node ./wordList.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "wordlist": "node ./wordList.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "devDependencies": {
+    "esbuild": "^0.19.4"
+  }
 }

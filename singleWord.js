@@ -1,4 +1,4 @@
-const init = require('./src/init')
+const init = require('./src/index')
 const { lastOf } = require('./src/utils')
 
 const input = process.argv.slice(2)[0]

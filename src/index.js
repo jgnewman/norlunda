@@ -61,4 +61,6 @@ const init = (baseWord) => {
   return steps
 }
 
+typeof window !== 'undefined' && (window.norlunda = init)
+
 module.exports = init
