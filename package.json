@@ -6,6 +6,7 @@
   "scripts": {
     "build": "esbuild --bundle src/index.js --outfile=www/main.js",
     "start": "npm run build -- --servedir='./'",
+    "precommit": "build",
     "word": "node ./singleWord.js",
     "wordlist": "node ./wordList.js"
   },

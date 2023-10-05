@@ -40,20 +40,17 @@
   var require_vowels = __commonJS({
     "src/vowels.js"(exports, module) {
       var baseVowels = ["a", "\xE6", "e", "i", "o", "\xF8", "u", "y"];
-      var nasalVowels = ["\u0105", "0", "e\u0328", "i\u0328", "\u01EB", "1", "u\u0328", "2"];
+      var nasalVowels = ["\u0105", "\u0119", "\u012F", "\u01EB", "\u0173"];
       var allShortVowels = [...baseVowels, ...nasalVowels];
       var longVowels = ["\u0101", "\u01E3", "\u0113", "\u012B", "\u014D", "\u0153", "\u016B", "\u0233"];
-      var longNasalVowels = ["a\u0304\u0328", "\xE6\u0304\u0328", "e\u0304\u0328", "i\u0304\u0328", "\u01ED", "3", "u\u0304\u0328", "4"];
+      var longNasalVowels = ["\u01ED"];
       var allLongVowels = [...longVowels, ...longNasalVowels];
-      var overlongVowels = ["\xE2", "5", "\xEA", "\xEE", "\xF4", "6", "\xFB", "\u0177"];
-      var overlongNasalVowels = ["7", "8", "e\u0302\u0328", "9", "o\u0302\u0328", "@", "&", ";"];
-      var allOverlongVowels = [...overlongVowels, ...overlongNasalVowels];
+      var overlongVowels = ["\xE2", "\xEA", "\xEE", "\xF4", "\xFB", "\u0177"];
       var singularVowels = [
         ...allShortVowels,
-        ...allLongVowels,
-        ...allOverlongVowels
+        ...allLongVowels
       ];
-      var allNasalVowels = [...nasalVowels, ...longNasalVowels, ...overlongNasalVowels];
+      var allNasalVowels = [...nasalVowels, ...longNasalVowels];
       var shortBackVowels = ["a", "o", "u"];
       var iMutators = ["i", "\u012B", "j"];
       var iMutationMap = {
@@ -62,14 +59,14 @@
         "u": "y"
       };
       var variantMap = {
-        "a": ["a", "\u0105", "\u0101", "a\u0304\u0328", "\xE2", "7"],
-        "\xE6": ["\xE6", "0", "\u01E3", "\xE6\u0304\u0328", "5", "8"],
-        "e": ["e", "e\u0328", "\u0113", "e\u0304\u0328", "\xEA", "e\u0302\u0328"],
-        "i": ["i", "i\u0328", "\u012B", "i\u0304\u0328", "\xEE", "9"],
-        "o": ["o", "o\u0328", "\u014D", "\u01ED", "\xF4", "o\u0302\u0328"],
-        "\xF8": ["\xF8", "1", "\u0153", "3", "6", "@"],
-        "u": ["u", "u\u0328", "\u016B", "u\u0304\u0328", "\xFB", "&"],
-        "y": ["y", "2", "\u0233", "4", "\u0177", ";"]
+        "a": ["a", "\u0105", "\u0101", "\xE2"],
+        "\xE6": ["\xE6", "\u01E3"],
+        "e": ["e", "\u0119", "\u0113", "\xEA"],
+        "i": ["i", "\u012F", "\u012B", "\xEE"],
+        "o": ["o", "o\u0328", "\u014D", "\u01ED", "\xF4"],
+        "\xF8": ["\xF8", "\u0153"],
+        "u": ["u", "\u0173", "\u016B", "\xFB"],
+        "y": ["y", "\u0233", "\u0177"]
       };
       var aMutators = [...variantMap.a, ...variantMap["\xE6"], ...variantMap.o];
       var shortVowelVariantOf = (vowel) => {
@@ -89,7 +86,7 @@
           return "u";
         if (variantMap.y.includes(vowel))
           return "y";
-        return "";
+        return "a";
       };
       var longVowelVariantOf = (vowel) => {
         if (variantMap.a.includes(vowel))
@@ -108,7 +105,7 @@
           return "\u016B";
         if (variantMap.y.includes(vowel))
           return "y";
-        return "";
+        return "\u0101";
       };
       module.exports = {
         baseVowels,
@@ -118,8 +115,6 @@
         longNasalVowels,
         allLongVowels,
         overlongVowels,
-        overlongNasalVowels,
-        allOverlongVowels,
         singularVowels,
         allNasalVowels,
         shortBackVowels,
@@ -522,13 +517,11 @@
         nasalVowels,
         longNasalVowels,
         overlongVowels,
-        overlongNasalVowels,
         shortVowelVariantOf,
         longVowelVariantOf
       } = require_vowels();
       var shortRegex = new RegExp(`(${baseVowels.join("|")})`, "g");
       var overlongRegex = new RegExp(`(${overlongVowels.join("|")})`, "g");
-      var overlongNasalRegex = new RegExp(`(${overlongNasalVowels.join("|")})`, "g");
       var nasalRegex = new RegExp(`(${nasalVowels.join("|")})`, "g");
       var longNasalRegex = new RegExp(`(${longNasalVowels.join("|")})`, "g");
       var relaxOverlongs = (word) => {
@@ -536,10 +529,10 @@
         return syllables.map((syllable, index) => {
           const nextSyllable = syllables[index + 1] ?? "";
           let newSyllable = syllable;
-          if (overlongRegex.test(nextSyllable) || overlongNasalRegex.test(nextSyllable)) {
+          if (overlongRegex.test(nextSyllable)) {
             newSyllable = syllable.replace(shortRegex, (_, p1) => longVowelVariantOf(p1)).replace(nasalRegex, (_, p1) => longVowelVariantOf(p1));
           }
-          return newSyllable.replace(overlongRegex, (_, p1) => longVowelVariantOf(p1)).replace(overlongNasalRegex, (_, p1) => longVowelVariantOf(p1));
+          return newSyllable.replace(overlongRegex, (_, p1) => longVowelVariantOf(p1));
         }).join("");
       };
       var monophthongize = (word) => {
@@ -591,16 +584,16 @@
           return lengthenFinalSylShortVowel(word.replace(/j(o|ǫ)$/, ""));
         if (/(ǫ|o)$/.test(word))
           return word.replace(/(ǫ|o)$/, "a");
-        if (/wij(ā|ą̄)$/.test(word))
-          return word.replace(/wij(ā|ą̄)$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
-        if (/ij(ā|ą̄)$/.test(word))
-          return word.replace(/ij(ā|ą̄)$/, !containsVowels(word.slice(0, -3)) ? "\u012B" : "");
-        if (/w(ā|ą̄)$/.test(word))
-          return word.replace(/w(ā|ą̄)$/, !containsVowels(word.slice(0, -2)) ? "\u0101" : "");
-        if (/j(ā|ą̄)$/.test(word))
-          return word.replace(/j(ā|ą̄)$/, "");
-        if (/(ā|ą̄)$/.test(word))
-          return word.replace(/(ā|ą̄)$/, "");
+        if (/wijā$/.test(word))
+          return word.replace(/wijā$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
+        if (/ijā$/.test(word))
+          return word.replace(/ijā$/, !containsVowels(word.slice(0, -3)) ? "\u012B" : "");
+        if (/wā$/.test(word))
+          return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? "\u0101" : "");
+        if (/jā$/.test(word))
+          return word.replace(/jā$/, "");
+        if (/ā$/.test(word))
+          return word.replace(/ā$/, "");
         if (/wij(a|ą)$/.test(word))
           return word.replace(/wij(a|ą)$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
         if (/ij(a|ą)$/.test(word))
@@ -611,8 +604,8 @@
           return lengthenFinalSylShortVowel(word.replace(/j(a|ą)$/, ""));
         if (/(ą|a)$/.test(word))
           return word.replace(/(ą|a)$/, "");
-        if (/(į|į̄)$/.test(word))
-          return word.replace(/(į|į̄)$/, "a");
+        if (/į$/.test(word))
+          return word.replace(/į$/, "a");
         if (/i$/.test(word))
           return word.replace(/i$/, "");
         if (/u/.test(word))
@@ -623,6 +616,9 @@
       };
       var denasalize = (word) => {
         return word.replace(nasalRegex, (_, p1) => baseVowels[nasalVowels.indexOf(p1)]).replace(longNasalRegex, (_, p1) => longVowels[longNasalVowels.indexOf(p1)]);
+      };
+      var handleLZ = (word) => {
+        return word.replace(/lz$/, "zz").replace(/zl$/, "ll");
       };
       var handleUncomfortableEndCluster = (word) => {
         if (!endsWithUncomfortableConsonantCluster(word))
@@ -661,9 +657,10 @@
         const phase3 = mergeInfinitives(phase2);
         const phase4 = reduceVowelBasedSuffixes(phase3);
         const phase5 = denasalize(phase4);
-        const phase6 = handleUncomfortableEndCluster(phase5);
-        const phase7 = shortenPreClusterLongVowels(phase6);
-        return phase7;
+        const phase6 = handleLZ(phase5);
+        const phase7 = handleUncomfortableEndCluster(phase6);
+        const phase8 = shortenPreClusterLongVowels(phase7);
+        return phase8;
       };
     }
   });
@@ -765,7 +762,7 @@
         const lastConsOfLastSyllable = lastOf(lastSyllPrefix);
         return firstSyllable + firstConsOfSecondSyllable + lastConsOfLastSyllable + finalVowels;
       };
-      var softConsToLongVowel = (word) => {
+      var medialWToLongVowel = (word) => {
         let trackingChange = false;
         return word.split("").reduce((result, char, index, charList) => {
           const nextChar = charList[index + 1];
@@ -785,7 +782,12 @@
           const [_, prevVowel] = separateFinalVowels(result);
           if (prevVowel.length > 1)
             return result;
-          return allButLastOf(result) + longVowelVariantOf(prevVowel);
+          switch (prevVowel) {
+            case "\xE6":
+              return allButLastOf(result) + "au";
+            default:
+              return allButLastOf(result) + longVowelVariantOf(prevVowel);
+          }
         }, "");
       };
       var fixDoubleStops = (word) => {
@@ -808,7 +810,7 @@
       };
       module.exports = (word) => {
         const phase1 = shortenThreeSyllablesPlus(word);
-        const phase2 = softConsToLongVowel(phase1);
+        const phase2 = medialWToLongVowel(phase1);
         const phase3 = fixDoubleStops(phase2);
         return phase3;
       };
@@ -994,6 +996,16 @@
     }
   });
 
+  // src/sanitizePhonology.js
+  var require_sanitizePhonology = __commonJS({
+    "src/sanitizePhonology.js"(exports, module) {
+      "i\u0304\u0328";
+      module.exports = (word) => {
+        return word.replace(/ą̄/g, "\u0101").replace(/į̄/g, "\u012F").replace(/į̄/g, "\u012F").replace(/ǫ̂/g, "\u01ED").replace(/ų̄/g, "\u0173");
+      };
+    }
+  });
+
   // src/index.js
   var require_src = __commonJS({
     "src/index.js"(exports, module) {
@@ -1007,12 +1019,17 @@
       var syllableReduction = require_syllableReduction();
       var modernization = require_modernization();
       var massageOutliers = require_massageOutliers();
+      var sanitizePhonology = require_sanitizePhonology();
       var init = (baseWord) => {
         const normalizedWord = baseWord.toLowerCase().replace(/^\*/, "");
         const steps = [];
         steps.push({
           step: "Massage Known Outliers",
           result: massageOutliers(normalizedWord)
+        });
+        steps.push({
+          step: "Sanitize Phonology",
+          result: sanitizePhonology(lastOf(steps).result)
         });
         steps.push({
           step: "I-Mutation",
