@@ -1,5 +1,5 @@
 const syllableize = require("./syllableize")
-const { separateInitialConsonants, getVowelGroups, lastOf, firstOf } = require("./utils")
+const { separateInitialConsonants, getVowelGroups, lastOf, firstOf, runPhases } = require("./utils")
 const { shortBackVowels, iMutators, iMutationMap } = require("./vowels")
 
 const shortBackVowelPosition = (syllable) => {
@@ -28,7 +28,7 @@ const iMutate = (syllable, nextSyllable) => {
   return `${syllable.slice(0, position)}${mutatedLetter}${syllable.slice(position + 1)}`
 }
 
-module.exports = (word) => {
+const handleIMutation = (word) => {
   const syllables = syllableize(word)
   
   return syllables.map((syllable, index) => {
@@ -37,4 +37,8 @@ module.exports = (word) => {
 
     return iMutate(syllable, nextSyllable)
   }).join('')
+}
+
+module.exports = (word) => {
+  return runPhases(word, [handleIMutation])
 }

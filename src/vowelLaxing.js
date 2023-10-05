@@ -1,4 +1,4 @@
-const { pgmcFricatives, pgmcVelars } = require('./consonants')
+const { fricatives, pgmcVelars } = require('./consonants')
 const syllableize = require('./syllableize')
 const {
   lastOf,
@@ -12,6 +12,7 @@ const {
   containsVowels,
   separateFinalConsonants,
   separateFinalVowels,
+  runPhases,
 } = require('./utils')
 const {
   baseVowels,
@@ -50,7 +51,9 @@ const relaxOverlongs = (word) => {
 const monophthongize = (word) => {
   const newWord = word
     .replace(/ai/g, 'ā')
+    .replace(/anh/g, 'ā')
     .replace(/(au|ou)/g, 'ō')
+    .replace(/[æe]nh/, 'ē')
     .replace(/eu/g, 'ī')
     .replace(/iu/g, 'ȳ')
   
@@ -60,16 +63,15 @@ const monophthongize = (word) => {
 }
 
 const mergeInfinitives = (word) => {
-  const newWord = word.replace(/(ijaną|janą|aną|ōną)$/, 'an')
-  if (!/ną$/.test(newWord)) return newWord
+  const newWord = word.replace(/(ijaną|janą|hwaną|waną|āną|aną|ōną|oną|ną)$/, 'an')
+  if (newWord === word) return newWord
 
-  const withoutSuffix = newWord.slice(0, -2)
-  const [stem, finalVowels] = separateFinalVowels(withoutSuffix)
-  const hasPrecedingLongVowel = longVowels.includes(finalVowels) || longNasalVowels.includes(finalVowels)
+  // Now we know this was a verb whose suffix changed. 
+  const stem = newWord.slice(0, -2)
+  if (!isVowel(lastOf(stem))) return newWord
 
-  return hasPrecedingLongVowel 
-    ? stem + shortVowelVariantOf(finalVowels) + 'han'
-    : withoutSuffix + 'han'
+  if (lastOf(stem) === 'ā') return allButLastOf(stem) + 'a' + 'han'
+  return stem + 'han'
 }
 
 const finalSylHasShortVowel = (word) => {
@@ -128,7 +130,7 @@ const denasalize = (word) => {
 }
 
 const handleLZ = (word) => {
-  return word.replace(/lz$/, 'zz').replace(/zl$/, 'll')
+  return word.replace(/(lz|zl)/g, 'll');
 }
 
 const handleUncomfortableEndCluster = (word) => {
@@ -150,7 +152,7 @@ const shortenPreClusterLongVowels = (word) => {
         newWord += shortVowelVariantOf(char)
 
         let newConsonants = followingConsonants
-        const firstConsIsFricative = pgmcFricatives.includes(followingConsonants[0])
+        const firstConsIsFricative = fricatives.includes(followingConsonants[0])
 
         if (firstConsIsFricative) {
           newConsonants = firstOf(newConsonants) + newConsonants.slice(2)
@@ -173,13 +175,14 @@ const shortenPreClusterLongVowels = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = monophthongize(word)
-  const phase2 = relaxOverlongs(phase1)
-  const phase3 = mergeInfinitives(phase2)
-  const phase4 = reduceVowelBasedSuffixes(phase3)
-  const phase5 = denasalize(phase4)
-  const phase6 = handleLZ(phase5)
-  const phase7 = handleUncomfortableEndCluster(phase6)
-  const phase8 = shortenPreClusterLongVowels(phase7)
-  return phase8
+  return runPhases(word, [
+    monophthongize,
+    relaxOverlongs,
+    mergeInfinitives,
+    reduceVowelBasedSuffixes,
+    denasalize,
+    handleLZ,
+    handleUncomfortableEndCluster,
+    shortenPreClusterLongVowels,
+  ])
 }

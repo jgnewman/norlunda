@@ -1,7 +1,7 @@
 // NOTE: This file assumes words are going to be passed in using standardized PGmc
 // spelling which means we do not expect to see any ð characters. They should all be d.
 
-const { lastOf, firstOf, isVowel } = require('./utils')
+const { lastOf, firstOf, isVowel, runPhases } = require('./utils')
 
 const hardenDW = (word) => {
   const pieces = word.split(/dw/)
@@ -20,7 +20,6 @@ const hardenDW = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = hardenDW(word)
   // A second phase here should require no action as it only turns ð into d
-  return phase1
+  return runPhases(word, [hardenDW])
 }

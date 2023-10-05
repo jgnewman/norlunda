@@ -1,5 +1,5 @@
 const { aMutators } = require("./vowels")
-const { separateInitialConsonants, firstOf, lastOf, getVowelGroups, separateFinalConsonants } = require("./utils")
+const { separateInitialConsonants, firstOf, lastOf, getVowelGroups, separateFinalConsonants, runPhases } = require("./utils")
 const syllableize = require("./syllableize")
 
 const containsAMutator = (syllable) => {
@@ -55,8 +55,7 @@ const mutateE = (syllable, nextSyllable) => {
   return `${syllable.slice(0, position)}${'i'}${syllable.slice(position + 1)}`
 }
 
-
-module.exports = (word) => {
+const handleAMutation = (word) => {
   const syllables = syllableize(word)
   
   return syllables.map((syllable, index) => {
@@ -69,4 +68,9 @@ module.exports = (word) => {
 
     return phase3
   }).join('')
+}
+
+
+module.exports = (word) => {
+  return runPhases(word, [handleAMutation])
 }

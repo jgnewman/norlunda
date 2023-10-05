@@ -4,7 +4,6 @@ const {
   pgmcNonApproximants,
   pgmcStops,
   pgmcNasals,
-  pgmcFricatives,
 } = require('./consonants')
 const { singularVowels } = require('./vowels')
 
@@ -158,14 +157,29 @@ const isHCluster = (a, b) => {
   return `${a}${b}` !== 'ht' && isConsonant(a) && isConsonant(b) && (a === 'h' || b === 'h')
 }
 
-const isUncomfortableConsonantCluster = (a, b) => {
-  return isNonApproximantApproximantCluster(a, b) ||
-    isDoubleStopCluster(a, b) ||
-    isNasalEndingCluster(a, b) ||
-    isHCluster(a, b)
+/**
+ * Comfortable clusters
+ * ds, dt,
+ * þs, þt,
+ * ft,
+ * gd, gþ, gs,
+ * ht, 
+ * ks, kt,
+ * lb, ld, lþ, lf, lg, lk, ln, lp, ls, lt, lv, lz
+ * mp, 
+ * nd, nþ, ng, nk, ns, nt, 
+ * ps,
+ * rb, rd, rþ, rf, rg, rk, rm, rn, rp, rs, rt, rv, rz
+ * sk, sp, st
+ * ts, 
+ */
+// Not exported
+const isUncomfortableEndCluster = (a, b) => {
+  return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|ht|k[st]|l[bdþfgknpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b)
 }
 
-const containsUncomfortableConsonantCluster = (word) => {
+// Not exported
+const containsUncomfortableEndCluster = (word) => {
   let containsCluster = false
   let isTrackingCluster = false
   
@@ -181,7 +195,7 @@ const containsUncomfortableConsonantCluster = (word) => {
       isTrackingCluster = false
     }
     
-    if (isTrackingCluster && isUncomfortableConsonantCluster(letter, nextLetter)) {
+    if (isTrackingCluster && isUncomfortableEndCluster(letter, nextLetter)) {
       containsCluster = true
       break
     }
@@ -192,11 +206,26 @@ const containsUncomfortableConsonantCluster = (word) => {
 
 const endsWithUncomfortableConsonantCluster = (word) => {
   const [_, cluster] = separateFinalConsonants(word)
-  return containsUncomfortableConsonantCluster(cluster)
+  return containsUncomfortableEndCluster(cluster)
 }
 
 const fixUncomfortableEndCluster = (word) => {
   return allButLastOf(word) + 'a' + lastOf(word)
+}
+
+const runPhases = (word, phaseFnArray, log = false) => {
+  const result = phaseFnArray.reduce((resultList, phaseFn) => {
+    return [...resultList, phaseFn(lastOf(resultList))]
+  }, [word])
+
+  if (log) {
+    console.log(result.reduce((map, word, i) => {
+      map[`Phase ${i + 1}`] = word
+      return map
+    }, {}))
+  }
+  
+  return lastOf(result)
 }
 
 module.exports = {
@@ -219,8 +248,7 @@ module.exports = {
   getVowelGroups,
   removeVowels,
   removeConsonants,
-  isUncomfortableConsonantCluster,
-  containsUncomfortableConsonantCluster,
   endsWithUncomfortableConsonantCluster,
   fixUncomfortableEndCluster,
+  runPhases,
 }

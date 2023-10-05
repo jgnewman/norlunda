@@ -15,8 +15,8 @@
       var pgmcNonStops = pgmcConsonants.filter((c) => !pgmcStops.includes(c));
       var pgmcNasals = ["m", "n"];
       var pgmcNonNasals = pgmcConsonants.filter((c) => !pgmcNasals.includes(c));
-      var pgmcFricatives = ["f", "h", "s", "\xFE", "z"];
-      var pgmcNonFricatives = pgmcConsonants.filter((c) => !pgmcFricatives.includes(c));
+      var fricatives = ["f", "h", "s", "\xFE", "v", "z"];
+      var nonFricatives = pgmcConsonants.filter((c) => !fricatives.includes(c));
       var pgmcVelars = ["g", "k", "h"];
       var pgmcNonVelars = pgmcConsonants.filter((c) => !pgmcVelars.includes(c));
       module.exports = {
@@ -28,8 +28,8 @@
         pgmcNonStops,
         pgmcNasals,
         pgmcNonNasals,
-        pgmcFricatives,
-        pgmcNonFricatives,
+        fricatives,
+        nonFricatives,
         pgmcVelars,
         pgmcNonVelars
       };
@@ -136,8 +136,7 @@
         pgmcApproximants,
         pgmcNonApproximants,
         pgmcStops,
-        pgmcNasals,
-        pgmcFricatives
+        pgmcNasals
       } = require_consonants();
       var { singularVowels } = require_vowels();
       var lastOf = (arr) => arr[arr.length - 1];
@@ -248,22 +247,10 @@
       var removeConsonants = (word) => {
         return word.split("").filter(isVowel).join("");
       };
-      var isNonApproximantApproximantCluster = (a, b) => {
-        return pgmcNonApproximants.includes(a) && pgmcApproximants.includes(b);
+      var isUncomfortableEndCluster = (a, b) => {
+        return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|ht|k[st]|l[bdþfgknpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b);
       };
-      var isDoubleStopCluster = (a, b) => {
-        return `${a}${b}` !== "kt" && pgmcStops.includes(a) && pgmcStops.includes(b) && a !== b;
-      };
-      var isNasalEndingCluster = (a, b) => {
-        return isConsonant(a) && pgmcNasals.includes(b);
-      };
-      var isHCluster = (a, b) => {
-        return `${a}${b}` !== "ht" && isConsonant(a) && isConsonant(b) && (a === "h" || b === "h");
-      };
-      var isUncomfortableConsonantCluster = (a, b) => {
-        return isNonApproximantApproximantCluster(a, b) || isDoubleStopCluster(a, b) || isNasalEndingCluster(a, b) || isHCluster(a, b);
-      };
-      var containsUncomfortableConsonantCluster = (word) => {
+      var containsUncomfortableEndCluster = (word) => {
         let containsCluster = false;
         let isTrackingCluster = false;
         for (let i = 0; i < word.length; i++) {
@@ -276,7 +263,7 @@
           } else {
             isTrackingCluster = false;
           }
-          if (isTrackingCluster && isUncomfortableConsonantCluster(letter, nextLetter)) {
+          if (isTrackingCluster && isUncomfortableEndCluster(letter, nextLetter)) {
             containsCluster = true;
             break;
           }
@@ -285,10 +272,22 @@
       };
       var endsWithUncomfortableConsonantCluster = (word) => {
         const [_, cluster] = separateFinalConsonants(word);
-        return containsUncomfortableConsonantCluster(cluster);
+        return containsUncomfortableEndCluster(cluster);
       };
       var fixUncomfortableEndCluster = (word) => {
         return allButLastOf(word) + "a" + lastOf(word);
+      };
+      var runPhases = (word, phaseFnArray, log = false) => {
+        const result = phaseFnArray.reduce((resultList, phaseFn) => {
+          return [...resultList, phaseFn(lastOf(resultList))];
+        }, [word]);
+        if (log) {
+          console.log(result.reduce((map, word2, i) => {
+            map[`Phase ${i + 1}`] = word2;
+            return map;
+          }, {}));
+        }
+        return lastOf(result);
       };
       module.exports = {
         lastOf,
@@ -310,10 +309,9 @@
         getVowelGroups,
         removeVowels,
         removeConsonants,
-        isUncomfortableConsonantCluster,
-        containsUncomfortableConsonantCluster,
         endsWithUncomfortableConsonantCluster,
-        fixUncomfortableEndCluster
+        fixUncomfortableEndCluster,
+        runPhases
       };
     }
   });
@@ -354,7 +352,7 @@
   var require_iMutation = __commonJS({
     "src/iMutation.js"(exports, module) {
       var syllableize = require_syllableize();
-      var { separateInitialConsonants, getVowelGroups, lastOf, firstOf } = require_utils();
+      var { separateInitialConsonants, getVowelGroups, lastOf, firstOf, runPhases } = require_utils();
       var { shortBackVowels, iMutators, iMutationMap } = require_vowels();
       var shortBackVowelPosition = (syllable) => {
         const maybeMutatable = lastOf(getVowelGroups(syllable));
@@ -378,7 +376,7 @@
         const mutatedLetter = iMutationMap[letter];
         return `${syllable.slice(0, position)}${mutatedLetter}${syllable.slice(position + 1)}`;
       };
-      module.exports = (word) => {
+      var handleIMutation = (word) => {
         const syllables = syllableize(word);
         return syllables.map((syllable, index) => {
           const nextSyllable = syllables[index + 1];
@@ -387,6 +385,9 @@
           return iMutate(syllable, nextSyllable);
         }).join("");
       };
+      module.exports = (word) => {
+        return runPhases(word, [handleIMutation]);
+      };
     }
   });
 
@@ -394,7 +395,7 @@
   var require_aMutation = __commonJS({
     "src/aMutation.js"(exports, module) {
       var { aMutators } = require_vowels();
-      var { separateInitialConsonants, firstOf, lastOf, getVowelGroups, separateFinalConsonants } = require_utils();
+      var { separateInitialConsonants, firstOf, lastOf, getVowelGroups, separateFinalConsonants, runPhases } = require_utils();
       var syllableize = require_syllableize();
       var containsAMutator = (syllable) => {
         const [_, rest] = separateInitialConsonants(syllable);
@@ -445,7 +446,7 @@
           return syllable;
         return `${syllable.slice(0, position)}${"i"}${syllable.slice(position + 1)}`;
       };
-      module.exports = (word) => {
+      var handleAMutation = (word) => {
         const syllables = syllableize(word);
         return syllables.map((syllable, index) => {
           const nextSyllable = syllables[index + 1];
@@ -457,13 +458,16 @@
           return phase3;
         }).join("");
       };
+      module.exports = (word) => {
+        return runPhases(word, [handleAMutation]);
+      };
     }
   });
 
   // src/gemination.js
   var require_gemination = __commonJS({
     "src/gemination.js"(exports, module) {
-      var { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants } = require_utils();
+      var { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPhases } = require_utils();
       var { allShortVowels } = require_vowels();
       var geminate = (word) => {
         return word.split("").reduce((result, char, index, charList) => {
@@ -487,8 +491,7 @@
         }, "");
       };
       module.exports = (word) => {
-        const phase1 = geminate(word);
-        return phase1;
+        return runPhases(word, [geminate]);
       };
     }
   });
@@ -496,7 +499,7 @@
   // src/vowelLaxing.js
   var require_vowelLaxing = __commonJS({
     "src/vowelLaxing.js"(exports, module) {
-      var { pgmcFricatives, pgmcVelars } = require_consonants();
+      var { fricatives, pgmcVelars } = require_consonants();
       var syllableize = require_syllableize();
       var {
         lastOf,
@@ -509,7 +512,8 @@
         firstOf,
         containsVowels,
         separateFinalConsonants,
-        separateFinalVowels
+        separateFinalVowels,
+        runPhases
       } = require_utils();
       var {
         baseVowels,
@@ -536,18 +540,20 @@
         }).join("");
       };
       var monophthongize = (word) => {
-        const newWord = word.replace(/ai/g, "\u0101").replace(/(au|ou)/g, "\u014D").replace(/eu/g, "\u012B").replace(/iu/g, "\u0233");
+        const newWord = word.replace(/ai/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/eu/g, "\u012B").replace(/iu/g, "\u0233");
         const matchIw = newWord.match(/iw/);
         return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, "\u0233") : newWord;
       };
       var mergeInfinitives = (word) => {
-        const newWord = word.replace(/(ijaną|janą|aną|ōną)$/, "an");
-        if (!/ną$/.test(newWord))
+        const newWord = word.replace(/(ijaną|janą|hwaną|waną|āną|aną|ōną|oną|ną)$/, "an");
+        if (newWord === word)
           return newWord;
-        const withoutSuffix = newWord.slice(0, -2);
-        const [stem, finalVowels] = separateFinalVowels(withoutSuffix);
-        const hasPrecedingLongVowel = longVowels.includes(finalVowels) || longNasalVowels.includes(finalVowels);
-        return hasPrecedingLongVowel ? stem + shortVowelVariantOf(finalVowels) + "han" : withoutSuffix + "han";
+        const stem = newWord.slice(0, -2);
+        if (!isVowel(lastOf(stem)))
+          return newWord;
+        if (lastOf(stem) === "\u0101")
+          return allButLastOf(stem) + "ahan";
+        return stem + "han";
       };
       var finalSylHasShortVowel = (word) => {
         const prevSyllable = lastOf(syllableize(word));
@@ -618,7 +624,7 @@
         return word.replace(nasalRegex, (_, p1) => baseVowels[nasalVowels.indexOf(p1)]).replace(longNasalRegex, (_, p1) => longVowels[longNasalVowels.indexOf(p1)]);
       };
       var handleLZ = (word) => {
-        return word.replace(/lz$/, "zz").replace(/zl$/, "ll");
+        return word.replace(/(lz|zl)/g, "ll");
       };
       var handleUncomfortableEndCluster = (word) => {
         if (!endsWithUncomfortableConsonantCluster(word))
@@ -635,7 +641,7 @@
             if (consLength >= 2) {
               newWord += shortVowelVariantOf(char);
               let newConsonants = followingConsonants;
-              const firstConsIsFricative = pgmcFricatives.includes(followingConsonants[0]);
+              const firstConsIsFricative = fricatives.includes(followingConsonants[0]);
               if (firstConsIsFricative) {
                 newConsonants = firstOf(newConsonants) + newConsonants.slice(2);
                 if (newConsonants.length === 1) {
@@ -652,15 +658,16 @@
         return newWord;
       };
       module.exports = (word) => {
-        const phase1 = monophthongize(word);
-        const phase2 = relaxOverlongs(phase1);
-        const phase3 = mergeInfinitives(phase2);
-        const phase4 = reduceVowelBasedSuffixes(phase3);
-        const phase5 = denasalize(phase4);
-        const phase6 = handleLZ(phase5);
-        const phase7 = handleUncomfortableEndCluster(phase6);
-        const phase8 = shortenPreClusterLongVowels(phase7);
-        return phase8;
+        return runPhases(word, [
+          monophthongize,
+          relaxOverlongs,
+          mergeInfinitives,
+          reduceVowelBasedSuffixes,
+          denasalize,
+          handleLZ,
+          handleUncomfortableEndCluster,
+          shortenPreClusterLongVowels
+        ]);
       };
     }
   });
@@ -673,7 +680,8 @@
         lastOf,
         isConsonant,
         endsWithUncomfortableConsonantCluster,
-        fixUncomfortableEndCluster
+        fixUncomfortableEndCluster,
+        runPhases
       } = require_utils();
       var dropFinalZ = (word) => {
         const lastChar = lastOf(word);
@@ -705,10 +713,11 @@
         return fixUncomfortableEndCluster(word);
       };
       module.exports = (word) => {
-        const phase1 = dropFinalZ(word);
-        const phase2 = fixRemainingZAndHs(phase1);
-        const phase3 = handleUncomfortableEndCluster(phase2);
-        return phase3;
+        return runPhases(word, [
+          dropFinalZ,
+          fixRemainingZAndHs,
+          handleUncomfortableEndCluster
+        ]);
       };
     }
   });
@@ -716,7 +725,7 @@
   // src/wgHardening.js
   var require_wgHardening = __commonJS({
     "src/wgHardening.js"(exports, module) {
-      var { lastOf, firstOf, isVowel } = require_utils();
+      var { lastOf, firstOf, isVowel, runPhases } = require_utils();
       var hardenDW = (word) => {
         const pieces = word.split(/dw/);
         return pieces.map((piece, index) => {
@@ -731,8 +740,7 @@
         }).join("");
       };
       module.exports = (word) => {
-        const phase1 = hardenDW(word);
-        return phase1;
+        return runPhases(word, [hardenDW]);
       };
     }
   });
@@ -747,11 +755,13 @@
         isVowel,
         separateFinalVowels,
         allButLastOf,
-        isConsonant
+        isConsonant,
+        runPhases
       } = require_utils();
-      var { longVowelVariantOf } = require_vowels();
+      var { longVowelVariantOf, baseVowels } = require_vowels();
       var shortenThreeSyllablesPlus = (word) => {
-        const syllables = syllableize(word);
+        const [hasInfinitive, root] = word.endsWith("an") ? [true, word.slice(0, -2)] : [false, word];
+        const syllables = syllableize(root);
         if (syllables.length < 3)
           return word;
         const firstSyllable = firstOf(syllables);
@@ -760,7 +770,16 @@
         const firstConsOfSecondSyllable = firstOf(secondSyllable);
         const [lastSyllPrefix, finalVowels] = separateFinalVowels(lastSyllable);
         const lastConsOfLastSyllable = lastOf(lastSyllPrefix);
-        return firstSyllable + firstConsOfSecondSyllable + lastConsOfLastSyllable + finalVowels;
+        const result = firstSyllable + firstConsOfSecondSyllable + lastConsOfLastSyllable + finalVowels;
+        return hasInfinitive ? result + "an" : result;
+      };
+      var shortenLongVerbEndings = (word) => {
+        if (!/nan$/.test(word))
+          return word;
+        const prefix = word.slice(0, -3);
+        if (!baseVowels.includes(lastOf(prefix)))
+          return word;
+        return allButLastOf(prefix) + "nan";
       };
       var medialWToLongVowel = (word) => {
         let trackingChange = false;
@@ -809,10 +828,12 @@
         return newWord;
       };
       module.exports = (word) => {
-        const phase1 = shortenThreeSyllablesPlus(word);
-        const phase2 = medialWToLongVowel(phase1);
-        const phase3 = fixDoubleStops(phase2);
-        return phase3;
+        return runPhases(word, [
+          shortenThreeSyllablesPlus,
+          shortenLongVerbEndings,
+          medialWToLongVowel,
+          fixDoubleStops
+        ]);
       };
     }
   });
@@ -820,12 +841,13 @@
   // src/shiftFricatives.js
   var require_shiftFricatives = __commonJS({
     "src/shiftFricatives.js"(exports, module) {
-      var { pgmcFricatives, pgmcStops } = require_consonants();
+      var { fricatives, pgmcStops } = require_consonants();
       var {
         firstOf,
         lastOf,
         isVowel,
-        isConsonant
+        isConsonant,
+        runPhases
       } = require_utils();
       var bToV = (word) => {
         return word.split("").reduce((result, char, index, charList) => {
@@ -849,7 +871,7 @@
       var dToT = (word) => {
         return word.split("").reduce((result, char, index, charList) => {
           const nextChar = charList[index + 1];
-          if (char === "d" && pgmcFricatives.includes(nextChar)) {
+          if (char === "d" && fricatives.includes(nextChar)) {
             return result + "t";
           }
           return result + char;
@@ -858,7 +880,7 @@
       var fPlusFricativeToF = (word) => {
         return word.split("").reduce((result, char) => {
           const prevChar = lastOf(result);
-          if (pgmcFricatives.includes(char) && prevChar === "f" && char !== "f") {
+          if (fricatives.includes(char) && prevChar === "f" && char !== "f") {
             return result;
           }
           return result + char;
@@ -903,18 +925,19 @@
         return word.replace(/w/g, "v");
       };
       module.exports = (word) => {
-        const phase1 = bToV(word);
-        const phase2 = bToF(phase1);
-        const phase3 = dToT(phase2);
-        const phase4 = fPlusFricativeToF(phase3);
-        const phase5 = gsAndKsToX(phase4);
-        const phase6 = dropInitialH(phase5);
-        const phase7 = hToK(phase6);
-        const phase8 = thornToD(phase7);
-        const phase9 = skToSh(phase8);
-        const phase10 = dropInitialW(phase9);
-        const phase11 = wToV(phase10);
-        return phase11;
+        return runPhases(word, [
+          bToV,
+          bToF,
+          dToT,
+          fPlusFricativeToF,
+          gsAndKsToX,
+          dropInitialH,
+          hToK,
+          thornToD,
+          skToSh,
+          dropInitialW,
+          wToV
+        ]);
       };
     }
   });
@@ -934,7 +957,8 @@
         separateInitialConsonants,
         separateFinalVowels,
         endsWithUncomfortableConsonantCluster,
-        containsVowels
+        containsVowels,
+        runPhases
       } = require_utils();
       var { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require_vowels();
       var { pgmcNasals, pgmcApproximants } = require_consonants();
@@ -968,18 +992,26 @@
           return word;
         return newWord + (hasInfinitiveSuffix ? "an" : "");
       };
+      var shortenUnstressedLongVowels = (word) => {
+        const syllables = syllableize(word);
+        return firstOf(syllables) + syllables.slice(1).map((syllable) => {
+          return syllable.replace(/ā/g, "a").replace(/ē/g, "e").replace(/ī/g, "i").replace(/ō/g, "o").replace(/œ/g, "\xF8").replace(/ū/g, "u").replace(/ȳ/g, "y");
+        }).join("");
+      };
       var isNasalOrApproximant = (char) => {
         return pgmcNasals.includes(char) || pgmcApproximants.includes(char);
       };
       var shiftVowels = (word) => {
-        return word.replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/æ/g, "e").replace(/i/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? "oe" : "o").replace(/[ūȳ]/g, "au");
+        return word.replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/æ/g, "e").replace(/i/g, "i").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? "oe" : "o").replace(/[ūȳ]/g, "au");
       };
       module.exports = (word) => {
-        const phase1 = dropWAndModVowels(word);
-        const phase2 = tryToShortenSecondSyllable(phase1);
-        const phase3 = shiftFricatives(phase2);
-        const phase4 = shiftVowels(phase3);
-        return phase4;
+        return runPhases(word, [
+          dropWAndModVowels,
+          tryToShortenSecondSyllable,
+          shortenUnstressedLongVowels,
+          shiftFricatives,
+          shiftVowels
+        ]);
       };
     }
   });
@@ -987,11 +1019,15 @@
   // src/massageOutliers.js
   var require_massageOutliers = __commonJS({
     "src/massageOutliers.js"(exports, module) {
+      var { runPhases } = require_utils();
       var outlierMap = {
         "kweman\u0105": "kuman\u0105"
       };
-      module.exports = (word) => {
+      var massageOutliers = (word) => {
         return outlierMap[word] || word;
+      };
+      module.exports = (word) => {
+        return runPhases(word, [massageOutliers]);
       };
     }
   });
@@ -999,9 +1035,12 @@
   // src/sanitizePhonology.js
   var require_sanitizePhonology = __commonJS({
     "src/sanitizePhonology.js"(exports, module) {
-      "i\u0304\u0328";
-      module.exports = (word) => {
+      var { runPhases } = require_utils();
+      var sanitize = (word) => {
         return word.replace(/ą̄/g, "\u0101").replace(/į̄/g, "\u012F").replace(/į̄/g, "\u012F").replace(/ǫ̂/g, "\u01ED").replace(/ų̄/g, "\u0173");
+      };
+      module.exports = (word) => {
+        return runPhases(word, [sanitize]);
       };
     }
   });

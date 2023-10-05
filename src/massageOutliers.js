@@ -7,10 +7,16 @@
  * map that translates it into a form that will yield the expected result.
  */
 
+const { runPhases } = require("./utils")
+
 const outlierMap = {
   "kwemaną": "kumaną"
 }
 
-module.exports = (word) => {
+const massageOutliers = (word) => {
   return outlierMap[word] || word
+}
+
+module.exports = (word) => {
+  return runPhases(word, [massageOutliers])
 }

@@ -4,6 +4,7 @@ const {
   isConsonant,
   endsWithUncomfortableConsonantCluster,
   fixUncomfortableEndCluster,
+  runPhases,
 } = require('./utils')
 
 const dropFinalZ = (word) => {
@@ -32,8 +33,9 @@ const handleUncomfortableEndCluster = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = dropFinalZ(word)
-  const phase2 = fixRemainingZAndHs(phase1)
-  const phase3 = handleUncomfortableEndCluster(phase2)
-  return phase3
+  return runPhases(word, [
+    dropFinalZ,
+    fixRemainingZAndHs,
+    handleUncomfortableEndCluster,
+  ])
 }

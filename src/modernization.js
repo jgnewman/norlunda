@@ -11,6 +11,7 @@ const {
   separateFinalVowels,
   endsWithUncomfortableConsonantCluster,
   containsVowels,
+  runPhases,
 } = require("./utils")
 const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require("./vowels")
 const { pgmcNasals, pgmcApproximants } = require("./consonants")
@@ -54,6 +55,21 @@ const tryToShortenSecondSyllable = (word) => {
   return newWord + (hasInfinitiveSuffix ? 'an' : '')
 }
 
+const shortenUnstressedLongVowels = (word) => {
+  const syllables = syllableize(word)
+
+  return firstOf(syllables) + syllables.slice(1).map((syllable) => {
+    return syllable
+      .replace(/ā/g, 'a')
+      .replace(/ē/g, 'e')
+      .replace(/ī/g, 'i')
+      .replace(/ō/g, 'o')
+      .replace(/œ/g, 'ø')
+      .replace(/ū/g, 'u')
+      .replace(/ȳ/g, 'y')
+  }).join('')
+}
+
 const isNasalOrApproximant = (char) => {
   return pgmcNasals.includes(char) || pgmcApproximants.includes(char)
 }
@@ -63,6 +79,7 @@ const shiftVowels = (word) => {
     .replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? 'a' : 'aa')
     .replace(/æ/g, 'e')
     .replace(/i/g, 'i')
+    .replace(/ø/g, 'i')
     .replace(/y/g, 'u')
     .replace(/ā/g, (_, index, src) => !!src[index + 1] ? 'ei' : 'aa')
     .replace(/ǣ/g, 'oe')
@@ -73,9 +90,11 @@ const shiftVowels = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = dropWAndModVowels(word)
-  const phase2 = tryToShortenSecondSyllable(phase1)
-  const phase3 = shiftFricatives(phase2)
-  const phase4 = shiftVowels(phase3)
-  return phase4
+  return runPhases(word, [
+    dropWAndModVowels,
+    tryToShortenSecondSyllable,
+    shortenUnstressedLongVowels,
+    shiftFricatives,
+    shiftVowels,
+  ])
 }

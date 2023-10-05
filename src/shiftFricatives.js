@@ -1,9 +1,10 @@
-const { pgmcFricatives, pgmcStops } = require("./consonants")
+const { fricatives, pgmcStops } = require("./consonants")
 const {
   firstOf,
   lastOf,
   isVowel,
   isConsonant,
+  runPhases,
 } = require("./utils")
 
 const bToV = (word) => {
@@ -35,7 +36,7 @@ const dToT = (word) => {
   return word.split('').reduce((result, char, index, charList) => {
     const nextChar = charList[index + 1]
 
-    if (char === 'd' && pgmcFricatives.includes(nextChar)) {
+    if (char === 'd' && fricatives.includes(nextChar)) {
       return result + 't'
     }
 
@@ -47,7 +48,7 @@ const fPlusFricativeToF = (word) => {
   return word.split('').reduce((result, char) => {
     const prevChar = lastOf(result)
 
-    if (pgmcFricatives.includes(char) && prevChar === 'f' && char !== 'f') {
+    if (fricatives.includes(char) && prevChar === 'f' && char !== 'f') {
       return result
     }
 
@@ -103,16 +104,17 @@ const wToV = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = bToV(word)
-  const phase2 = bToF(phase1)
-  const phase3 = dToT(phase2)
-  const phase4 = fPlusFricativeToF(phase3)
-  const phase5 = gsAndKsToX(phase4)
-  const phase6 = dropInitialH(phase5)
-  const phase7 = hToK(phase6)
-  const phase8 = thornToD(phase7)
-  const phase9 = skToSh(phase8)
-  const phase10 = dropInitialW(phase9)
-  const phase11 = wToV(phase10)
-  return phase11
+  return runPhases(word, [
+    bToV,
+    bToF,
+    dToT,
+    fPlusFricativeToF,
+    gsAndKsToX,
+    dropInitialH,
+    hToK,
+    thornToD,
+    skToSh,
+    dropInitialW,
+    wToV,
+  ])
 }

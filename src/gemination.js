@@ -1,4 +1,4 @@
-const { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants } = require('./utils')
+const { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPhases } = require('./utils')
 const { allShortVowels } = require('./vowels')
 
 const geminate = (word) => {
@@ -28,6 +28,5 @@ const geminate = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = geminate(word)
-  return phase1
+  return runPhases(word, [geminate])
 }

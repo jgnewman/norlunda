@@ -6,11 +6,14 @@ const {
   separateFinalVowels,
   allButLastOf,
   isConsonant,
+  runPhases,
 } = require("./utils")
-const { longVowelVariantOf } = require("./vowels")
+const { longVowelVariantOf, baseVowels } = require("./vowels")
 
 const shortenThreeSyllablesPlus = (word) => {
-  const syllables = syllableize(word)
+  const [hasInfinitive, root] = word.endsWith('an') ? [true, word.slice(0, -2)] : [false, word]
+  const syllables = syllableize(root)
+
   if (syllables.length < 3) return word
 
   const firstSyllable = firstOf(syllables)
@@ -23,7 +26,15 @@ const shortenThreeSyllablesPlus = (word) => {
   const [lastSyllPrefix, finalVowels] = separateFinalVowels(lastSyllable)
   const lastConsOfLastSyllable = lastOf(lastSyllPrefix)
 
-  return firstSyllable + firstConsOfSecondSyllable + lastConsOfLastSyllable + finalVowels
+  const result = firstSyllable + firstConsOfSecondSyllable + lastConsOfLastSyllable + finalVowels
+  return hasInfinitive ? result + 'an' : result
+}
+
+const shortenLongVerbEndings = (word) => {
+  if (!/nan$/.test(word)) return word
+  const prefix = word.slice(0, -3)
+  if (!baseVowels.includes(lastOf(prefix))) return word
+  return allButLastOf(prefix) + 'nan'
 }
 
 const medialWToLongVowel = (word) => {
@@ -81,8 +92,10 @@ const fixDoubleStops = (word) => {
 }
 
 module.exports = (word) => {
-  const phase1 = shortenThreeSyllablesPlus(word)
-  const phase2 = medialWToLongVowel(phase1)
-  const phase3 = fixDoubleStops(phase2)
-  return phase3
+  return runPhases(word, [
+    shortenThreeSyllablesPlus,
+    shortenLongVerbEndings,
+    medialWToLongVowel,
+    fixDoubleStops,
+  ])
 }
