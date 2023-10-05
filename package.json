@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "esbuild --bundle src/index.js --outfile=www/main.js",
-    "start": "npm run build -- --servedir=www",
+    "start": "npm run build -- --servedir='./'",
     "word": "node ./singleWord.js",
     "wordlist": "node ./wordList.js"
   },
