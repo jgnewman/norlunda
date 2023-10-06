@@ -55,6 +55,7 @@ const monophthongize = (word) => {
     .replace(/(au|ou)h?/g, 'ō')
     .replace(/[æe]nh/, 'ē')
     .replace(/euh?/g, 'ī')
+    .replace(/ēǭ/g, 'ā')
     .replace(/iuh?/g, 'ȳ')
   
   const matchIw = newWord.match(/iw/)
@@ -118,7 +119,7 @@ const reduceVowelBasedSuffixes = (word) => {
   if (/ijā$/.test(word)) return word.replace(/ijā$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
   if (/wā$/.test(word)) return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
   if (/jā$/.test(word)) return word.replace(/jā$/, '')
-  if (/ā$/.test(word)) return word.replace(/ā$/, '')
+  if (/ā$/.test(word)) return word.replace(/ā$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
   
   if (/wij(a|ą)$/.test(word)) return word.replace(/wij(a|ą)$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
   if (/ij(a|ą)$/.test(word)) return word.replace(/ij(a|ą)$/, '')
@@ -196,5 +197,5 @@ module.exports = (word) => {
     handleLZ,
     handleUncomfortableEndCluster,
     shortenPreClusterLongVowels,
-  ])
+  ], true)
 }

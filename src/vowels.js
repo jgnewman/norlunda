@@ -1,12 +1,13 @@
 // Note that ø is considered short while œ is considered long. This is
 // because placing any diacritic over either of these characters results in
 // a string with a length of 2, and in this case we need to make sure
-// these can be treated as single characters.
+// these can be treated as single characters. Additionally, ɔ is considered
+// a long vowel whose short variant is o.
 const baseVowels = ['a', 'æ', 'e', 'i', 'o', 'ø', 'u', 'y']
 const nasalVowels = ['ą', 'ę', 'į', 'ǫ', 'ų']
 const allShortVowels = [...baseVowels, ...nasalVowels]
 
-const longVowels = ['ā', 'ǣ', 'ē', 'ī', 'ō', 'œ', 'ū', 'ȳ']
+const longVowels = ['ā', 'ǣ', 'ē', 'ī', 'ō', 'œ', 'ū', 'ȳ', 'ɔ']
 const longNasalVowels = ['ǭ']
 const allLongVowels = [...longVowels, ...longNasalVowels]
 
@@ -27,6 +28,7 @@ const iMutationMap = {
   'u': 'y',
 }
 
+// Not exported
 const variantMap = {
   'a': ['a', 'ą', 'ā', 'â'],
   'æ': ['æ', 'ǣ'],
@@ -39,8 +41,10 @@ const variantMap = {
 }
 
 const aMutators = [...variantMap.a, ...variantMap['æ'], ...variantMap.o]
+const longOMutators = ['ō', 'ô', 'ǭ']
 
 const shortVowelVariantOf = (vowel) => {
+  if (vowel === 'ɔ') return 'o'
   if (variantMap.a.includes(vowel)) return 'a'
   if (variantMap['æ'].includes(vowel)) return 'æ'
   if (variantMap.e.includes(vowel)) return 'e'
@@ -83,6 +87,7 @@ module.exports = {
   iMutationMap,
   variantMap,
   aMutators,
+  longOMutators,
 
   shortVowelVariantOf,
   longVowelVariantOf,

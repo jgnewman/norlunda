@@ -110,6 +110,7 @@ const shiftVowels = (word) => {
     .replace(/ē/g, 'ee')
     .replace(/ī/g, 'ie')
     .replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? 'oe' : 'o')
+    .replace(/ɔ/g, 'aa')
     .replace(/[ūȳ]/g, 'au')
 }
 
