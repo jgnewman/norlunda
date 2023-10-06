@@ -69,7 +69,7 @@ const medialWToLongVowel = (word) => {
   }, '')
 }
 
-const fixDoubleStops = (word) => {
+const fixStopClusters = (word) => {
   let newWord = ''
 
   for (let i = 0; i < word.length; i++) {
@@ -88,7 +88,7 @@ const fixDoubleStops = (word) => {
     }
   }
  
-  return newWord
+  return newWord.replace(/ngt/g, 'nt')
 }
 
 module.exports = (word) => {
@@ -96,6 +96,6 @@ module.exports = (word) => {
     shortenThreeSyllablesPlus,
     shortenLongVerbEndings,
     medialWToLongVowel,
-    fixDoubleStops,
+    fixStopClusters,
   ])
 }

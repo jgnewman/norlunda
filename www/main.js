@@ -845,7 +845,7 @@
           }
         }, "");
       };
-      var fixDoubleStops = (word) => {
+      var fixStopClusters = (word) => {
         let newWord = "";
         for (let i = 0; i < word.length; i++) {
           const char = word[i];
@@ -861,14 +861,14 @@
             newWord += char;
           }
         }
-        return newWord;
+        return newWord.replace(/ngt/g, "nt");
       };
       module.exports = (word) => {
         return runPhases(word, [
           shortenThreeSyllablesPlus,
           shortenLongVerbEndings,
           medialWToLongVowel,
-          fixDoubleStops
+          fixStopClusters
         ]);
       };
     }
