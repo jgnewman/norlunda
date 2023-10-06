@@ -7,7 +7,7 @@ const containsAMutator = (syllable) => {
   return aMutators.includes(firstOf(rest))
 }
 
-const shortVowelPosition = (shortVowel, syllable) => {
+const mutatableVowelPosition = (shortVowel, syllable) => {
   const maybeMutatable = lastOf(getVowelGroups(syllable))
   if (!maybeMutatable || maybeMutatable.vowel !== shortVowel) return -1
   return maybeMutatable.position
@@ -16,10 +16,13 @@ const shortVowelPosition = (shortVowel, syllable) => {
 const mutateU = (syllable, nextSyllable) => {
   if (!containsAMutator(nextSyllable)) return syllable
   
-  const position = shortVowelPosition('u', syllable)
-  if (position === -1) return syllable
+  const shortUPosition = mutatableVowelPosition('u', syllable)
+  const longUPosition = mutatableVowelPosition('ū', syllable)
 
-  return `${syllable.slice(0, position)}${'o'}${syllable.slice(position + 1)}`
+  if (shortUPosition !== -1) return `${syllable.slice(0, shortUPosition)}${'o'}${syllable.slice(shortUPosition + 1)}`
+  if (longUPosition !== -1) return `${syllable.slice(0, shortUPosition)}${'ō'}${syllable.slice(shortUPosition + 1)}`
+
+  return syllable
 }
 
 const jBlocksMutation = (syllable, nextSyllable) => {
@@ -38,17 +41,21 @@ const nasalClusterTriggersMutation = (syllable, nextSyllable) => {
 const mutateI = (syllable, nextSyllable) => {
   if (!containsAMutator(nextSyllable)) return syllable
   
-  const position = shortVowelPosition('i', syllable)
-  if (position === -1) return syllable
-  if (jBlocksMutation(syllable, nextSyllable)) return syllable
+  const shortIPosition = mutatableVowelPosition('i', syllable)
+  const longIPosition = mutatableVowelPosition('ī', syllable)
+  const blockedByJ = jBlocksMutation(syllable, nextSyllable)
 
-  return `${syllable.slice(0, position)}${'e'}${syllable.slice(position + 1)}`
+  if (blockedByJ) return syllable
+  if (shortIPosition !== -1) return `${syllable.slice(0, shortIPosition)}${'e'}${syllable.slice(shortIPosition + 1)}`
+  if (longIPosition !== -1) return `${syllable.slice(0, shortIPosition)}${'ē'}${syllable.slice(shortIPosition + 1)}`
+
+  return syllable
 }
 
 const mutateE = (syllable, nextSyllable) => {
   if (!containsAMutator(nextSyllable)) return syllable
 
-  const position = shortVowelPosition('e', syllable)
+  const position = mutatableVowelPosition('e', syllable)
   if (position === -1) return syllable
   if (!nasalClusterTriggersMutation(syllable, nextSyllable)) return syllable
 

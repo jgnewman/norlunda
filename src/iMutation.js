@@ -1,12 +1,12 @@
 const syllableize = require("./syllableize")
 const { separateInitialConsonants, getVowelGroups, lastOf, firstOf, runPhases } = require("./utils")
-const { shortBackVowels, iMutators, iMutationMap } = require("./vowels")
+const { iMutatableVowels, iMutators, iMutationMap } = require("./vowels")
 
-const shortBackVowelPosition = (syllable) => {
+const mutatableVowelPosition = (syllable) => {
   const maybeMutatable = lastOf(getVowelGroups(syllable))
 
   if (!maybeMutatable || maybeMutatable.vowel.length > 1) return -1
-  if (!shortBackVowels.includes(maybeMutatable.vowel)) return -1
+  if (!iMutatableVowels.includes(maybeMutatable.vowel)) return -1
 
   return maybeMutatable.position
 }
@@ -19,7 +19,7 @@ const containsIMutator = (syllable) => {
 const iMutate = (syllable, nextSyllable) => {
   if (!containsIMutator(nextSyllable)) return syllable
   
-  const position = shortBackVowelPosition(syllable)
+  const position = mutatableVowelPosition(syllable)
   if (position === -1) return syllable
 
   const letter = syllable[position]

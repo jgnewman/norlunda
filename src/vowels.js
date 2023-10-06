@@ -20,11 +20,15 @@ const singularVowels = [
 const allNasalVowels = [...nasalVowels, ...longNasalVowels]
 
 const shortBackVowels = ['a', 'o', 'u']
+const iMutatableVowels = ['a', 'o', 'u', 'ā', 'ō', 'ū']
 const iMutators = ['i', 'ī', 'j']
 const iMutationMap = {
   'a': 'æ',
   'o': 'ø',
   'u': 'y',
+  'ā': 'ǣ',
+  'ō': 'œ',
+  'ū': 'ȳ',
 }
 
 const variantMap = {
@@ -79,6 +83,7 @@ module.exports = {
   allNasalVowels,
 
   shortBackVowels,
+  iMutatableVowels,
   iMutators,
   iMutationMap,
   variantMap,
