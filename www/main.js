@@ -1031,6 +1031,9 @@
       var shiftVowels = (word) => {
         return word.replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/æ/g, "e").replace(/i/g, "i").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? "oe" : "o").replace(/[ūȳ]/g, "au");
       };
+      var fixTerminalAir = (word) => {
+        return word.replace(/eir$/, "eer");
+      };
       module.exports = (word) => {
         return runPhases(word, [
           dropWAndModVowels,
@@ -1038,7 +1041,8 @@
           shortenUnstressedLongVowels,
           shiftFricatives,
           undoubleConsonants,
-          shiftVowels
+          shiftVowels,
+          fixTerminalAir
         ]);
       };
     }
