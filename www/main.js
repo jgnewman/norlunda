@@ -544,8 +544,19 @@
         const matchIw = newWord.match(/iw/);
         return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, "\u0233") : newWord;
       };
+      var reduceInfSuffixes = (word) => {
+        const patterns = [/ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/];
+        for (const pattern of patterns) {
+          const truncated = word.replace(pattern, "");
+          if (!containsVowels(truncated))
+            continue;
+          if (word !== truncated)
+            return truncated + "an";
+        }
+        return word;
+      };
       var mergeInfinitives = (word) => {
-        const newWord = word.replace(/(ijaną|janą|hwaną|waną|āną|aną|ōną|oną|ną)$/, "an");
+        const newWord = reduceInfSuffixes(word);
         if (newWord === word)
           return newWord;
         const stem = newWord.slice(0, -2);

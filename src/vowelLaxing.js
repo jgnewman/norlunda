@@ -62,14 +62,26 @@ const monophthongize = (word) => {
   return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, 'ȳ') : newWord
 }
 
+const reduceInfSuffixes = (word) => {
+  const patterns = [/ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/]
+  for (const pattern of patterns) {
+    const truncated = word.replace(pattern, '')
+    if (!containsVowels(truncated)) continue
+    if (word !== truncated) return truncated + 'an'
+  }
+  return word
+}
+
 const mergeInfinitives = (word) => {
-  const newWord = word.replace(/(ijaną|janą|hwaną|waną|āną|aną|ōną|oną|ną)$/, 'an')
+  const newWord = reduceInfSuffixes(word)
   if (newWord === word) return newWord
 
-  // Now we know this was a verb whose suffix changed. 
+  // Now we know this was a verb whose suffix changed. If the suffix
+  // follows a consonant, we're done.
   const stem = newWord.slice(0, -2)
   if (!isVowel(lastOf(stem))) return newWord
 
+  // If the suffix follows a vowel, we need to add 'h' and shorten a preceding ā.
   if (lastOf(stem) === 'ā') return allButLastOf(stem) + 'a' + 'han'
   return stem + 'han'
 }
