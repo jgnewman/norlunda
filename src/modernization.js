@@ -12,6 +12,7 @@ const {
   endsWithUncomfortableConsonantCluster,
   containsVowels,
   runPhases,
+  isConsonant,
 } = require("./utils")
 const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require("./vowels")
 const { pgmcNasals, pgmcApproximants } = require("./consonants")
@@ -70,6 +71,29 @@ const shortenUnstressedLongVowels = (word) => {
   }).join('')
 }
 
+const undoubleConsonants = (word) => {
+  let newWord = ''
+
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i]
+    const nextChar = word[i + 1]
+    const thirdChar = word[i + 2]
+    
+    if (
+      isConsonant(char) &&
+      isConsonant(nextChar) &&
+      isConsonant(thirdChar) &&
+      (char === nextChar || nextChar === thirdChar)) {
+      newWord += (char === nextChar) ? char + thirdChar : char + nextChar  
+      i += 2
+    } else {
+      newWord += char
+    }
+  }
+
+  return newWord
+}
+
 const isNasalOrApproximant = (char) => {
   return pgmcNasals.includes(char) || pgmcApproximants.includes(char)
 }
@@ -95,6 +119,7 @@ module.exports = (word) => {
     tryToShortenSecondSyllable,
     shortenUnstressedLongVowels,
     shiftFricatives,
+    undoubleConsonants,
     shiftVowels,
   ])
 }

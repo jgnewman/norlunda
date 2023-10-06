@@ -279,8 +279,8 @@
       };
       var runPhases = (word, phaseFnArray, log = false) => {
         const result = phaseFnArray.reduce((resultList, phaseFn) => {
-          return [...resultList, phaseFn(lastOf(resultList))];
-        }, [word]);
+          return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word)];
+        }, []);
         if (log) {
           console.log(result.reduce((map, word2, i) => {
             map[`Phase ${i + 1}`] = word2;
@@ -540,7 +540,7 @@
         }).join("");
       };
       var monophthongize = (word) => {
-        const newWord = word.replace(/ai/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/eu/g, "\u012B").replace(/iu/g, "\u0233");
+        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)h?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/euh?/g, "\u012B").replace(/iuh?/g, "\u0233");
         const matchIw = newWord.match(/iw/);
         return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, "\u0233") : newWord;
       };
@@ -958,7 +958,8 @@
         separateFinalVowels,
         endsWithUncomfortableConsonantCluster,
         containsVowels,
-        runPhases
+        runPhases,
+        isConsonant
       } = require_utils();
       var { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require_vowels();
       var { pgmcNasals, pgmcApproximants } = require_consonants();
@@ -998,6 +999,21 @@
           return syllable.replace(/ā/g, "a").replace(/ē/g, "e").replace(/ī/g, "i").replace(/ō/g, "o").replace(/œ/g, "\xF8").replace(/ū/g, "u").replace(/ȳ/g, "y");
         }).join("");
       };
+      var undoubleConsonants = (word) => {
+        let newWord = "";
+        for (let i = 0; i < word.length; i++) {
+          const char = word[i];
+          const nextChar = word[i + 1];
+          const thirdChar = word[i + 2];
+          if (isConsonant(char) && isConsonant(nextChar) && isConsonant(thirdChar) && (char === nextChar || nextChar === thirdChar)) {
+            newWord += char === nextChar ? char + thirdChar : char + nextChar;
+            i += 2;
+          } else {
+            newWord += char;
+          }
+        }
+        return newWord;
+      };
       var isNasalOrApproximant = (char) => {
         return pgmcNasals.includes(char) || pgmcApproximants.includes(char);
       };
@@ -1010,6 +1026,7 @@
           tryToShortenSecondSyllable,
           shortenUnstressedLongVowels,
           shiftFricatives,
+          undoubleConsonants,
           shiftVowels
         ]);
       };

@@ -50,12 +50,12 @@ const relaxOverlongs = (word) => {
 
 const monophthongize = (word) => {
   const newWord = word
-    .replace(/ai/g, 'ā')
+    .replace(/aih?/g, 'ā')
     .replace(/anh/g, 'ā')
-    .replace(/(au|ou)/g, 'ō')
+    .replace(/(au|ou)h?/g, 'ō')
     .replace(/[æe]nh/, 'ē')
-    .replace(/eu/g, 'ī')
-    .replace(/iu/g, 'ȳ')
+    .replace(/euh?/g, 'ī')
+    .replace(/iuh?/g, 'ȳ')
   
   const matchIw = newWord.match(/iw/)
 

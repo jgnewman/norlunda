@@ -215,8 +215,8 @@ const fixUncomfortableEndCluster = (word) => {
 
 const runPhases = (word, phaseFnArray, log = false) => {
   const result = phaseFnArray.reduce((resultList, phaseFn) => {
-    return [...resultList, phaseFn(lastOf(resultList))]
-  }, [word])
+    return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word)]
+  }, [])
 
   if (log) {
     console.log(result.reduce((map, word, i) => {
