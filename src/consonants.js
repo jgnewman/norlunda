@@ -16,6 +16,9 @@ const pgmcNonNasals = pgmcConsonants.filter(c => !pgmcNasals.includes(c))
 const fricatives = ['f', 'h', 's', 'þ', 'v', 'z']
 const nonFricatives = pgmcConsonants.filter(c => !fricatives.includes(c))
 
+const bilabials = ['m', 'p', 'b']
+const nonBilabials = pgmcConsonants.filter(c => !bilabials.includes(c))
+
 const pgmcVelars = ['g', 'k', 'h'] // h is velar when non-word-initial, pronounced /x/
 const pgmcNonVelars = pgmcConsonants.filter(c => !pgmcVelars.includes(c))
 
@@ -34,6 +37,9 @@ module.exports = {
   
   fricatives,
   nonFricatives,
+
+  bilabials,
+  nonBilabials,
 
   pgmcVelars,
   pgmcNonVelars,

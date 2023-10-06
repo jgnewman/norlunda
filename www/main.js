@@ -17,6 +17,8 @@
       var pgmcNonNasals = pgmcConsonants.filter((c) => !pgmcNasals.includes(c));
       var fricatives = ["f", "h", "s", "\xFE", "v", "z"];
       var nonFricatives = pgmcConsonants.filter((c) => !fricatives.includes(c));
+      var bilabials = ["m", "p", "b"];
+      var nonBilabials = pgmcConsonants.filter((c) => !bilabials.includes(c));
       var pgmcVelars = ["g", "k", "h"];
       var pgmcNonVelars = pgmcConsonants.filter((c) => !pgmcVelars.includes(c));
       module.exports = {
@@ -30,6 +32,8 @@
         pgmcNonNasals,
         fricatives,
         nonFricatives,
+        bilabials,
+        nonBilabials,
         pgmcVelars,
         pgmcNonVelars
       };
@@ -491,9 +495,10 @@
   // src/gemination.js
   var require_gemination = __commonJS({
     "src/gemination.js"(exports, module) {
+      var { fricatives, bilabials } = require_consonants();
       var { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPhases } = require_utils();
       var { allShortVowels } = require_vowels();
-      var geminate = (word) => {
+      var geminateJTriggers = (word) => {
         return word.split("").reduce((result, char, index, charList) => {
           const nextChar = charList[index + 1];
           const curCharIsJ = char === "j";
@@ -514,8 +519,26 @@
           return result + char + char;
         }, "");
       };
+      var geminateFricativeClusters = (word) => {
+        let newWord = "";
+        for (let i = 0; i < word.length; i++) {
+          const curChar = word[i];
+          const nextChar = word[i + 1];
+          const thirdChar = word[i + 2];
+          if (fricatives.includes(curChar) && isConsonant(nextChar) && bilabials.includes(thirdChar)) {
+            newWord += curChar + curChar + thirdChar;
+            i += 2;
+          } else {
+            newWord += curChar;
+          }
+        }
+        return newWord;
+      };
       module.exports = (word) => {
-        return runPhases(word, [geminate]);
+        return runPhases(word, [
+          geminateJTriggers,
+          geminateFricativeClusters
+        ]);
       };
     }
   });
@@ -523,7 +546,7 @@
   // src/vowelLaxing.js
   var require_vowelLaxing = __commonJS({
     "src/vowelLaxing.js"(exports, module) {
-      var { fricatives, pgmcVelars } = require_consonants();
+      var { pgmcVelars } = require_consonants();
       var syllableize = require_syllableize();
       var {
         lastOf,
@@ -675,15 +698,7 @@
             const consLength = followingConsonants.length;
             if (consLength >= 2) {
               newWord += shortVowelVariantOf(char);
-              let newConsonants = followingConsonants;
-              const firstConsIsFricative = fricatives.includes(followingConsonants[0]);
-              if (firstConsIsFricative) {
-                newConsonants = firstOf(newConsonants) + newConsonants.slice(2);
-                if (newConsonants.length === 1) {
-                  newConsonants = newConsonants + newConsonants;
-                }
-              }
-              newWord += newConsonants;
+              newWord += followingConsonants;
               i += consLength;
               continue;
             }

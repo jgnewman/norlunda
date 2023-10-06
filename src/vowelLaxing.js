@@ -1,4 +1,4 @@
-const { fricatives, pgmcVelars } = require('./consonants')
+const { pgmcVelars } = require('./consonants')
 const syllableize = require('./syllableize')
 const {
   lastOf,
@@ -164,19 +164,7 @@ const shortenPreClusterLongVowels = (word) => {
       
       if (consLength >= 2) {
         newWord += shortVowelVariantOf(char)
-
-        let newConsonants = followingConsonants
-        const firstConsIsFricative = fricatives.includes(followingConsonants[0])
-
-        if (firstConsIsFricative) {
-          newConsonants = firstOf(newConsonants) + newConsonants.slice(2)
-
-          if (newConsonants.length === 1) {
-            newConsonants = newConsonants + newConsonants
-          }
-        }
-
-        newWord += newConsonants
+        newWord += followingConsonants
         i += consLength
         continue
       }
