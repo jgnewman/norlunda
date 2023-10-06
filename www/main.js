@@ -753,7 +753,7 @@
           dropFinalZ,
           fixRemainingZAndHs,
           handleUncomfortableEndCluster
-        ], true);
+        ]);
       };
     }
   });

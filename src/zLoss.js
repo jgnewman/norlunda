@@ -38,5 +38,5 @@ module.exports = (word) => {
     dropFinalZ,
     fixRemainingZAndHs,
     handleUncomfortableEndCluster,
-  ], true)
+  ])
 }
