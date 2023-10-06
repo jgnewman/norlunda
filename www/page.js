@@ -29,13 +29,11 @@ window.addEventListener('load', () => {
     resultCell.innerHTML = result;
     stepRow.appendChild(resultCell);
 
-    return stepRow
-  }
+    return stepRow;
+  };
 
-  const handler = () => {
-    output.innerHTML = '';
-
-    const word = input.value.trim();
+  const handleSingleWord = (inputValue) => {
+    const word = inputValue.trim();
     const result = word ? window.norlunda(word) : 'No word provided';
     
     if (typeof result === 'string') {
@@ -49,7 +47,7 @@ window.addEventListener('load', () => {
       output.appendChild(h2);
 
       const table = document.createElement('table');
-      table.setAttribute('class', 'has-shadow has-gentle-sheen');
+      table.setAttribute('class', 'is-card has-shadow has-gentle-sheen');
       output.appendChild(table);
 
       const headerRow = buildTableRow({ step: 'Step', result: 'Result' }, 'th', 'header-row')
@@ -66,6 +64,29 @@ window.addEventListener('load', () => {
       const outputRow = buildTableRow({ step: 'Output', result: finalResult }, 'td', 'output-row');
       table.appendChild(outputRow);
     }
+  };
+
+  const handleMultiWords = (wordArr) => {
+    const table = document.createElement('table');
+    table.setAttribute('class', 'is-card has-shadow has-gentle-sheen');
+
+    const results = wordArr.map(word => {
+      const result = window.norlunda(word);
+      const finalResult = result[result.length - 1].result;
+      const row = buildTableRow({ step: word, result: finalResult }, 'td', 'output-row');
+      table.appendChild(row);
+    });
+
+    output.appendChild(table);
+  }
+
+  const handler = () => {
+    output.innerHTML = '';
+
+    const words = input.value.split(',').map(word => word.trim()).filter(word => !!word);
+    if (!words.length) return handleSingleWord('');
+    if (words.length === 1) return handleSingleWord(words[0]);
+    handleMultiWords(words);
   };
 
   button.addEventListener('click', handler);
