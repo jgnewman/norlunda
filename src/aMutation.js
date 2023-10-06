@@ -20,7 +20,7 @@ const mutateU = (syllable, nextSyllable) => {
   const longUPosition = mutatableVowelPosition('ū', syllable)
 
   if (shortUPosition !== -1) return `${syllable.slice(0, shortUPosition)}${'o'}${syllable.slice(shortUPosition + 1)}`
-  if (longUPosition !== -1) return `${syllable.slice(0, shortUPosition)}${'ō'}${syllable.slice(shortUPosition + 1)}`
+  if (longUPosition !== -1) return `${syllable.slice(0, longUPosition)}${'ō'}${syllable.slice(longUPosition + 1)}`
 
   return syllable
 }
@@ -47,7 +47,7 @@ const mutateI = (syllable, nextSyllable) => {
 
   if (blockedByJ) return syllable
   if (shortIPosition !== -1) return `${syllable.slice(0, shortIPosition)}${'e'}${syllable.slice(shortIPosition + 1)}`
-  if (longIPosition !== -1) return `${syllable.slice(0, shortIPosition)}${'ē'}${syllable.slice(shortIPosition + 1)}`
+  if (longIPosition !== -1) return `${syllable.slice(0, longIPosition)}${'ē'}${syllable.slice(longIPosition + 1)}`
 
   return syllable
 }
