@@ -113,6 +113,10 @@ const shiftVowels = (word) => {
     .replace(/[ūȳ]/g, 'au')
 }
 
+const fixTerminalAir = (word) => {
+  return word.replace(/eir$/, 'eer')
+}
+
 module.exports = (word) => {
   return runPhases(word, [
     dropWAndModVowels,
@@ -121,5 +125,6 @@ module.exports = (word) => {
     shiftFricatives,
     undoubleConsonants,
     shiftVowels,
+    fixTerminalAir,
   ])
 }
