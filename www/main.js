@@ -42,7 +42,7 @@
       var baseVowels = ["a", "\xE6", "e", "i", "o", "\xF8", "u", "y"];
       var nasalVowels = ["\u0105", "\u0119", "\u012F", "\u01EB", "\u0173"];
       var allShortVowels = [...baseVowels, ...nasalVowels];
-      var longVowels = ["\u0101", "\u01E3", "\u0113", "\u012B", "\u014D", "\u0153", "\u016B", "\u0233"];
+      var longVowels = ["\u0101", "\u01E3", "\u0113", "\u012B", "\u014D", "\u0153", "\u016B", "\u0233", "\u0254"];
       var longNasalVowels = ["\u01ED"];
       var allLongVowels = [...longVowels, ...longNasalVowels];
       var overlongVowels = ["\xE2", "\xEA", "\xEE", "\xF4", "\xFB", "\u0177"];
@@ -69,7 +69,10 @@
         "y": ["y", "\u0233", "\u0177"]
       };
       var aMutators = [...variantMap.a, ...variantMap["\xE6"], ...variantMap.o];
+      var longOMutators = ["\u014D", "\xF4", "\u01ED"];
       var shortVowelVariantOf = (vowel) => {
+        if (vowel === "\u0254")
+          return "o";
         if (variantMap.a.includes(vowel))
           return "a";
         if (variantMap["\xE6"].includes(vowel))
@@ -122,6 +125,7 @@
         iMutationMap,
         variantMap,
         aMutators,
+        longOMutators,
         shortVowelVariantOf,
         longVowelVariantOf
       };
@@ -394,14 +398,25 @@
   // src/aMutation.js
   var require_aMutation = __commonJS({
     "src/aMutation.js"(exports, module) {
-      var { aMutators } = require_vowels();
-      var { separateInitialConsonants, firstOf, lastOf, getVowelGroups, separateFinalConsonants, runPhases } = require_utils();
+      var { aMutators, longOMutators } = require_vowels();
       var syllableize = require_syllableize();
+      var {
+        separateInitialConsonants,
+        firstOf,
+        lastOf,
+        getVowelGroups,
+        separateFinalConsonants,
+        runPhases
+      } = require_utils();
       var containsAMutator = (syllable) => {
         const [_, rest] = separateInitialConsonants(syllable);
         return aMutators.includes(firstOf(rest));
       };
-      var shortVowelPosition = (shortVowel, syllable) => {
+      var containsLongOMutator = (syllable) => {
+        const [_, rest] = separateInitialConsonants(syllable);
+        return longOMutators.includes(firstOf(rest));
+      };
+      var vowelPosition = (shortVowel, syllable) => {
         const maybeMutatable = lastOf(getVowelGroups(syllable));
         if (!maybeMutatable || maybeMutatable.vowel !== shortVowel)
           return -1;
@@ -410,7 +425,7 @@
       var mutateU = (syllable, nextSyllable) => {
         if (!containsAMutator(nextSyllable))
           return syllable;
-        const position = shortVowelPosition("u", syllable);
+        const position = vowelPosition("u", syllable);
         if (position === -1)
           return syllable;
         return `${syllable.slice(0, position)}${"o"}${syllable.slice(position + 1)}`;
@@ -429,22 +444,30 @@
       var mutateI = (syllable, nextSyllable) => {
         if (!containsAMutator(nextSyllable))
           return syllable;
-        const position = shortVowelPosition("i", syllable);
+        const position = vowelPosition("i", syllable);
         if (position === -1)
           return syllable;
         if (jBlocksMutation(syllable, nextSyllable))
           return syllable;
         return `${syllable.slice(0, position)}${"e"}${syllable.slice(position + 1)}`;
       };
-      var mutateE = (syllable, nextSyllable) => {
+      var mutateShortE = (syllable, nextSyllable) => {
         if (!containsAMutator(nextSyllable))
           return syllable;
-        const position = shortVowelPosition("e", syllable);
+        const position = vowelPosition("e", syllable);
         if (position === -1)
           return syllable;
         if (!nasalClusterTriggersMutation(syllable, nextSyllable))
           return syllable;
         return `${syllable.slice(0, position)}${"i"}${syllable.slice(position + 1)}`;
+      };
+      var mutateLongE = (syllable, nextSyllable) => {
+        if (!containsLongOMutator(nextSyllable))
+          return syllable;
+        const position = vowelPosition("\u0113", syllable);
+        if (position === -1)
+          return syllable;
+        return `${syllable.slice(0, position)}${"\u0254"}${syllable.slice(position + 1)}`;
       };
       var handleAMutation = (word) => {
         const syllables = syllableize(word);
@@ -454,8 +477,9 @@
             return syllable;
           const phase1 = mutateU(syllable, nextSyllable);
           const phase2 = mutateI(phase1, nextSyllable);
-          const phase3 = mutateE(phase2, nextSyllable);
-          return phase3;
+          const phase3 = mutateShortE(phase2, nextSyllable);
+          const phase4 = mutateLongE(phase3, nextSyllable);
+          return phase4;
         }).join("");
       };
       module.exports = (word) => {
@@ -540,7 +564,7 @@
         }).join("");
       };
       var monophthongize = (word) => {
-        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)h?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/euh?/g, "\u012B").replace(/iuh?/g, "\u0233");
+        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)h?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/euh?/g, "\u012B").replace(/ēǭ/g, "\u0101").replace(/iuh?/g, "\u0233").replace(/jj/g, "j");
         const matchIw = newWord.match(/iw/);
         return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, "\u0233") : newWord;
       };
@@ -610,7 +634,7 @@
         if (/jā$/.test(word))
           return word.replace(/jā$/, "");
         if (/ā$/.test(word))
-          return word.replace(/ā$/, "");
+          return word.replace(/ā$/, !containsVowels(word.slice(0, -1)) ? "\u0101" : "");
         if (/wij(a|ą)$/.test(word))
           return word.replace(/wij(a|ą)$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
         if (/ij(a|ą)$/.test(word))
@@ -692,7 +716,8 @@
         isConsonant,
         endsWithUncomfortableConsonantCluster,
         fixUncomfortableEndCluster,
-        runPhases
+        runPhases,
+        containsVowels
       } = require_utils();
       var dropFinalZ = (word) => {
         const lastChar = lastOf(word);
@@ -702,7 +727,7 @@
         if (/iwaz$/.test(word))
           return word.replace(/iwaz$/, "a");
         if (/ijaz$/.test(word))
-          return word.replace(/ijaz$/, "");
+          return word.replace(/ijaz$/, !containsVowels(word.slice(0, -4)) ? "\u012B" : "");
         if (/waz$/.test(word))
           return word.replace(/waz$/, isConsonant(word.slice(-4)[0]) ? "a" : "");
         if (/az$/.test(word))
@@ -728,7 +753,7 @@
           dropFinalZ,
           fixRemainingZAndHs,
           handleUncomfortableEndCluster
-        ]);
+        ], true);
       };
     }
   });
@@ -1029,7 +1054,7 @@
         return pgmcNasals.includes(char) || pgmcApproximants.includes(char);
       };
       var shiftVowels = (word) => {
-        return word.replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/æ/g, "e").replace(/i/g, "i").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? "oe" : "o").replace(/[ūȳ]/g, "au");
+        return word.replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/æ/g, "e").replace(/i/g, "i").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? "oe" : "o").replace(/ɔ/g, "aa").replace(/[ūȳ]/g, "au");
       };
       var fixTerminalAir = (word) => {
         return word.replace(/eir$/, "eer");
