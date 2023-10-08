@@ -103,8 +103,8 @@ const wToV = (word) => {
   return word.replace(/w/g, 'v')
 }
 
-module.exports = (word) => {
-  return runPhases(word, [
+module.exports = (word, context) => {
+  return runPhases(word, context, [
     bToV,
     bToF,
     dToT,

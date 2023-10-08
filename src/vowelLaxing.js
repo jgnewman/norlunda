@@ -8,7 +8,6 @@ const {
   isVowel,
   fixUncomfortableEndCluster,
   separateInitialConsonants,
-  firstOf,
   containsVowels,
   separateFinalConsonants,
   separateFinalVowels,
@@ -74,7 +73,9 @@ const reduceInfSuffixes = (word) => {
   return word
 }
 
-const mergeInfinitives = (word) => {
+const mergeInfinitives = (word, context) => {
+  if (context.isFalseVerb) return word
+
   const newWord = reduceInfSuffixes(word)
   if (newWord === word) return newWord
 
@@ -176,8 +177,8 @@ const shortenPreClusterLongVowels = (word) => {
   return newWord
 }
 
-module.exports = (word) => {
-  return runPhases(word, [
+module.exports = (word, context) => {
+  return runPhases(word, context, [
     monophthongize,
     relaxOverlongs,
     mergeInfinitives,

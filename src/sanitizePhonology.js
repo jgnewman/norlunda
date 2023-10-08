@@ -9,6 +9,6 @@ const sanitize = (word) => {
     .replace(/ų̄/g, 'ų')
 }
 
-module.exports = (word) => {
-  return runPhases(word, [sanitize])
+module.exports = (word, context) => {
+  return runPhases(word, context, [sanitize])
 }

@@ -17,6 +17,6 @@ const massageOutliers = (word) => {
   return outlierMap[word] || word
 }
 
-module.exports = (word) => {
-  return runPhases(word, [massageOutliers])
+module.exports = (word, context) => {
+  return runPhases(word, context, [massageOutliers])
 }

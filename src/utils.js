@@ -213,16 +213,16 @@ const fixUncomfortableEndCluster = (word) => {
   return allButLastOf(word) + 'a' + lastOf(word)
 }
 
-const runPhases = (word, phaseFnArray, log = false) => {
+const runPhases = (word, context, phaseFnArray, log = false) => {
   const result = phaseFnArray.reduce((resultList, phaseFn) => {
-    return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word)]
+    return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word, context)]
   }, [])
 
   if (log) {
     console.log(result.reduce((map, word, i) => {
       map[`Phase ${i + 1}`] = word
       return map
-    }, {}))
+    }, {}), context)
   }
   
   return lastOf(result)

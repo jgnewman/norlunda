@@ -33,8 +33,8 @@ const handleUncomfortableEndCluster = (word) => {
   return fixUncomfortableEndCluster(word)
 }
 
-module.exports = (word) => {
-  return runPhases(word, [
+module.exports = (word, context) => {
+  return runPhases(word, context, [
     dropFinalZ,
     fixRemainingZAndHs,
     handleUncomfortableEndCluster,

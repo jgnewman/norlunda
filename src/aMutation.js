@@ -93,6 +93,6 @@ const handleAMutation = (word) => {
 }
 
 
-module.exports = (word) => {
-  return runPhases(word, [handleAMutation])
+module.exports = (word, context) => {
+  return runPhases(word, context, [handleAMutation])
 }

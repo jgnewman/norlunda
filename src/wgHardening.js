@@ -19,7 +19,7 @@ const hardenDW = (word) => {
   }).join('')
 }
 
-module.exports = (word) => {
+module.exports = (word, context) => {
   // A second phase here should require no action as it only turns ð into d
-  return runPhases(word, [hardenDW])
+  return runPhases(word, context, [hardenDW])
 }

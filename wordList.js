@@ -17,7 +17,6 @@ const list = [
   ['draumaz', 'dream'],
   ['erþō', 'earth'],
   ['fedwor', 'four'],
-  ['fulkhaimaz', 'Planet Earth'],
   ['fleuganą', 'to fly'],
   ['fleuhaną', 'to flee'],
   ['gāną', 'to go'],

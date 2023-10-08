@@ -285,15 +285,15 @@
       var fixUncomfortableEndCluster = (word) => {
         return allButLastOf(word) + "a" + lastOf(word);
       };
-      var runPhases = (word, phaseFnArray, log = false) => {
+      var runPhases = (word, context, phaseFnArray, log = false) => {
         const result = phaseFnArray.reduce((resultList, phaseFn) => {
-          return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word)];
+          return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word, context)];
         }, []);
         if (log) {
           console.log(result.reduce((map, word2, i) => {
             map[`Phase ${i + 1}`] = word2;
             return map;
-          }, {}));
+          }, {}), context);
         }
         return lastOf(result);
       };
@@ -393,8 +393,8 @@
           return iMutate(syllable, nextSyllable);
         }).join("");
       };
-      module.exports = (word) => {
-        return runPhases(word, [handleIMutation]);
+      module.exports = (word, context) => {
+        return runPhases(word, context, [handleIMutation]);
       };
     }
   });
@@ -486,8 +486,8 @@
           return phase4;
         }).join("");
       };
-      module.exports = (word) => {
-        return runPhases(word, [handleAMutation]);
+      module.exports = (word, context) => {
+        return runPhases(word, context, [handleAMutation]);
       };
     }
   });
@@ -534,8 +534,8 @@
         }
         return newWord;
       };
-      module.exports = (word) => {
-        return runPhases(word, [
+      module.exports = (word, context) => {
+        return runPhases(word, context, [
           geminateJTriggers,
           geminateFricativeClusters
         ]);
@@ -556,7 +556,6 @@
         isVowel,
         fixUncomfortableEndCluster,
         separateInitialConsonants,
-        firstOf,
         containsVowels,
         separateFinalConsonants,
         separateFinalVowels,
@@ -602,7 +601,9 @@
         }
         return word;
       };
-      var mergeInfinitives = (word) => {
+      var mergeInfinitives = (word, context) => {
+        if (context.isFalseVerb)
+          return word;
         const newWord = reduceInfSuffixes(word);
         if (newWord === word)
           return newWord;
@@ -707,8 +708,8 @@
         }
         return newWord;
       };
-      module.exports = (word) => {
-        return runPhases(word, [
+      module.exports = (word, context) => {
+        return runPhases(word, context, [
           monophthongize,
           relaxOverlongs,
           mergeInfinitives,
@@ -763,8 +764,8 @@
           return word;
         return fixUncomfortableEndCluster(word);
       };
-      module.exports = (word) => {
-        return runPhases(word, [
+      module.exports = (word, context) => {
+        return runPhases(word, context, [
           dropFinalZ,
           fixRemainingZAndHs,
           handleUncomfortableEndCluster
@@ -790,8 +791,8 @@
           return piece + "w";
         }).join("");
       };
-      module.exports = (word) => {
-        return runPhases(word, [hardenDW]);
+      module.exports = (word, context) => {
+        return runPhases(word, context, [hardenDW]);
       };
     }
   });
@@ -878,8 +879,8 @@
         }
         return newWord.replace(/ngt/g, "nt");
       };
-      module.exports = (word) => {
-        return runPhases(word, [
+      module.exports = (word, context) => {
+        return runPhases(word, context, [
           shortenThreeSyllablesPlus,
           shortenLongVerbEndings,
           medialWToLongVowel,
@@ -975,8 +976,8 @@
       var wToV = (word) => {
         return word.replace(/w/g, "v");
       };
-      module.exports = (word) => {
-        return runPhases(word, [
+      module.exports = (word, context) => {
+        return runPhases(word, context, [
           bToV,
           bToF,
           dToT,
@@ -1074,8 +1075,8 @@
       var fixTerminalAir = (word) => {
         return word.replace(/eir$/, "eer");
       };
-      module.exports = (word) => {
-        return runPhases(word, [
+      module.exports = (word, context) => {
+        return runPhases(word, context, [
           dropWAndModVowels,
           tryToShortenSecondSyllable,
           shortenUnstressedLongVowels,
@@ -1098,8 +1099,8 @@
       var massageOutliers = (word) => {
         return outlierMap[word] || word;
       };
-      module.exports = (word) => {
-        return runPhases(word, [massageOutliers]);
+      module.exports = (word, context) => {
+        return runPhases(word, context, [massageOutliers]);
       };
     }
   });
@@ -1111,9 +1112,54 @@
       var sanitize = (word) => {
         return word.replace(/ą̄/g, "\u0101").replace(/į̄/g, "\u012F").replace(/į̄/g, "\u012F").replace(/ǫ̂/g, "\u01ED").replace(/ų̄/g, "\u0173");
       };
-      module.exports = (word) => {
-        return runPhases(word, [sanitize]);
+      module.exports = (word, context) => {
+        return runPhases(word, context, [sanitize]);
       };
+    }
+  });
+
+  // src/falseVerbs.js
+  var require_falseVerbs = __commonJS({
+    "src/falseVerbs.js"(exports, module) {
+      module.exports = [
+        "akran\u0105",
+        "aljan\u0105",
+        "bain\u0105",
+        "barn\u0105",
+        "baukn\u0105",
+        "bragn\u0105",
+        "faikn\u0105",
+        "gaman\u0105",
+        "garn\u0105",
+        "herzn\u0105",
+        "h\u014Dn\u0105",
+        "hurn\u0105",
+        "\u012Bsarn\u0105",
+        "kitt\u012Bn\u0105",
+        "kurn\u0105",
+        "laihn\u0105",
+        "lakan\u0105",
+        "laun\u0105",
+        "l\u012Bn\u0105",
+        "magin\u0105",
+        "main\u0105",
+        "mulkn\u0105",
+        "ragin\u0105",
+        "rahn\u0105",
+        "razn\u0105",
+        "regn\u0105",
+        "skarn\u0105",
+        "streun\u0105",
+        "sw\u012Bn\u0105",
+        "taikn\u0105",
+        "teun\u0105",
+        "tin\u0105",
+        "t\u016Bn\u0105",
+        "w\u0113pn\u0105",
+        "w\u012Bn\u0105",
+        "wulkan\u0105",
+        "wulkn\u0105"
+      ];
     }
   });
 
@@ -1131,48 +1177,53 @@
       var modernization = require_modernization();
       var massageOutliers = require_massageOutliers();
       var sanitizePhonology = require_sanitizePhonology();
+      var falseVerbs = require_falseVerbs();
       var init = (baseWord) => {
         const normalizedWord = baseWord.toLowerCase().replace(/^\*/, "");
+        const context = {};
         const steps = [];
+        if (falseVerbs.includes(normalizedWord)) {
+          context.isFalseVerb = true;
+        }
         steps.push({
           step: "Massage Known Outliers",
-          result: massageOutliers(normalizedWord)
+          result: massageOutliers(normalizedWord, context)
         });
         steps.push({
           step: "Sanitize Phonology",
-          result: sanitizePhonology(lastOf(steps).result)
+          result: sanitizePhonology(lastOf(steps).result, context)
         });
         steps.push({
           step: "I-Mutation",
-          result: iMutation(lastOf(steps).result)
+          result: iMutation(lastOf(steps).result, context)
         });
         steps.push({
           step: "A-Mutation",
-          result: aMutation(lastOf(steps).result)
+          result: aMutation(lastOf(steps).result, context)
         });
         steps.push({
           step: "Gemination",
-          result: gemination(lastOf(steps).result)
+          result: gemination(lastOf(steps).result, context)
         });
         steps.push({
           step: "Vowel Laxing",
-          result: vowelLaxing(lastOf(steps).result)
+          result: vowelLaxing(lastOf(steps).result, context)
         });
         steps.push({
           step: "Z-Loss",
-          result: zLoss(lastOf(steps).result)
+          result: zLoss(lastOf(steps).result, context)
         });
         steps.push({
           step: "West-Germanic Hardening",
-          result: wgHardening(lastOf(steps).result)
+          result: wgHardening(lastOf(steps).result, context)
         });
         steps.push({
           step: "Syllable Reduction",
-          result: syllableReduction(lastOf(steps).result)
+          result: syllableReduction(lastOf(steps).result, context)
         });
         steps.push({
           step: "Modernization",
-          result: modernization(lastOf(steps).result)
+          result: modernization(lastOf(steps).result, context)
         });
         return steps;
       };

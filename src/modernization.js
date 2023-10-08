@@ -118,8 +118,8 @@ const fixTerminalAir = (word) => {
   return word.replace(/eir$/, 'eer')
 }
 
-module.exports = (word) => {
-  return runPhases(word, [
+module.exports = (word, context) => {
+  return runPhases(word, context, [
     dropWAndModVowels,
     tryToShortenSecondSyllable,
     shortenUnstressedLongVowels,

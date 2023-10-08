@@ -39,6 +39,6 @@ const handleIMutation = (word) => {
   }).join('')
 }
 
-module.exports = (word) => {
-  return runPhases(word, [handleIMutation])
+module.exports = (word, context) => {
+  return runPhases(word, context, [handleIMutation])
 }

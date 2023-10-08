@@ -91,8 +91,8 @@ const fixStopClusters = (word) => {
   return newWord.replace(/ngt/g, 'nt')
 }
 
-module.exports = (word) => {
-  return runPhases(word, [
+module.exports = (word, context) => {
+  return runPhases(word, context, [
     shortenThreeSyllablesPlus,
     shortenLongVerbEndings,
     medialWToLongVowel,

@@ -47,8 +47,8 @@ const geminateFricativeClusters = (word) => {
   return newWord
 }
 
-module.exports = (word) => {
-  return runPhases(word, [
+module.exports = (word, context) => {
+  return runPhases(word, context, [
     geminateJTriggers,
     geminateFricativeClusters,
   ])
