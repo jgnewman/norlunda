@@ -586,7 +586,7 @@
         }).join("");
       };
       var monophthongize = (word) => {
-        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)h?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/euh?/g, "\u012B").replace(/ēǭ/g, "\u0101").replace(/iuh?/g, "\u0233").replace(/jj/g, "j");
+        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)h?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/(euh?|ew)/g, "\u012B").replace(/ēǭ/g, "\u0101").replace(/iuh?/g, "\u0233").replace(/jj/g, "j");
         const matchIw = newWord.match(/iw/);
         return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, "\u0233") : newWord;
       };
@@ -634,9 +634,9 @@
         if (/ij(ō|ǭ)$/.test(word))
           return word.replace(/ij(ō|ǭ)$/, !containsVowels(word.slice(0, -3)) ? "\u012B" : "");
         if (/w(ō|ǭ)$/.test(word))
-          return word.replace(/w(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? "a" : "");
+          return word.replace(/w(ō|ǭ)$/, isVowel(word.slice(-3)[0]) ? "wa" : "");
         if (/j(ō|ǭ)$/.test(word))
-          return word.replace(/j(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? "a" : "");
+          return word.replace(/j(ō|ǭ)$/, "");
         if (/(ō|ǭ)$/.test(word))
           return word.replace(/(ō|ǭ)$/, pgmcVelars.includes(word.slice(-2)[0]) ? "a" : "");
         if (/wij(o|ǫ)$/.test(word))
@@ -646,11 +646,11 @@
         if (/w(o|ǫ)$/.test(word))
           return word.replace(/w(o|ǫ)$/, "");
         if (/j(o|ǫ)$/.test(word))
-          return lengthenFinalSylShortVowel(word.replace(/j(o|ǫ)$/, ""));
+          return word.replace(/j(o|ǫ)$/, "");
         if (/(ǫ|o)$/.test(word))
-          return word.replace(/(ǫ|o)$/, "a");
+          return word.replace(/(ǫ|o)$/, "");
         if (/wijā$/.test(word))
-          return word.replace(/wijā$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
+          return word.replace(/wijā$/, isVowel(word.slice(-5)[0]) ? "wa" : "a");
         if (/ijā$/.test(word))
           return word.replace(/ijā$/, !containsVowels(word.slice(0, -3)) ? "\u012B" : "");
         if (/wā$/.test(word))
@@ -660,13 +660,13 @@
         if (/ā$/.test(word))
           return word.replace(/ā$/, !containsVowels(word.slice(0, -1)) ? "\u0101" : "");
         if (/wij(a|ą)$/.test(word))
-          return word.replace(/wij(a|ą)$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
+          return word.replace(/wij(a|ą)$/, isVowel(word.slice(-5)[0]) ? "wa" : "a");
         if (/ij(a|ą)$/.test(word))
           return word.replace(/ij(a|ą)$/, "");
         if (/w(a|ą)$/.test(word))
           return word.replace(/w(a|ą)$/, !containsVowels(word.slice(0, -2)) ? "\u0101" : "");
         if (/j(a|ą)$/.test(word))
-          return lengthenFinalSylShortVowel(word.replace(/j(a|ą)$/, ""));
+          return word.replace(/j(a|ą)$/, "");
         if (/(ą|a)$/.test(word))
           return word.replace(/(ą|a)$/, "");
         if (/į$/.test(word))
