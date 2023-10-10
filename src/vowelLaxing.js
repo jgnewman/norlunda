@@ -53,7 +53,7 @@ const monophthongize = (word) => {
     .replace(/anh/g, 'ā')
     .replace(/(au|ou)h?/g, 'ō')
     .replace(/[æe]nh/, 'ē')
-    .replace(/euh?/g, 'ī')
+    .replace(/(euh?|ew)/g, 'ī')
     .replace(/ēǭ/g, 'ā')
     .replace(/iuh?/g, 'ȳ')
     .replace(/jj/g, 'j')
@@ -107,28 +107,28 @@ const lengthenFinalSylShortVowel = (word) => {
 const reduceVowelBasedSuffixes = (word) => {
   if (/wij(ō|ǭ)$/.test(word)) return word.replace(/wij(ō|ǭ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(ō|ǭ)$/.test(word)) return word.replace(/ij(ō|ǭ)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
-  if (/w(ō|ǭ)$/.test(word)) return word.replace(/w(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
-  if (/j(ō|ǭ)$/.test(word)) return word.replace(/j(ō|ǭ)$/, isConsonant(word.slice(-3)[0]) ? 'a' : '')
+  if (/w(ō|ǭ)$/.test(word)) return word.replace(/w(ō|ǭ)$/, isVowel(word.slice(-3)[0]) ? 'wa' : '')
+  if (/j(ō|ǭ)$/.test(word)) return word.replace(/j(ō|ǭ)$/, '')
+  // The velars rule is designed to produce saga from sagǭ, but could have unintended consequences.
   if (/(ō|ǭ)$/.test(word)) return word.replace(/(ō|ǭ)$/, pgmcVelars.includes(word.slice(-2)[0]) ? 'a' : '')
   
   if (/wij(o|ǫ)$/.test(word)) return word.replace(/wij(o|ǫ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(o|ǫ)$/.test(word)) return word.replace(/ij(o|ǫ)$/, '')
   if (/w(o|ǫ)$/.test(word)) return word.replace(/w(o|ǫ)$/, '')
-  if (/j(o|ǫ)$/.test(word)) return lengthenFinalSylShortVowel(word.replace(/j(o|ǫ)$/, ''))
-  if (/(ǫ|o)$/.test(word)) return word.replace(/(ǫ|o)$/, 'a')
+  if (/j(o|ǫ)$/.test(word)) return word.replace(/j(o|ǫ)$/, '')
+  if (/(ǫ|o)$/.test(word)) return word.replace(/(ǫ|o)$/, '')
   
-  if (/wijā$/.test(word)) return word.replace(/wijā$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
+  if (/wijā$/.test(word)) return word.replace(/wijā$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ijā$/.test(word)) return word.replace(/ijā$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
   if (/wā$/.test(word)) return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
   if (/jā$/.test(word)) return word.replace(/jā$/, '')
   if (/ā$/.test(word)) return word.replace(/ā$/, !containsVowels(word.slice(0, -1)) ? 'ā' : '')
   
-  if (/wij(a|ą)$/.test(word)) return word.replace(/wij(a|ą)$/, isConsonant(word.slice(-5)[0]) ? 'a' : '')
+  if (/wij(a|ą)$/.test(word)) return word.replace(/wij(a|ą)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(a|ą)$/.test(word)) return word.replace(/ij(a|ą)$/, '')
   if (/w(a|ą)$/.test(word)) return word.replace(/w(a|ą)$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
-  if (/j(a|ą)$/.test(word)) return lengthenFinalSylShortVowel(word.replace(/j(a|ą)$/, ''))
+  if (/j(a|ą)$/.test(word)) return word.replace(/j(a|ą)$/, '')
   if (/(ą|a)$/.test(word)) return word.replace(/(ą|a)$/, '')
-
 
   if (/į$/.test(word)) return word.replace(/į$/, 'a')
   if (/i$/.test(word)) return word.replace(/i$/, '')
