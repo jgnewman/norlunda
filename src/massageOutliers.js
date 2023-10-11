@@ -10,7 +10,15 @@
 const { runPhases } = require("./utils")
 
 const outlierMap = {
-  "kwemaną": "kumaną"
+
+  // Loss of the w is an outlier
+  "kwemaną": "kumaną",
+  
+  // Retention of <o> rather than change to <u> is the result of
+  // this word being borrowed back in from earlier literature in all
+  // modern W.G. languages. Note, for instance, that Middle High German
+  // had Wüetung which should not have yielded modern Wotan. 
+  "wōdanaz": "wudanaz",
 }
 
 const massageOutliers = (word) => {

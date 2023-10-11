@@ -7,7 +7,6 @@ const {
   isConsonant,
   isVowel,
   fixUncomfortableEndCluster,
-  separateInitialConsonants,
   containsVowels,
   separateFinalConsonants,
   separateFinalVowels,
@@ -19,7 +18,6 @@ const {
   nasalVowels,
   longNasalVowels,
   overlongVowels,
-  shortVowelVariantOf,
   longVowelVariantOf,
 } = require('./vowels')
 
@@ -51,7 +49,8 @@ const monophthongize = (word) => {
   const newWord = word
     .replace(/aih?/g, 'ā')
     .replace(/anh/g, 'ā')
-    .replace(/(au|ou)h?/g, 'ō')
+    .replace(/auh?/g, 'ɔ')
+    .replace(/ouh?/g, 'ō')
     .replace(/[æe]nh/, 'ē')
     .replace(/(euh?|ew)/g, 'ī')
     .replace(/ēǭ/g, 'ā')
@@ -153,30 +152,6 @@ const handleUncomfortableEndCluster = (word) => {
   return fixUncomfortableEndCluster(word)
 }
 
-const shortenPreClusterLongVowels = (word) => {
-  let newWord = ''
-  
-  for (let i = 0; i < word.length; i++) {
-    const char = word[i]
-    
-    if (longVowels.includes(char) || longNasalVowels.includes(char)) {
-      const [followingConsonants, _] = separateInitialConsonants(word.slice(i + 1))
-      const consLength = followingConsonants.length
-      
-      if (consLength >= 2) {
-        newWord += shortVowelVariantOf(char)
-        newWord += followingConsonants
-        i += consLength
-        continue
-      }
-    }
-
-    newWord += char
-  }
-
-  return newWord
-}
-
 module.exports = (word, context) => {
   return runPhases(word, context, [
     monophthongize,
@@ -186,6 +161,5 @@ module.exports = (word, context) => {
     denasalize,
     handleLZ,
     handleUncomfortableEndCluster,
-    shortenPreClusterLongVowels,
   ])
 }

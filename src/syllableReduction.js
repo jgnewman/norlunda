@@ -7,8 +7,33 @@ const {
   allButLastOf,
   isConsonant,
   runPhases,
+  separateInitialConsonants,
 } = require("./utils")
-const { longVowelVariantOf, baseVowels } = require("./vowels")
+const { longVowelVariantOf, shortVowelVariantOf, baseVowels, longVowels, longNasalVowels } = require("./vowels")
+
+const shortenPreClusterLongVowels = (word) => {
+  let newWord = ''
+  
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i]
+    
+    if (longVowels.includes(char) || longNasalVowels.includes(char)) {
+      const [followingConsonants, _] = separateInitialConsonants(word.slice(i + 1))
+      const consLength = followingConsonants.length
+      
+      if (consLength >= 2) {
+        newWord += shortVowelVariantOf(char)
+        newWord += followingConsonants
+        i += consLength
+        continue
+      }
+    }
+
+    newWord += char
+  }
+
+  return newWord
+}
 
 const shortenThreeSyllablesPlus = (word) => {
   const [hasInfinitive, root] = word.endsWith('an') ? [true, word.slice(0, -2)] : [false, word]
@@ -93,6 +118,7 @@ const fixStopClusters = (word) => {
 
 module.exports = (word, context) => {
   return runPhases(word, context, [
+    shortenPreClusterLongVowels,
     shortenThreeSyllablesPlus,
     shortenLongVerbEndings,
     medialWToLongVowel,

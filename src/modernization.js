@@ -94,22 +94,22 @@ const undoubleConsonants = (word) => {
   return newWord
 }
 
-const isNasalOrApproximant = (char) => {
-  return pgmcNasals.includes(char) || pgmcApproximants.includes(char)
-}
-
 const shiftVowels = (word) => {
   return word
+    .replace(/au/g, 'au') // no change, but want to have every vowel represented
     .replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? 'a' : 'aa')
+    .replace(/a/g, 'a') // no change
     .replace(/æ/g, 'e')
-    .replace(/i/g, 'i')
+    .replace(/e/g, 'e') // no change
+    .replace(/i/g, 'i') // no change
+    .replace(/o/g, 'o') // no change
     .replace(/ø/g, 'i')
     .replace(/y/g, 'u')
     .replace(/ā/g, (_, index, src) => !!src[index + 1] ? 'ei' : 'aa')
     .replace(/ǣ/g, 'oe')
     .replace(/ē/g, 'ee')
     .replace(/ī/g, 'ie')
-    .replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? 'oe' : 'o')
+    .replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? 'oe' : 'u')
     .replace(/ɔ/g, 'aa')
     .replace(/[ūȳ]/g, 'au')
 }
