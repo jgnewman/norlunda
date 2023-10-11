@@ -52,7 +52,8 @@
       var overlongVowels = ["\xE2", "\xEA", "\xEE", "\xF4", "\xFB", "\u0177"];
       var singularVowels = [
         ...allShortVowels,
-        ...allLongVowels
+        ...allLongVowels,
+        ...overlongVowels
       ];
       var allNasalVowels = [...nasalVowels, ...longNasalVowels];
       var shortBackVowels = ["a", "o", "u"];
