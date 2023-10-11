@@ -15,10 +15,16 @@ const {
   isConsonant,
 } = require("./utils")
 const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require("./vowels")
-const { pgmcNasals, pgmcApproximants } = require("./consonants")
+const { pgmcApproximants } = require("./consonants")
 
 const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
 const longPlusWRegex = new RegExp(`(${longVowels.join('|')})w`, 'g')
+
+const handleWBasedEndDiphthongs = (word) => {
+  return word
+    .replace(/ǣw$/, 'œ')
+    .replace(/æw/, 'au')
+}
 
 const dropWAndModVowels = (word) => {
   let newWord = word
@@ -66,6 +72,7 @@ const shortenUnstressedLongVowels = (word) => {
       .replace(/ī/g, 'i')
       .replace(/ō/g, 'o')
       .replace(/œ/g, 'ø')
+      .replace(/ɔ/g, 'a')
       .replace(/ū/g, 'u')
       .replace(/ȳ/g, 'y')
   }).join('')
@@ -97,7 +104,10 @@ const undoubleConsonants = (word) => {
 const shiftVowels = (word) => {
   return word
     .replace(/au/g, 'au') // no change, but want to have every vowel represented
-    .replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? 'a' : 'aa')
+    .replace(/j?a$/, (_, __, src) => {
+      const stem = src.slice(0, -1)
+      return lastOf(stem) === 'j' ? 'ja' : containsVowels(stem) ? 'a' : 'aa'
+    })
     .replace(/a/g, 'a') // no change
     .replace(/æ/g, 'e')
     .replace(/e/g, 'e') // no change
@@ -110,6 +120,7 @@ const shiftVowels = (word) => {
     .replace(/ē/g, 'ee')
     .replace(/ī/g, 'ie')
     .replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? 'oe' : 'u')
+    .replace(/œ/g, 'oe')
     .replace(/ɔ/g, 'aa')
     .replace(/[ūȳ]/g, 'au')
 }
@@ -120,6 +131,7 @@ const fixTerminalAir = (word) => {
 
 module.exports = (word, context) => {
   return runPhases(word, context, [
+    handleWBasedEndDiphthongs,
     dropWAndModVowels,
     tryToShortenSecondSyllable,
     shortenUnstressedLongVowels,

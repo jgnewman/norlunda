@@ -10,9 +10,17 @@
 const { runPhases } = require("./utils")
 
 const outlierMap = {
+  // Change of ag to au is non-standard
+  "bagmaz": "baumaz",
 
-  // Loss of the w is an outlier
+  // Loss of the w is non-standard
   "kwemaną": "kumaną",
+
+  // Loss of the second r is non-standard
+  "nurþrą": "nurþą",
+
+  // Loss of n and r are non-standard
+  "sunþrą": "sūþą",
   
   // Retention of <o> rather than change to <u> is the result of
   // this word being borrowed back in from earlier literature in all

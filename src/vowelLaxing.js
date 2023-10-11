@@ -52,10 +52,12 @@ const monophthongize = (word) => {
     .replace(/auh?/g, 'ɔ')
     .replace(/ouh?/g, 'ō')
     .replace(/[æe]nh/, 'ē')
-    .replace(/(euh?|ew)/g, 'ī')
+    .replace(/(ehu|euh|eu|ewu|ew)/g, 'ī')
+    .replace(/ēa/g, 'ā')
     .replace(/ēǭ/g, 'ā')
     .replace(/iuh?/g, 'ȳ')
     .replace(/jj/g, 'j')
+    .replace(/ōu/g, 'ō')
   
   const matchIw = newWord.match(/iw/)
 
@@ -63,7 +65,7 @@ const monophthongize = (word) => {
 }
 
 const reduceInfSuffixes = (word) => {
-  const patterns = [/ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/]
+  const patterns = [/wijaną$/, /ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/]
   for (const pattern of patterns) {
     const truncated = word.replace(pattern, '')
     if (!containsVowels(truncated)) continue
@@ -78,7 +80,9 @@ const mergeInfinitives = (word, context) => {
   const newWord = reduceInfSuffixes(word)
   if (newWord === word) return newWord
 
+  
   // Now we know this was a verb whose suffix changed. If the suffix
+
   // follows a consonant, we're done.
   const stem = newWord.slice(0, -2)
   if (!isVowel(lastOf(stem))) return newWord
@@ -105,6 +109,7 @@ const lengthenFinalSylShortVowel = (word) => {
 
 const reduceVowelBasedSuffixes = (word) => {
   if (/wij(ō|ǭ)$/.test(word)) return word.replace(/wij(ō|ǭ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
+  if (/hij(ō|ǭ)$/.test(word)) return word.replace(/hij(ō|ǭ)$/, 'a') // Example: *marhijō -> mara (mare)
   if (/ij(ō|ǭ)$/.test(word)) return word.replace(/ij(ō|ǭ)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
   if (/w(ō|ǭ)$/.test(word)) return word.replace(/w(ō|ǭ)$/, isVowel(word.slice(-3)[0]) ? 'wa' : '')
   if (/j(ō|ǭ)$/.test(word)) return word.replace(/j(ō|ǭ)$/, '')
@@ -119,14 +124,14 @@ const reduceVowelBasedSuffixes = (word) => {
   
   if (/wijā$/.test(word)) return word.replace(/wijā$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ijā$/.test(word)) return word.replace(/ijā$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
-  if (/wā$/.test(word)) return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
+  if (/wā$/.test(word)) return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? 'vā' : '') // Example *twai -> *twā (two)
   if (/jā$/.test(word)) return word.replace(/jā$/, '')
   if (/ā$/.test(word)) return word.replace(/ā$/, !containsVowels(word.slice(0, -1)) ? 'ā' : '')
   
   if (/wij(a|ą)$/.test(word)) return word.replace(/wij(a|ą)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(a|ą)$/.test(word)) return word.replace(/ij(a|ą)$/, '')
   if (/w(a|ą)$/.test(word)) return word.replace(/w(a|ą)$/, !containsVowels(word.slice(0, -2)) ? 'ā' : '')
-  if (/j(a|ą)$/.test(word)) return word.replace(/j(a|ą)$/, '')
+  if (/j(a|ą)$/.test(word)) return word.replace(/j(a|ą)$/, !containsVowels(word.slice(0, -2)) ? 'ja' : '')
   if (/(ą|a)$/.test(word)) return word.replace(/(ą|a)$/, '')
 
   if (/į$/.test(word)) return word.replace(/į$/, 'a')
@@ -144,7 +149,14 @@ const denasalize = (word) => {
 }
 
 const handleLZ = (word) => {
-  return word.replace(/(lz|zl)/g, 'll');
+  return word.replace(/(lz|zl)/g, 'll')
+}
+
+const fixTerminalMfNf = (word) => {
+  return word.replace(/.(mf|nf)$/, () => {
+    const precedingChar = lastOf(word.slice(0, -2))
+    return baseVowels.includes(precedingChar) ? longVowelVariantOf(precedingChar) + 'f' : precedingChar + 'f'
+  })
 }
 
 const handleUncomfortableEndCluster = (word) => {
@@ -160,6 +172,7 @@ module.exports = (word, context) => {
     reduceVowelBasedSuffixes,
     denasalize,
     handleLZ,
+    fixTerminalMfNf,
     handleUncomfortableEndCluster,
   ])
 }

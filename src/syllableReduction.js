@@ -87,10 +87,7 @@ const medialWToLongVowel = (word) => {
     const [_, prevVowel] = separateFinalVowels(result)
     if (prevVowel.length > 1) return result
 
-    switch (prevVowel) {
-      case 'æ': return allButLastOf(result) + 'au'
-      default: return allButLastOf(result) + longVowelVariantOf(prevVowel)
-    }
+    return allButLastOf(result) + longVowelVariantOf(prevVowel)
   }, '')
 }
 

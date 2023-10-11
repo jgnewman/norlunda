@@ -3,7 +3,7 @@ const { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPh
 const { allShortVowels } = require('./vowels')
 
 const geminateJTriggers = (word) => {
-  return word.split('').reduce((result, char, index, charList) => {
+  const geminated = word.split('').reduce((result, char, index, charList) => {
     const nextChar = charList[index + 1]
     const curCharIsJ = char === 'j'
     const nextCharIsJ = nextChar === 'j'
@@ -26,6 +26,9 @@ const geminateJTriggers = (word) => {
 
     return result + char + char
   }, '')
+
+  if (/nną$/.test(geminated)) return geminated.replace(/nną$/, 'nn')
+  return geminated
 }
 
 const geminateFricativeClusters = (word) => {

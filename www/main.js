@@ -257,7 +257,7 @@
         return word.split("").filter(isVowel).join("");
       };
       var isUncomfortableEndCluster = (a, b) => {
-        return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|ht|k[st]|l[bdþfgknpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b);
+        return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|hs|ht|k[st]|l[bdþfgknpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b);
       };
       var containsUncomfortableEndCluster = (word) => {
         let containsCluster = false;
@@ -500,7 +500,7 @@
       var { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPhases } = require_utils();
       var { allShortVowels } = require_vowels();
       var geminateJTriggers = (word) => {
-        return word.split("").reduce((result, char, index, charList) => {
+        const geminated = word.split("").reduce((result, char, index, charList) => {
           const nextChar = charList[index + 1];
           const curCharIsJ = char === "j";
           const nextCharIsJ = nextChar === "j";
@@ -519,6 +519,9 @@
             return result + char;
           return result + char + char;
         }, "");
+        if (/nną$/.test(geminated))
+          return geminated.replace(/nną$/, "nn");
+        return geminated;
       };
       var geminateFricativeClusters = (word) => {
         let newWord = "";
@@ -585,12 +588,12 @@
         }).join("");
       };
       var monophthongize = (word) => {
-        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/auh?/g, "\u0254").replace(/ouh?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/(euh?|ew)/g, "\u012B").replace(/ēǭ/g, "\u0101").replace(/iuh?/g, "\u0233").replace(/jj/g, "j");
+        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/auh?/g, "\u0254").replace(/ouh?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/(ehu|euh|eu|ewu|ew)/g, "\u012B").replace(/ēa/g, "\u0101").replace(/ēǭ/g, "\u0101").replace(/iuh?/g, "\u0233").replace(/jj/g, "j").replace(/ōu/g, "\u014D");
         const matchIw = newWord.match(/iw/);
         return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, "\u0233") : newWord;
       };
       var reduceInfSuffixes = (word) => {
-        const patterns = [/ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/];
+        const patterns = [/wijaną$/, /ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/];
         for (const pattern of patterns) {
           const truncated = word.replace(pattern, "");
           if (!containsVowels(truncated))
@@ -630,6 +633,8 @@
       var reduceVowelBasedSuffixes = (word) => {
         if (/wij(ō|ǭ)$/.test(word))
           return word.replace(/wij(ō|ǭ)$/, isVowel(word.slice(-5)[0]) ? "wa" : "a");
+        if (/hij(ō|ǭ)$/.test(word))
+          return word.replace(/hij(ō|ǭ)$/, "a");
         if (/ij(ō|ǭ)$/.test(word))
           return word.replace(/ij(ō|ǭ)$/, !containsVowels(word.slice(0, -3)) ? "\u012B" : "");
         if (/w(ō|ǭ)$/.test(word))
@@ -653,7 +658,7 @@
         if (/ijā$/.test(word))
           return word.replace(/ijā$/, !containsVowels(word.slice(0, -3)) ? "\u012B" : "");
         if (/wā$/.test(word))
-          return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? "\u0101" : "");
+          return word.replace(/wā$/, !containsVowels(word.slice(0, -2)) ? "v\u0101" : "");
         if (/jā$/.test(word))
           return word.replace(/jā$/, "");
         if (/ā$/.test(word))
@@ -665,7 +670,7 @@
         if (/w(a|ą)$/.test(word))
           return word.replace(/w(a|ą)$/, !containsVowels(word.slice(0, -2)) ? "\u0101" : "");
         if (/j(a|ą)$/.test(word))
-          return word.replace(/j(a|ą)$/, "");
+          return word.replace(/j(a|ą)$/, !containsVowels(word.slice(0, -2)) ? "ja" : "");
         if (/(ą|a)$/.test(word))
           return word.replace(/(ą|a)$/, "");
         if (/į$/.test(word))
@@ -684,6 +689,12 @@
       var handleLZ = (word) => {
         return word.replace(/(lz|zl)/g, "ll");
       };
+      var fixTerminalMfNf = (word) => {
+        return word.replace(/.(mf|nf)$/, () => {
+          const precedingChar = lastOf(word.slice(0, -2));
+          return baseVowels.includes(precedingChar) ? longVowelVariantOf(precedingChar) + "f" : precedingChar + "f";
+        });
+      };
       var handleUncomfortableEndCluster = (word) => {
         if (!endsWithUncomfortableConsonantCluster(word))
           return word;
@@ -697,6 +708,7 @@
           reduceVowelBasedSuffixes,
           denasalize,
           handleLZ,
+          fixTerminalMfNf,
           handleUncomfortableEndCluster
         ]);
       };
@@ -719,7 +731,7 @@
       var dropFinalZ = (word) => {
         const lastChar = lastOf(word);
         const nextToLastChar = lastOf(allButLastOf(word));
-        if (lastChar === "s" && nextToLastChar !== "s" && isConsonant(nextToLastChar))
+        if (lastChar === "s" && nextToLastChar !== "s" && nextToLastChar !== "h" && isConsonant(nextToLastChar))
           return word.slice(0, -1);
         if (/iwaz$/.test(word))
           return word.replace(/iwaz$/, "a");
@@ -731,8 +743,12 @@
           return word.replace(/az$/, containsVowels(word.slice(0, -2)) ? "" : "az");
         if (/iwiz$/.test(word))
           return word.replace(/iwiz$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
+        if (/īz$/.test(word))
+          return word.replace(/īz$/, "\u012B");
         if (/iz$/.test(word))
           return word.replace(/iz$/, containsVowels(word.slice(0, -2)) ? "" : "iz");
+        if (/ūz$/.test(word))
+          return word.replace(/ūz$/, "\u016B");
         if (/uz$/.test(word))
           return word.replace(/uz$/, containsVowels(word.slice(0, -2)) ? "" : "uz");
         return word;
@@ -856,12 +872,7 @@
           const [_, prevVowel] = separateFinalVowels(result);
           if (prevVowel.length > 1)
             return result;
-          switch (prevVowel) {
-            case "\xE6":
-              return allButLastOf(result) + "au";
-            default:
-              return allButLastOf(result) + longVowelVariantOf(prevVowel);
-          }
+          return allButLastOf(result) + longVowelVariantOf(prevVowel);
         }, "");
       };
       var fixStopClusters = (word) => {
@@ -1018,9 +1029,12 @@
         isConsonant
       } = require_utils();
       var { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require_vowels();
-      var { pgmcNasals, pgmcApproximants } = require_consonants();
+      var { pgmcApproximants } = require_consonants();
       var shortRegex = new RegExp(`(${baseVowels.join("|")})`, "g");
       var longPlusWRegex = new RegExp(`(${longVowels.join("|")})w`, "g");
+      var handleWBasedEndDiphthongs = (word) => {
+        return word.replace(/ǣw$/, "\u0153").replace(/æw/, "au");
+      };
       var dropWAndModVowels = (word) => {
         let newWord = word;
         const nextToLastCharIsVowel = isVowel(lastOf(allButLastOf(word)));
@@ -1052,7 +1066,7 @@
       var shortenUnstressedLongVowels = (word) => {
         const syllables = syllableize(word);
         return firstOf(syllables) + syllables.slice(1).map((syllable) => {
-          return syllable.replace(/ā/g, "a").replace(/ē/g, "e").replace(/ī/g, "i").replace(/ō/g, "o").replace(/œ/g, "\xF8").replace(/ū/g, "u").replace(/ȳ/g, "y");
+          return syllable.replace(/ā/g, "a").replace(/ē/g, "e").replace(/ī/g, "i").replace(/ō/g, "o").replace(/œ/g, "\xF8").replace(/ɔ/g, "a").replace(/ū/g, "u").replace(/ȳ/g, "y");
         }).join("");
       };
       var undoubleConsonants = (word) => {
@@ -1071,13 +1085,17 @@
         return newWord;
       };
       var shiftVowels = (word) => {
-        return word.replace(/au/g, "au").replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/a/g, "a").replace(/æ/g, "e").replace(/e/g, "e").replace(/i/g, "i").replace(/o/g, "o").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? "oe" : "u").replace(/ɔ/g, "aa").replace(/[ūȳ]/g, "au");
+        return word.replace(/au/g, "au").replace(/j?a$/, (_, __, src) => {
+          const stem = src.slice(0, -1);
+          return lastOf(stem) === "j" ? "ja" : containsVowels(stem) ? "a" : "aa";
+        }).replace(/a/g, "a").replace(/æ/g, "e").replace(/e/g, "e").replace(/i/g, "i").replace(/o/g, "o").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? "oe" : "u").replace(/œ/g, "oe").replace(/ɔ/g, "aa").replace(/[ūȳ]/g, "au");
       };
       var fixTerminalAir = (word) => {
         return word.replace(/eir$/, "eer");
       };
       module.exports = (word, context) => {
         return runPhases(word, context, [
+          handleWBasedEndDiphthongs,
           dropWAndModVowels,
           tryToShortenSecondSyllable,
           shortenUnstressedLongVowels,
@@ -1095,8 +1113,14 @@
     "src/massageOutliers.js"(exports, module) {
       var { runPhases } = require_utils();
       var outlierMap = {
-        // Loss of the w is an outlier
+        // Change of ag to au is non-standard
+        "bagmaz": "baumaz",
+        // Loss of the w is non-standard
         "kweman\u0105": "kuman\u0105",
+        // Loss of the second r is non-standard
+        "nur\xFEr\u0105": "nur\xFE\u0105",
+        // Loss of n and r are non-standard
+        "sun\xFEr\u0105": "s\u016B\xFE\u0105",
         // Retention of <o> rather than change to <u> is the result of
         // this word being borrowed back in from earlier literature in all
         // modern W.G. languages. Note, for instance, that Middle High German
