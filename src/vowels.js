@@ -16,6 +16,7 @@ const overlongVowels = ['â', 'ê', 'î', 'ô', 'û', 'ŷ']
 const singularVowels = [
   ...allShortVowels,
   ...allLongVowels,
+  ...overlongVowels,
 ]
 
 const allNasalVowels = [...nasalVowels, ...longNasalVowels]
