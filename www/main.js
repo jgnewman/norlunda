@@ -555,7 +555,6 @@
         isConsonant,
         isVowel,
         fixUncomfortableEndCluster,
-        separateInitialConsonants,
         containsVowels,
         separateFinalConsonants,
         separateFinalVowels,
@@ -567,7 +566,6 @@
         nasalVowels,
         longNasalVowels,
         overlongVowels,
-        shortVowelVariantOf,
         longVowelVariantOf
       } = require_vowels();
       var shortRegex = new RegExp(`(${baseVowels.join("|")})`, "g");
@@ -586,7 +584,7 @@
         }).join("");
       };
       var monophthongize = (word) => {
-        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/(au|ou)h?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/(euh?|ew)/g, "\u012B").replace(/ēǭ/g, "\u0101").replace(/iuh?/g, "\u0233").replace(/jj/g, "j");
+        const newWord = word.replace(/aih?/g, "\u0101").replace(/anh/g, "\u0101").replace(/auh?/g, "\u0254").replace(/ouh?/g, "\u014D").replace(/[æe]nh/, "\u0113").replace(/(euh?|ew)/g, "\u012B").replace(/ēǭ/g, "\u0101").replace(/iuh?/g, "\u0233").replace(/jj/g, "j");
         const matchIw = newWord.match(/iw/);
         return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, "\u0233") : newWord;
       };
@@ -690,24 +688,6 @@
           return word;
         return fixUncomfortableEndCluster(word);
       };
-      var shortenPreClusterLongVowels = (word) => {
-        let newWord = "";
-        for (let i = 0; i < word.length; i++) {
-          const char = word[i];
-          if (longVowels.includes(char) || longNasalVowels.includes(char)) {
-            const [followingConsonants, _] = separateInitialConsonants(word.slice(i + 1));
-            const consLength = followingConsonants.length;
-            if (consLength >= 2) {
-              newWord += shortVowelVariantOf(char);
-              newWord += followingConsonants;
-              i += consLength;
-              continue;
-            }
-          }
-          newWord += char;
-        }
-        return newWord;
-      };
       module.exports = (word, context) => {
         return runPhases(word, context, [
           monophthongize,
@@ -716,8 +696,7 @@
           reduceVowelBasedSuffixes,
           denasalize,
           handleLZ,
-          handleUncomfortableEndCluster,
-          shortenPreClusterLongVowels
+          handleUncomfortableEndCluster
         ]);
       };
     }
@@ -735,6 +714,7 @@
         runPhases,
         containsVowels
       } = require_utils();
+      var { baseVowels, longVowelVariantOf } = require_vowels();
       var dropFinalZ = (word) => {
         const lastChar = lastOf(word);
         const nextToLastChar = lastOf(allButLastOf(word));
@@ -747,17 +727,20 @@
         if (/waz$/.test(word))
           return word.replace(/waz$/, isConsonant(word.slice(-4)[0]) ? "a" : "");
         if (/az$/.test(word))
-          return word.replace(/az$/, "");
+          return word.replace(/az$/, containsVowels(word.slice(0, -2)) ? "" : "az");
         if (/iwiz$/.test(word))
           return word.replace(/iwiz$/, isConsonant(word.slice(-5)[0]) ? "a" : "");
         if (/iz$/.test(word))
-          return word.replace(/iz$/, "");
+          return word.replace(/iz$/, containsVowels(word.slice(0, -2)) ? "" : "iz");
         if (/uz$/.test(word))
-          return word.replace(/uz$/, "");
+          return word.replace(/uz$/, containsVowels(word.slice(0, -2)) ? "" : "uz");
         return word;
       };
       var fixRemainingZAndHs = (word) => {
-        return word.replace(/z/g, "r").replace(/hs/, "ks");
+        return word.replace(/hs/, "ks").replace(/[^z]?z/g, (matchedText) => {
+          const [preZ] = matchedText.split("");
+          return baseVowels.includes(preZ) ? longVowelVariantOf(preZ) + "r" : preZ + "r";
+        });
       };
       var handleUncomfortableEndCluster = (word) => {
         if (!endsWithUncomfortableConsonantCluster(word))
@@ -808,9 +791,28 @@
         separateFinalVowels,
         allButLastOf,
         isConsonant,
-        runPhases
+        runPhases,
+        separateInitialConsonants
       } = require_utils();
-      var { longVowelVariantOf, baseVowels } = require_vowels();
+      var { longVowelVariantOf, shortVowelVariantOf, baseVowels, longVowels, longNasalVowels } = require_vowels();
+      var shortenPreClusterLongVowels = (word) => {
+        let newWord = "";
+        for (let i = 0; i < word.length; i++) {
+          const char = word[i];
+          if (longVowels.includes(char) || longNasalVowels.includes(char)) {
+            const [followingConsonants, _] = separateInitialConsonants(word.slice(i + 1));
+            const consLength = followingConsonants.length;
+            if (consLength >= 2) {
+              newWord += shortVowelVariantOf(char);
+              newWord += followingConsonants;
+              i += consLength;
+              continue;
+            }
+          }
+          newWord += char;
+        }
+        return newWord;
+      };
       var shortenThreeSyllablesPlus = (word) => {
         const [hasInfinitive, root] = word.endsWith("an") ? [true, word.slice(0, -2)] : [false, word];
         const syllables = syllableize(root);
@@ -881,6 +883,7 @@
       };
       module.exports = (word, context) => {
         return runPhases(word, context, [
+          shortenPreClusterLongVowels,
           shortenThreeSyllablesPlus,
           shortenLongVerbEndings,
           medialWToLongVowel,
@@ -1066,11 +1069,8 @@
         }
         return newWord;
       };
-      var isNasalOrApproximant = (char) => {
-        return pgmcNasals.includes(char) || pgmcApproximants.includes(char);
-      };
       var shiftVowels = (word) => {
-        return word.replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/æ/g, "e").replace(/i/g, "i").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => isNasalOrApproximant(src[index + 1]) ? "oe" : "o").replace(/ɔ/g, "aa").replace(/[ūȳ]/g, "au");
+        return word.replace(/au/g, "au").replace(/a$/, (_, __, src) => containsVowels(src.slice(0, -1)) ? "a" : "aa").replace(/a/g, "a").replace(/æ/g, "e").replace(/e/g, "e").replace(/i/g, "i").replace(/o/g, "o").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? "oe" : "u").replace(/ɔ/g, "aa").replace(/[ūȳ]/g, "au");
       };
       var fixTerminalAir = (word) => {
         return word.replace(/eir$/, "eer");
@@ -1094,7 +1094,13 @@
     "src/massageOutliers.js"(exports, module) {
       var { runPhases } = require_utils();
       var outlierMap = {
-        "kweman\u0105": "kuman\u0105"
+        // Loss of the w is an outlier
+        "kweman\u0105": "kuman\u0105",
+        // Retention of <o> rather than change to <u> is the result of
+        // this word being borrowed back in from earlier literature in all
+        // modern W.G. languages. Note, for instance, that Middle High German
+        // had Wüetung which should not have yielded modern Wotan. 
+        "w\u014Ddanaz": "wudanaz"
       };
       var massageOutliers = (word) => {
         return outlierMap[word] || word;
