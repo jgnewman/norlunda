@@ -1,0 +1,85 @@
+$header-height: 78px; // corresponds to headerHeight in JavaScript
+$aside-width: 400px; // this will probably become a number in vw
+$page-meta-width: 212px;
+$side-margin: 76px; // this will probably become a number in vw
+
+body {
+  background: var(--background-color);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 78px;
+  
+  border-bottom: 1px solid var(--divider-color);
+  background: var(--background-color);
+}
+
+.header-left {
+  width: $aside-width;
+  padding-left: $side-margin;
+}
+
+.header-right {
+  padding-left: $side-margin;
+  padding-right: $side-margin;
+}
+
+.header-inner-right {
+  width: $page-meta-width;
+}
+
+aside {
+  position: fixed;
+  left: 0;
+  top: $header-height;
+
+  width: $aside-width;
+  height: calc(100% - #{$header-height});
+  
+  padding-top: 36px;
+  padding-left: $side-margin;
+  padding-right: $side-margin;
+
+  border-right: 1px solid var(--divider-color);
+  background: url('/assets/images/forest.jpg') center bottom no-repeat var(--background-color);
+  background-size: auto 266px;
+}
+
+main {
+  padding-left: calc(#{$aside-width} + #{$side-margin});
+  padding-right: $side-margin;
+  
+  margin-top: $header-height;
+  height: calc(100% - #{$header-height});
+  overflow-y: auto;
+}
+
+.main-content {
+  padding-top: 36px;
+  padding-right: calc(#{$page-meta-width} + #{$side-margin});
+  min-height: calc(100vh - #{$header-height} - #{$header-height}); // accounts for header and footer
+  max-width: 66vw;
+}
+
+.main-meta {
+  position: fixed;
+  top: $header-height;
+  right: $side-margin;
+
+  padding-top: 36px;
+  width: $page-meta-width;
+}
+
+footer {
+  border-top: 1px solid var(--divider-color); 
+  height: $header-height;
+  font-size: 14px;
+}

@@ -1,0 +1,27 @@
+$positions: (
+  'static',
+  'relative',
+  'absolute',
+  'fixed'
+);
+
+@each $position in $positions {
+  .#{$position} {
+    position: $position;
+  }
+}
+
+.absolute-center {
+  @extend .absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}

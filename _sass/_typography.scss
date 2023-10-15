@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'Pfeffer';
+  src: url('/assets/fonts/pfeffer-simpelgotisch-bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue-light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 300;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-light-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 400;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 500;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue-medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 500;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-medium-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 700;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-bold-italic.ttf') format('truetype');
+}
+
+$fancy-font: 'Pfeffer', sans-serif;
+$label-font: 'Montserrat', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$heading-font: 'HelveticaNeue', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$body-font: 'HelveticaNeue', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@mixin body-copy {
+  @include font-smoothing;
+  font-family: $body-font;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.66;
+  color: var(--moderate-contrast-text-color);
+}
+
+@mixin heading-copy {
+  @include font-smoothing;
+  font-family: $heading-font;
+  font-weight: 500;
+  line-height: 1.66;
+  color: var(--heavy-contrast-text-color);
+}
+
+@mixin label-copy {
+  @include font-smoothing;
+  font-family: $label-font;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--light-contrast-text-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@mixin intro-copy {
+  @include font-smoothing;
+  font-family: $body-font;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.66;
+  color: var(--moderate-contrast-text-color);
+}
+
+.body-copy {
+  @include body-copy;
+}
+
+.heading-copy {
+  @include heading-copy;
+}
+
+.label-copy {
+  @include label-copy;
+}
+
+.intro-copy {
+  @include intro-copy;
+  margin-bottom: 60px;
+}
+
+body, p, li, input {
+  @extend .body-copy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .heading-copy;
+}
+
+h1, h2 {
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+p {
+  margin-bottom: 36px;
+}
+
+label {
+  @extend .label-copy;
+}
+
+code,
+pre {
+  font-family: Menlo, Consolas, "Consolas for Powerline", "Courier New", Courier, monospace;
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 0.25em
+}

@@ -1,0 +1,60 @@
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.flex-auto { flex: auto; }
+.flex-none { flex: none; }
+
+$justifications: center, space-between, space-around, flex-start, flex-end;
+$alignments: center, flex-start, flex-end, baseline, stretch, space-between, space-around;
+$wraps: wrap, nowrap, wrap-reverse;
+$directions: row, row-reverse, column, column-reverse;
+
+@each $justification in $justifications {
+  .justify-content-#{$justification} {
+    justify-content: $justification;
+  }
+}
+
+@each $alignment in $alignments {
+  .align-items-#{$alignment} {
+    align-items: $alignment;
+  }
+  .align-content-#{$alignment} {
+    align-content: $alignment;
+  }
+}
+
+@each $wrap in $wraps {
+  .flex-#{$wrap} {
+    flex-wrap: $wrap;
+  }
+}
+
+@each $direction in $directions {
+  .flex-direction-#{$direction} {
+    flex-direction: $direction;
+  }
+}
+
+@for $i from 0 through 6 {
+  .flex-gap-#{$i} {
+    gap: $i * .5em;
+  }
+}
+
+@for $i from 0 through 3 {
+  .flex-#{$i} {
+    flex: $i;
+  }
+}
+
+@for $i from 0 through 3 {
+  .flex-grow-#{$i} {
+    flex-grow: $i;
+  }
+}
+
+@for $i from 0 through 3 {
+  .flex-shrink-#{$i} {
+    flex-shrink: $i;
+  }
+}

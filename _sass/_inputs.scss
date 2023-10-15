@@ -1,0 +1,55 @@
+.button {
+  @extend .body-copy;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--negative-text-color);
+
+  padding: 8px 10px;
+
+  border-radius: $border-radius;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: all .2s ease;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
+
+.field {
+  display: block;
+  background: var(--field-color);
+  border-radius: $border-radius;
+  padding: 9px 12px;
+  
+  font-size: 16px;
+  line-height: 1;
+  color: var(--heavy-contrast-text-color);
+
+  &::placeholder {
+    color: var(--placeholder-text-color);
+    font-weight: 400;
+  }
+}
+
+.search-field-wrapper {
+  width: 100%;
+  max-width: 458px;
+  position: relative;
+
+  &::before {
+    content: url('/assets/images/search.svg');
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.search-field-wrapper .field {
+  padding-left: 50px;
+  width: 100%;
+}

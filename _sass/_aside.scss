@@ -1,0 +1,40 @@
+.aside-nav-link {
+  display: block;
+  position: relative;
+  transition: all .2s ease;
+
+  font-size: 16px;
+  line-height: 1.66;
+
+  &::before {
+    content: '';
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    height: 100%;
+    width: calc(100% + 30px);
+    transform: translateX(-15px);
+
+    background: transparent;
+    border-radius: $border-radius;
+    z-index: -1;
+    transition: all .2s ease;
+  }
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  &.active {
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: default;
+  }
+
+  &.active::before {
+    background: var(--gentle-highlight-color);
+  }
+}
