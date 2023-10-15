@@ -36,9 +36,9 @@
   </header>
 
   <aside>
-    <label>Getting started</label>
-    <nav class="pt-24">
-      <ul class="flex flex-direction-column">
+    <nav class="pt-36 site-nav">
+      <label>Getting started</label>
+      <ul class="py-24 flex flex-direction-column">
         {% for nav in site.data.navigation %}
           <li>
             {% if nav.url == page.url %}
@@ -54,14 +54,15 @@
         {% endfor %}
       </ul>
     </nav>
+    <div class="nav-fade"></div>
   </aside>
 
   <main id="scrollable-element">
     <div class="flex justify-content-space-between align-items-flex-start">
-      <section class="main-content">
+      <section class="main-content pt-36">
         {{ content }}
       </section>
-      <section class="main-meta">
+      <section class="pt-36 main-meta">
         <label>On this page</label>
         <div id="subnav-section" class="pt-16 pb-16"></div>
         <div class="back-to-top py-12">

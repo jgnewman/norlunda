@@ -11,6 +11,16 @@ $positions: (
   }
 }
 
+@mixin absolute-pseudo($top: 0, $right: auto, $bottom: auto, $left: 0) {
+  content: '';
+  display: block;
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
 .absolute-center {
   @extend .absolute;
   top: 50%;

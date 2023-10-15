@@ -1,3 +1,23 @@
+.site-nav {
+  overflow-y: auto;
+  height: calc(100vh - #{$header-height} - #{$aside-img-height});
+  padding-left: $side-margin;
+  padding-right: $side-margin;
+}
+
+.nav-fade {
+  height: 24px;
+  width: 100%;
+  background: transparent;
+  background: linear-gradient(0deg, var(--background-color) 0%, var(--background-color-transparent) 100%);
+  transform: translateY(-24px);
+
+  display: none;
+  @include vh-1 {
+    display: block;
+  }
+}
+
 .aside-nav-link {
   display: block;
   position: relative;
@@ -7,12 +27,7 @@
   line-height: 1.66;
 
   &::before {
-    content: '';
-    display: block;
-
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include absolute-pseudo;
     
     height: 100%;
     width: calc(100% + 30px);

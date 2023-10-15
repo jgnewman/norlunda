@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
   const scrollToElem = elem => {
     const rect = elem.getBoundingClientRect()
     const scrollableElemRect = scrollableElem.getBoundingClientRect()
-    const top = rect.top - scrollableElemRect.top - headerHeight
+    const top = rect.top - scrollableElemRect.top - headerHeight/2
     scrollableElem.scrollTo({ top, behavior: 'smooth' })
   }
 
@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
     a.textContent = header.textContent
     a.addEventListener('click', (e) => {
       e.preventDefault()
-      scrollToElem(header)
+      !a.classList.contains('active') && scrollToElem(header)
     })
 
     li.appendChild(a)

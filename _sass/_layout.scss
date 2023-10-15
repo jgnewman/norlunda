@@ -1,5 +1,6 @@
 $header-height: 78px; // corresponds to headerHeight in JavaScript
 $aside-width: 400px; // this will probably become a number in vw
+$aside-img-height: 266px;
 $page-meta-width: 212px;
 $side-margin: 76px; // this will probably become a number in vw
 
@@ -43,14 +44,10 @@ aside {
 
   width: $aside-width;
   height: calc(100% - #{$header-height});
-  
-  padding-top: 36px;
-  padding-left: $side-margin;
-  padding-right: $side-margin;
 
   border-right: 1px solid var(--divider-color);
   background: url('/assets/images/forest.jpg') center bottom no-repeat var(--background-color);
-  background-size: auto 266px;
+  background-size: auto $aside-img-height;
 }
 
 main {
@@ -63,7 +60,6 @@ main {
 }
 
 .main-content {
-  padding-top: 36px;
   padding-right: calc(#{$page-meta-width} + #{$side-margin});
   min-height: calc(100vh - #{$header-height} - #{$header-height}); // accounts for header and footer
   max-width: 66vw;
@@ -73,8 +69,6 @@ main {
   position: fixed;
   top: $header-height;
   right: $side-margin;
-
-  padding-top: 36px;
   width: $page-meta-width;
 }
 
