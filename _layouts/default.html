@@ -18,27 +18,36 @@
 </head>
 <body>
   <header class="flex justify-content-space-between align-items-center">
-    <div class="header-left flex align-items-center">
-      <a class="inline-block" href="{{ '/' | relative_url }}">
+    <div class="header-left flex align-items-center flex-gap-2">
+      <a id="menu-link" class="menu-link inline-block">
+        {% include menu.svg %}
+      </a>
+      <a class="mobile-logo-link" href="{{ '/' | relative_url }}">
+        {% include logo-icon.svg %}
+      </a>
+      <a class="desktop-logo-link" href="{{ '/' | relative_url }}">
         {% include logo.svg %}
       </a>
     </div>
-    <div class="header-right flex justify-content-space-between align-items-center flex-grow-2">
+    <div class="header-right flex justify-content-space-between align-items-center flex-grow-2 flex-gap-2">
       <div class="header-inner-left search-container flex-grow-2">
         <form class="search-field-wrapper">
           <input type="text" class="field" placeholder="Search" />
         </form>
       </div>
-      <div class="header-inner-right">
-        <button class="button generate-button">Create a word</button>
+      <div class="header-inner-right flex-shrink-1">
+        <button class="button generate-button flex align-items-center flex-gap-1">
+          {% include plus.svg %}
+          <span>Create a word</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <aside>
+  <aside id="nav-container">
     <nav class="pt-36 site-nav">
       <label>Getting started</label>
-      <ul class="py-24 flex flex-direction-column">
+      <ul id="nav-list" class="py-24 flex flex-direction-column">
         {% for nav in site.data.navigation %}
           <li>
             {% if nav.url == page.url %}
@@ -57,7 +66,7 @@
     <div class="nav-fade"></div>
   </aside>
 
-  <main id="scrollable-element">
+  <main id="scrollable-content">
     <div class="flex justify-content-space-between align-items-flex-start">
       <section class="main-content pt-36">
         {{ content }}
@@ -88,6 +97,7 @@
     </footer>
   </main>
 
+  <script defer src="{{ '/assets/javascript/menu.js' | relative_url }}"></script>
   <script defer src="{{ '/assets/javascript/subnav.js' | relative_url }}"></script>
 </body>
 </html>

@@ -2,10 +2,11 @@
 layout: default
 ---
 
-# Introduction
+{: .oversized-copy }
+# Vilkoman til Norlunda!
 
-Norlunda is a Germanic interlang, just for fun. It blends characteristics of both the North and West branches of the Germanic language family to create a smooth and pleasing result that’s quick and easy to learn for all Germanic speakers.
 {: .intro-copy }
+Norlunda is a **fully-automated**, Germanic interlang, just for fun. It blends characteristics of both the North and West branches of the Germanic language family to create a smooth and pleasing result that’s quick and easy to learn for all Germanic speakers.
 
 ## Purpose
 

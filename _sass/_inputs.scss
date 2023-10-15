@@ -1,10 +1,12 @@
+$button-padding: 8px 10px;
+
 .button {
   @extend .body-copy;
   font-size: 16px;
   line-height: 1.25;
   color: var(--negative-text-color);
 
-  padding: 8px 10px;
+  padding: $button-padding;
 
   border-radius: $border-radius;
   background-color: var(--primary-color);
@@ -34,7 +36,6 @@
 
 .search-field-wrapper {
   width: 100%;
-  max-width: 458px;
   position: relative;
 
   &::before {
@@ -46,6 +47,10 @@
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
+  }
+
+  @include vw-4 {
+    max-width: 458px;
   }
 }
 

@@ -1,8 +1,12 @@
 $header-height: 78px; // corresponds to headerHeight in JavaScript
-$aside-width: 400px; // this will probably become a number in vw
 $aside-img-height: 266px;
 $page-meta-width: 212px;
-$side-margin: 76px; // this will probably become a number in vw
+
+$small-aside-width: 25vw;
+$aside-width: 360px;
+
+$small-side-margin: 4vw;
+$side-margin: 60px;
 
 body {
   background: var(--background-color);
@@ -24,52 +28,104 @@ header {
 }
 
 .header-left {
-  width: $aside-width;
-  padding-left: $side-margin;
+  transition: all .2s ease;
+  padding-left: $small-side-margin;
+  width: $small-aside-width;
+
+  @include vw-4 {
+    padding-left: $side-margin;
+    width: $aside-width;
+  }
 }
 
 .header-right {
-  padding-left: $side-margin;
-  padding-right: $side-margin;
+  padding-left: $small-side-margin;
+  padding-right: $small-side-margin;
+
+  @include vw-4 {
+    padding-left: $side-margin;
+    padding-right: $side-margin;
+  }
 }
 
 .header-inner-right {
-  width: $page-meta-width;
+  @include vw-4 {
+    width: $page-meta-width;
+  }
 }
 
 aside {
   position: fixed;
-  left: 0;
   top: $header-height;
 
-  width: $aside-width;
   height: calc(100% - #{$header-height});
 
   border-right: 1px solid var(--divider-color);
   background: url('/assets/images/forest.jpg') center bottom no-repeat var(--background-color);
   background-size: auto $aside-img-height;
+
+  transition: all .2s ease;
+  z-index: 10;
+  left: -$aside-width;
+  width: $aside-width;
+
+  &.menu-open {
+    left: 0;
+  }
+
+  @include vw-2 {
+    left: 0;
+    width: $small-aside-width;
+  }
+
+
+  @include vw-4 {
+    width: $aside-width;
+  }
 }
 
 main {
-  padding-left: calc(#{$aside-width} + #{$side-margin});
-  padding-right: $side-margin;
-  
   margin-top: $header-height;
   height: calc(100% - #{$header-height});
   overflow-y: auto;
+  
+  transition: all .2s ease;
+  
+  padding-left: $small-side-margin;
+  padding-right: $small-side-margin;
+
+  @include vw-2 {
+    padding-left: calc(#{$small-aside-width} + #{$small-side-margin});
+  }
+
+  @include vw-4 {
+    padding-left: calc(#{$aside-width} + #{$side-margin});
+    padding-right: $side-margin;
+  }
 }
 
 .main-content {
-  padding-right: calc(#{$page-meta-width} + #{$side-margin});
   min-height: calc(100vh - #{$header-height} - #{$header-height}); // accounts for header and footer
-  max-width: 66vw;
+  padding-right: $small-side-margin;
+  
+  @include vw-4 {
+    padding-right: calc(#{$page-meta-width} + #{$side-margin});
+    max-width: 66vw;
+  }
 }
 
 .main-meta {
   position: fixed;
   top: $header-height;
-  right: $side-margin;
+  right: $small-side-margin;
   width: $page-meta-width;
+
+  display: none;
+
+  @include vw-4 {
+    display: block;
+    right: $side-margin;
+  }
 }
 
 footer {

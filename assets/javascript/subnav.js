@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
   const headerHeight = 78
   const headers = Array.from(document.querySelectorAll('h1, h2'))
   const navSection = document.querySelector('#subnav-section')
-  const scrollableElem = document.querySelector('#scrollable-element')
+  const scrollableElem = document.querySelector('#scrollable-content')
   const backToTopLink = document.querySelector('#scroll-to-top')
 
   const scrollToElem = elem => {

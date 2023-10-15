@@ -1,5 +1,60 @@
-.logo {
+.menu-link {
+  display: inline-block;
+  cursor: pointer;
+
+  @include vw-2 {
+    display: none;
+  }
+}
+
+.menu {
+  .menu-path {
+    transition: all .2s ease;
+    stroke: var(--heavy-contrast-text-color);
+  }
+
+  &:hover .menu-path,
+  &.menu-open .menu-path {
+    stroke: var(--primary-color);
+  }
+}
+
+.mobile-logo-link {
+  display: inline-block;
+
+  @include vw-2 {
+    display: none;
+  }
+}
+
+.desktop-logo-link {
+  display: none;
+
+  @include vw-2 {
+    display: inline-block;
+  }
+}
+
+.generate-button {
+  padding: 10px;
+
+  @include vw-2 {
+    padding: $button-padding;
+  }
+}
+
+.generate-button span {
+  display: none;
+
+  @include vw-2 {
+    display: block;
+  }
+}
+
+.generate-button svg {
   display: block;
-  max-width: 132px;
-  max-height: 36px;
+  
+  @include vw-2 {
+    display: none;
+  }
 }
