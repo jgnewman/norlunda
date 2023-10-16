@@ -21,7 +21,7 @@
 title: Norlunda
 email: rescuecreative@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Norlunda is an algorithmically-generated, Germanic interlang with grammar that leans on
+  Norlunda is an algorithmically-generated, Germanic conlang with grammar that leans on
   North Germanic patterns and vocabulary that leans on West Germanic patterns.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com

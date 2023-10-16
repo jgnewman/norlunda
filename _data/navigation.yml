@@ -1,8 +1,11 @@
 - text: Introduction
   url: /
 
+- text: Orthography
+  url: /orthography
+
 - text: Algorithm
   url: /algorithm
 
-- text: Components
-  url: /components/
+- text: Dictionary
+  url: /dictionary
