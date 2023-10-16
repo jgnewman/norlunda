@@ -165,7 +165,7 @@ const isHCluster = (a, b) => {
  * gd, gþ, gs,
  * hs, ht, 
  * ks, kt,
- * lb, ld, lþ, lf, lg, lk, ln, lp, ls, lt, lv, lz
+ * lb, ld, lþ, lf, lg, lk, lm, ln, lp, ls, lt, lv, lz
  * mp, 
  * nd, nþ, ng, nk, ns, nt, 
  * ps,
@@ -175,7 +175,7 @@ const isHCluster = (a, b) => {
  */
 // Not exported
 const isUncomfortableEndCluster = (a, b) => {
-  return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|hs|ht|k[st]|l[bdþfgknpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b)
+  return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|hs|ht|k[st]|l[bdþfgkmnpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b)
 }
 
 // Not exported
