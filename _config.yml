@@ -41,13 +41,20 @@ plugins:
 # their entries' file path in the `include:` list.
 #
 exclude:
-  - legacy/
-  - .sass-cache/
   - .jekyll-cache/
-  - gemfiles/
+  - .sass-cache/
+  - algorithm/
+  - bin/
   - Gemfile
   - Gemfile.lock
+  - gemfiles/
+  - legacy/
+  - LICENSE
+  - makefile
   - node_modules/
+  - package-lock.json
+  - package.json
+  - README.md
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/

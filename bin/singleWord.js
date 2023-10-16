@@ -1,5 +1,5 @@
-const init = require('./src/index')
-const { lastOf } = require('./src/utils')
+const init = require('../algorithm/index')
+const { lastOf } = require('../algorithm/utils')
 
 const input = process.argv.slice(2)[0]
 console.log(`Input: ${input}`)

@@ -1,5 +1,5 @@
-const init = require('./src/index')
-const { lastOf } = require('./src/utils')
+const init = require('../algorithm/index')
+const { lastOf } = require('../algorithm/utils')
 
 const list = [
   ['aiwaz', 'ever'],

@@ -38,6 +38,10 @@ window.addEventListener('load', () => {
       .replace(/ie/g, 'iː')
       .replace(/i([^ː])/g, 'ɪ$1')
       .replace(/(oe|œ)/g, 'øː')
+      .replace(/[bcdfghjklmnpqrstvwxz]{2}/ig, (match) => {
+        if (match[0] === match[1]) return match[0] + 'ː'
+        return match
+      })
     return `/'${result}/` 
   }
 
