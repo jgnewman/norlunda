@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: 'Inconsolata';
+  src: url($assets + '/fonts/inconsolata-medium.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'HelveticaNeue';
   font-weight: 300;
   font-style: normal;
@@ -68,7 +73,7 @@ $fancy-font: 'Pfeffer', sans-serif;
 $label-font: 'Montserrat', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 $heading-font: 'HelveticaNeue', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 $body-font: 'HelveticaNeue', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-$code-font: Menlo, Consolas, "Consolas for Powerline", "Courier New", Courier, monospace;
+$code-font: 'Inconsolata', monospace;
 
 @mixin font-smoothing {
   -webkit-font-smoothing: antialiased;

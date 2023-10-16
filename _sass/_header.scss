@@ -19,20 +19,28 @@
   }
 }
 
-.mobile-logo-link {
-  display: inline-block;
+.logo-link {
+  gap: 12px;
+}
+
+.logo-link-text {
+  @include fancy-copy;
+  font-size: 22px;
+  
+  width: 0;
+  transform: scale(0);
+  opacity: 0;
+  transition: all .2s ease, width .5s ease;
 
   @include vw-2 {
-    display: none;
+    width: 24px;
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
 .desktop-logo-link {
-  display: none;
-
-  @include vw-2 {
-    display: inline-block;
-  }
+  display: inline-block;
 }
 
 .generate-button {

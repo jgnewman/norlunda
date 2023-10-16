@@ -127,7 +127,7 @@ main {
   z-index: 3;
 
   padding-left: 24px;
-  max-height: calc(100vh - #{$header-height}); // accounts for header and footer
+  max-height: calc(100vh - #{$header-height});
   overflow-y: auto;
 
   display: none;
@@ -142,4 +142,8 @@ footer {
   border-top: 1px solid var(--divider-color); 
   height: $header-height;
   font-size: 14px;
+}
+
+html.mobile footer {
+  margin-bottom: $header-height;
 }

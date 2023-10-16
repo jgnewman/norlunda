@@ -3,8 +3,10 @@
 }
 
 .generator-field {
+  @include code-copy;
+  font-size: 24px;
+
   height: 66px;
-  font-size: 22px;
   line-height: 1;
   min-width: 0;
 
@@ -15,6 +17,8 @@
   }
 
   &::placeholder {
+    @include body-copy;
+    color: var(--placeholder-text-color);
     font-size: 16px;
     line-height: 1.5;
   }
