@@ -257,7 +257,7 @@
         return word.split("").filter(isVowel).join("");
       };
       var isUncomfortableEndCluster = (a, b) => {
-        return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|hs|ht|k[st]|l[bdþfgknpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b);
+        return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|hs|ht|k[st]|l[bdþfgkmnpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b);
       };
       var containsUncomfortableEndCluster = (word) => {
         let containsCluster = false;
