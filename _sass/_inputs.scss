@@ -39,7 +39,7 @@ $button-padding: 8px 10px;
   position: relative;
 
   &::before {
-    content: url('/assets/images/search.svg');
+    content: url($assets + '/images/search.svg');
     display: block;
     position: absolute;
     top: 50%;

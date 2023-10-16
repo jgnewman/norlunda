@@ -1,67 +1,67 @@
 @font-face {
   font-family: 'Pfeffer';
-  src: url('/assets/fonts/pfeffer-simpelgotisch-bold.otf') format('opentype');
+  src: url($assets + '/fonts/pfeffer-simpelgotisch-bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/assets/fonts/montserrat-variable.ttf') format('truetype');
+  src: url($assets + '/fonts/montserrat-variable.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 300;
   font-style: normal;
-  src: url('/assets/fonts/helvetica-neue-light.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue-light.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 300;
   font-style: italic;
-  src: url('/assets/fonts/helvetica-neue-light-italic.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue-light-italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 400;
   font-style: normal;
-  src: url('/assets/fonts/helvetica-neue.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 400;
   font-style: italic;
-  src: url('/assets/fonts/helvetica-neue-italic.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue-italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 500;
   font-style: normal;
-  src: url('/assets/fonts/helvetica-neue-medium.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue-medium.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 500;
   font-style: italic;
-  src: url('/assets/fonts/helvetica-neue-medium-italic.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue-medium-italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 700;
   font-style: normal;
-  src: url('/assets/fonts/helvetica-neue-bold.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue-bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'HelveticaNeue';
   font-weight: 700;
   font-style: italic;
-  src: url('/assets/fonts/helvetica-neue-bold-italic.ttf') format('truetype');
+  src: url($assets + '/fonts/helvetica-neue-bold-italic.ttf') format('truetype');
 }
 
 $fancy-font: 'Pfeffer', sans-serif;

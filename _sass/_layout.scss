@@ -62,7 +62,7 @@ aside {
   height: calc(100% - #{$header-height});
 
   border-right: 1px solid var(--divider-color);
-  background: url('/assets/images/forest.jpg') center bottom no-repeat var(--background-color);
+  background: url($assets + '/images/forest.jpg') center bottom no-repeat var(--background-color);
   background-size: auto $aside-img-height;
 
   transition: all .2s ease;

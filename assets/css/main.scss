@@ -1,6 +1,8 @@
 ---
 ---
 
+$assets: "{{ site.baseurl }}/assets";
+
 @import "reset";
 @import "variables";
 @import "responsiveness";

@@ -55,7 +55,7 @@
                 {{ nav.text}}
               </a>
             {% else %}
-              <a class="aside-nav-link py-8" href="{{ nav.url }}">
+              <a class="aside-nav-link py-8" href="{{ nav.url | relative_url }}">
                 {{ nav.text}}
               </a>
             {% endif %}
