@@ -1,0 +1,79 @@
+$spacings: (
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30,
+  32,
+  34,
+  36,
+  38,
+  40,
+  42,
+  44,
+  46,
+  48,
+  64,
+  72,
+  96,
+);
+
+@each $spacing in $spacings {
+  .pt-#{$spacing} {
+    padding-top: #{$spacing}px;
+  }
+  .pb-#{$spacing} {
+    padding-bottom: #{$spacing}px;
+  }
+  .pl-#{$spacing} {
+    padding-left: #{$spacing}px;
+  }
+  .pr-#{$spacing} {
+    padding-right: #{$spacing}px;
+  }
+  .px-#{$spacing} {
+    padding-left: #{$spacing}px;
+    padding-right: #{$spacing}px;
+  }
+  .py-#{$spacing} {
+    padding-top: #{$spacing}px;
+    padding-bottom: #{$spacing}px;
+  }
+  .p-#{$spacing} {
+    padding: #{$spacing}px;
+  }
+  .mt-#{$spacing} {
+    margin-top: #{$spacing}px;
+  }
+  .mb-#{$spacing} {
+    margin-bottom: #{$spacing}px;
+  }
+  .ml-#{$spacing} {
+    margin-left: #{$spacing}px;
+  }
+  .mr-#{$spacing} {
+    margin-right: #{$spacing}px;
+  }
+  .mx-#{$spacing} {
+    margin-left: #{$spacing}px;
+    margin-right: #{$spacing}px;
+  }
+  .my-#{$spacing} {
+    margin-top: #{$spacing}px;
+    margin-bottom: #{$spacing}px;
+  }
+  .m-#{$spacing} {
+    margin: #{$spacing}px;
+  }
+}

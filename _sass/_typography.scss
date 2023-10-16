@@ -1,0 +1,266 @@
+@font-face {
+  font-family: 'Pfeffer';
+  src: url('/assets/fonts/pfeffer-simpelgotisch-bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue-light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 300;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-light-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 400;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 500;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue-medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 500;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-medium-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/assets/fonts/helvetica-neue-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 700;
+  font-style: italic;
+  src: url('/assets/fonts/helvetica-neue-bold-italic.ttf') format('truetype');
+}
+
+$fancy-font: 'Pfeffer', sans-serif;
+$label-font: 'Montserrat', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$heading-font: 'HelveticaNeue', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$body-font: 'HelveticaNeue', -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$code-font: Menlo, Consolas, "Consolas for Powerline", "Courier New", Courier, monospace;
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@mixin fancy-copy {
+  @include font-smoothing;
+  font-family: $fancy-font;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--heavy-contrast-text-color);
+  font-variant-ligatures: none;
+}
+
+@mixin body-copy {
+  @include font-smoothing;
+  font-family: $body-font;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.66;
+  color: var(--moderate-contrast-text-color);
+}
+
+@mixin heading-copy {
+  @include font-smoothing;
+  font-family: $heading-font;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--heavy-contrast-text-color);
+}
+
+@mixin label-copy {
+  @include font-smoothing;
+  font-family: $label-font;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--light-contrast-text-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@mixin intro-copy {
+  @include font-smoothing;
+  font-family: $body-font;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.66;
+  color: var(--moderate-contrast-text-color);
+}
+
+@mixin code-copy {
+  @include font-smoothing;
+  font-family: $code-font;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--moderate-contrast-text-color);
+}
+
+.fancy-copy {
+  @include fancy-copy;
+}
+
+.body-copy {
+  @include body-copy;
+}
+
+.heading-copy {
+  @include heading-copy;
+}
+
+.label-copy {
+  @include label-copy;
+}
+
+.intro-copy {
+  @include intro-copy;
+  margin-bottom: 48px;
+}
+
+.code-copy {
+  @include code-copy;
+}
+
+.oversized-copy {
+  font-size: 300%;
+}
+
+body, p, li, input {
+  @extend .body-copy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .heading-copy;
+}
+
+h1 {
+  font-size: 54px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+p {
+  margin-bottom: 32px;
+}
+
+p a {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all .2s ease;
+  white-space: nowrap;
+  color: var(--primary-color);
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
+}
+
+label {
+  @extend .label-copy;
+  display: block;
+}
+
+blockquote {
+  background: var(--field-color);
+  border-radius: $border-radius;
+  padding: 36px;
+  margin-bottom: 32px;
+
+  > p, > ul li, > ol li {
+    font-size: 85%;
+  }
+
+  > p {
+    margin-bottom: 24px;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+code,
+pre {
+  @include code-copy;
+}
+
+sup {
+  font-size: 75%;
+  vertical-align: super;
+  line-height: 0;
+  font-weight: 700;
+}
+
+.main-content > ul,
+.main-content > ol {
+  margin-bottom: 32px;
+}
+
+.main-content ul {
+  list-style-type: disc;
+}
+
+.main-content ol {
+  list-style-type: decimal;
+}
+
+.main-content li {
+  margin-left: 40px;
+  padding-bottom: 4px;
+}
+
+.byline {
+  @extend .code-copy;
+  font-size: 14px;
+  background: var(--field-color);
+  display: inline-block;
+  border-radius: $border-radius;
+  padding: 4px 8px;
+}

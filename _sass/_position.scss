@@ -1,0 +1,37 @@
+$positions: (
+  'static',
+  'relative',
+  'absolute',
+  'fixed'
+);
+
+@each $position in $positions {
+  .#{$position} {
+    position: $position;
+  }
+}
+
+@mixin absolute-pseudo($top: 0, $right: auto, $bottom: auto, $left: 0) {
+  content: '';
+  display: block;
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+.absolute-center {
+  @extend .absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}

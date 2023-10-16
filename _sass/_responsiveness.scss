@@ -1,0 +1,29 @@
+@mixin vw-1 {
+  @media screen and (min-width: 380px) {
+    @content;
+  }
+}
+
+@mixin vw-2 {
+  @media screen and (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin vw-3 {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin vw-4 {
+  @media screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin vh-1 {
+  @media screen and (min-height: 400px) {
+    @content;
+  }
+}

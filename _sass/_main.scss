@@ -1,0 +1,56 @@
+.meta-nav-link {
+  display: block;
+  position: relative;
+  transition: all .2s ease;
+
+  font-size: 16px;
+  line-height: 1.66;
+
+  &::before {
+    @include absolute-pseudo;
+    
+    height: 100%;
+    width: 3px;
+    transform: translateX(-15px);
+
+    background: transparent;
+    transition: all .2s ease;
+  }
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  &.active {
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: default;
+  }
+
+  &.active::before {
+    background: var(--primary-color);
+  }
+}
+
+.back-to-top {
+  border-top: 1px solid var(--divider-color);
+  font-size: 16px;
+}
+
+.scroll-to-top-link {
+  cursor: pointer;
+  transition: all .2s ease;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  .up-arrow-path {
+    transition: all .2s ease;
+    fill: var(--moderate-contrast-text-color);
+  }
+
+  &:hover .up-arrow-path {
+    fill: var(--primary-color);
+  }
+}

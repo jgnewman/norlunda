@@ -1,0 +1,53 @@
+.generator-field-wrapper {
+  background: var(--field-color);
+}
+
+.generator-field {
+  height: 66px;
+  font-size: 22px;
+  line-height: 1;
+
+  &::placeholder {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.generator-button {
+  @extend .label-copy;
+  color: var(--placeholder-text-color);
+  line-height: 1;
+  position: relative;
+  cursor: pointer;
+  transition: all .2s ease;
+
+  &::before {
+    @include absolute-pseudo(50%, auto, auto, 0);
+    transition: all .2s ease;
+    width: 1px;
+    height: 50%;
+    background: var(--placeholder-text-color);
+    transform: translateY(-50%);
+    opacity: .25;
+  }
+
+  &:hover {
+    background: var(--secondary-color);
+    color: var(--negative-text-color);
+  }
+
+  &:hover::before {
+    background: var(--secondary-color);
+  }
+}
+
+.generator-special-chars {
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.special-char {
+  @include code-copy;
+
+  color: var(--negative-text-color);
+  padding: 6px 9px;
+}
