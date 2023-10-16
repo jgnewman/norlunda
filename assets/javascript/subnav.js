@@ -7,8 +7,7 @@ window.addEventListener('load', () => {
 
   const scrollToElem = elem => {
     const rect = elem.getBoundingClientRect()
-    const scrollableElemRect = scrollableElem.getBoundingClientRect()
-    const top = rect.top - scrollableElemRect.top - headerHeight/2
+    const top = rect.top + scrollableElem.scrollTop - headerHeight * 1.5
     scrollableElem.scrollTo({ top, behavior: 'smooth' })
   }
 
@@ -23,6 +22,7 @@ window.addEventListener('load', () => {
     a.setAttribute('href', `#${header.id}`)
     a.classList.add('meta-nav-link')
     a.textContent = header.textContent
+
     a.addEventListener('click', (e) => {
       e.preventDefault()
       !a.classList.contains('active') && scrollToElem(header)
@@ -51,7 +51,7 @@ window.addEventListener('load', () => {
         return true
       } else {
         link.classList.remove('active')
-        return false
+        return hasActivatedLink
       }
     }, false)
   }
