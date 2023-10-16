@@ -4,9 +4,9 @@
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
 
-  // src/consonants.js
+  // algorithm/consonants.js
   var require_consonants = __commonJS({
-    "src/consonants.js"(exports, module) {
+    "algorithm/consonants.js"(exports, module) {
       var pgmcConsonants = ["b", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "\xFE", "w", "z"];
       var allConsonants = [...pgmcConsonants, "v", "x"];
       var pgmcApproximants = ["j", "l", "r", "w"];
@@ -40,9 +40,9 @@
     }
   });
 
-  // src/vowels.js
+  // algorithm/vowels.js
   var require_vowels = __commonJS({
-    "src/vowels.js"(exports, module) {
+    "algorithm/vowels.js"(exports, module) {
       var baseVowels = ["a", "\xE6", "e", "i", "o", "\xF8", "u", "y"];
       var nasalVowels = ["\u0105", "\u0119", "\u012F", "\u01EB", "\u0173"];
       var allShortVowels = [...baseVowels, ...nasalVowels];
@@ -137,9 +137,9 @@
     }
   });
 
-  // src/utils.js
+  // algorithm/utils.js
   var require_utils = __commonJS({
-    "src/utils.js"(exports, module) {
+    "algorithm/utils.js"(exports, module) {
       var {
         allConsonants,
         pgmcApproximants,
@@ -325,9 +325,9 @@
     }
   });
 
-  // src/syllableize.js
+  // algorithm/syllableize.js
   var require_syllableize = __commonJS({
-    "src/syllableize.js"(exports, module) {
+    "algorithm/syllableize.js"(exports, module) {
       var { separateInitialVowels, separateInitialConsonants, containsVowels } = require_utils();
       var getVowelConsonantChunk = (word) => {
         const [vowels, rest] = separateInitialVowels(word);
@@ -357,9 +357,9 @@
     }
   });
 
-  // src/iMutation.js
+  // algorithm/iMutation.js
   var require_iMutation = __commonJS({
-    "src/iMutation.js"(exports, module) {
+    "algorithm/iMutation.js"(exports, module) {
       var syllableize = require_syllableize();
       var { separateInitialConsonants, getVowelGroups, lastOf, firstOf, runPhases } = require_utils();
       var { shortBackVowels, iMutators, iMutationMap } = require_vowels();
@@ -400,9 +400,9 @@
     }
   });
 
-  // src/aMutation.js
+  // algorithm/aMutation.js
   var require_aMutation = __commonJS({
-    "src/aMutation.js"(exports, module) {
+    "algorithm/aMutation.js"(exports, module) {
       var { aMutators, longOMutators } = require_vowels();
       var syllableize = require_syllableize();
       var {
@@ -493,9 +493,9 @@
     }
   });
 
-  // src/gemination.js
+  // algorithm/gemination.js
   var require_gemination = __commonJS({
-    "src/gemination.js"(exports, module) {
+    "algorithm/gemination.js"(exports, module) {
       var { fricatives, bilabials } = require_consonants();
       var { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPhases } = require_utils();
       var { allShortVowels } = require_vowels();
@@ -547,9 +547,9 @@
     }
   });
 
-  // src/vowelLaxing.js
+  // algorithm/vowelLaxing.js
   var require_vowelLaxing = __commonJS({
-    "src/vowelLaxing.js"(exports, module) {
+    "algorithm/vowelLaxing.js"(exports, module) {
       var { pgmcVelars } = require_consonants();
       var syllableize = require_syllableize();
       var {
@@ -715,9 +715,9 @@
     }
   });
 
-  // src/zLoss.js
+  // algorithm/zLoss.js
   var require_zLoss = __commonJS({
-    "src/zLoss.js"(exports, module) {
+    "algorithm/zLoss.js"(exports, module) {
       var {
         allButLastOf,
         lastOf,
@@ -774,9 +774,9 @@
     }
   });
 
-  // src/wgHardening.js
+  // algorithm/wgHardening.js
   var require_wgHardening = __commonJS({
-    "src/wgHardening.js"(exports, module) {
+    "algorithm/wgHardening.js"(exports, module) {
       var { lastOf, firstOf, isVowel, runPhases } = require_utils();
       var hardenDW = (word) => {
         const pieces = word.split(/dw/);
@@ -797,9 +797,9 @@
     }
   });
 
-  // src/syllableReduction.js
+  // algorithm/syllableReduction.js
   var require_syllableReduction = __commonJS({
-    "src/syllableReduction.js"(exports, module) {
+    "algorithm/syllableReduction.js"(exports, module) {
       var syllableize = require_syllableize();
       var {
         firstOf,
@@ -905,9 +905,9 @@
     }
   });
 
-  // src/shiftFricatives.js
+  // algorithm/shiftFricatives.js
   var require_shiftFricatives = __commonJS({
-    "src/shiftFricatives.js"(exports, module) {
+    "algorithm/shiftFricatives.js"(exports, module) {
       var { fricatives, pgmcStops } = require_consonants();
       var {
         firstOf,
@@ -1009,9 +1009,9 @@
     }
   });
 
-  // src/modernization.js
+  // algorithm/modernization.js
   var require_modernization = __commonJS({
-    "src/modernization.js"(exports, module) {
+    "algorithm/modernization.js"(exports, module) {
       var syllableize = require_syllableize();
       var shiftFricatives = require_shiftFricatives();
       var {
@@ -1108,9 +1108,9 @@
     }
   });
 
-  // src/massageOutliers.js
+  // algorithm/massageOutliers.js
   var require_massageOutliers = __commonJS({
-    "src/massageOutliers.js"(exports, module) {
+    "algorithm/massageOutliers.js"(exports, module) {
       var { runPhases } = require_utils();
       var outlierMap = {
         // Change of ag to au is non-standard
@@ -1136,9 +1136,9 @@
     }
   });
 
-  // src/sanitizePhonology.js
+  // algorithm/sanitizePhonology.js
   var require_sanitizePhonology = __commonJS({
-    "src/sanitizePhonology.js"(exports, module) {
+    "algorithm/sanitizePhonology.js"(exports, module) {
       var { runPhases } = require_utils();
       var sanitize = (word) => {
         return word.replace(/ą̄/g, "\u0101").replace(/į̄/g, "\u012F").replace(/į̄/g, "\u012F").replace(/ǫ̂/g, "\u01ED").replace(/ų̄/g, "\u0173");
@@ -1149,9 +1149,9 @@
     }
   });
 
-  // src/falseVerbs.js
+  // algorithm/falseVerbs.js
   var require_falseVerbs = __commonJS({
-    "src/falseVerbs.js"(exports, module) {
+    "algorithm/falseVerbs.js"(exports, module) {
       module.exports = [
         "akran\u0105",
         "aljan\u0105",
@@ -1194,9 +1194,9 @@
     }
   });
 
-  // src/index.js
-  var require_src = __commonJS({
-    "src/index.js"(exports, module) {
+  // algorithm/index.js
+  var require_algorithm = __commonJS({
+    "algorithm/index.js"(exports, module) {
       var { lastOf } = require_utils();
       var iMutation = require_iMutation();
       var aMutation = require_aMutation();
@@ -1262,5 +1262,5 @@
       module.exports = init;
     }
   });
-  require_src();
+  require_algorithm();
 })();
