@@ -1,6 +1,6 @@
 $header-height: 78px; // corresponds to headerHeight in JavaScript
 $aside-img-height: 266px;
-$page-meta-width: 212px;
+$page-meta-width: 236px;
 
 $small-aside-width: 25vw;
 $aside-width: 360px;
@@ -52,6 +52,7 @@ header {
 .header-inner-right {
   @include vw-4 {
     width: $page-meta-width;
+    padding-left: 24px;
   }
 }
 
@@ -60,6 +61,7 @@ aside {
   top: $header-height;
 
   height: calc(100% - #{$header-height});
+  overflow: hidden;
 
   border-right: 1px solid var(--divider-color);
   background: url($assets + '/images/forest.jpg') center bottom no-repeat var(--background-color);
@@ -124,6 +126,7 @@ main {
   box-shadow: 0 0 25px 25px var(--background-color);
   z-index: 3;
 
+  padding-left: 24px;
   max-height: calc(100vh - #{$header-height}); // accounts for header and footer
   overflow-y: auto;
 

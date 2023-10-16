@@ -1,25 +1,14 @@
 .site-nav {
   overflow-y: auto;
-  height: calc(100vh - #{$header-height} - #{$aside-img-height});
+  background: var(--background-color);
   padding-left: $small-side-margin;
   padding-right: $small-side-margin;
+  max-height: calc(100vh - #{$header-height});
+  box-shadow: 0 0 100px 120px var(--background-color);
 
   @include vw-4 {
     padding-left: $side-margin;
     padding-right: $side-margin;
-  }
-}
-
-.nav-fade {
-  height: 24px;
-  width: 100%;
-  background: transparent;
-  background: linear-gradient(0deg, var(--background-color) 0%, var(--background-color-transparent) 100%);
-  transform: translateY(-24px);
-
-  display: none;
-  @include vh-1 {
-    display: block;
   }
 }
 

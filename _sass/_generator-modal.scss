@@ -6,6 +6,13 @@
   height: 66px;
   font-size: 22px;
   line-height: 1;
+  min-width: 0;
+
+  padding: 0 4vw;
+
+  @include vw-2 {
+    padding: 0 36px;
+  }
 
   &::placeholder {
     font-size: 16px;
@@ -20,6 +27,12 @@
   position: relative;
   cursor: pointer;
   transition: all .2s ease;
+
+  padding: 0 4vw;
+
+  @include vw-2 {
+    padding: 0 26px;
+  }
 
   &::before {
     @include absolute-pseudo(50%, auto, auto, 0);
