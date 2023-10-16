@@ -1,0 +1,48 @@
+<section id="generator-modal" class="active modal-overlay flex justify-content-center align-items-center align-content-center" data-modal-name="generator" aria-hidden="true">
+  <a class="close-modal">
+    {% include x.svg %}
+  </a>
+  <div class="modal-content">
+    <form id="generator-form" class="generator-field-wrapper flex justify-content-space-between">
+      <input id="generator-field" type="text" class="generator-field field px-36 flex-grow-2" placeholder="Enter a word in Proto-Germanic..." />
+      <button type="submit" class="generator-button px-26">Generate</button>
+    </form>
+
+    <div class="px-36">
+      <div class="generator-special-chars py-16 mb-24 flex justify-content-flex-start flex-wrap flex-gap-1">
+        <button class="special-char button">þ</button>
+
+        <button class="special-char button">ā</button>
+        <button class="special-char button">ē</button>
+        <button class="special-char button">ī</button>
+        <button class="special-char button">ō</button>
+        <button class="special-char button">ū</button>
+        
+        <button class="special-char button">ą</button>
+        <button class="special-char button">ę</button>
+        <button class="special-char button">į</button>
+        <button class="special-char button">ǫ</button>
+        <button class="special-char button">ų</button>
+        
+        <button class="special-char button">ą̄</button>
+        <button class="special-char button">į̄</button>
+        <button class="special-char button">ǭ</button>
+        
+        <button class="special-char button">â</button>
+        <button class="special-char button">ô</button>
+        <button class="special-char button">û</button>
+
+        <button class="special-char button">ǫ̂</button>
+      </div>
+
+      <div id="generator-output" class="generator-output">
+        <p id="generator-default-output-content" class="generator-default-output">
+          Enter a <strong>lemma</strong> in normalized Proto-Germanic spelling and click “Generate”
+          to create a Norlunda word. The generator may produce unexpected results
+          if given a compound word or a word with a prefix or suffix.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

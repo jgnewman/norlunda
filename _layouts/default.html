@@ -36,7 +36,7 @@
         </form>
       </div>
       <div class="header-inner-right flex-shrink-1">
-        <button class="button generate-button flex align-items-center flex-gap-1">
+        <button class="button generate-button flex align-items-center flex-gap-1" data-modal-trigger="generator">
           {% include plus.svg %}
           <span>Create a word</span>
         </button>
@@ -97,7 +97,13 @@
     </footer>
   </main>
 
+  {% include generator-modal.html %}
+
+  <script defer src="{{ '/assets/javascript/pubsub.js' | relative_url }}"></script>
   <script defer src="{{ '/assets/javascript/menu.js' | relative_url }}"></script>
   <script defer src="{{ '/assets/javascript/subnav.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/javascript/modals.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/javascript/generator-modal.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/javascript/algorithm.js' | relative_url }}"></script>
 </body>
 </html>

@@ -5,12 +5,16 @@
 @import "variables";
 @import "responsiveness";
 @import "typography";
-@import "flex";
-@import "spacing";
 @import "position";
 @import "inputs";
+@import "tables";
+@import "modals";
 
 @import "layout";
 @import "header";
 @import "aside";
 @import "main";
+@import "generator-modal";
+
+@import "flex";
+@import "spacing";
