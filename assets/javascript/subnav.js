@@ -63,4 +63,34 @@ window.addEventListener('load', () => {
     e.preventDefault()
     scrollableElem.scrollTo({ top: 0, behavior: 'smooth' })
   })
+
+  // Generally capture scroll position on a refresh and apply it when the
+  // page loads
+  const restoreScrollPosition = () => {
+    const storedScrollPosition = JSON.parse(localStorage.getItem('scroll') ?? '{}')
+    if (!storedScrollPosition.time) return;
+
+    if (storedScrollPosition.url === location.href && Date.now() - storedScrollPosition.time < 5000) {
+      scrollableElem.scrollTo({ top: storedScrollPosition.scroll, behavior: 'instant' })
+    }
+  }
+
+  window.addEventListener('unload', () => {
+    localStorage.setItem('scroll', JSON.stringify({
+      scroll: scrollableElem.scrollTop,
+      url: location.href,
+      time: Date.now()
+    }))
+  })
+  restoreScrollPosition()
+
+  // Because we are scrolling an element rather than the body, sometimes
+  // when the browser hash changes or we load with a hash path, the browser
+  // accidentally scrolls the window content partially out of view, making it
+  // unfixable within the UI. This little hack ensures that we always have
+  // the window content positioned correctly.
+  const resetWindowScroll = () => document.body.scrollTop = document.documentElement.scrollTop = 0;
+  requestAnimationFrame(resetWindowScroll)
+  window.addEventListener('hashchange', resetWindowScroll)
+
 })
