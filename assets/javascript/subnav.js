@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
   const isInViewport = elem => {
     const rect = elem.getBoundingClientRect()
     return (
-      rect.top >= headerHeight &&
+      rect.top >= 0 &&
       rect.left >= 0 &&
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
@@ -44,7 +44,19 @@ window.addEventListener('load', () => {
   }
 
   const handleScroll = () => {
-    links.reduce((hasActivatedLink, link) => {
+    let linkToNearestHeaderOffTop;
+    let linkToNearestTopPos;
+
+    links.forEach(link => {
+      const header = document.querySelector(link.getAttribute('href'))
+      const rect = header.getBoundingClientRect()
+      if (rect.top < 0 && (!linkToNearestHeaderOffTop || linkToNearestTopPos < rect.top)) {
+        linkToNearestHeaderOffTop = link
+        linkToNearestTopPos = rect.top
+      }
+    })
+
+    const headerIsInViewport = links.reduce((hasActivatedLink, link) => {
       const header = document.querySelector(link.getAttribute('href'))
       if (!hasActivatedLink && isInViewport(header)) {
         link.classList.add('active')
@@ -54,6 +66,10 @@ window.addEventListener('load', () => {
         return hasActivatedLink
       }
     }, false)
+
+    if (!headerIsInViewport) {
+      linkToNearestHeaderOffTop?.classList.add('active')
+    }
   }
 
   scrollableElem.addEventListener('scroll', handleScroll)
