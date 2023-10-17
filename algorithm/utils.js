@@ -213,6 +213,29 @@ const fixUncomfortableEndCluster = (word) => {
   return allButLastOf(word) + 'a' + lastOf(word)
 }
 
+const dedoubleConsonantsInCluster = (word) => {
+  let newWord = ''
+
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i]
+    const nextChar = word[i + 1]
+    const thirdChar = word[i + 2]
+    
+    if (
+      isConsonant(char) &&
+      isConsonant(nextChar) &&
+      isConsonant(thirdChar) &&
+      (char === nextChar || nextChar === thirdChar)) {
+      newWord += (char === nextChar) ? char + thirdChar : char + nextChar  
+      i += 2
+    } else {
+      newWord += char
+    }
+  }
+
+  return newWord
+}
+
 const runPhases = (word, context, phaseFnArray, log = false) => {
   const result = phaseFnArray.reduce((resultList, phaseFn) => {
     return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word, context)]
@@ -250,5 +273,6 @@ module.exports = {
   removeConsonants,
   endsWithUncomfortableConsonantCluster,
   fixUncomfortableEndCluster,
+  dedoubleConsonantsInCluster,
   runPhases,
 }

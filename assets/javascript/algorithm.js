@@ -115,6 +115,64 @@
           return "y";
         return "\u0101";
       };
+      var finalOrthography = {
+        shortVowels: ["a", "e", "i", "o", "u"],
+        longVowels: ["aa", "ee", "ie", "oe"],
+        diphthongs: ["au", "ei"],
+        longToShort: {
+          "aa": "o",
+          "ee": "e",
+          "ie": "i",
+          "oe": "e"
+        }
+      };
+      var finalSpellingOf = (vowel) => {
+        switch (vowel) {
+          case "a":
+            return "a";
+          case "\xE6":
+            return "e";
+          case "e":
+            return "e";
+          case "i":
+            return "i";
+          case "o":
+            return "o";
+          case "\xF8":
+            return "i";
+          case "u":
+            return "u";
+          case "y":
+            return "u";
+          case "\u0101":
+            return "ei";
+          case "\u01E3":
+            return "oe";
+          case "\u0113":
+            return "ee";
+          case "\u012B":
+            return "ie";
+          case "\u014D":
+            return "u";
+          case "\u0153":
+            return "oe";
+          case "\u0254":
+            return "aa";
+          case "\u016B":
+            return "au";
+          case "\u0233":
+            return "au";
+        }
+        return vowel;
+      };
+      var ipaifyFinalOrthography = (word) => {
+        const result = word.replace(/aa/g, "\u0254\u02D0").replace(/au/g, "a\u028A").replace(/ee/g, "e\u02D0").replace(/ei/g, "a\u026A").replace(/ie/g, "i\u02D0").replace(/i([^ː])/g, "\u026A$1").replace(/(oe|œ)/g, "\xF8\u02D0").replace(/[bcdfghjklmnpqrstvwxz]{2}/ig, (match) => {
+          if (match[0] === match[1])
+            return match[0] + "\u02D0";
+          return match;
+        });
+        return `/'${result}/`;
+      };
       module.exports = {
         baseVowels,
         nasalVowels,
@@ -132,7 +190,10 @@
         aMutators,
         longOMutators,
         shortVowelVariantOf,
-        longVowelVariantOf
+        longVowelVariantOf,
+        finalOrthography,
+        finalSpellingOf,
+        ipaifyFinalOrthography
       };
     }
   });
@@ -286,6 +347,21 @@
       var fixUncomfortableEndCluster = (word) => {
         return allButLastOf(word) + "a" + lastOf(word);
       };
+      var dedoubleConsonantsInCluster = (word) => {
+        let newWord = "";
+        for (let i = 0; i < word.length; i++) {
+          const char = word[i];
+          const nextChar = word[i + 1];
+          const thirdChar = word[i + 2];
+          if (isConsonant(char) && isConsonant(nextChar) && isConsonant(thirdChar) && (char === nextChar || nextChar === thirdChar)) {
+            newWord += char === nextChar ? char + thirdChar : char + nextChar;
+            i += 2;
+          } else {
+            newWord += char;
+          }
+        }
+        return newWord;
+      };
       var runPhases = (word, context, phaseFnArray, log = false) => {
         const result = phaseFnArray.reduce((resultList, phaseFn) => {
           return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word, context)];
@@ -320,6 +396,7 @@
         removeConsonants,
         endsWithUncomfortableConsonantCluster,
         fixUncomfortableEndCluster,
+        dedoubleConsonantsInCluster,
         runPhases
       };
     }
@@ -1026,9 +1103,10 @@
         endsWithUncomfortableConsonantCluster,
         containsVowels,
         runPhases,
-        isConsonant
+        isConsonant,
+        dedoubleConsonantsInCluster
       } = require_utils();
-      var { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require_vowels();
+      var { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf, finalSpellingOf } = require_vowels();
       var { pgmcApproximants } = require_consonants();
       var shortRegex = new RegExp(`(${baseVowels.join("|")})`, "g");
       var longPlusWRegex = new RegExp(`(${longVowels.join("|")})w`, "g");
@@ -1070,25 +1148,15 @@
         }).join("");
       };
       var undoubleConsonants = (word) => {
-        let newWord = "";
-        for (let i = 0; i < word.length; i++) {
-          const char = word[i];
-          const nextChar = word[i + 1];
-          const thirdChar = word[i + 2];
-          if (isConsonant(char) && isConsonant(nextChar) && isConsonant(thirdChar) && (char === nextChar || nextChar === thirdChar)) {
-            newWord += char === nextChar ? char + thirdChar : char + nextChar;
-            i += 2;
-          } else {
-            newWord += char;
-          }
-        }
-        return newWord;
+        return dedoubleConsonantsInCluster(word);
       };
       var shiftVowels = (word) => {
         return word.replace(/au/g, "au").replace(/j?a$/, (_, __, src) => {
           const stem = src.slice(0, -1);
-          return lastOf(stem) === "j" ? "ja" : containsVowels(stem) ? "a" : "aa";
-        }).replace(/a/g, "a").replace(/æ/g, "e").replace(/e/g, "e").replace(/i/g, "i").replace(/o/g, "o").replace(/ø/g, "i").replace(/y/g, "u").replace(/ā/g, (_, index, src) => !!src[index + 1] ? "ei" : "aa").replace(/ǣ/g, "oe").replace(/ē/g, "ee").replace(/ī/g, "ie").replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? "oe" : "u").replace(/œ/g, "oe").replace(/ɔ/g, "aa").replace(/[ūȳ]/g, "au");
+          if (lastOf(stem) === "j")
+            return "ja";
+          return containsVowels(stem) ? finalSpellingOf("a") : finalSpellingOf("\u0254");
+        }).replace(/a/g, finalSpellingOf("a")).replace(/æ/g, finalSpellingOf("\xE6")).replace(/e/g, finalSpellingOf("e")).replace(/i/g, finalSpellingOf("i")).replace(/o/g, finalSpellingOf("o")).replace(/ø/g, finalSpellingOf("\xF8")).replace(/y/g, finalSpellingOf("y")).replace(/ā/g, (_, index, src) => !!src[index + 1] ? finalSpellingOf("\u0101") : finalSpellingOf("\u0254")).replace(/ǣ/g, finalSpellingOf("\u01E3")).replace(/ē/g, finalSpellingOf("\u0113")).replace(/ī/g, finalSpellingOf("\u012B")).replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? finalSpellingOf("\u0153") : finalSpellingOf("\u014D")).replace(/œ/g, finalSpellingOf("\u0153")).replace(/ɔ/g, finalSpellingOf("\u0254")).replace(/ū/g, finalSpellingOf("\u016B")).replace(/ȳ/g, finalSpellingOf("\u0233"));
       };
       var fixTerminalAir = (word) => {
         return word.replace(/eir$/, "eer");
@@ -1194,6 +1262,44 @@
     }
   });
 
+  // algorithm/retrofitCompounds.js
+  var require_retrofitCompounds = __commonJS({
+    "algorithm/retrofitCompounds.js"(exports, module) {
+      var syllableize = require_syllableize();
+      var { runPhases, firstOf, dedoubleConsonantsInCluster } = require_utils();
+      var { finalOrthography } = require_vowels();
+      var { allConsonants } = require_consonants();
+      var reapplyUnstressedShorening = (word) => {
+        const syllbles = syllableize(word);
+        return firstOf(syllbles) + syllbles.slice(1).map((syllable) => {
+          return finalOrthography.longVowels.reduce((modSyllable, longVowel) => {
+            return modSyllable.replace(longVowel, finalOrthography.longToShort[longVowel]);
+          }, syllable);
+        }).join("");
+      };
+      var reapplyPreClusterShortening = (word) => {
+        return finalOrthography.longVowels.reduce((modWord, longVowel) => {
+          const longVowelPlusClusterRegex = new RegExp(`${longVowel}[${allConsonants.join("")}]{2}`, "g");
+          return modWord.replace(longVowelPlusClusterRegex, (matchedText) => {
+            const vowel = matchedText.slice(0, 2);
+            const cluster = matchedText.slice(2);
+            return finalOrthography.longToShort[vowel] + cluster;
+          });
+        }, word);
+      };
+      var dedoubleConsonants = (word) => {
+        return dedoubleConsonantsInCluster(word);
+      };
+      module.exports = (word, context) => {
+        return runPhases(word, context, [
+          reapplyUnstressedShorening,
+          reapplyPreClusterShortening,
+          dedoubleConsonants
+        ]);
+      };
+    }
+  });
+
   // algorithm/index.js
   var require_algorithm = __commonJS({
     "algorithm/index.js"(exports, module) {
@@ -1209,7 +1315,9 @@
       var massageOutliers = require_massageOutliers();
       var sanitizePhonology = require_sanitizePhonology();
       var falseVerbs = require_falseVerbs();
-      var init = (baseWord) => {
+      var retrofitCompounds = require_retrofitCompounds();
+      var { ipaifyFinalOrthography } = require_vowels();
+      var runAlgorithm = (baseWord) => {
         const normalizedWord = baseWord.toLowerCase().replace(/^\*/, "");
         const context = {};
         const steps = [];
@@ -1257,6 +1365,32 @@
           result: modernization(lastOf(steps).result, context)
         });
         return steps;
+      };
+      var init = (baseWord) => {
+        const pieces = baseWord.split(":").map((piece) => piece.trim());
+        if (pieces.length === 1) {
+          const steps = runAlgorithm(pieces[0]);
+          const output = lastOf(steps).result;
+          return {
+            isCompound: false,
+            input: baseWord,
+            steps,
+            output,
+            outputComponents: null,
+            outputIPA: ipaifyFinalOrthography(output)
+          };
+        }
+        const outputComponents = pieces.map((piece) => lastOf(runAlgorithm(piece)).result);
+        const rawCompound = outputComponents.join("");
+        const result = retrofitCompounds(rawCompound);
+        return {
+          isCompound: true,
+          input: pieces,
+          steps: null,
+          output: result,
+          outputComponents,
+          outputIPA: ipaifyFinalOrthography(result)
+        };
       };
       typeof window !== "undefined" && (window.norlunda = init);
       module.exports = init;

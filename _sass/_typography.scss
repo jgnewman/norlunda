@@ -84,7 +84,7 @@ $code-font: 'Inconsolata', monospace;
 @mixin fancy-copy {
   @include font-smoothing;
   font-family: $fancy-font;
-  font-size: 64px;
+  font-size: 22px;
   line-height: 1;
   color: var(--heavy-contrast-text-color);
   font-variant-ligatures: none;
@@ -162,7 +162,7 @@ $code-font: 'Inconsolata', monospace;
 }
 
 .oversized-copy {
-  font-size: 300%;
+  font-size: 400%;
 }
 
 body, p, li, input {
@@ -268,4 +268,12 @@ sup {
   display: inline-block;
   border-radius: $border-radius;
   padding: 4px 8px;
+}
+
+.tracking-1 {
+  letter-spacing: 1px;
+}
+
+.tracking-2 {
+  letter-spacing: 2px;
 }

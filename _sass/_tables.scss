@@ -1,13 +1,13 @@
-.table {
+table {
   width: 100%;
 }
 
-.table thead {
+thead {
   border-top: 1px solid var(--divider-color);
   border-bottom: 1px solid var(--divider-color);
 }
 
-.table th {
+th {
   @include label-copy;
   line-height: 1;
   padding: 16px 24px;
@@ -16,11 +16,10 @@
 
   &:first-child {
     border-left: none;
-    padding-left: 0;
   }
 }
 
-.table td {
+td {
   font-size: 16px;
   padding: 2px 24px;
   text-align: left;
@@ -28,10 +27,9 @@
 
   &:first-child {
     border-left: none;
-    padding-left: 0;
   }
 }
 
-.table tbody tr:first-child td {
-  padding-top: 16px;
+.row-stripe {
+  background: var(--alternate-table-row-color);
 }

@@ -69,6 +69,57 @@ const longVowelVariantOf = (vowel) => {
   return 'ā'
 }
 
+const finalOrthography = {
+  shortVowels: ['a', 'e', 'i', 'o', 'u'],
+  longVowels: ['aa', 'ee', 'ie', 'oe'],
+  diphthongs: ['au', 'ei'],
+  longToShort: {
+    'aa': 'o',
+    'ee': 'e',
+    'ie': 'i',
+    'oe': 'e',
+  },
+}
+
+const finalSpellingOf = (vowel) => {
+  switch (vowel) {
+    case 'a': return 'a'
+    case 'æ': return 'e'
+    case 'e': return 'e'
+    case 'i': return 'i'
+    case 'o': return 'o'
+    case 'ø': return 'i'
+    case 'u': return 'u'
+    case 'y': return 'u'
+    case 'ā': return 'ei'
+    case 'ǣ': return 'oe'
+    case 'ē': return 'ee'
+    case 'ī': return 'ie'
+    case 'ō': return 'u'
+    case 'œ': return 'oe'
+    case 'ɔ': return 'aa'
+    case 'ū': return 'au'
+    case 'ȳ': return 'au'
+  }
+  return vowel
+}
+
+const ipaifyFinalOrthography = (word) => {
+  const result = word
+    .replace(/aa/g, 'ɔː')
+    .replace(/au/g, 'aʊ')
+    .replace(/ee/g, 'eː')
+    .replace(/ei/g, 'aɪ')
+    .replace(/ie/g, 'iː')
+    .replace(/i([^ː])/g, 'ɪ$1')
+    .replace(/(oe|œ)/g, 'øː')
+    .replace(/[bcdfghjklmnpqrstvwxz]{2}/ig, (match) => {
+      if (match[0] === match[1]) return match[0] + 'ː'
+      return match
+    })
+  return `/'${result}/` 
+}
+
 module.exports = {
   baseVowels,
   nasalVowels,
@@ -92,4 +143,8 @@ module.exports = {
 
   shortVowelVariantOf,
   longVowelVariantOf,
+
+  finalOrthography,
+  finalSpellingOf,
+  ipaifyFinalOrthography,
 }

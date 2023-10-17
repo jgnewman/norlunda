@@ -10,8 +10,10 @@ const modernization = require('./modernization')
 const massageOutliers = require('./massageOutliers')
 const sanitizePhonology = require('./sanitizePhonology')
 const falseVerbs = require('./falseVerbs')
+const retrofitCompounds = require('./retrofitCompounds')
+const { ipaifyFinalOrthography } = require('./vowels')
 
-const init = (baseWord) => {
+const runAlgorithm = (baseWord) => {
   const normalizedWord = baseWord.toLowerCase().replace(/^\*/, '')
   const context = {}
   const steps = []
@@ -71,6 +73,37 @@ const init = (baseWord) => {
   })
 
   return steps
+}
+
+const init = (baseWord) => {
+  const pieces = baseWord.split(':').map(piece => piece.trim())
+
+  if (pieces.length === 1) {
+    const steps = runAlgorithm(pieces[0])
+    const output = lastOf(steps).result
+    return {
+      isCompound: false,
+      input: baseWord,
+      steps,
+      output: output,
+      outputComponents: null,
+      outputIPA: ipaifyFinalOrthography(output),
+    }
+  }
+
+  // If this should be a compound
+  const outputComponents = pieces.map(piece => lastOf(runAlgorithm(piece)).result)
+  const rawCompound = outputComponents.join('')
+  const result = retrofitCompounds(rawCompound)
+
+  return {
+    isCompound: true,
+    input: pieces,
+    steps: null,
+    output: result,
+    outputComponents,
+    outputIPA: ipaifyFinalOrthography(result),
+  }
 }
 
 typeof window !== 'undefined' && (window.norlunda = init)

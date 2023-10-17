@@ -13,8 +13,9 @@ const {
   containsVowels,
   runPhases,
   isConsonant,
+  dedoubleConsonantsInCluster,
 } = require("./utils")
-const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf } = require("./vowels")
+const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf, finalSpellingOf } = require("./vowels")
 const { pgmcApproximants } = require("./consonants")
 
 const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
@@ -79,26 +80,7 @@ const shortenUnstressedLongVowels = (word) => {
 }
 
 const undoubleConsonants = (word) => {
-  let newWord = ''
-
-  for (let i = 0; i < word.length; i++) {
-    const char = word[i]
-    const nextChar = word[i + 1]
-    const thirdChar = word[i + 2]
-    
-    if (
-      isConsonant(char) &&
-      isConsonant(nextChar) &&
-      isConsonant(thirdChar) &&
-      (char === nextChar || nextChar === thirdChar)) {
-      newWord += (char === nextChar) ? char + thirdChar : char + nextChar  
-      i += 2
-    } else {
-      newWord += char
-    }
-  }
-
-  return newWord
+  return dedoubleConsonantsInCluster(word)
 }
 
 const shiftVowels = (word) => {
@@ -106,23 +88,25 @@ const shiftVowels = (word) => {
     .replace(/au/g, 'au') // no change, but want to have every vowel represented
     .replace(/j?a$/, (_, __, src) => {
       const stem = src.slice(0, -1)
-      return lastOf(stem) === 'j' ? 'ja' : containsVowels(stem) ? 'a' : 'aa'
+      if (lastOf(stem) === 'j') return 'ja'
+      return containsVowels(stem) ? finalSpellingOf('a') : finalSpellingOf('ɔ')
     })
-    .replace(/a/g, 'a') // no change
-    .replace(/æ/g, 'e')
-    .replace(/e/g, 'e') // no change
-    .replace(/i/g, 'i') // no change
-    .replace(/o/g, 'o') // no change
-    .replace(/ø/g, 'i')
-    .replace(/y/g, 'u')
-    .replace(/ā/g, (_, index, src) => !!src[index + 1] ? 'ei' : 'aa')
-    .replace(/ǣ/g, 'oe')
-    .replace(/ē/g, 'ee')
-    .replace(/ī/g, 'ie')
-    .replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? 'oe' : 'u')
-    .replace(/œ/g, 'oe')
-    .replace(/ɔ/g, 'aa')
-    .replace(/[ūȳ]/g, 'au')
+    .replace(/a/g, finalSpellingOf('a'))
+    .replace(/æ/g, finalSpellingOf('æ'))
+    .replace(/e/g, finalSpellingOf('e'))
+    .replace(/i/g, finalSpellingOf('i'))
+    .replace(/o/g, finalSpellingOf('o'))
+    .replace(/ø/g, finalSpellingOf('ø'))
+    .replace(/y/g, finalSpellingOf('y'))
+    .replace(/ā/g, (_, index, src) => !!src[index + 1] ? finalSpellingOf('ā') : finalSpellingOf('ɔ'))
+    .replace(/ǣ/g, finalSpellingOf('ǣ'))
+    .replace(/ē/g, finalSpellingOf('ē'))
+    .replace(/ī/g, finalSpellingOf('ī'))
+    .replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? finalSpellingOf('œ') : finalSpellingOf('ō'))
+    .replace(/œ/g, finalSpellingOf('œ'))
+    .replace(/ɔ/g, finalSpellingOf('ɔ'))
+    .replace(/ū/g, finalSpellingOf('ū'))
+    .replace(/ȳ/g, finalSpellingOf('ȳ'))
 }
 
 const fixTerminalAir = (word) => {

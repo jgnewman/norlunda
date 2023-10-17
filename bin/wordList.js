@@ -51,7 +51,7 @@ let longestBase = 0
 let longestResult = 0
 
 const output = list.map(([base, meaning]) => {
-  const result = lastOf(init(base)).result
+  const result = init(base).output
 
   if (base.length > longestBase) { longestBase = base.length }
   if (result.length > longestResult) { longestResult = result.length }
