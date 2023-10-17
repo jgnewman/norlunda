@@ -7,7 +7,7 @@ permalink: /algorithm
 # Norlunda algorithm
 
 {: .byline }
-Updated 2023.10.11
+Updated 2023.10.16
 
 When we’ve settled on a Proto-Germanic lemma that will serve as the basis for a new word in Norlunda, we apply a system of sound changes as described here to create a new word. Because this algorithm is designed to simulate 2,000 years of incremental change, there are many steps and it is important to follow each step *in order*.
 
@@ -261,8 +261,20 @@ Word-terminal **/aɪr/** becomes **/eːr/** spelled **⟨eer⟩**.
 
 ## Phase 11: Retrofit Old Compounds
 
-Once a few roots have been converted from Proto-Germanic into Norlunda, it may be necessary to combine them to create a compound word. In most cases, simply combining the results is sufficient. However, when there is evidence that the compound should have existed in earlier language stages (such as in the case of common Germanic personal names), then the following rules should be applied after combining the roots together:
+Once a few roots have been converted from Proto-Germanic into Norlunda, it may be necessary to combine them to create a compound word. In most cases, simply combining the results is sufficient. However, when there is evidence that the compound should have existed in earlier language stages and should be treated more like a single word than a combination of two (such as in the case of common Germanic personal names), then the following rules should be applied after combining the roots together:
 
+{: .mb-8 }
+Re-apply unstressed vowel shortening. Specifically, all long vowels in unstressed syllables shorten. Example: _Fridriek_ → _Fridrik_.
+- ⟨aa⟩  →  ⟨o⟩
+- ⟨ee⟩  →  ⟨e⟩
+- ⟨ie⟩  →  ⟨i⟩
+- ⟨oe⟩  →  ⟨e⟩
+
+{: .mb-8 }
 Re-apply pre-cluster vowel shortening. Specifically, long vowels are shortened when followed by a consonant cluster. Example: _Riekhard_ → _Rikhard_.
+- ⟨aa⟩  →  ⟨o⟩
+- ⟨ee⟩  →  ⟨e⟩
+- ⟨ie⟩  →  ⟨i⟩
+- ⟨oe⟩  →  ⟨e⟩
 
-In any consonant cluster containing a doubled consonant plus at least one other consonant, the doubled consonant becomes single. Example: _Villhelm_ → _Vilhelm_.
+Re-apply consonant de-doubling. Specifically, when a consonant cluster contains a doubled consonant plus another consonant, one of the double consonants is dropped. Example: _Villhelm_ → _Vilhelm_.
