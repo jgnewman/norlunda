@@ -54,6 +54,11 @@ $button-padding: 8px 10px;
   }
 }
 
+html.dark .search-field-wrapper::before {
+  filter: invert(1);
+  opacity: 0.5;
+}
+
 .search-field-wrapper .field {
   padding-left: 50px;
   width: 100%;

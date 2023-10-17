@@ -20,6 +20,11 @@
   font-size: 16px;
   line-height: 1.66;
 
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
   &::before {
     @include absolute-pseudo;
     
@@ -29,7 +34,6 @@
 
     background: transparent;
     border-radius: $border-radius;
-    z-index: -1;
     transition: all .2s ease;
   }
 

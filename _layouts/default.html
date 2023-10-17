@@ -6,15 +6,17 @@
   <title>{{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   <meta name="description" content="{{ side.description }}">
-
+  
   <meta property="og:title" content="{{ site.title }}">
   <meta property="og:type" content="">
   <meta property="og:url" content="{{ site.baseurl }}{{ page.url }}">
   <meta property="og:image" content="">
-
+  
   <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" sizes="any">
   <link rel="icon" href="{{ '/assets/images/icon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="apple-touch-icon" href="{{ '/assets/images/icon.png' | relative_url }}">
+  
+  <script src="{{ '/assets/javascript/theme.js' | relative_url }}"></script>
 </head>
 <body>
   <header class="flex justify-content-space-between align-items-center">
@@ -33,10 +35,14 @@
           <input type="text" class="field" placeholder="Search" />
         </form>
       </div>
-      <div class="header-inner-right flex-shrink-1">
+      <div class="header-inner-right flex-shrink-1 flex justify-content-flex-start align-items-center flex-gap-1">
         <button class="button generate-button flex align-items-center flex-gap-1" data-modal-trigger="generator">
           {% include plus.svg %}
           <span>Create a word</span>
+        </button>
+        <button id="toggle-theme" class="theme-button p-6">
+          {% include moon.svg %}
+          {% include sun.svg %}
         </button>
       </div>
     </div>
@@ -50,11 +56,11 @@
           <li>
             {% if nav.url == page.url %}
               <a class="aside-nav-link py-8 active">
-                {{ nav.text}}
+                <span>{{ nav.text}}</span>
               </a>
             {% else %}
               <a class="aside-nav-link py-8" href="{{ nav.url | relative_url }}">
-                {{ nav.text}}
+                <span>{{ nav.text}}</span>
               </a>
             {% endif %}
           </li>
@@ -86,7 +92,7 @@
       </div>
       <div class="footer-right flex flex-gap-3 align-items-center">
         {% for social in site.data.social %}
-          <a href="{{ social.url }}">
+          <a class="social-icon" href="{{ social.url }}">
             <img src="{{ social.icon | relative_url }}" alt="{{ social.alt }}" />
           </a>
         {% endfor %}

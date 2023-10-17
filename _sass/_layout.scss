@@ -87,6 +87,10 @@ aside {
   }
 }
 
+html.dark aside {
+  background-blend-mode: multiply;
+}
+
 main {
   margin-top: $header-height;
   height: calc(100% - #{$header-height});

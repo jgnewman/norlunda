@@ -1,6 +1,5 @@
 :root {
   --background-color: #ffffff;
-  --background-color-transparent: rgba(255, 255, 255, 0); // used for css gradients
   --primary-color: #1FBCBC;
   --secondary-color: #B13FF8;
   --gentle-highlight-color: #EEFBFC;
@@ -8,10 +7,27 @@
   --heavy-contrast-text-color: #141C24;
   --moderate-contrast-text-color: #3B3F4A;
   --light-contrast-text-color: #667C8F;
-  --placeholder-text-color: #5f6273;
+  --overlay-color: #141C24;
   --divider-color: #ededf1;
   --field-color: #f0f0f4;
+  --placeholder-text-color: #5f6273;
   --alternate-table-row-color: #f5f5f6;
+}
+
+html.dark {
+  --background-color: #141c24;
+  --primary-color: #1FBCBC;
+  --secondary-color: #B13FF8;
+  --gentle-highlight-color: #222d39;
+  --negative-text-color: #ffffff;
+  --heavy-contrast-text-color: #ededf1;
+  --moderate-contrast-text-color: #afb1b7;
+  --light-contrast-text-color: #667C8F;
+  --overlay-color: #000000;
+  --divider-color: #2f3338;
+  --field-color: #222d39;
+  --placeholder-text-color: #617186;
+  --alternate-table-row-color: #1d2631;
 }
 
 $border-radius: 6px;

@@ -16,6 +16,7 @@ $assets: "{{ site.baseurl }}/assets";
 @import "header";
 @import "aside";
 @import "main";
+@import "footer";
 @import "generator-modal";
 
 @import "flex";

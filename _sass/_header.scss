@@ -66,3 +66,40 @@
     display: none;
   }
 }
+
+.theme-button {
+  cursor: pointer;
+  transition: all .2s ease;
+  transform: scale(0.85);
+
+  &:hover {
+    transform: scale(1);
+  }
+}
+
+.theme-icon path {
+  transition: all .2s ease;
+  stroke: var(--heavy-contrast-text-color)
+}
+
+.theme-button:hover .theme-icon path {
+  stroke: var(--primary-color);
+}
+
+.dark-theme-icon {
+  display: block;
+}
+
+.light-theme-icon {
+  display: none;
+}
+
+html.dark {
+  .dark-theme-icon {
+    display: none;
+  }
+  
+  .light-theme-icon {
+    display: block;
+  }
+}
