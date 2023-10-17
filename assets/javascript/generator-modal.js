@@ -42,7 +42,7 @@ window.addEventListener('load', () => {
     generatorOutput.innerHTML = ''
 
     const outputHeader = document.createElement('div')
-    outputHeader.classList.add('flex', 'justify-content-flex-start', 'align-items-baseline', 'flex-gap-2', 'mb-36')
+    outputHeader.classList.add('flex', 'flex-wrap', 'justify-content-flex-start', 'align-items-baseline', 'flex-gap-2', 'mb-36')
     outputHeader.innerHTML = `
       <span class="fancy-copy oversized-copy">${output}</span>
       <span class="tracking-1">${outputIPA}</span>
