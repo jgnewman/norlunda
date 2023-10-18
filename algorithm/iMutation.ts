@@ -1,8 +1,9 @@
-const syllableize = require("./syllableize")
-const { separateInitialConsonants, getVowelGroups, lastOf, firstOf, runPhases } = require("./utils")
-const { shortBackVowels, iMutators, iMutationMap } = require("./vowels")
+import type { Context } from "./types"
+import syllableize from "./syllableize"
+import { separateInitialConsonants, getVowelGroups, lastOf, firstOf, runPhases, getFromMap } from "./utils"
+import { shortBackVowels, iMutators, iMutationMap } from "./vowels"
 
-const shortBackVowelPosition = (syllable) => {
+const shortBackVowelPosition = (syllable: string) => {
   const maybeMutatable = lastOf(getVowelGroups(syllable))
 
   if (!maybeMutatable || maybeMutatable.vowel.length > 1) return -1
@@ -11,24 +12,24 @@ const shortBackVowelPosition = (syllable) => {
   return maybeMutatable.position
 }
 
-const containsIMutator = (syllable) => {
+const containsIMutator = (syllable: string) => {
   const [initialConsonants, rest] = separateInitialConsonants(syllable)
   return /j/.test(initialConsonants) || iMutators.includes(firstOf(rest))
 }
 
-const iMutate = (syllable, nextSyllable) => {
+const iMutate = (syllable: string, nextSyllable: string) => {
   if (!containsIMutator(nextSyllable)) return syllable
   
   const position = shortBackVowelPosition(syllable)
   if (position === -1) return syllable
 
   const letter = syllable[position]
-  const mutatedLetter = iMutationMap[letter]
+  const mutatedLetter = getFromMap(iMutationMap, letter)
 
   return `${syllable.slice(0, position)}${mutatedLetter}${syllable.slice(position + 1)}`
 }
 
-const handleIMutation = (word) => {
+const handleIMutation = (word: string) => {
   const syllables = syllableize(word)
   
   return syllables.map((syllable, index) => {
@@ -39,6 +40,6 @@ const handleIMutation = (word) => {
   }).join('')
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [handleIMutation])
 }

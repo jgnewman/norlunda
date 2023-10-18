@@ -1,57 +1,66 @@
-const {
-  allConsonants,
-  pgmcApproximants,
-  pgmcNonApproximants,
-  pgmcStops,
-  pgmcNasals,
-} = require('./consonants')
-const { singularVowels } = require('./vowels')
+import type { Context, PhaseFn, PhaseFnArray } from './types'
+import { allConsonants } from './consonants'
+import { singularVowels } from './vowels'
 
-const lastOf = (arr) => arr[arr.length - 1]
-const firstOf = (arr) => typeof arr === 'string' ? (arr[0] ?? '') : arr[0]
-const allButLastOf = (arr) => arr.slice(0, -1)
-
-const reverse = (list) => {
-  if (typeof list === 'string') {
-    return list.split('').reverse().join('')
-  } else {
-    return list.reverse()
-  }
+function lastOf<T>(arr: T[]): T
+function lastOf(arr: string): string
+function lastOf (arr: any) {
+  return arr[arr.length - 1]
 }
 
-const beginsWithVowel = (word) => {
+function firstOf<T>(arr: T[]): T | void
+function firstOf(arr: string): string
+function firstOf (arr: any) {
+  return typeof arr === 'string' ? (arr[0] ?? '') : arr[0]
+}
+
+function allButLastOf<T>(arr: T[]): T[]
+function allButLastOf(arr: string): string
+function allButLastOf (arr: any) {
+  return arr.slice(0, -1)
+}
+
+function reverse<T>(arr: T[]): T[]
+function reverse(arr: string): string
+function reverse (arr: any) {
+  return typeof arr === 'string' ? arr.split('').reverse().join('') : arr.reverse()
+}
+
+export { lastOf, firstOf, allButLastOf, reverse }
+
+export const beginsWithVowel = (word: string) => {
   return singularVowels.includes(firstOf(word))
 }
 
-const beginsWithConsonant = (word) => {
+export const beginsWithConsonant = (word: string) => {
   return allConsonants.includes(firstOf(word))
 }
 
-const endsWithVowel = (word) => {
+export const endsWithVowel = (word: string) => {
   return singularVowels.includes(lastOf(word))
 }
 
-const endsWithConsonant = (word) => {
+export const endsWithConsonant = (word: string) => {
   return allConsonants.includes(lastOf(word))
 }
 
-const isVowel = (letter) => {
+export const isVowel = (letter: string) => {
   return singularVowels.includes(letter)
 }
 
-const isConsonant = (letter) => {
+export const isConsonant = (letter: string) => {
   return allConsonants.includes(letter)
 }
 
-const containsVowels = (word) => {
+export const containsVowels = (word: string) => {
   return word.split('').some(isVowel)
 }
 
-const containsConsonants = (word) => {
+export const containsConsonants = (word: string) => {
   return word.split('').some(isConsonant)
 }
 
-const separateInitialVowels = (word) => {
+export const separateInitialVowels = (word: string) => {
   if (isConsonant(firstOf(word))) return ['', word]
   
   let vowels = ''
@@ -65,7 +74,7 @@ const separateInitialVowels = (word) => {
   return [vowels, rest]
 }
 
-const separateFinalVowels = (word) => {
+export const separateFinalVowels = (word: string) => {
   if (isConsonant(lastOf(word))) return [word, '']
 
   let vowels = ''
@@ -79,7 +88,7 @@ const separateFinalVowels = (word) => {
   return [rest, vowels]
 }
 
-const separateInitialConsonants = (word) => {
+export const separateInitialConsonants = (word: string) => {
   if (isVowel(firstOf(word))) return ['', word]
 
   let consonants = ''
@@ -93,7 +102,7 @@ const separateInitialConsonants = (word) => {
   return [consonants, rest]
 }
 
-const separateFinalConsonants = (word) => {
+export const separateFinalConsonants = (word: string) => {
   if (isVowel(lastOf(word))) return [word, '']
 
   let consonants = ''
@@ -107,7 +116,7 @@ const separateFinalConsonants = (word) => {
   return [rest, consonants]
 }
 
-const getVowelGroups = (word) => {
+export const getVowelGroups = (word: string) => {
   const groups = []
   let isTrackingPosition = false
   let currentPosition = 0
@@ -133,28 +142,12 @@ const getVowelGroups = (word) => {
   return groups
 }
 
-const removeVowels = (word) => {
+export const removeVowels = (word: string) => {
   return word.split('').filter(isConsonant).join('')
 }
 
-const removeConsonants = (word) => {
+export const removeConsonants = (word: string) => {
   return word.split('').filter(isVowel).join('')
-}
-
-const isNonApproximantApproximantCluster = (a, b) => {
-  return pgmcNonApproximants.includes(a) && pgmcApproximants.includes(b)
-}
-
-const isDoubleStopCluster = (a, b) => {
-  return `${a}${b}` !== 'kt' && pgmcStops.includes(a) && pgmcStops.includes(b) && a !== b
-}
-
-const isNasalEndingCluster = (a, b) => {
-  return isConsonant(a) && pgmcNasals.includes(b)
-}
-
-const isHCluster = (a, b) => {
-  return `${a}${b}` !== 'ht' && isConsonant(a) && isConsonant(b) && (a === 'h' || b === 'h')
 }
 
 /**
@@ -174,12 +167,12 @@ const isHCluster = (a, b) => {
  * ts, 
  */
 // Not exported
-const isUncomfortableEndCluster = (a, b) => {
+const isUncomfortableEndCluster = (a: string, b: string) => {
   return a && b && a !== b && !/^(d[st]|þ[st]|ft|g[dþs]|hs|ht|k[st]|l[bdþfgkmnpstvz]|mp|n[dþgkst]|ps|r[bdþfgkmnpstvz]|s[kpt]|ts)$/.test(a + b)
 }
 
 // Not exported
-const containsUncomfortableEndCluster = (word) => {
+const containsUncomfortableEndCluster = (word: string) => {
   let containsCluster = false
   let isTrackingCluster = false
   
@@ -204,16 +197,16 @@ const containsUncomfortableEndCluster = (word) => {
   return containsCluster
 }
 
-const endsWithUncomfortableConsonantCluster = (word) => {
+export const endsWithUncomfortableConsonantCluster = (word: string) => {
   const [_, cluster] = separateFinalConsonants(word)
   return containsUncomfortableEndCluster(cluster)
 }
 
-const fixUncomfortableEndCluster = (word) => {
+export const fixUncomfortableEndCluster = (word: string) => {
   return allButLastOf(word) + 'a' + lastOf(word)
 }
 
-const dedoubleConsonantsInCluster = (word) => {
+export const dedoubleConsonantsInCluster = (word: string) => {
   let newWord = ''
 
   for (let i = 0; i < word.length; i++) {
@@ -236,13 +229,13 @@ const dedoubleConsonantsInCluster = (word) => {
   return newWord
 }
 
-const runPhases = (word, context, phaseFnArray, log = false) => {
-  const result = phaseFnArray.reduce((resultList, phaseFn) => {
+export const runPhases = (word: string, context: Context, phaseFnArray: PhaseFnArray, log = false) => {
+  const result = phaseFnArray.reduce<string[]>((resultList, phaseFn: PhaseFn) => {
     return [...resultList, phaseFn(resultList.length ? lastOf(resultList) : word, context)]
   }, [])
 
   if (log) {
-    console.log(result.reduce((map, word, i) => {
+    console.log(result.reduce<Record<string, string>>((map, word, i) => {
       map[`Phase ${i + 1}`] = word
       return map
     }, {}), context)
@@ -251,28 +244,6 @@ const runPhases = (word, context, phaseFnArray, log = false) => {
   return lastOf(result)
 }
 
-module.exports = {
-  lastOf,
-  firstOf,
-  allButLastOf,
-  reverse,
-  beginsWithVowel,
-  beginsWithConsonant,
-  endsWithVowel,
-  endsWithConsonant,
-  isVowel,
-  isConsonant,
-  containsVowels,
-  containsConsonants,
-  separateInitialVowels,
-  separateFinalVowels,
-  separateInitialConsonants,
-  separateFinalConsonants,
-  getVowelGroups,
-  removeVowels,
-  removeConsonants,
-  endsWithUncomfortableConsonantCluster,
-  fixUncomfortableEndCluster,
-  dedoubleConsonantsInCluster,
-  runPhases,
+export const getFromMap = <T extends object>(map: T, key: string) => {
+  return map[key as keyof T]
 }

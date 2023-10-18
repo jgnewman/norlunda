@@ -1,5 +1,6 @@
-const syllableize = require("./syllableize")
-const {
+import type { Context } from "./types"
+import syllableize from "./syllableize"
+import  {
   firstOf,
   lastOf,
   isVowel,
@@ -8,16 +9,16 @@ const {
   isConsonant,
   runPhases,
   separateInitialConsonants,
-} = require("./utils")
-const {
+} from "./utils"
+import  {
   longVowelVariantOf,
   shortVowelVariantOf,
   baseVowels,
   longVowels,
   longNasalVowels,
-} = require("./vowels")
+} from "./vowels"
 
-const shortenPreClusterLongVowels = (word) => {
+const shortenPreClusterLongVowels = (word: string) => {
   let newWord = ''
   
   for (let i = 0; i < word.length; i++) {
@@ -41,7 +42,7 @@ const shortenPreClusterLongVowels = (word) => {
   return newWord
 }
 
-const shortenThreeSyllablesPlus = (word) => {
+const shortenThreeSyllablesPlus = (word: string) => {
   const [hasInfinitive, root] = word.endsWith('an') ? [true, word.slice(0, -2)] : [false, word]
   const syllables = syllableize(root)
 
@@ -61,14 +62,14 @@ const shortenThreeSyllablesPlus = (word) => {
   return hasInfinitive ? result + 'an' : result
 }
 
-const shortenLongVerbEndings = (word) => {
+const shortenLongVerbEndings = (word: string) => {
   if (!/nan$/.test(word)) return word
   const prefix = word.slice(0, -3)
   if (!baseVowels.includes(lastOf(prefix))) return word
   return allButLastOf(prefix) + 'nan'
 }
 
-const medialWToLongVowel = (word) => {
+const medialWToLongVowel = (word: string) => {
   let trackingChange = false
 
   return word.split('').reduce((result, char, index, charList) => {
@@ -97,7 +98,7 @@ const medialWToLongVowel = (word) => {
   }, '')
 }
 
-const fixStopClusters = (word) => {
+const fixStopClusters = (word: string) => {
   let newWord = ''
 
   for (let i = 0; i < word.length; i++) {
@@ -119,7 +120,7 @@ const fixStopClusters = (word) => {
   return newWord.replace(/ngt/g, 'nt')
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [
     shortenPreClusterLongVowels,
     shortenThreeSyllablesPlus,

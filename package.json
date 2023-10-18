@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "bundle exec jekyll serve --open-url --livereload",
-    "build:algorithm": "esbuild --bundle algorithm/index.js --outfile=assets/javascript/algorithm.js --minify",
-    "word": "node ./bin/singleWord.js",
-    "wordlist": "node ./bin/wordList.js"
+    "build:algorithm": "esbuild --bundle algorithm/index.ts --outfile=assets/javascript/algorithm.js --minify",
+    "build:test-algorithm": "esbuild --bundle algorithm/index.ts --outfile=bin/test-algorithm.js --platform=node",
+    "word": "npm run build:test-algorithm && node ./bin/singleWord.js",
+    "wordlist": "npm run build:test-algorithm && node ./bin/wordList.js"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "esbuild": "^0.19.4"
+    "esbuild": "^0.19.4",
+    "typescript": "^5.2.2"
   }
 }

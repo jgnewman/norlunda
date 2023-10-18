@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'akraną',
   'aljaną',
   'bainą',

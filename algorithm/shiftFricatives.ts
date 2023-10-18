@@ -1,13 +1,14 @@
-const { fricatives, pgmcStops } = require("./consonants")
-const {
+import type { Context } from "./types"
+import { fricatives, pgmcStops } from "./consonants"
+import {
   firstOf,
   lastOf,
   isVowel,
   isConsonant,
   runPhases,
-} = require("./utils")
+} from "./utils"
 
-const bToV = (word) => {
+const bToV = (word: string) => {
   return word.split('').reduce((result, char, index, charList) => {
     const prevChar = lastOf(result)
     const nextChar = charList[index + 1]
@@ -20,7 +21,7 @@ const bToV = (word) => {
   }, '')
 }
 
-const bToF = (word) => {
+const bToF = (word: string) => {
   return word.split('').reduce((result, char) => {
     const prevChar = lastOf(result)
 
@@ -32,7 +33,7 @@ const bToF = (word) => {
   }, '')
 }
 
-const dToT = (word) => {
+const dToT = (word: string) => {
   return word.split('').reduce((result, char, index, charList) => {
     const nextChar = charList[index + 1]
 
@@ -44,7 +45,7 @@ const dToT = (word) => {
   }, '')
 }
 
-const fPlusFricativeToF = (word) => {
+const fPlusFricativeToF = (word: string) => {
   return word.split('').reduce((result, char) => {
     const prevChar = lastOf(result)
 
@@ -56,16 +57,16 @@ const fPlusFricativeToF = (word) => {
   }, '')
 }
 
-const gsAndKsToX = (word) => {
+const gsAndKsToX = (word: string) => {
   return word.replace(/(g|k)s/g, 'x')
 }
 
-const dropInitialH = (word) => {
+const dropInitialH = (word: string) => {
   if (firstOf(word) === 'h' && isConsonant(word[1])) return word.slice(1)
   return word
 }
 
-const hToK = (word) => {
+const hToK = (word: string) => {
   return word.split('').reduce((result, char, index, charList) => {
     const nextChar = charList[index + 1]
 
@@ -77,11 +78,11 @@ const hToK = (word) => {
   }, '')
 }
 
-const thornToD = (word) => {
+const thornToD = (word: string) => {
   return word.replace(/þ/g, 'd')
 }
 
-const skToSh = (word) => {
+const skToSh = (word: string) => {
   return word.split('').reduce((result, char, index, charList) => {
     const prevChar = lastOf(result)
     const nextChar = charList[index + 1]
@@ -94,16 +95,16 @@ const skToSh = (word) => {
   }, '').replace(/tsk/g, 'tsh')
 }
 
-const dropInitialW = (word) => {
+const dropInitialW = (word: string) => {
   if (firstOf(word) === 'w' && isConsonant(word[1])) return word.slice(1)
   return word
 }
 
-const wToV = (word) => {
+const wToV = (word: string) => {
   return word.replace(/w/g, 'v')
 }
 
-module.exports = (word, context) => {
+export default(word: string, context: Context) => {
   return runPhases(word, context, [
     bToV,
     bToF,

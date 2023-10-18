@@ -1,6 +1,7 @@
-const { runPhases } = require("./utils")
+import type { Context } from "./types"
+import { runPhases } from "./utils"
 
-const sanitize = (word) => {
+const sanitize = (word: string) => {
   return word
     .replace(/ą̄/g, 'ā')  
     .replace(/į̄/g, 'į')
@@ -9,6 +10,6 @@ const sanitize = (word) => {
     .replace(/ų̄/g, 'ų')
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [sanitize])
 }

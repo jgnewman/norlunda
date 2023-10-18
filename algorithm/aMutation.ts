@@ -1,31 +1,32 @@
-const { aMutators, longOMutators } = require("./vowels")
-const syllableize = require("./syllableize")
-const {
+import type { Context } from "./types"
+import { aMutators, longOMutators } from "./vowels"
+import syllableize from "./syllableize"
+import {
   separateInitialConsonants,
   firstOf,
   lastOf,
   getVowelGroups,
   separateFinalConsonants,
   runPhases,
-} = require("./utils")
+} from "./utils"
 
-const containsAMutator = (syllable) => {
+const containsAMutator = (syllable: string) => {
   const [_, rest] = separateInitialConsonants(syllable)
   return aMutators.includes(firstOf(rest))
 }
 
-const containsLongOMutator = (syllable) => {
+const containsLongOMutator = (syllable: string) => {
   const [_, rest] = separateInitialConsonants(syllable)
   return longOMutators.includes(firstOf(rest))
 }
 
-const vowelPosition = (shortVowel, syllable) => {
+const vowelPosition = (shortVowel: string, syllable: string) => {
   const maybeMutatable = lastOf(getVowelGroups(syllable))
   if (!maybeMutatable || maybeMutatable.vowel !== shortVowel) return -1
   return maybeMutatable.position
 }
 
-const mutateU = (syllable, nextSyllable) => {
+const mutateU = (syllable: string, nextSyllable: string) => {
   if (!containsAMutator(nextSyllable)) return syllable
   
   const position = vowelPosition('u', syllable)
@@ -34,20 +35,20 @@ const mutateU = (syllable, nextSyllable) => {
   return `${syllable.slice(0, position)}${'o'}${syllable.slice(position + 1)}`
 }
 
-const jBlocksMutation = (syllable, nextSyllable) => {
+const jBlocksMutation = (syllable: string, nextSyllable: string) => {
   const [_, finalConsonantsInSyllable] = separateFinalConsonants(syllable)
   const [initialConsonantsInNextSyllable] = separateInitialConsonants(nextSyllable)
   return /j/.test(finalConsonantsInSyllable + initialConsonantsInNextSyllable)
 }
 
-const nasalClusterTriggersMutation = (syllable, nextSyllable) => {
+const nasalClusterTriggersMutation = (syllable: string, nextSyllable: string) => {
   const [_, finalConsonantsInSyllable] = separateFinalConsonants(syllable)
   const [initialConsonantsInNextSyllable] = separateInitialConsonants(nextSyllable)
   const combinedConsonants = finalConsonantsInSyllable + initialConsonantsInNextSyllable
   return combinedConsonants.length > 1 && /^(m|n)/.test(combinedConsonants)
 }
 
-const mutateI = (syllable, nextSyllable) => {
+const mutateI = (syllable: string, nextSyllable: string) => {
   if (!containsAMutator(nextSyllable)) return syllable
   
   const position = vowelPosition('i', syllable)
@@ -57,7 +58,7 @@ const mutateI = (syllable, nextSyllable) => {
   return `${syllable.slice(0, position)}${'e'}${syllable.slice(position + 1)}`
 }
 
-const mutateShortE = (syllable, nextSyllable) => {
+const mutateShortE = (syllable: string, nextSyllable: string) => {
   if (!containsAMutator(nextSyllable)) return syllable
 
   const position = vowelPosition('e', syllable)
@@ -67,7 +68,7 @@ const mutateShortE = (syllable, nextSyllable) => {
   return `${syllable.slice(0, position)}${'i'}${syllable.slice(position + 1)}`
 }
 
-const mutateLongE = (syllable, nextSyllable) => {
+const mutateLongE = (syllable: string, nextSyllable: string) => {
   if (!containsLongOMutator(nextSyllable)) return syllable
 
   const position = vowelPosition('ē', syllable)
@@ -76,7 +77,7 @@ const mutateLongE = (syllable, nextSyllable) => {
   return `${syllable.slice(0, position)}${'ɔ'}${syllable.slice(position + 1)}`
 }
 
-const handleAMutation = (word) => {
+const handleAMutation = (word: string) => {
   const syllables = syllableize(word)
   
   return syllables.map((syllable, index) => {
@@ -93,6 +94,6 @@ const handleAMutation = (word) => {
 }
 
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [handleAMutation])
 }

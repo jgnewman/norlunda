@@ -1,6 +1,7 @@
-const syllableize = require("./syllableize")
-const shiftFricatives = require("./shiftFricatives")
-const {
+import type { Context } from "./types"
+import syllableize from "./syllableize"
+import shiftFricatives from "./shiftFricatives"
+import {
   isVowel,
   firstOf,
   lastOf,
@@ -13,26 +14,26 @@ const {
   containsVowels,
   runPhases,
   dedoubleConsonantsInCluster,
-} = require("./utils")
-const {
+} from "./utils"
+import {
   baseVowels,
   longVowels,
   longVowelVariantOf,
   shortVowelVariantOf,
   finalSpellingOf,
-} = require("./vowels")
-const { pgmcApproximants } = require("./consonants")
+} from "./vowels"
+import { pgmcApproximants } from "./consonants"
 
 const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
 const longPlusWRegex = new RegExp(`(${longVowels.join('|')})w`, 'g')
 
-const handleWBasedEndDiphthongs = (word) => {
+const handleWBasedEndDiphthongs = (word: string) => {
   return word
     .replace(/ǣw$/, 'œ')
     .replace(/æw/, 'au')
 }
 
-const dropWAndModVowels = (word) => {
+const dropWAndModVowels = (word: string) => {
   let newWord = word
   const nextToLastCharIsVowel = isVowel(lastOf(allButLastOf(word)))
 
@@ -49,7 +50,7 @@ const dropWAndModVowels = (word) => {
   return newWord.replace(longPlusWRegex, (_, p1) => shortVowelVariantOf(p1) + 'w')
 }
 
-const tryToShortenSecondSyllable = (word) => {
+const tryToShortenSecondSyllable = (word: string) => {
   const hasInfinitiveSuffix = word.endsWith('an')
 
   const syllables = syllableize(word.replace(/an$/, ''))
@@ -68,7 +69,7 @@ const tryToShortenSecondSyllable = (word) => {
   return newWord + (hasInfinitiveSuffix ? 'an' : '')
 }
 
-const shortenUnstressedLongVowels = (word) => {
+const shortenUnstressedLongVowels = (word: string) => {
   const syllables = syllableize(word)
 
   return firstOf(syllables) + syllables.slice(1).map((syllable) => {
@@ -84,11 +85,11 @@ const shortenUnstressedLongVowels = (word) => {
   }).join('')
 }
 
-const undoubleConsonants = (word) => {
+const undoubleConsonants = (word: string) => {
   return dedoubleConsonantsInCluster(word)
 }
 
-const shiftVowels = (word) => {
+const shiftVowels = (word: string) => {
   return word
     .replace(/au/g, 'au') // no change, but want to have every vowel represented
     .replace(/j?a$/, (_, __, src) => {
@@ -114,11 +115,11 @@ const shiftVowels = (word) => {
     .replace(/ȳ/g, finalSpellingOf('ȳ'))
 }
 
-const fixTerminalAir = (word) => {
+const fixTerminalAir = (word: string) => {
   return word.replace(/eir$/, 'eer')
 }
 
-const gToLongVowel = (word) => {
+const gToLongVowel = (word: string) => {
   return word.replace(/[aeioøuy]g[dtþ]/g, (match) => {
     const vowel = match[0]
     const finalCons = lastOf(match)
@@ -126,7 +127,7 @@ const gToLongVowel = (word) => {
   })
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [
     handleWBasedEndDiphthongs,
     dropWAndModVowels,

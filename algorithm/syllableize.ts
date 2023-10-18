@@ -1,6 +1,6 @@
-const { separateInitialVowels, separateInitialConsonants, containsVowels } = require("./utils")
+import { separateInitialVowels, separateInitialConsonants, containsVowels } from "./utils"
 
-const getVowelConsonantChunk = (word) => {
+const getVowelConsonantChunk = (word: string) => {
   const [vowels, rest] = separateInitialVowels(word)
   const [consonants, remainder] = separateInitialConsonants(rest)
 
@@ -13,13 +13,13 @@ const getVowelConsonantChunk = (word) => {
   return [vowels + consonants[0], consonants.slice(1) + remainder]
 }
 
-const getInitialSyllable = (word) => {
+const getInitialSyllable = (word: string) => {
   const [initialConsonants, rest] = separateInitialConsonants(word)
   const [vowelConsonantChunk, remainder] = getVowelConsonantChunk(rest)
   return [initialConsonants + vowelConsonantChunk, remainder]
 }
 
-const syllableize = (word, syllables = []) => {
+const syllableize = (word: string, syllables: string[] = []): string[] => {
   if (!word) return syllables
 
   const [initialSyllable, remainder] = getInitialSyllable(word)
@@ -31,7 +31,7 @@ const syllableize = (word, syllables = []) => {
   return syllableize(remainder, [...syllables, initialSyllable])
 }
 
-module.exports = syllableize
+export default syllableize
 
 // aplaz -> ap-laz
 // hagatusi -> ha-ga-tu-si

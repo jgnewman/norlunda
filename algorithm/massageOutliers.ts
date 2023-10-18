@@ -7,7 +7,8 @@
  * map that translates it into a form that will yield the expected result.
  */
 
-const { runPhases } = require("./utils")
+import type { Context } from "./types"
+import { getFromMap, runPhases } from "./utils"
 
 const outlierMap = {
   // Change of ag to au is non-standard
@@ -29,10 +30,10 @@ const outlierMap = {
   "wōdanaz": "wudanaz",
 }
 
-const massageOutliers = (word) => {
-  return outlierMap[word] || word
+const massageOutliers = (word: string) => {
+  return getFromMap(outlierMap, word) ?? word
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [massageOutliers])
 }

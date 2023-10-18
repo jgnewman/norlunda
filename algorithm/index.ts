@@ -1,21 +1,22 @@
-const { lastOf } = require('./utils')
-const iMutation = require('./iMutation')
-const aMutation = require('./aMutation')
-const gemination = require('./gemination.js')
-const vowelLaxing = require('./vowelLaxing')
-const zLoss = require('./zLoss')
-const wgHardening = require('./wgHardening')
-const syllableReduction = require('./syllableReduction')
-const modernization = require('./modernization')
-const massageOutliers = require('./massageOutliers')
-const sanitizePhonology = require('./sanitizePhonology')
-const falseVerbs = require('./falseVerbs')
-const retrofitCompounds = require('./retrofitCompounds')
-const { ipaifyFinalOrthography } = require('./vowels')
+import type { Context } from './types'
+import { lastOf } from './utils'
+import iMutation from './iMutation'
+import aMutation from './aMutation'
+import gemination from './gemination.js'
+import vowelLaxing from './vowelLaxing'
+import zLoss from './zLoss'
+import wgHardening from './wgHardening'
+import syllableReduction from './syllableReduction'
+import modernization from './modernization'
+import massageOutliers from './massageOutliers'
+import sanitizePhonology from './sanitizePhonology'
+import falseVerbs from './falseVerbs'
+import retrofitCompounds from './retrofitCompounds'
+import { ipaifyFinalOrthography } from './vowels'
 
-const runAlgorithm = (baseWord) => {
+const runAlgorithm = (baseWord: string) => {
   const normalizedWord = baseWord.toLowerCase().replace(/^\*/, '')
-  const context = {}
+  const context: Context = {}
   const steps = []
 
   if (falseVerbs.includes(normalizedWord)) {
@@ -75,7 +76,7 @@ const runAlgorithm = (baseWord) => {
   return steps
 }
 
-const init = (baseWord) => {
+export const init = (baseWord: string) => {
   const pieces = baseWord.split(':').map(piece => piece.trim())
 
   if (pieces.length === 1) {
@@ -94,7 +95,7 @@ const init = (baseWord) => {
   // If this should be a compound
   const outputComponents = pieces.map(piece => lastOf(runAlgorithm(piece)).result)
   const rawCompound = outputComponents.join('')
-  const result = retrofitCompounds(rawCompound)
+  const result = retrofitCompounds(rawCompound, {})
 
   return {
     isCompound: true,
@@ -106,6 +107,7 @@ const init = (baseWord) => {
   }
 }
 
-typeof window !== 'undefined' && (window.norlunda = init)
+export default init
 
-module.exports = init
+// @ts-ignore
+typeof window !== 'undefined' && (window.norlunda = init)

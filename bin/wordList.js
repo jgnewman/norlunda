@@ -1,5 +1,5 @@
-const init = require('../algorithm/index')
-const { lastOf } = require('../algorithm/utils')
+// This file will be created when the npm command runs esbuild
+const { init } = require('./test-algorithm')
 
 const list = [
   ['aiwaz', 'ever'],

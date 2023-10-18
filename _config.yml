@@ -27,6 +27,7 @@ exclude:
   - package-lock.json
   - package.json
   - README.md
+  - tsconfig.json
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/

@@ -1,4 +1,5 @@
-const {
+import type { Context } from './types'
+import {
   allButLastOf,
   lastOf,
   isConsonant,
@@ -6,10 +7,10 @@ const {
   fixUncomfortableEndCluster,
   runPhases,
   containsVowels,
-} = require('./utils')
-const { baseVowels, longVowelVariantOf } = require('./vowels')
+} from './utils'
+import { baseVowels, longVowelVariantOf } from './vowels'
 
-const dropFinalZ = (word) => {
+const dropFinalZ = (word: string) => {
   const lastChar = lastOf(word)
   const nextToLastChar = lastOf(allButLastOf(word))
 
@@ -33,19 +34,19 @@ const dropFinalZ = (word) => {
   return word
 }
 
-const fixRemainingZAndHs = (word) => {
+const fixRemainingZAndHs = (word: string) => {
   return word.replace(/hs/, 'ks').replace(/[^z]?z/g, (matchedText) => {
     const [preZ] = matchedText.split('')
     return baseVowels.includes(preZ) ? longVowelVariantOf(preZ) + 'r' : preZ + 'r'
   })
 }
 
-const handleUncomfortableEndCluster = (word) => {
+const handleUncomfortableEndCluster = (word: string) => {
   if (!endsWithUncomfortableConsonantCluster(word)) return word
   return fixUncomfortableEndCluster(word)
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [
     dropFinalZ,
     fixRemainingZAndHs,

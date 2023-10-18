@@ -1,8 +1,9 @@
-const { fricatives, bilabials } = require('./consonants')
-const { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPhases } = require('./utils')
-const { allShortVowels } = require('./vowels')
+import type { Context } from './types'
+import { fricatives, bilabials } from './consonants'
+import { lastOf, isConsonant, separateFinalVowels, separateFinalConsonants, runPhases } from './utils'
+import { allShortVowels } from './vowels'
 
-const geminateJTriggers = (word) => {
+const geminateJTriggers = (word: string) => {
   const geminated = word.split('').reduce((result, char, index, charList) => {
     const nextChar = charList[index + 1]
     const curCharIsJ = char === 'j'
@@ -31,7 +32,7 @@ const geminateJTriggers = (word) => {
   return geminated
 }
 
-const geminateFricativeClusters = (word) => {
+const geminateFricativeClusters = (word: string) => {
   let newWord = ''
 
   for (let i = 0; i < word.length; i++) {
@@ -50,7 +51,7 @@ const geminateFricativeClusters = (word) => {
   return newWord
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [
     geminateJTriggers,
     geminateFricativeClusters,

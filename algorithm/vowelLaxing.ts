@@ -1,6 +1,7 @@
-const { pgmcVelars } = require('./consonants')
-const syllableize = require('./syllableize')
-const {
+import type { Context } from './types'
+import { pgmcVelars } from './consonants'
+import syllableize from './syllableize'
+import {
   lastOf,
   allButLastOf,
   endsWithUncomfortableConsonantCluster,
@@ -11,22 +12,22 @@ const {
   separateFinalConsonants,
   separateFinalVowels,
   runPhases,
-} = require('./utils')
-const {
+} from './utils'
+import {
   baseVowels,
   longVowels,
   nasalVowels,
   longNasalVowels,
   overlongVowels,
   longVowelVariantOf,
-} = require('./vowels')
+} from './vowels'
 
 const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
 const overlongRegex = new RegExp(`(${overlongVowels.join('|')})`, 'g')
 const nasalRegex = new RegExp(`(${nasalVowels.join('|')})`, 'g')
 const longNasalRegex = new RegExp(`(${longNasalVowels.join('|')})`, 'g')
 
-const relaxOverlongs = (word) => {
+const relaxOverlongs = (word: string) => {
   const syllables = syllableize(word)
 
   return syllables.map((syllable, index) => {
@@ -45,7 +46,7 @@ const relaxOverlongs = (word) => {
   }).join('')
 }
 
-const monophthongize = (word) => {
+const monophthongize = (word: string) => {
   const newWord = word
     .replace(/aih?/g, 'ā')
     .replace(/anh/g, 'ā')
@@ -61,10 +62,14 @@ const monophthongize = (word) => {
   
   const matchIw = newWord.match(/iw/)
 
-  return matchIw && isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, 'ȳ') : newWord
+  if (!matchIw || matchIw.index === undefined) {
+    return newWord
+  }
+
+  return isConsonant(newWord.charAt(matchIw.index + 2)) ? newWord.replace(/iw/, 'ȳ') : newWord
 }
 
-const reduceInfSuffixes = (word) => {
+const reduceInfSuffixes = (word: string) => {
   const patterns = [/wijaną$/, /ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/]
   for (const pattern of patterns) {
     const truncated = word.replace(pattern, '')
@@ -74,7 +79,7 @@ const reduceInfSuffixes = (word) => {
   return word
 }
 
-const mergeInfinitives = (word, context) => {
+const mergeInfinitives = (word: string, context: Context) => {
   if (context.isFalseVerb) return word
 
   const newWord = reduceInfSuffixes(word)
@@ -92,14 +97,14 @@ const mergeInfinitives = (word, context) => {
   return stem + 'han'
 }
 
-const finalSylHasShortVowel = (word) => {
+const finalSylHasShortVowel = (word: string) => {
   const prevSyllable = lastOf(syllableize(word))
   const [syllPrefix] = separateFinalConsonants(prevSyllable)
   const [_, vowelCluster] = separateFinalVowels(syllPrefix)
   return baseVowels.includes(vowelCluster)
 }
 
-const lengthenFinalSylShortVowel = (word) => {
+const lengthenFinalSylShortVowel = (word: string) => {
   if (!finalSylHasShortVowel(word)) return word
   const syllables = syllableize(word)
   const lastSyllable = lastOf(syllables)
@@ -107,7 +112,7 @@ const lengthenFinalSylShortVowel = (word) => {
   return restSyllables.join('') + lastSyllable.replace(shortRegex, (_, p1) => longVowelVariantOf(p1))
 }
 
-const reduceVowelBasedSuffixes = (word) => {
+const reduceVowelBasedSuffixes = (word: string) => {
   if (/wij(ō|ǭ)$/.test(word)) return word.replace(/wij(ō|ǭ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/hij(ō|ǭ)$/.test(word)) return word.replace(/hij(ō|ǭ)$/, 'a') // Example: *marhijō -> mara (mare)
   if (/ij(ō|ǭ)$/.test(word)) return word.replace(/ij(ō|ǭ)$/, !containsVowels(word.slice(0, -3)) ? 'ī' : '')
@@ -143,29 +148,29 @@ const reduceVowelBasedSuffixes = (word) => {
   return word
 }
 
-const denasalize = (word) => {
+const denasalize = (word: string) => {
   return word
     .replace(nasalRegex, (_, p1) => baseVowels[nasalVowels.indexOf(p1)])
     .replace(longNasalRegex, (_, p1) => longVowels[longNasalVowels.indexOf(p1)])
 }
 
-const handleLZ = (word) => {
+const handleLZ = (word: string) => {
   return word.replace(/(lz|zl)/g, 'll')
 }
 
-const fixTerminalMfNf = (word) => {
+const fixTerminalMfNf = (word: string) => {
   return word.replace(/.(mf|nf)$/, () => {
     const precedingChar = lastOf(word.slice(0, -2))
     return baseVowels.includes(precedingChar) ? longVowelVariantOf(precedingChar) + 'f' : precedingChar + 'f'
   })
 }
 
-const handleUncomfortableEndCluster = (word) => {
+const handleUncomfortableEndCluster = (word: string) => {
   if (!endsWithUncomfortableConsonantCluster(word)) return word
   return fixUncomfortableEndCluster(word)
 }
 
-module.exports = (word, context) => {
+export default (word: string, context: Context) => {
   return runPhases(word, context, [
     monophthongize,
     relaxOverlongs,
