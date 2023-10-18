@@ -152,13 +152,46 @@ $code-font: 'Inconsolata', monospace;
   @include label-copy;
 }
 
+.code-copy {
+  @include code-copy;
+}
+
 .intro-copy {
   @include intro-copy;
   margin-bottom: 48px;
 }
 
-.code-copy {
-  @include code-copy;
+.showcase {
+  @include intro-copy;
+  margin-bottom: 32px;
+  padding-left: 32px;
+  padding-bottom: 8px;
+  position: relative;
+  color: var(--heavy-contrast-text-color);
+
+  &::after {
+    @include absolute-pseudo;
+    background: var(--primary-color);
+    width: 4px;
+    height: 100%;
+  }
+}
+
+.showcase + .source {
+  margin-top: -32px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-left: 32px;
+  font-size: 16px;
+  position: relative;
+
+  &::after {
+    @include absolute-pseudo;
+    background: var(--primary-color);
+    width: 4px;
+    height: 100%;
+  }
 }
 
 .oversized-copy {
@@ -241,6 +274,10 @@ sup {
   vertical-align: super;
   line-height: 0;
   font-weight: 700;
+}
+
+table {
+  margin-bottom: 32px;
 }
 
 .main-content > ul,

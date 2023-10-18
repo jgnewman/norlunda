@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "bundle exec jekyll serve --open-url --livereload",
-    "build:algorithm": "esbuild --bundle algorithm/index.js --outfile=assets/javascript/algorithm.js",
+    "build:algorithm": "esbuild --bundle algorithm/index.js --outfile=assets/javascript/algorithm.js --minify",
     "word": "node ./bin/singleWord.js",
     "wordlist": "node ./bin/wordList.js"
   },

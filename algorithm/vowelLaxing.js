@@ -136,7 +136,8 @@ const reduceVowelBasedSuffixes = (word) => {
 
   if (/į$/.test(word)) return word.replace(/į$/, 'a')
   if (/i$/.test(word)) return word.replace(/i$/, '')
-  if (/u/.test(word)) return word.replace(/u$/, 'a')
+  if (/u$/.test(word)) return word.replace(/u$/, 'a')
+  if (/hw$/.test(word)) return isConsonant(word.slice(-3)[0]) ? word.replace(/hw$/, '') : lengthenFinalSylShortVowel(word.replace(/hw$/, ''))
   if (/w$/.test(word)) return isVowel(word.slice(-2)[0]) ? lengthenFinalSylShortVowel(word.replace(/w$/, '')) : word
 
   return word

@@ -1,8 +1,11 @@
 - text: Introduction
   url: /
 
-- text: Orthography
-  url: /orthography
+- text: Principles
+  url: /principles
+
+- text: Sounds & spelling
+  url: /sounds-spelling
 
 - text: Algorithm
   url: /algorithm

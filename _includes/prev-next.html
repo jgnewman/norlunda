@@ -1,0 +1,43 @@
+<section class="flex justify-content-space-between align-items-center py-12">
+  {% if include.list %}
+    {% assign list = site.data[include.list] %}
+  {% else %}
+    {% assign list = [] %}
+  {% endif %}
+
+
+  {% for item in list %}
+    {% if item.url == page.url %}
+
+      {% assign prev_page_index = forloop.index | minus: 2 %}
+      {% if prev_page_index < 0 %}
+        {% assign prev_page = nil %}
+      {% else %}
+        {% assign prev_page = list[prev_page_index] %}
+      {% endif %}
+
+      {% assign next_page_index = forloop.index %}
+      {% assign next_page = list[next_page_index] %}
+
+      <div class="flex justify-content-flex-start">
+        {% if prev_page %}
+          <a class="prev-next-link py-6 pl-4 pr-12 flex justify-content-space-between align-items-center flex-gap-1" href="{{ site.baseurl }}{{ prev_page.url }}">
+            {% include chevron-left.svg %}
+            {{ prev_page.text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="flex justify-content-flex-end">
+        {% if next_page %}
+          <a class="prev-next-link py-6 pr-4 pl-12 flex justify-content-space-between align-items-center flex-gap-1" href="{{ site.baseurl }}{{ next_page.url }}">
+            {{ next_page.text }}
+            {% include chevron-right.svg %}
+          </a>
+        {% endif %}
+      </div>
+
+      {% break %}
+    {% endif %}
+  {% endfor %}
+</section>

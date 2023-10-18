@@ -12,10 +12,15 @@ const {
   endsWithUncomfortableConsonantCluster,
   containsVowels,
   runPhases,
-  isConsonant,
   dedoubleConsonantsInCluster,
 } = require("./utils")
-const { baseVowels, longVowels, longVowelVariantOf, shortVowelVariantOf, finalSpellingOf } = require("./vowels")
+const {
+  baseVowels,
+  longVowels,
+  longVowelVariantOf,
+  shortVowelVariantOf,
+  finalSpellingOf,
+} = require("./vowels")
 const { pgmcApproximants } = require("./consonants")
 
 const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
@@ -113,11 +118,20 @@ const fixTerminalAir = (word) => {
   return word.replace(/eir$/, 'eer')
 }
 
+const gToLongVowel = (word) => {
+  return word.replace(/[aeioøuy]g[dtþ]/g, (match) => {
+    const vowel = match[0]
+    const finalCons = lastOf(match)
+    return longVowelVariantOf(vowel) + finalCons
+  })
+}
+
 module.exports = (word, context) => {
   return runPhases(word, context, [
     handleWBasedEndDiphthongs,
     dropWAndModVowels,
     tryToShortenSecondSyllable,
+    gToLongVowel,
     shortenUnstressedLongVowels,
     shiftFricatives,
     undoubleConsonants,

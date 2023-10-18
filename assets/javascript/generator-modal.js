@@ -71,7 +71,7 @@ window.addEventListener('load', () => {
         </thead>
         <tbody>
           ${steps.map(({ step, result }, index) => `
-            <tr class="${index % 2 !== 0 ? 'row-stripe' : ''}">
+            <tr class="${index % 2 === 0 ? 'row-stripe' : ''}">
               <td class="px-12 py-4">${step}</td>
               <td class="px-12 py-4">${result}</td>
             </tr>
@@ -95,7 +95,7 @@ window.addEventListener('load', () => {
             <th class="p-12">IPA</th>
           </tr>
           ${resultObjects.map(({ input, output, outputIPA }, index) => `
-            <tr class="${index % 2 !== 0 ? 'row-stripe' : ''}">
+            <tr class="${index % 2 === 0 ? 'row-stripe' : ''}">
               <td class="px-12 py-6">${typeof input === 'string' ? input : input.join(', ')}</td>
               <td class="px-12 py-6 fancy-copy">${output}</td>
               <td class="px-12 py-6 tracking-1">${outputIPA}</td>

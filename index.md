@@ -18,3 +18,5 @@ Norlunda is designed to be the easiest Germanic language to learn. Its grammar i
 ## Near-fully-automated?
 
 Language evolution isn't perfectly mathematical. Sometimes it's necessary for humans to step in and make decisions. Also, whereas Norlunda's vocabulary can be algorithmically generated, its grammar can not. In order to achieve an equal measure of North and West Germanic character, Norlunda's vocabulary leans on West Germanic patterns while its grammar leans North. In the end, the language is unique, easy, and fun to learn.
+
+{% include prev-next.html list="navigation" %}

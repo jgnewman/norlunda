@@ -9,7 +9,13 @@ const {
   runPhases,
   separateInitialConsonants,
 } = require("./utils")
-const { longVowelVariantOf, shortVowelVariantOf, baseVowels, longVowels, longNasalVowels } = require("./vowels")
+const {
+  longVowelVariantOf,
+  shortVowelVariantOf,
+  baseVowels,
+  longVowels,
+  longNasalVowels,
+} = require("./vowels")
 
 const shortenPreClusterLongVowels = (word) => {
   let newWord = ''

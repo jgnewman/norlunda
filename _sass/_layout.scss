@@ -113,7 +113,7 @@ main {
 
 .main-content {
   min-height: calc(100vh - #{$header-height} - #{$header-height}); // accounts for header and footer
-  padding-right: $small-side-margin;
+  width: 100%;
   
   @include vw-4 {
     padding-right: calc(#{$page-meta-width} + #{$side-margin});

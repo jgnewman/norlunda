@@ -143,6 +143,7 @@ All word-final, vowel-based endings are reduced into simpler forms.
 - į → **/ɑ/**
 - i → drop
 - u → **/ɑ/**
+- hw → if after a short vowel, lengthen the vowel; drop
 - w → drop if after a vowel and lengthen a preceding short vowel to compensate
 
 All remaining nasal vowels are de-nasalized.
@@ -213,6 +214,8 @@ Word-final **/w/** is dropped after a vowel. If the vowel was short, it is lengt
 In multi-syllable roots (prior to the infinitive suffix **-an**), the vowel in the second syllable is dropped if it is followed by a consonant and if the result does not yield an **uncomfortable consonant cluster** at the end of the word. Examples:
 - _*hæled_ → _*hæld_
 
+When a short vowel is followed by **⟨gd, gt, gþ⟩**, the vowel is lengthened and the **⟨g⟩** is dropped. Example: _*magd_ → _*mād_.
+
 The first syllable in every word (apart from grammatical prefixes) is always stressed. All long vowels in unstressed syllables shorten. Example: _*lindīn_ → _*lindin_.
 
 {: .mb-8 }
@@ -278,3 +281,5 @@ Re-apply pre-cluster vowel shortening. Specifically, long vowels are shortened w
 - ⟨oe⟩  →  ⟨e⟩
 
 Re-apply consonant de-doubling. Specifically, when a consonant cluster contains a doubled consonant plus another consonant, one of the double consonants is dropped. Example: _Villhelm_ → _Vilhelm_.
+
+{% include prev-next.html list="navigation" %}
