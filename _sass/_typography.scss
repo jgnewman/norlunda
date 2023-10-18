@@ -220,7 +220,7 @@ p {
   margin-bottom: 32px;
 }
 
-p a {
+p a, .main-content li a {
   text-decoration: underline;
   cursor: pointer;
   transition: all .2s ease;
