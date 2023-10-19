@@ -63,7 +63,7 @@ const shortenThreeSyllablesPlus = (word: string) => {
 }
 
 const shortenLongVerbEndings = (word: string) => {
-  if (!/nan$/.test(word)) return word
+  if (!/nan$/.test(word) || syllableize(word).length < 3) return word
   const prefix = word.slice(0, -3)
   if (!baseVowels.includes(lastOf(prefix))) return word
   return allButLastOf(prefix) + 'nan'

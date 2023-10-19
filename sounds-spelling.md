@@ -18,18 +18,18 @@ All Norlunda words are spelled phonetically. The following tables map phonemes t
 {: .striped-table }
 | Spelling | Phoneme | Example |
 |----------|---------|---------|
-| a | /a/ | apal (_apple_) |
-| aa | /ɔː/ | saa (_so_) |
-| au | /au/ | trau (_true_) |
-| e | /ə/ <sup>1</sup> | hande (_hands_) |
-| e | /ɛ/ | bedd (_bed_) |
-| ee | /eː/ | feer (_four_) |
-| ei | /ai/ | heim (_home_) |
-| i | /ɪ/ | bindan (_to bind_) |
-| ie | /iː/ | bie (_bee_) |
-| o | /o/ | donar (_thunder_) |
-| œ, oe <sup>2</sup> | /œː/ | bœr (_berry_) |
-| u | /u/ | buk (_book_) |
+| a | /a/ | **apal** (apple) |
+| aa | /ɔː/ | **saa** (so) |
+| au | /au/ | **trau** (true) |
+| e | /ə/ <sup>1</sup> | **hande** (hands) |
+| e | /ɛ/ | **bedd** (bed) |
+| ee | /eː/ | **feer** (four) |
+| ei | /ai/ | **heim** (home) |
+| i | /ɪ/ | **bindan** (to bind) |
+| ie | /iː/ | **bie** (bee) |
+| o | /o/ | **donar** (thunder) |
+| œ, oe <sup>2</sup> | /œː/ | **bœr** (berry) |
+| u | /u/ | **buk** (book) |
 
 > 1. The letter **⟨e⟩** only produces the schwa sound **/ə/** at the end of a word.
 > 2. The letter **⟨œ⟩** is the formal spelling of this sound, however the digraph **⟨oe⟩** is an acceptable alternative for keyboards without easy access to **⟨œ⟩**.
@@ -41,28 +41,29 @@ Note that Norlunda contains 6 short vowels, 4 long vowels, and 2 diphthongs. Lea
 {: .striped-table }
 | Spelling | Phoneme | Example |
 |----------|---------|---------|
-| b | /b/ | beer (_bear_) |
-| d | /d/ | dag (_day_) |
-| f | /f/ | fogal (_bird_) |
-| g | /ʝ/ <sup>1</sup> | fliegan (_to fly_) |
-| g | /g/ | gold (_gold_) |
-| h | /h/ | hert (_heart_) |
-| j | /j/ | ja (_yes_) |
-| k | /k/ | kveen (_queen_) |
-| l | /l/ | lovan (_to love_) |
-| m | /m/ | mann (_man_) |
-| n | /n/ | nord (_north_) |
-| ng | /ŋ/ | jong (_young_) |
-| p | /p/ | spelan (_to play_) |
-| r | /ɾ/ | ross (_horse_) |
-| s | /s/ | stein (_stone_) |
-| sh | /ʃ/ | shada (_shadow_) |
-| t | /t/ | tien (_ten_) |
-| tsh | /t̠ʃ | dautsh (_native language_) |
-| v | /v/ | vord (_word_) |
-| x | /ks/ | fox (_fox_) |
+| b | /b/ | **beer** (bear) |
+| d | /d/ | **dag** (day) |
+| f | /f/ | **fogal** (bird) |
+| g | /ʝ/ <sup>1</sup> | **fliegan** (to fly) |
+| g | /g/ | **gold** (gold) |
+| h | /h/ <sup>2</sup> | **hert** (heart) |
+| j | /j/ | **ja** (yes) |
+| k | /k/ | **kveen** (queen) |
+| l | /l/ | **lovan** (to love) |
+| m | /m/ | **mann** (man) |
+| n | /n/ | **nord** (north) |
+| ng | /ŋ/ | **jong** (young) |
+| p | /p/ | **spelan** (to play) |
+| r | /ɾ/ | **ross** (horse) |
+| s | /s/ | **stein** (stone) |
+| sh | /ʃ/ | **shada** (shadow) |
+| t | /t/ | **tien** (ten) |
+| tsh | /t̠ʃ | **dautsh** (native language) |
+| v | /v/ | **vord** (word) |
+| x | /ks/ | **fox** (fox) |
 
 > 1. The letter **⟨g⟩** produces the **/ʝ/** sound when between vowels or when ending a word after a vowel.
+> 2. A short vowel followed by **⟨h⟩** is pronounced as a long vowel. For example, **gahan** is pronounced as if it were **gaa-an** (/'gɔː.an/). This construction only occurs when verb roots end with vowels. In that case, **⟨h⟩** is inserted between the vowel stem and the infinitive suffix **-an**. See [Grammar]({{ site.baseurl }}/grammar)).
 
 Apart from those listed above, Norlunda also uses foreign consonant letters for spelling words with sounds that do not exist natively in Norlunda. For example, English _zoom_ and German _holz_ may both be spelled with **⟨z⟩**. There is no need to approximate these sounds with different spellings.
 

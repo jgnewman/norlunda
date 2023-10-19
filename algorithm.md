@@ -189,7 +189,7 @@ Long vowels are shortened when followed by a consonant cluster. Example: _*blōs
 When a root word (prior to the infinitive suffix **-an**) has more than two syllables, everything between the first consonant of the second syllable and the last consonant of the last syllable is dropped. Example:
 - In the word _*hagatyss_, the cluster **⟨atys⟩** is dropped, yielding _*hags_.
 
-Verbs that end with a short vowel followed by **/nan/** drop that initial short vowel. Example: _*maganan_ → _*magnan_.
+Verbs that have at least three syllables and end with a short vowel followed by **/nan/** drop the initial short vowel in the ending. Example: _*maganan_ → _*magnan_.
 
 When **/w/** occurs between two vowels, the whole cluster merges into a single, long vowel determined by the first vowel in the cluster. Example: _*slawan_ → _*slān_.
 
@@ -219,7 +219,7 @@ When a short vowel is followed by **⟨gd, gt, gþ⟩**, the vowel is lengthened
 The first syllable in every word (apart from grammatical prefixes) is always stressed. All long vowels in unstressed syllables shorten. Example: _*lindīn_ → _*lindin_.
 
 {: .mb-8 }
-Various consonants become africated or are otherwise affected by the presence of fricatives as follows:
+Various consonants africate, de-africate, or are otherwise affected by the presence of fricatives as follows:
 Short (non-doubled) **/b/** after a vowel becomes **/v/**
 - **/b/** after a consonant other than **/b/** becomes **/f/**
 - **/d/** before a **fricative** becomes **/t/**

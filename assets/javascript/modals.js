@@ -6,12 +6,26 @@ window.addEventListener('load', () => {
     if (acc[modalName]) throw new Error(`Duplicate modal name: ${modalName}`)
     acc[modalName] = modal
 
+    const closeModal = () => {
+      modal.classList.remove('active')
+      modal.setAttribute('aria-hidden', 'true')
+      window.norlundaTools.publish('modal:close', { modalName })
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal()
+      }
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal()
+      }
+    })
+
     Array.from(modal.querySelectorAll('.close-modal')).forEach(close => {
-      close.addEventListener('click', () => {
-        modal.classList.remove('active')
-        modal.setAttribute('aria-hidden', 'true')
-        window.norlundaTools.publish('modal:close', { modalName })
-      })
+      close.addEventListener('click', closeModal)
     })
 
     return acc

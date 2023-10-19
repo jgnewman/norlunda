@@ -90,9 +90,9 @@ window.addEventListener('load', () => {
       outputTable.innerHTML = `
         <tbody>
           <tr class="border-bottom">
-            <th class="p-12">Input</th>
-            <th class="p-12">Output</th>
-            <th class="p-12">IPA</th>
+            <th class="p-12 no-border-top">Input</th>
+            <th class="p-12 no-border-top">Output</th>
+            <th class="p-12 no-border-top">IPA</th>
           </tr>
           ${resultObjects.map(({ input, output, outputIPA }, index) => `
             <tr class="${index % 2 === 0 ? 'row-stripe' : ''}">

@@ -7,6 +7,12 @@
 - text: Sounds & spelling
   url: /sounds-spelling
 
+- text: Grammar
+  url: /grammar
+
+- text: Community
+  url: /community
+
 - text: Algorithm
   url: /algorithm
 
