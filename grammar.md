@@ -170,6 +170,32 @@ Vie et**er**.
 {: .source}
 We eat. / We are eating.
 
+## Negation
+
+The most basic negator in Norlunda is the word **naa** which means _"no"_ (in opposition to **ja**, _"yes"_). However, there are a few different ways to negate things depending on the context. Two other common, important negators are **ekka** and **nak**.
+
+**Ekka** negates action and is similar to English _"not"_, however it never requires an auxiliary verb such as _"does"_:
+
+{: .showcase }
+Hun drinker **ekka**.
+
+{: .source}
+She drinks not. / She does not drink.
+
+{: .showcase }
+Varfor drinker hun **ekka**?
+
+{: .source}
+Why doesn't she drink?
+
+**Nak**, on the other hand, is similar to English _"nothing"_ or _"naught"_.
+
+{: .showcase }
+Die eter **nak**.
+
+{: .source}
+They are eating nothing. / They are not eating anything.
+
 ## Verbs
 
 Apart from **vesan**, Norlunda has one other irregular verb: **hebban** _"to have"_. The present tense form of this verb is always **har**, and the past tense form is always **hadde**.
@@ -203,7 +229,6 @@ Fogalen flieg**er**. Ik seh**er** hem.
 
 {: .source}
 The bird is flying. I see him/her.
-
 
 For past tense action, most verbs use the suffix **-de**. However, if the stem ends in most fricatives or stop consonants, we instead use **-te** <sup>1</sup>.
 
@@ -291,14 +316,41 @@ Han **hadde** riet**it** buken.
 {: .source }
 He had written the book.
 
-## Creating Adjectives (TBD)
+## Comparisons
+
+In Norlunda, the comparative suffix is **-ere** and it is often used in connection with the comparative preposition **dan** (than). When pronouns are compared, they are always kept in subject form.
+
+{: .showcase }
+Han ar lang**ere** **dan** hun.
+
+{: .source }
+He is taller than her.
+
+On a related note, the superlative suffix is **-est** and it is normally used in connection with definite nouns.
+
+{: .showcase }
+Hen ar sveft**est** folk**en**.
+
+{: .source }
+He/she/they are the fastest person.
+
+## Agent nouns
+
+It is often useful to name someone as a habitual performer of some action, for example a hunter, a fighter, or a singer. In Norlunda, verbs become agent nouns by way of the suffix **-ar** which can be appended with **-e** in the plural just like other consonant-stem nouns.
+
+{: .showcase }
+An sing**ar** ar laudere dan jakk**are**.
+
+{: .source }
+A singer is louder than hunters.
+
+## Other stuff (WIP)
 
 Coming soon...
 
-- Need an agent suffix (-ja?)
-- -er, -est
 - -y, -ish
-
+- -ness, -hood
+- adverbs
 
 
 
