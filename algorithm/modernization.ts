@@ -104,15 +104,26 @@ const shiftVowels = (word: string) => {
     .replace(/o/g, finalSpellingOf('o'))
     .replace(/ø/g, finalSpellingOf('ø'))
     .replace(/y/g, finalSpellingOf('y'))
-    .replace(/ā/g, (_, index, src) => !!src[index + 1] ? finalSpellingOf('ā') : finalSpellingOf('ɔ'))
+    .replace(/ā/g, (_, index, src) => {
+      const isWordFinal = !src[index + 1]
+      const precedesHan = src.slice(index + 1) === 'han'
+      return isWordFinal || precedesHan ? finalSpellingOf('ɔ') : finalSpellingOf('ā')
+    })
     .replace(/ǣ/g, finalSpellingOf('ǣ'))
     .replace(/ē/g, finalSpellingOf('ē'))
     .replace(/ī/g, finalSpellingOf('ī'))
-    .replace(/ō/g, (_, index, src) => pgmcApproximants.includes(src[index + 1]) ? finalSpellingOf('œ') : finalSpellingOf('ō'))
+    .replace(/ō/g, (_, index, src) => {
+      const precedesApproximant = pgmcApproximants.includes(src[index + 1])
+      return precedesApproximant ? finalSpellingOf('œ') : finalSpellingOf('ō')
+    })
     .replace(/œ/g, finalSpellingOf('œ'))
     .replace(/ɔ/g, finalSpellingOf('ɔ'))
     .replace(/ū/g, finalSpellingOf('ū'))
     .replace(/ȳ/g, finalSpellingOf('ȳ'))
+}
+
+const reduceHan = (word: string) => {
+  return word.replace(/([aeiouy])han$/, '$1n')
 }
 
 const fixTerminalAir = (word: string) => {
@@ -137,6 +148,7 @@ export default (word: string, context: Context) => {
     shiftFricatives,
     undoubleConsonants,
     shiftVowels,
+    reduceHan,
     fixTerminalAir,
   ])
 }

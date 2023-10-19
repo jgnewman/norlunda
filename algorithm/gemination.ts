@@ -18,8 +18,8 @@ const geminateJTriggers = (word: string) => {
       return result + char
     }
 
-    // Ensure a non-r/w/z consonant followed by j
-    if (!isConsonant(char) || char === 'r' || char === 'w' || char === 'z' || !nextCharIsJ) return result + char
+    // Ensure a non-w/z consonant followed by j
+    if (!isConsonant(char) || char === 'w' || char === 'z' || !nextCharIsJ) return result + char
 
     // Ensure preceded by a short vowel
     const [_, prevVowels] = separateFinalVowels(result)

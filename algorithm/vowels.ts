@@ -120,34 +120,6 @@ export const ipaifyFinalOrthography = (word: string) => {
     })
     .replace(/([bcdfghjklmnpqrstvwxz])v/g, '$1ʋ')
     .replace(/([aeiouy])g([aeiouy])/g, '$1ɣ$2')
-    .replace(/[aeiouy]h[aeiouy]/g, (match, position, source) => {
-      const baseVowel = match[0]
-      const followingVowel = match[2]
-      const prevChar = source[position - 1]
-      const nextChar = source[position + match.length]
-
-      // ensure short vowels surround the h
-      if (/[aeiouy]/.test(prevChar) || /[aeiouy]/.test(nextChar)) return match
-
-      switch (baseVowel) {
-        case 'a':
-          return 'ɔː' + followingVowel
-        case 'e':
-        case 'i':
-          return baseVowel + 'ː' + followingVowel
-        case 'o':
-          return 'øː' + followingVowel
-        case 'u':
-        case 'y':
-        default:
-          return match
-      }
-    })
 
   return `/'${result}/` 
 }
-
-// Idea: what if in a word like sehwaną, we lengthen the e but don't drop the h? Then we just have a
-// rule that -han is pronounced /an/ and the h is only there to divide vowels.
-//
-// Check what happens to þrēaną (to turn/twist) in Vowel laxing where an h is added between the vowels.

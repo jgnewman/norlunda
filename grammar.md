@@ -7,7 +7,7 @@ permalink: /grammar
 
 Norlunda grammar is incredibly simple. There is no grammatical gender, there are no case-based inflections for nouns, and there are only two irregular verbs (**vesan** _"to be"_, and **hebban**, _"to have"_).
 
-With that said, because Norlunda vocabulary is algorithmically generated from real, Proto-Germanic vocabulary, not _every_ word can be conjugated in _exactly_ the same way. To keep things consistent and predictable, Norlunda simplifies what might otherwise have been myriad different patterns into just two: patterns belonging to **consonant stems** <sup>1</sup> and patterns belonging to **vowel stems**.
+With that said, because Norlunda vocabulary is algorithmically generated from real, Proto-Germanic vocabulary, not _every_ word can be conjugated in _exactly_ the same way. To keep things consistent and predictable, Norlunda simplifies what might otherwise have been myriad different patterns into just two: patterns belonging to **consonant stems**<sup>1</sup> and patterns belonging to **vowel stems**.
 
 > 1. The difference between a consonant stem and a vowel stem is whether or not the lemma (in other words, the root, dictionary form of the word) ends with a consonant or a vowel.
 
@@ -206,10 +206,10 @@ Jie **har** jer apale end die **hadde** sin korn.
 {: .source}
 Y'all have y'all's apples and they had their corn.
 
-Whereas other Germanic languages have a mix of strong and weak verbs, Norlunda does not. This means that every verb conjugates according to common rules. By default, infinitives take the suffix **-an**.
+Whereas other Germanic languages have a mix of strong and weak verbs, Norlunda does not. This means that every verb conjugates according to common rules. By default, infinitives take the suffix **-an** for consonant stems and **-n** for vowel stems.
 
 {: .showcase }
-rinn**an**, flieg**an**, seh**an**
+rinn**an**, flieg**an**, see**n**
 
 {: .source}
 to run, to fly, to see
@@ -217,38 +217,44 @@ to run, to fly, to see
 In imperative form, we simply remove suffixes from verb stems:
 
 {: .showcase }
-Rinn! Flieg! Seh!
+Rinn! Flieg! See!
 
 {: .source}
 Run! Fly! See!
 
-To indicate present tense action, we use the suffix **-er**.
+To indicate present tense action, we use the suffix **-er** for consonant stems and **-r** for vowel stems.
 
 {: .showcase }
-Fogalen flieg**er**. Ik seh**er** hem.
+Fogalen flieg**er**. Ik see**r** hem.
 
 {: .source}
 The bird is flying. I see him/her.
 
-For past tense action, most verbs use the suffix **-de**. However, if the stem ends in most fricatives or stop consonants, we instead use **-te** <sup>1</sup>.
+For past tense action, most verbs use the suffix **-de**. However, if the stem ends in most fricatives or stop consonants, we instead use **-te**<sup>1</sup>.
 
 {: .showcase }
-Fogalen flieg**te**. Ik seh**de** hem.
+Fogalen flieg**te**. Ik see**de** hem.
 
 {: .source }
 The bird flew. I saw him/her.
 
 > 1. The **⟨t⟩**-based suffixes are as follows: _-bte, -fte, -gte, -kte, -pte, -ste, -shte, -tte, -vte_. This should feel fairly intuitive to most Germanic-language speakers.
 
-Sometimes a noun needs to be _described_ in terms of action it is currently performing. In this case, we use the present participle suffix **-ande**.
+Sometimes a noun needs to be _described_ in terms of action it is currently performing. In this case, we use the present participle suffix **-ande** for consonant stems and **-nde** for vowel stems.
 
 {: .showcase }
-Ik seher an rinn**ande** ross.
+Ik seer an rinn**ande** ross.
 
 {: .source }
 I see a running horse.
 
-In English, the present participle is often used to distinguish between action that a subject is currently performing and habitual action. In Norlunda, the participle form is not used this way. Instead, the present tense suffix **-er** handles both cases.
+{: .showcase }
+Ik seer an flie**nde** herr.
+
+{: .source }
+I see a fleeing army.
+
+In English, the present participle is often used to mark in-progress action as distinct from habitual action (e.g., "I eat fish habitually" _vs._ "I am eating fish right now"). In Norlunda, the participle form is not used this way. Instead, the present tense suffix **-er** handles both cases.
 
 A single instance of verb action can be treated as a noun by way of the suffix **-ing**.
 
@@ -262,7 +268,7 @@ We had a good run.
 
 Some verbs are designed to show the possibility, intent, ability, or necessity of some action, as opposed to a real occurrence of action. We call these modal verbs.
 
-A good rule of thumb to determine whether or not a verb is modal is to ask whether or not it makes sense when using a noun as its direct object. For example, let’s look at the English words _eat_ and _can_ (to be able). The sentence “I eat a potato” makes prefect sense, however the sentence “I can a potato” does not. _Can_ only makes sense when used with other verbs, for example “I can eat”, meaning _can_ is modal. In Norlunda, modal verbs take no suffix in the present tense.
+A good rule of thumb for detemining whether or not a verb is modal is to ask yourself whether or not it makes sense with a noun as its direct object. For example, consider the English words _eat_ and _can_ (as in, to be able). The sentence “I eat a potato” makes sense, but the sentence “I can a potato” does not. _Can_ only works when used with other verbs, for example “I can eat”, which tells us that _can_ is modal. In Norlunda, modal verbs take no suffix in the present tense.
 
 {: .showcase }
 Ik **kon** drinkan.
@@ -282,11 +288,11 @@ I definitively intend to run. (I shall run.)
 Ik **sholde** rinnan.
 
 {: .source }
-I have some intention to run but am less-committal. (I should run.)
+I have some intent to run but am less-committal. (I should run.)
 
 ## Stateful tense
 
-When we need to describe something in terms of a new state it has taken on after having undergone the process of a verb, we use the suffix **-it**. This is a pattern that merges a few different tenses across the Germanic spectrum into something Norlunda calls the **stateful tense**.
+When we need to describe something in terms of a new state it has taken on after having undergone the process of a verb, we use the suffix **-it** for consonant stems and **-t** for vowel stems. This is a pattern that merges a few different tenses across the Germanic spectrum into something Norlunda calls the **stateful tense**.
 
 A good rule of thumb here is that if you run into a situation that doesn’t have a clear and obvious answer for conjugation, your safest bet is to use the stateful tense.
 
@@ -302,7 +308,13 @@ Buken var riet**it** dis jeer.
 {: .source }
 The book was written this year.
 
-One last basic verb pattern is "perfect tense". This is how we express the fact that some action already took place before the time frame being discussed. The result is usually a discussion about the state of a situation so we use the stateful tense for this in Norlunda. To construct perfect tense in Norlunda we add the verb **hebban** to a stateful conjugation.
+{: .showcase }
+Du ar see**t**.
+
+{: .source }
+You are seen.
+
+One other basic verb pattern is the "perfect tense". This is how we express the fact that some action already took place before the time frame being discussed. The result is usually a discussion about the state of a situation so we use the stateful tense for this in Norlunda. To construct perfect tense in Norlunda we add the verb **hebban** to a stateful conjugation.
 
 {: .showcase }
 Du **har** et**it**.
@@ -318,7 +330,7 @@ He had written the book.
 
 ## Comparisons
 
-In Norlunda, the comparative suffix is **-ere** and it is often used in connection with the comparative preposition **dan** (than). When pronouns are compared, they are always kept in subject form.
+In Norlunda, the comparative suffix is **-ere** for consonant stems and **-re** for vowel stems. It is often used in connection with the comparative preposition **dan** (than). When pronouns are compared, they are always kept in subject form.
 
 {: .showcase }
 Han ar lang**ere** **dan** hun.
@@ -326,7 +338,7 @@ Han ar lang**ere** **dan** hun.
 {: .source }
 He is taller than her.
 
-On a related note, the superlative suffix is **-est** and it is normally used in connection with definite nouns.
+On a related note, the superlative suffix is **-est/-st** and it is normally used in connection with definite nouns.
 
 {: .showcase }
 Hen ar sveft**est** folk**en**.
@@ -336,13 +348,19 @@ He/she/they are the fastest person.
 
 ## Agent nouns
 
-It is often useful to name someone as a habitual performer of some action, for example a hunter, a fighter, or a singer. In Norlunda, verbs become agent nouns by way of the suffix **-ar** which can be appended with **-e** in the plural just like other consonant-stem nouns.
+It is often useful to name someone as a habitual performer of some action, for example a hunter, a fighter, or a singer. In Norlunda, verbs become agent nouns by way of the suffix **-ar** for consonant stems and **-jar** for vowel stems. These suffixes can be appended with **-e** in the plural as expected.
 
 {: .showcase }
 An sing**ar** ar laudere dan jakk**are**.
 
 {: .source }
 A singer is louder than hunters.
+
+{: .showcase }
+Du flier oft. Du ar an flie**jar**.
+
+{: .source }
+You often flee. You are a fleer.
 
 ## Other stuff (WIP)
 

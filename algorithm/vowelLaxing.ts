@@ -84,17 +84,24 @@ const mergeInfinitives = (word: string, context: Context) => {
 
   const newWord = reduceInfSuffixes(word)
   if (newWord === word) return newWord
-
   
-  // Now we know this was a verb whose suffix changed. If the suffix
+  // Now we know this was a verb whose suffix changed.
+  // It could be a consonant or vowel plus -an or -han (as in *slahan)
+  const stem = newWord.replace(/h?an$/, '')
+  const lastOfStem = lastOf(stem)
 
-  // follows a consonant, we're done.
-  const stem = newWord.slice(0, -2)
-  if (!isVowel(lastOf(stem))) return newWord
+  // When the stem ends with a vowel, make sure we end with han and lengthen a short vowel.
+  if (isVowel(lastOfStem)) {
+    const [_, finalVowels] = separateFinalVowels(stem)
 
-  // If the suffix follows a vowel, we need to add 'h' and shorten a preceding ā.
-  if (lastOf(stem) === 'ā') return allButLastOf(stem) + 'a' + 'han'
-  return stem + 'han'
+    return baseVowels.includes(finalVowels)
+      ? allButLastOf(stem) + longVowelVariantOf(lastOfStem) + 'han'
+      : stem + 'han'
+  
+  // When the stem ends with a consonant, just tack -an onto the end.
+  } else {
+    return stem + 'an'
+  }
 }
 
 const finalSylHasShortVowel = (word: string) => {

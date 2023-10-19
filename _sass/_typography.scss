@@ -290,6 +290,10 @@ table {
   margin-bottom: 36px;
 }
 
+audio {
+  margin-bottom: 32px;
+}
+
 .main-content > ul,
 .main-content > ol {
   margin-bottom: 32px;
@@ -306,6 +310,10 @@ table {
 .main-content li {
   margin-left: 40px;
   padding-bottom: 4px;
+}
+
+.main-content strong {
+  white-space: nowrap;
 }
 
 .byline {

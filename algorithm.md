@@ -76,7 +76,7 @@ Long **/eː/** is lowered and backed to **/ɔː/** when followed in the next syl
 ## Phase 5: Gemination
 
 {: .mb-8 }
-All single consonants (except **/r, w, z/**) are **doubled** when preceded by a short vowel and followed by **/j/**. When this happens, the **/j/** is also lost. If the resulting word ends with **⟨nną⟩**, the final **⟨ą⟩** is dropped. Examples:
+All single consonants (except **/w, z/**) are **doubled** when preceded by a short vowel and followed by **/j/**. When this happens, the **/j/** is also lost. If the resulting word ends with **⟨nną⟩**, the final **⟨ą⟩** is dropped. Examples:
 - _*hæbjaną_ → _*hæbbaną_
 - _*kynją_ → _*kynn_
 
@@ -105,7 +105,7 @@ All diphthongs and some vowel clusters involving **/h, j/** are monophthongized.
 All overlong vowels become regular long vowels. A short vowel in the preceding syllable is lengthened to compensate. Example: _*awô_ → _*āwō_.
 
 {: .mb-8 }
-All infinitive suffixes merge as shown below. If the new infinitive suffix **-an** follows a vowel, it becomes **-han**. If that preceding vowel was **/ɑː/**, it is shortened to **/ɑ/**. Example: _*gāną_ → _*gahan_. (Note that this step should not be applied to non-verbs.)
+All infinitive suffixes merge as shown below. If the new infinitive suffix **-an** follows a vowel, it becomes **-han**. If **-han** follows a short vowel, the vowel is lengthened. Example: _*gāną_ → _*gāhan_, or _*sehwaną_ → _*seehan_. (Note that this step should not be applied to non-verbs.)
 - wijaną → **/ɑn/**
 - ijaną → **/ɑn/**
 - janą → **/ɑn/**
@@ -247,7 +247,7 @@ Some vowels do a little shifting and settling.
 - **/ø/**  →  is raised to **/ɪ/**, spelled **⟨i⟩**
 - **/u/**  →  no change, spelled **⟨u⟩**
 - **/y/**  →  **/u/**, spelled **⟨u⟩**
-- **/ɑː/** when word-final  →  **/ɔː/**, spelled **⟨aa⟩**
+- **/ɑː/** when word-final or before the suffix **⟨-han⟩**  →  **/ɔː/**, spelled **⟨aa⟩**
 - **/ɑː/**  →  **/aɪ/**, spelled **⟨ei⟩**
 - **/æː/**  →  **/øː/**, spelled **⟨œ⟩** or **⟨oe⟩**
 - **/eː/**  →  no change, spelled **⟨ee⟩**
@@ -257,6 +257,8 @@ Some vowels do a little shifting and settling.
 - **/øː/**  →  no change, spelled **⟨œ⟩** or **⟨oe⟩**
 - **/ɔː/** →  no change, spelled **⟨aa⟩**
 - **/uː, yː/**  →  **/aʊ/**, spelled **⟨au⟩**
+
+When the infinitive suffix **⟨-han⟩** follows a vowel, it is reduced to **⟨-n⟩**.
 
 Word-terminal **/aɪr/** becomes **/eːr/** spelled **⟨eer⟩**.
 

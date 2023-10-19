@@ -6,7 +6,7 @@ permalink: /sounds-spelling
 # Sounds & spelling
 
 {: .showcase }
-Neer saft! Vat liet dur jein vindoga breker? Dee ar ostaren, end Juliet ar sonnen. Stand upp, shaan sonn, end slah den avundsiek maanen, den ar alreid siek end bleik av sorga, furden du, henas meid, ar mikel shaanere dan hun.
+Neer saft! Vat liet dur jein vindoga breker? Dee ar ostaren, end Juliet ar sonnen. Stand upp, shaan sonn, end slaa den avundsiek maanen, den ar alreid siek end bleik av sorga, furden du, henas meid, ar mikel shaanere dan hun.
 
 {: .source }
 "But soft! What light through yonder window breaks? It is the east, and Juliet is the sun. Arise, fair sun, and kill the envious moon, who is already sick and pale with grief, that thou her maid art far more fair than she." –Romeo and Juliet
@@ -46,7 +46,7 @@ Note that Norlunda contains 6 short vowels, 4 long vowels, and 2 diphthongs. Lea
 | f | /f/ | **fogal** (bird) |
 | g | /ʝ/ <sup>1</sup> | **fliegan** (to fly) |
 | g | /g/ | **gold** (gold) |
-| h | /h/ <sup>2</sup> | **hert** (heart) |
+| h | /h/ | **hert** (heart) |
 | j | /j/ | **ja** (yes) |
 | k | /k/ | **kveen** (queen) |
 | l | /l/ | **lovan** (to love) |
@@ -63,7 +63,6 @@ Note that Norlunda contains 6 short vowels, 4 long vowels, and 2 diphthongs. Lea
 | x | /ks/ | **fox** (fox) |
 
 > 1. The letter **⟨g⟩** produces the **/ʝ/** sound when between vowels or when ending a word after a vowel.
-> 2. A short vowel followed by **⟨h⟩** is pronounced as a long vowel. For example, **gahan** is pronounced as if it were **gaa-an** (/'gɔː.an/). This construction only occurs when verb roots end with vowels. In that case, **⟨h⟩** is inserted between the vowel stem and the infinitive suffix **-an**. See [Grammar]({{ site.baseurl }}/grammar)).
 
 Apart from those listed above, Norlunda also uses foreign consonant letters for spelling words with sounds that do not exist natively in Norlunda. For example, English _zoom_ and German _holz_ may both be spelled with **⟨z⟩**. There is no need to approximate these sounds with different spellings.
 
