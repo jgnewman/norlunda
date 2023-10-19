@@ -5,7 +5,7 @@ permalink: /community
 
 # Community
 
-Norlunda is a community project currently led by **John Newman**. Discussion and decision making occur on the Norlunda Discord server which is freely accessible here: [https://discord.gg/AGvmXRhscG](https://discord.gg/AGvmXRhscG). This documentation MIT licensed and is currently hosted on GitHub at [https://github.com/jgnewman/norlunda](https://github.com/jgnewman/norlunda).
+Norlunda is a community project currently led by **John Newman**. Discussion and decision making occur on the Norlunda Discord server which is freely accessible here: [https://discord.gg/AGvmXRhscG](https://discord.gg/AGvmXRhscG). This documentation is MIT licensed and is currently hosted on GitHub at [https://github.com/jgnewman/norlunda](https://github.com/jgnewman/norlunda).
 
 ## The flag
 
