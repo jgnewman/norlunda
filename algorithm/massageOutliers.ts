@@ -22,6 +22,10 @@ const outlierMap = {
 
   // Loss of n and r are non-standard
   "sunþrą": "sūþą",
+
+  // Loss of w after word-initial s is inconsistent but
+  // in this case, only retained in English
+  "swōtuz": "sōtuz",
   
   // Retention of <o> rather than change to <u> is the result of
   // this word being borrowed back in from earlier literature in all

@@ -37,6 +37,8 @@ There are a few words that historically break the rules. A good example of this 
   - Loss of the second **⟨r⟩** is non-standard
 - _sunþrą_ → _sūþą_ (south)
   - Loss of the second **⟨r⟩** is non-standard
+- _swōtuz_ → _sōtuz_
+  - Loss of **⟨w⟩** after word-initial **⟨s⟩** is inconsistent and in this case is only retained in English.
 - _wōdanaz_ → _wudanaz_ (Odin)
   - Designed to conform to the common, modern retention of **⟨o⟩** which, in all modern, West-Germanic cases, is a learned borrowing from older language stages. Examples: In English, the Great Vowel Shift would have raised _Woden_ to _Wooden_ and Middle High German has _Wüetung_, which should not have yielded modern _Wotan_.
 
@@ -163,6 +165,7 @@ If a word ends in an **uncomfortable consonant cluster**<sup>2</sup>, then **/ɑ
 Word-final **/s/** following a consonant other than **⟨h⟩** is dropped (as in _*fōts_ → _*fōt_). Word-final **/z/**-suffixes are also dropped or reduced as defined below.
 - iwaz → **/ɑ/**
 - ijaz → **/iː/** if these are the only vowels in the word, otherwise drop
+- haz → **/h/** if after a vowel, otherwise drop and lengthen a preceding short vowel
 - waz → **/ɑ/** if after a consonant, otherwise drop
 - az → drop unless there are no other vowels in the word
 - iwiz → **/ɑ/** if after a consonant, otherwise drop

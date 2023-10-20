@@ -21,10 +21,10 @@ import {
   longVowelVariantOf,
   shortVowelVariantOf,
   finalSpellingOf,
+  baseVowelsRegex,
 } from "./vowels"
 import { pgmcApproximants } from "./consonants"
 
-const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
 const longPlusWRegex = new RegExp(`(${longVowels.join('|')})w`, 'g')
 
 const handleWBasedEndDiphthongs = (word: string) => {
@@ -43,7 +43,7 @@ const dropWAndModVowels = (word: string) => {
     // Lengthen a preceding short vowel
     const [_, finalVowels] = separateFinalVowels(newWord)    
     if (finalVowels.length === 1 && baseVowels.includes(finalVowels)) {
-      newWord = newWord.replace(shortRegex, (_, p1) => longVowelVariantOf(p1))
+      newWord = newWord.replace(baseVowelsRegex, (_, p1) => longVowelVariantOf(p1))
     }
   }
 

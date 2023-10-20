@@ -292,7 +292,7 @@ I have some intent to run but am less-committal. (I should run.)
 
 ## Stateful tense
 
-When we need to describe something in terms of a new state it has taken on after having undergone the process of a verb, we use the suffix **-it** for consonant stems and **-t** for vowel stems. This is a pattern that merges a few different tenses across the Germanic spectrum into something Norlunda calls the **stateful tense**.
+When we need to describe something in terms of a new state it has taken on after having undergone the process of a verb, we use the suffix **-t** for most stems and **-it** for consonant stems that require a vowel sound in order to be followed by a "t" sound<sup>1</sup>. This is a pattern that merges a few different tenses across the Germanic spectrum into something Norlunda calls the **stateful tense**.
 
 A good rule of thumb here is that if you run into a situation that doesn’t have a clear and obvious answer for conjugation, your safest bet is to use the stateful tense.
 
@@ -327,6 +327,8 @@ Han **hadde** riet**it** buken.
 
 {: .source }
 He had written the book.
+
+> 1. The consonant stems that require **-it** rather than **-t** for stateful tense are as follows: _-b, -d, -g, -t_. This should feel fairly intuitive to most Germanic-language speakers. 
 
 ## Comparisons
 

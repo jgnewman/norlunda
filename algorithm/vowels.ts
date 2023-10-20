@@ -6,12 +6,16 @@
 export const baseVowels = ['a', 'æ', 'e', 'i', 'o', 'ø', 'u', 'y']
 export const nasalVowels = ['ą', 'ę', 'į', 'ǫ', 'ų']
 export const allShortVowels = [...baseVowels, ...nasalVowels]
+export const baseVowelsRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
+export const nasalVowelsRegex = new RegExp(`(${nasalVowels.join('|')})`, 'g')
 
 export const longVowels = ['ā', 'ǣ', 'ē', 'ī', 'ō', 'œ', 'ū', 'ȳ', 'ɔ']
 export const longNasalVowels = ['ǭ']
 export const allLongVowels = [...longVowels, ...longNasalVowels]
+export const longNasalVowelsRegex = new RegExp(`(${longNasalVowels.join('|')})`, 'g')
 
 export const overlongVowels = ['â', 'ê', 'î', 'ô', 'û', 'ŷ']
+export const overlongVowelsRegex = new RegExp(`(${overlongVowels.join('|')})`, 'g')
 
 export const singularVowels = [
   ...allShortVowels,

@@ -1,6 +1,6 @@
 import type { Context } from './types'
 import { pgmcVelars } from './consonants'
-import syllableize from './syllableize'
+import { lengthenFinalSylShortVowel } from './syllableize'
 import {
   lastOf,
   allButLastOf,
@@ -9,7 +9,6 @@ import {
   isVowel,
   fixUncomfortableEndCluster,
   containsVowels,
-  separateFinalConsonants,
   separateFinalVowels,
   runPhases,
 } from './utils'
@@ -18,17 +17,14 @@ import {
   longVowels,
   nasalVowels,
   longNasalVowels,
-  overlongVowels,
   longVowelVariantOf,
+  longNasalVowelsRegex,
+  nasalVowelsRegex,
+  overlongVowelsRegex,
 } from './vowels'
 
-const shortRegex = new RegExp(`(${baseVowels.join('|')})`, 'g')
-const overlongRegex = new RegExp(`(${overlongVowels.join('|')})`, 'g')
-const nasalRegex = new RegExp(`(${nasalVowels.join('|')})`, 'g')
-const longNasalRegex = new RegExp(`(${longNasalVowels.join('|')})`, 'g')
-
 const relaxOverlongs = (word: string) => {
-  return word.replace(overlongRegex, (_, p1) => longVowelVariantOf(p1))
+  return word.replace(overlongVowelsRegex, (_, p1) => longVowelVariantOf(p1))
 }
 
 const monophthongize = (word: string) => {
@@ -89,21 +85,6 @@ const mergeInfinitives = (word: string, context: Context) => {
   }
 }
 
-const finalSylHasShortVowel = (word: string) => {
-  const prevSyllable = lastOf(syllableize(word))
-  const [syllPrefix] = separateFinalConsonants(prevSyllable)
-  const [_, vowelCluster] = separateFinalVowels(syllPrefix)
-  return baseVowels.includes(vowelCluster)
-}
-
-const lengthenFinalSylShortVowel = (word: string) => {
-  if (!finalSylHasShortVowel(word)) return word
-  const syllables = syllableize(word)
-  const lastSyllable = lastOf(syllables)
-  const restSyllables = allButLastOf(syllables)
-  return restSyllables.join('') + lastSyllable.replace(shortRegex, (_, p1) => longVowelVariantOf(p1))
-}
-
 const reduceVowelBasedSuffixes = (word: string) => {
   if (/wij(ō|ǭ)$/.test(word)) return word.replace(/wij(ō|ǭ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/hij(ō|ǭ)$/.test(word)) return word.replace(/hij(ō|ǭ)$/, 'a') // Example: *marhijō -> mara (mare)
@@ -142,8 +123,8 @@ const reduceVowelBasedSuffixes = (word: string) => {
 
 const denasalize = (word: string) => {
   return word
-    .replace(nasalRegex, (_, p1) => baseVowels[nasalVowels.indexOf(p1)])
-    .replace(longNasalRegex, (_, p1) => longVowels[longNasalVowels.indexOf(p1)])
+    .replace(nasalVowelsRegex, (_, p1) => baseVowels[nasalVowels.indexOf(p1)])
+    .replace(longNasalVowelsRegex, (_, p1) => longVowels[longNasalVowels.indexOf(p1)])
 }
 
 const handleLZ = (word: string) => {

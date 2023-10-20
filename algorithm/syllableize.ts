@@ -1,4 +1,13 @@
-import { separateInitialVowels, separateInitialConsonants, containsVowels } from "./utils"
+import {
+  separateInitialVowels,
+  separateInitialConsonants,
+  containsVowels,
+  lastOf,
+  separateFinalConsonants,
+  separateFinalVowels,
+  allButLastOf,
+} from "./utils"
+import { baseVowels, baseVowelsRegex, longVowelVariantOf } from "./vowels"
 
 const getVowelConsonantChunk = (word: string) => {
   const [vowels, rest] = separateInitialVowels(word)
@@ -36,3 +45,18 @@ export default syllableize
 // aplaz -> ap-laz
 // hagatusi -> ha-ga-tu-si
 // hrussą -> hrus-są
+
+export const finalSylHasShortVowel = (word: string) => {
+  const prevSyllable = lastOf(syllableize(word))
+  const [syllPrefix] = separateFinalConsonants(prevSyllable)
+  const [_, vowelCluster] = separateFinalVowels(syllPrefix)
+  return baseVowels.includes(vowelCluster)
+}
+
+export const lengthenFinalSylShortVowel = (word: string) => {
+  if (!finalSylHasShortVowel(word)) return word
+  const syllables = syllableize(word)
+  const lastSyllable = lastOf(syllables)
+  const restSyllables = allButLastOf(syllables)
+  return restSyllables.join('') + lastSyllable.replace(baseVowelsRegex, (_, p1) => longVowelVariantOf(p1))
+}
