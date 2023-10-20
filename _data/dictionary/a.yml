@@ -1,0 +1,65 @@
+- def: a
+  type: adjective
+  synonyms: [an]
+  word: an
+  origin: "*ainaz"
+  originDef: one
+  hypothetical: false
+  irregular: false
+  custom: true
+  notes: Whereas the algorithm gives _ainaz → ein_, furthen evolution to → _an_ denotes consistent lack of stress on the word
+
+- def: adder
+  type: noun
+  synonyms: [venomous snake]
+  word: nadar
+  origin: "*nadrǭ"
+  originDef: adder, snake
+  hypothetical: false
+  irregular: false
+  custom: false
+  notes: ""
+
+- def: all
+  type: adjective
+  synonyms: []
+  word: all
+  origin: "*allaz"
+  originDef: all, whole, entire
+  hypothetical: false
+  irregular: false
+  custom: false
+  notes: ""
+
+- def: and
+  type: conjunction
+  synonyms: []
+  word: end
+  origin: "*andi"
+  originDef: and
+  hypothetical: false
+  irregular: false
+  custom: false
+  notes: ""
+
+- def: annoy
+  type: verb
+  synonyms: [vex, fret, distress]
+  word: ergan
+  origin: "*argijaną"
+  originDef: to ruin
+  hypothetical: false
+  irregular: false
+  custom: false
+  notes: ""
+
+- def: apple
+  type: noun
+  synonyms: []
+  word: apal
+  origin: "*aplaz"
+  originDef: apple
+  hypothetical: false
+  irregular: false
+  custom: false
+  notes: ""

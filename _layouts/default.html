@@ -6,6 +6,7 @@
   <title>{{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   <meta name="description" content="{{ side.description }}">
+  <meta name="baseurl" content="{{ site.baseurl }}">
   
   <meta property="og:title" content="{{ site.title }}">
   <meta property="og:type" content="">
@@ -108,6 +109,8 @@
   {% endif %}
 
   <script defer src="{{ '/assets/javascript/global.js' | relative_url | append: cache_bust }}"></script>
+  <script defer src="{{ '/assets/javascript/dictionary.js' | relative_url | append: cache_bust }}"></script>
+  
   <script defer src="{{ '/assets/javascript/menu.js' | relative_url | append: cache_bust }}"></script>
   <script defer src="{{ '/assets/javascript/subnav.js' | relative_url | append: cache_bust }}"></script>
   <script defer src="{{ '/assets/javascript/modals.js' | relative_url | append: cache_bust }}"></script>

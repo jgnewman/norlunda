@@ -1,0 +1,21 @@
+- def: bear
+  type: noun
+  synonyms: []
+  word: beer
+  origin: "*berô"
+  originDef: bear
+  hypothetical: false
+  irregular: false
+  custom: true
+  notes: ""
+
+- def: before
+  type: preposition
+  synonyms: []
+  word: for
+  origin: "*furai"
+  originDef: before
+  hypothetical: false
+  irregular: false
+  custom: true
+  notes: ""

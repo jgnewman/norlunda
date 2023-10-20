@@ -28,22 +28,7 @@ const nasalRegex = new RegExp(`(${nasalVowels.join('|')})`, 'g')
 const longNasalRegex = new RegExp(`(${longNasalVowels.join('|')})`, 'g')
 
 const relaxOverlongs = (word: string) => {
-  const syllables = syllableize(word)
-
-  return syllables.map((syllable, index) => {
-    const nextSyllable = syllables[index + 1] ?? ''
-    let newSyllable = syllable
-
-    if (overlongRegex.test(nextSyllable)) {
-      newSyllable = syllable
-        .replace(shortRegex, (_, p1) => longVowelVariantOf(p1))
-        .replace(nasalRegex, (_, p1) => longVowelVariantOf(p1))
-    }
-    
-    return newSyllable
-      .replace(overlongRegex, (_, p1) => longVowelVariantOf(p1))
-
-  }).join('')
+  return word.replace(overlongRegex, (_, p1) => longVowelVariantOf(p1))
 }
 
 const monophthongize = (word: string) => {

@@ -1,0 +1,16 @@
+---
+---
+
+{% assign eng2nor = '' | split: '' %}
+
+{% for wordArr in site.data.dictionary %}
+  {% for word in wordArr %}
+    {% if word.first %}
+      {% assign eng2nor = eng2nor | concat: word %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% assign nor2eng = eng2nor | sort: 'word' %}
+
+{{ nor2eng | jsonify }}

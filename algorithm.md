@@ -102,7 +102,7 @@ All diphthongs and some vowel clusters involving **/h, j/** are monophthongized.
 - /jː/ (usually spelled **⟨jj⟩**) → /j/
 - /oːu/ (usually spelled **⟨ōu⟩**)  → /oː/
 
-All overlong vowels become regular long vowels. A short vowel in the preceding syllable is lengthened to compensate. Example: _*awô_ → _*āwō_.
+All overlong vowels become regular long vowels. Example: _*awô_ → _*awō_.
 
 {: .mb-8 }
 All infinitive suffixes merge as shown below. If the new infinitive suffix **-an** follows a vowel, it becomes **-han**. If **-han** follows a short vowel, the vowel is lengthened. Example: _*gāną_ → _*gāhan_, or _*sehwaną_ → _*seehan_. (Note that this step should not be applied to non-verbs.)
