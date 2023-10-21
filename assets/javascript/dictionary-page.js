@@ -25,12 +25,12 @@ window.addEventListener('load', () => {
 
     const content = document.createElement('div')
     content.classList.add('dictionary-list')
-    list.forEach(({ word, type, def, synonyms = [] }) => {
+    list.forEach(({ word, type, modal, def, synonyms = [] }) => {
       const wordEl = document.createElement('a')
       wordEl.classList.add('search-result', 'block', 'px-16', 'py-4')
       wordEl.setAttribute('href', `${baseUrl}/dictionary?term=${word}`)
       wordEl.innerHTML = `
-        <strong>${word}</strong> <em class="semi-transparent px-4">${formatWordType(type)}</em>
+        <strong>${word}</strong> <em class="semi-transparent px-4">${formatWordType(type, modal)}</em>
         ${[def, ...synonyms].join(', ')}
 
       `
@@ -96,10 +96,10 @@ window.addEventListener('load', () => {
       return
     }
 
-    const { word, type, def, synonyms = [], hypothetical, irregular, custom, notes, origin, originDef } = result
+    const { word, type, modal, def, synonyms = [], hypothetical, irregular, custom, notes, origin, originDef } = result
 
     output.innerHTML = `
-      <h2 class="font-size-36 mb-8">${word} <em class="semi-transparent font-size-18">${type} ${irregular ? 'irregular' : ''}</em></h2>
+      <h2 class="font-size-36 mb-8">${word} <em class="semi-transparent font-size-18">${modal ? 'modal ' : ''}${type} ${irregular ? 'irregular' : ''}</em></h2>
       <ul class="mb-32">
         <li>"${[def, ...synonyms].join(', ')}"</li>
         ${hypothetical ? `<li>The origin of this word is hypothetical</li>` : ''}

@@ -25,10 +25,12 @@ window.addEventListener('load', () => {
   let dictionaryReady = false
   let queryInProgress = false
 
-  window.norlundaTools.formatWordType = (type) => {
-    if (type.length <= 4) return type[0] + '.'
+  window.norlundaTools.formatWordType = (type, modal) => {
+    const modalPrefix = modal ? 'mod. ' : ''
+    if (type.length <= 4) return `${modalPrefix}${type[0] + '.'}`
+
     const sliced = type.slice(0, 4)
-    return /[aeiouy]$/.test(sliced) ? type.slice(0, 3) + '.' : sliced + '.'
+    return `${modalPrefix}${/[aeiouy]$/.test(sliced) ? type.slice(0, 3) + '.' : sliced + '.'}`
   }
 
   window.norlundaTools.queryDictionary = (query) => {

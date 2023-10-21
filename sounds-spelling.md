@@ -6,7 +6,7 @@ permalink: /sounds-spelling
 # Sounds & spelling
 
 {: .showcase }
-Neer saft! Vat liet dur jein vindoga breker? Dee ar ostaren, end Juliet ar sonnen. Stand upp, shaan sonn, end slaa den avundsiek maanen, den ar alreid siek end bleik av sorga, furden du, henas meid, ar mikel shaanere dan hun.
+Neer miek! Vat liet dur jein vindoga breker? Dee ar ostaren, end Juliet ar sonnen. Upstaa, shaan sonn, end slaa den avundsiek maanen, den ar alreid siek end bleik av sorga, forden du, henas meid, ar mikel shaanere dan hun.
 
 {: .source }
 "But soft! What light through yonder window breaks? It is the east, and Juliet is the sun. Arise, fair sun, and kill the envious moon, who is already sick and pale with grief, that thou her maid art far more fair than she." –Romeo and Juliet

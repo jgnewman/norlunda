@@ -14,11 +14,32 @@
   origin: "*nadrǭ"
   originDef: adder, snake
 
+- def: algorithm
+  type: noun
+  synonyms: [computer program]
+  word: rekningrit
+  custom: true
+  notes: This is a compound of two Norlunda words, _rekning_ and _rit_, meaning "a writ of calculation"
+
 - def: all
   type: adjective
   word: all
   origin: "*allaz"
   originDef: all, whole, entire
+
+- def: already
+  type: adverb
+  word: alreid
+  hypothetical: true
+  origin: "*allaz *raidaz"
+  originDef: already
+
+- def: also
+  type: conjunction
+  synonyms: [foo, in addition, furthermore]
+  word: aak
+  origin: "*auk"
+  originDef: also, furthermore
 
 - def: and
   type: conjunction
@@ -49,19 +70,13 @@
   custom: true
   notes: "Whereas the particles of this compound are not hypothetical, the compound itself is. This word also requires manual addition of the Norlunda infinitive suffix to become a verb."
 
-- def: algorithm
-  type: noun
-  synonyms: [computer program]
-  word: rekningrit
-  custom: true
-  notes: This is a compound of two Norlunda words, _rekning_ and _rit_, meaning "a writ of calculation"
-
-- def: also
-  type: conjunction
-  synonyms: [foo, in addition, furthermore]
-  word: aak
-  origin: "*auk"
-  originDef: also, furthermore
+- def: arise
+  type: verb
+  synonyms: [get up, stand up, rise]
+  word: upstaan
+  origin: "*upp *stāną"
+  originDef: to stand up
+  hypothetical: true
 
 - def: army
   type: noun

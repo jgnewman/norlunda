@@ -68,7 +68,7 @@
 
 - def: for
   type: preposition
-  synonyms: [because, since, intended to be received by]
+  synonyms: [intended to be received by]
   word: fur
   origin: "*furi"
   originDef: before, forward
@@ -95,7 +95,7 @@
 
 - def: fox
   type: noun
-  word: foks
+  word: fox
   origin: "*fuhsaz"
   originDef: fox
 

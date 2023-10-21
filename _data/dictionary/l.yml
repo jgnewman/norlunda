@@ -12,6 +12,13 @@
   origin: "*lībą"
   originDef: life
 
+- def: light
+  type: noun
+  synonyms: [brightness, glow]
+  word: liet
+  origin: "*leuhtą"
+  originDef: light
+
 - def: load
   type: noun
   synonyms: [burden, a weight]

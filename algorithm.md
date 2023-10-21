@@ -41,6 +41,8 @@ There are a few words that historically break the rules. A good example of this 
   - Loss of the second **⟨r⟩** is non-standard
 - _swōtuz_ → _sōtuz_
   - Loss of **⟨w⟩** after word-initial **⟨s⟩** is inconsistent and in this case is only retained in English.
+- _trudaną_ → _tredaną_
+  - The West Germanic descendants have regularised the ablaut of this verb by replacing the **⟨u⟩** with **⟨e⟩**.
 - _wōdanaz_ → _wudanaz_ (Odin)
   - Designed to conform to the common, modern retention of **⟨o⟩** which, in all modern, West-Germanic cases, is a learned borrowing from older language stages. Examples: In English, the Great Vowel Shift would have raised _Woden_ to _Wooden_ and Middle High German has _Wüetung_, which should not have yielded modern _Wotan_.
 

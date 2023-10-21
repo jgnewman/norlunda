@@ -1,0 +1,143 @@
+- def: wagon
+  type: noun
+  synonyms: [car, vehicle]
+  word: vagan
+  origin: "*wagnaz"
+  originDef: wagon
+
+- def: walk
+  type: verb
+  word: vendan
+  origin: "*wandijaną"
+  originDef: to turn
+
+- def: war
+  type: noun
+  synonyms: [battle, fight]
+  word: strid
+  origin: "*strīdiz"
+  originDef: battle, fight
+
+- def: warm
+  type: adjective
+  word: varm
+  origin: "*warmaz"
+  originDef: warm
+
+- def: water
+  type: noun
+  word: vator
+  origin: "*watōr"
+  originDef: water
+
+- def: we
+  type: pronoun
+  word: vie
+  custom: true
+  notes: The 1st-person plural, subjective pronoun. Adopted from from common N.G. patterns to fit Norlunda grammar rules.
+
+- def: west
+  type: noun
+  word: vestar
+  origin: "*westraz"
+  originDef: west
+
+- def: what
+  type: pronoun
+  word: vat
+  origin: "*hwat"
+  originDef: what
+
+- def: which
+  type: preposition
+  synonyms: [that, who, whom]
+  word: den
+  custom: true
+  notes: Adopted from Swedish _den_ to fit Norlunda grammar rules.
+
+- def: white
+  type: adjective
+  word: viet
+  origin: "*hwītaz"
+  originDef: white
+
+- def: wife
+  type: noun
+  word: viev
+  origin: "*wībą"
+  originDef: wife, woman
+
+- def: win
+  type: verb
+  word: vinnan
+  origin: "*winnaną"
+  originDef: to win, toil, strive
+
+- def: window
+  type: noun
+  word: vindoga
+  hypothetical: true
+  origin: "*windaz augô"
+  originDef: wind eye
+
+- def: with
+  type: preposition
+  synonyms: [plus]
+  word: mid
+  origin: "*midi"
+  originDef: with
+
+- def: without
+  type: preposition
+  synonyms: [minus]
+  word: sondar
+  origin: "*sundraz"
+  originDef: apart
+
+- def: Woden
+  type: noun
+  synonyms: [Odin]
+  word: Vodan
+  origin: "*Wōdanaz"
+  originDef: The name of the god _Wōdanaz_, known as _Óðinn_ in Old Norse.
+
+- def: woman
+  type: noun
+  synonyms: [lady]
+  word: frau
+  origin: "*frawjǭ"
+  originDef: lady
+
+- def: wool
+  type: noun
+  word: voll
+  origin: "*wullō"
+  originDef: wool
+
+- def: word
+  type: noun
+  synonyms: [term]
+  word: vord
+  origin: "*wurdą"
+  originDef: word
+
+- def: work
+  type: verb
+  synonyms: [labor, toil]
+  word: vurkan
+  origin: "*wurkijaną"
+  originDef: to work
+
+- def: wound
+  type: noun
+  synonyms: [injury, cut, gash]
+  word: vond
+  origin: "*wundō"
+  originDef: wound
+
+- def: write
+  type: verb
+  synonyms: [record]
+  word: rietan
+  origin: "*writaną"
+  originDef: to write

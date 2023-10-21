@@ -1,0 +1,12 @@
+- def: up
+  type: preposition
+  synonyms: ["on", upon]
+  word: upp
+  origin: "*upp"
+  originDef: up
+
+- def: us
+  type: pronoun
+  word: os
+  custom: true
+  notes: The 1st-person plural, objective pronoun. Adopted from from common N.G. patterns to fit Norlunda grammar rules.

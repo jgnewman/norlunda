@@ -31,6 +31,9 @@ const outlierMap = {
   // Loss of w after word-initial s is inconsistent but
   // in this case, only retained in English
   "swōtuz": "sōtuz",
+
+  // The West Germanic descendants have regularised the ablaut of this verb by replacing the -u- with -e-.
+  "trudaną": "tredaną",
   
   // Retention of <o> rather than change to <u> is the result of
   // this word being borrowed back in from earlier literature in all

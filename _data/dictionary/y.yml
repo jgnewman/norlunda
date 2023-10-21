@@ -1,0 +1,79 @@
+- def: year
+  type: noun
+  word: jeer
+  origin: "*jērą"
+  originDef: year
+
+- def: yellow
+  type: adjective
+  word: gela
+  origin: "*gelwaz"
+  originDef: yellow
+
+- def: "yes"
+  type: adverb
+  word: ja
+  origin: "*ja"
+  originDef: "yes"
+
+- def: Yggdrasil
+  type: noun
+  word: Uvdrasell
+  hypothetical: true
+  origin: "*uwwijaz *draseljaz"
+  originDef: terrifier steed
+  notes: These hypothetical forms are designed to yield O.N. forms _yggr_ and _drasill_. The suffix _-eljaz_ would be rare, but something of this nature is required to produce the long _l_ and avoid raising the _a_ through i-mutation. See https://forum.wordreference.com/threads/yggdrasil.3526182/
+
+- def: ye (obj.)
+  type: pronoun
+  synonyms: [y'all, you all, you guys, you lot]
+  word: ju
+  custom: true
+  notes: The 2nd-person plural, objective pronoun. From English _you_. Adapted here to avoid conflicts with other pronouns and to fit the Norlunda grammar system.
+
+- def: ye (subj.)
+  type: pronoun
+  synonyms: [y'all, you all, you guys, you lot]
+  word: jie
+  custom: true
+  notes: The 2nd-person plural, subjective pronoun. From English _ye_. Adapted here to avoid conflicts with other pronouns and to fit the Norlunda grammar system.
+
+- def: yon
+  type: pronoun
+  synonyms: [yonder]
+  word: jein
+  origin: "*jainaz"
+  originDef: yon, that over there
+
+- def: you (obj.)
+  type: pronoun
+  word: dei
+  custom: true
+  notes: The 2nd-person singular, objective pronoun. Adopted from common N.G. patterns to fit Norlunda grammar rules.
+
+- def: you (subj.)
+  type: pronoun
+  word: du
+  origin: "*þū"
+  originDef: you
+  notes: The 2nd-person singular, subjective pronoun.
+
+- def: young
+  type: adjective
+  word: jong
+  origin: "*jungaz"
+  originDef: young
+
+- def: your (sing.)
+  type: pronoun
+  synonyms: [yours]
+  word: din
+  custom: true
+  notes: The 2nd-person singular, genitive pronoun. Adopted from common N.G. patterns to fit Norlunda grammar rules.
+
+- def: your (pl.)
+  type: pronoun
+  synonyms: [yours]
+  word: jer
+  custom: true
+  notes: The 2nd-person plural, genitive pronoun. Adopted from English _your_ to avoid conflicts with other pronouns and to fit Norlunda grammar rules.

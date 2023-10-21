@@ -33,13 +33,13 @@ window.addEventListener('load', () => {
       wordEl.innerHTML = 'No results'
       resultsInner.appendChild(wordEl)
     } else {
-      wordArr.forEach(({ word, type, def, synonyms = [] }, index) => {
+      wordArr.forEach(({ word, type, modal, def, synonyms = [] }, index) => {
         const wordEl = document.createElement('a')
         wordEl.classList.add('search-result', 'block', 'px-16', 'py-4')
         wordEl.setAttribute('href', `${baseUrl}/dictionary?term=${word}`)
         index % 2 === 0 && wordEl.classList.add('result-stripe')
         wordEl.innerHTML = `
-          <strong>${word}</strong> <em class="semi-transparent px-4">${formatWordType(type)}</em>
+          <strong>${word}</strong> <em class="semi-transparent px-4">${formatWordType(type, modal)}</em>
           ${[def, ...synonyms].join(', ')}
 
         `

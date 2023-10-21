@@ -1,0 +1,47 @@
+- def: rain
+  type: noun
+  word: regan
+  origin: "*regną"
+  originDef: rain
+  notes: The verb _regnan_ is from the same root. It is formed by adding the infinitive suffix _-an_ and removing the unstressed, middle vowel, as is standard in the sound change algorithm.
+
+- def: ready
+  type: adjective
+  synonyms: [prepared]
+  word: reid
+  origin: "*raidaz"
+  originDef: ready
+
+- def: reckon
+  type: verb
+  synonyms: [calculate, compute, explain, solve]
+  word: reknan
+  hypothetical: true
+  custom: true
+  notes: From a hypothetical PGmc. _*rak(ja?)nōną_ "to arrive at a reasoning or explanation". May not have existed in PGmc., but is a hypothetical origin of PWGmc. _*rekanōn_ "to count, explain".
+
+- def: red
+  type: adjective
+  synonyms: [crimson, scarlet]
+  word: raad
+  origin: "*raudaz"
+  originDef: red
+
+- def: root
+  type: noun
+  word: rut
+  origin: "*wrōts"
+  originDef: root
+
+- def: rub
+  type: verb
+  synonyms: [grind, polish, scour, scrub]
+  word: rievan
+  origin: "*wrībaną"
+  originDef: to rub
+
+- def: run
+  type: verb
+  word: rinnan
+  origin: "*rinnaną"
+  originDef: to run, rush

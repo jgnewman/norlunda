@@ -48,6 +48,20 @@
   originDef: one left
   notes: The _n_ is dropped here to better match the most common N.G. and W.G. patterns. The full evolution here is _*ainalif -> einlif -> eilf -> alf_.
 
+- def: envious
+  type: adjective
+  synonyms: [jealous]
+  word: avundsiek
+  origin: "*abundiz *seukaz"
+  originDef: envy-sick
+
+- def: envy
+  type: noun
+  synonyms: [jealousy]
+  word: avund
+  origin: "*abundiz"
+  originDef: envy
+
 - def: evening
   type: noun
   word: eevand

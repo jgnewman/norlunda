@@ -12,6 +12,20 @@
   origin: "*berô"
   originDef: bear
 
+- def: beautiful
+  type: adjective
+  synonyms: [shining, radiant]
+  word: shaan
+  origin: "*skauniz"
+  originDef: beautiful, shining
+
+- def: because
+  type: conjunction
+  synonyms: [for, since, hence]
+  word: forden
+  origin: "*furai *þanǭ"
+  originDef: before that
+
 - def: before
   type: preposition
   word: for

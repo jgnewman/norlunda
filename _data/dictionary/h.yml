@@ -49,6 +49,14 @@
   custom: true
   notes: The 3rd-person singular, feminine, objective pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
 
+- def: herb
+  type: noun
+  word: kraud
+  hypothetical: true
+  origin: "*krūdô"
+  originDef: that which is pressed
+  notes: Assumes a relationship to PWGmc. _*krūdan_ (to press, push) in that kerbs are typically pressed or crushed. Thus we are assuming a hypothetical _-ô_ suffix in PGmc.
+
 - def: here
   type: pronoun
   word: heer

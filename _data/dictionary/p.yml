@@ -4,3 +4,58 @@
   word: leid
   origin: "*laiþą"
   originDef: sorrow, suffering, affliction
+
+- def: pale
+  type: adjective
+  synonyms: [light, faded, washed out]
+  word: bleik
+  origin: "*blaikaz"
+  originDef: pale, shining, white
+
+- def: person
+  type: noun
+  synonyms: [human]
+  word: folk
+  origin: "*fulką"
+  originDef: people
+  notes: The plural "people" is made by adding the Norlunda plural suffix _-e_ to arrive at _folke_.
+
+- def: piece
+  type: noun
+  synonyms: [bit, fragment, item, part, portion, share, slice, unit]
+  word: deil
+  origin: "*dailą"
+  originDef: part, portion
+
+- def: plant
+  type: noun
+  word: vurt
+  origin: "*wurti"
+  originDef: root (from an oblique stem of *wrōts)
+
+- def: play
+  type: verb
+  word: spelan
+  origin: "*spilōną"
+  originDef: to play
+
+- def: poison
+  type: noun
+  synonyms: [venom, pus]
+  word: eitar
+  origin: "*aitrą"
+  originDef: poison, pus
+
+- def: poor
+  type: adjective
+  synonyms: [bad, shoddy, unimpressive]
+  word: slekt
+  origin: "*slihtaz"
+  originDef: slippery, level
+
+- def: pull
+  type: verb
+  synonyms: [drag, draw, haul, tug]
+  word: dragan
+  origin: "*draganą"
+  originDef: to draw, pull

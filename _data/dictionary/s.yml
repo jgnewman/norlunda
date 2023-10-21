@@ -1,6 +1,226 @@
+- def: same
+  type: adjective
+  synonyms: [alike]
+  word: sam
+  origin: "*samaz"
+  originDef: same
+
+- def: say
+  type: verb
+  synonyms: [tell]
+  word: segan
+  origin: "*sagjaną"
+  originDef: to say
+
+- def: seax
+  type: noun
+  synonyms: [dagger, short sword, short-bladed weapon]
+  word: sax
+  origin: "*sahsą"
+  originDef: dagger, knife
+
+- def: see
+  type: verb
+  synonyms: [behold, look, observe, perceive, spot, view]
+  word: seen
+  origin: "*sehwaną"
+  originDef: to see
+
+- def: self
+  type: pronoun
+  synonyms: [myself, yourself, himself, herself, itself, themself]
+  word: self
+  origin: "*selbaz"
+  originDef: self
+
+- def: serpent
+  type: noun
+  synonyms: [worm, any slithery animal]
+  word: vurm
+  origin: "*wurmiz"
+  originDef: worm, serpent, snake
+
+- dev: seven
+  type: numeral
+  word: sevun
+  origin: "*sebun"
+  originDef: seven
+
+- def: shadow
+  type: noun
+  synonyms: [shade]
+  word: shada
+  origin: "*skadwaz"
+  originDef: shadow
+
+- def: shall
+  type: verb
+  modal: true
+  synonyms: [will]
+  word: sholan
+  origin: "*skulaną"
+  originDef: to be obligated to
+
+- def: she
+  type: pronoun
+  word: hun
+  custom: true
+  notes: The 3rd-person singular, feminine, subjective pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
+
+- def: sheep
+  type: noun
+  word: sheep
+  origin: "*skēpą"
+  originDef: sheep
+
+- def: sick
+  type: adjective
+  synonyms: [ill, unwell]
+  word: siek
+  origin: "*seukaz"
+  originDef: sick
+
+- def: sing
+  type: verb
+  word: singan
+  origin: "*singwaną"
+  originDef: to sing
+
+- def: six
+  type: numeral
+  word: six
+  custom: true
+  origin: "*sehs"
+  originDef: six
+  notes: Whereas the algorithm gives _sex_, further evolution to _-> six_ is done to avoid strong connotations for English speakers.
+
+- def: smear
+  type: verb
+  synonyms: [annoint, daub, paint, spread]
+  word: smiran
+  origin: "*smirwijaną"
+  originDef: to smear
+
+- def: sneak
+  type: verb
+  synonyms: [creep, slink]
+  word: sliepan
+  origin: "*sleupaną"
+  originDef: to slink, sneak, move stealthily
+
+- def: so
+  type: adverb
+  synonyms: [in like manner, thus, thusly, consequently, hence]
+  word: saa
+  origin: "*swā"
+  originDef: so, thus
+
+- def: soft
+  type: adjective
+  synonyms: [meek, gentle, mild, tender]
+  word: miek
+  origin: "*meukaz"
+  originDef: soft, meek, mild
+
 - def: solution
   type: noun
   synonyms: [calculation, computation, explanation]
   word: rekning
   custom: true
   notes: A form of the Norlunda verb _reknan_, meaning "to calculate, compute, explain, or solve"
+
+- def: sorrow
+  type: noun
+  synonyms: [grief]
+  word: sorga
+  origin: "*surgō"
+  originDef: worry, care, sorrow
+
+- def: speak
+  type: verb
+  synonyms: [talk]
+  word: sprekan
+  origin: "*sprekaną"
+  originDef: to speak
+
+- def: spell
+  type: noun
+  synonyms: [charm, incantation, a chant]
+  word: galdar
+  origin: "*galdraz"
+  originDef: incantation, spell
+  notes: The verb form _galdran_ "to chant, enchant" is from the same root. It is formed by adding the infinitive suffix _-an_ and removing the unstressed, middle vowel, as is standard in the sound change algorithm.
+
+- def: sprout
+  type: noun
+  synonyms: [sprig, bud, shoot]
+  word: sprut
+  origin: "*sprutô"
+  originDef: sprout, shoot
+
+- def: sound
+  type: noun
+  synonyms: [noise, tone]
+  word: laud
+  origin: "*hlūdaz"
+  originDef: loud
+
+- def: south
+  type: noun
+  word: suud
+  origin: "*sunþraz"
+  originDef: south
+
+- def: stage
+  type: noun
+  synonyms: [dais, platform, podium, rostrum, stand]
+  word: buna
+  custom: true
+  notes: Modern Germanic languages do not retained a clearly native version of this word. The Norlunda word is adopted from German _bühne_, itself of obscure origin as no better candidate could be found.
+
+- def: stallion
+  type: noun
+  word: henxt
+  origin: "*hangistaz"
+  originDef: stallion
+
+- def: stand
+  type: verb
+  word: staan
+  origin: "*stāną"
+  originDef: to stand
+
+- def: story
+  type: noun
+  synonyms: [tale]
+  word: saga
+  origin: "*sagǭ"
+  originDef: story
+
+- def: strawberry
+  type: noun
+  word: erdbœr
+  custom: true
+  origin: "*erþō *bazją"
+  originDef: strawberry
+  notes: The assumption is the the compound itself is younger than the PGmc period and the vowel in _bœr_ should not be shortened due to being unstressed in the compound.
+
+- def: strike
+  type: verb
+  synonyms: [hit, kill]
+  word: slaan
+  origin: "*slahaną"
+  originDef: to strike, hit, kill
+
+- def: strut
+  type: verb
+  synonyms: [swagger]
+  word: strautan
+  origin: "*strūtaną"
+  originDef: to swell, be puffed up
+
+- def: sun
+  type: noun
+  word: sonn
+  origin: "*sunnǭ"
+  originDef: sun

@@ -1,0 +1,185 @@
+- def: take
+  type: verb
+  synonyms: [grab, grasp, hold, pick up, seize]
+  word: neman
+  origin: "*nemaną"
+  originDef: to take
+
+- def: tear
+  type: noun
+  synonyms: [rip, shred, tear up, tear apart]
+  word: slietan
+  origin: "*slītaną"
+  originDef: to tear apart
+
+- def: ten
+  type: numeral
+  word: tien
+  origin: "*tehun"
+  originDef: ten
+
+- def: than
+  type: conjunction
+  synonyms: [compared to, in comparison to]
+  word: dan
+  origin: "*þan"
+  originDef: then
+
+- def: that
+  type: pronoun
+  word: den
+  custom: true
+  notes: Adopted from common N.G. patterns to fit Norlunda grammar rules.
+
+- def: their (sing.)
+  type: pronoun
+  synonyms: [theirs]
+  word: hens
+  custom: true
+  notes: The 3rd-person singular, animate, genitive pronoun. Adopted from Swedish _hens_ to fit Norlunda grammar rules.
+
+- def: their (pl.)
+  type: pronoun
+  synonyms: [theirs]
+  word: sin
+  custom: true
+  notes: The 3rd-person plural, genitive pronoun. Adopted from German _seins_ to avoid conflicts with other pronouns and to fit Norlunda grammar rules.
+
+- def: them (sing.)
+  type: pronoun
+  synonyms: [him, her]
+  word: hem
+  custom: true
+  notes: The 3rd-person singular, animate, objective pronoun. Adopted from Swedish _hen_ to fit Norlunda grammar rules.
+
+- def: them (pl.)
+  type: pronoun
+  word: dem
+  custom: true
+  notes: The 3rd-person plural, objective pronoun. Adopted from common N.G. patterns to fit Norlunda grammar rules.
+
+- def: then
+  type: adverb
+  synonyms: [after, next, later]
+  word: dan
+  origin: "*þan"
+  originDef: then
+
+- def: there
+  type: adverb
+  word: dar
+  origin: "*þar"
+  originDef: there
+
+- def: they (sing.)
+  type: pronoun
+  synonyms: [he, she]
+  word: hen
+  custom: true
+  notes: The 3rd-person singular, animate, subjective pronoun. Adopted from Swedish _hen_ to fit Norlunda grammar rules.
+
+- def: they (pl.)
+  type: pronoun
+  word: die
+  custom: true
+  notes: The 3rd-person plural, subjective pronoun. Adopted from Swedish _de_ to fit Norlunda grammar rules.
+
+- def: thing
+  type: noun
+  synonyms: [object, matter, case]
+  word: saka
+  origin: "*sakō"
+  originDef: thing, matter, affair, case
+
+- def: think
+  type: verb
+  word: denkan
+  origin: "*þankijaną"
+  originDef: to think
+
+- def: three
+  type: numeral
+  word: drie
+  origin: "*þrīz"
+  originDef: three
+
+- def: through
+  type: preposition
+  synonyms: [across]
+  word: dur
+  origin: "*þurhw"
+  originDef: through
+
+- def: thunder
+  type: noun
+  word: donar
+  origin: "*þunraz"
+  originDef: thunder
+  notes: Also the name of the Germanic thunder god, known as _Þórr_ in Old Norse.
+
+- def: time
+  type: noun
+  synonyms: [period, season, spell, interval]
+  word: tied
+  origin: "*tīdiz"
+  originDef: time, period, interval
+
+- def: to
+  type: preposition
+  synonyms: [at, toward]
+  word: tel
+  origin: "*tilą"
+  originDef: goal
+
+- def: toe
+  type: noun
+  word: taa
+  origin: "*taihwǭ"
+  originDef: toe
+
+- def: tooth
+  type: noun
+  word: tand
+  origin: "*tanþs"
+  originDef: tooth
+
+- def: tread
+  type: verb
+  synonyms: [step on, walk over]
+  word: tredan
+  origin: "*trudaną"
+  originDef: to tread, step
+
+- def: tree
+  type: noun
+  word: baam
+  origin: "*bagmaz"
+  originDef: tree
+
+- def: turn
+  type: verb
+  synonyms: [rotate, spin, twist]
+  word: draan
+  origin: "*þrēaną"
+  originDef: to turn
+
+- def: twelve
+  type: numeral
+  word: tvelf
+  origin: "*twalif"
+  originDef: twelve
+
+- def: twig
+  type: noun
+  synonyms: [rod, stick, switch]
+  word: tein
+  origin: "*tainaz"
+  originDef: twig, rod, small switch
+
+- def: two
+  type: numeral
+  word: tvei
+  hypothetical: true
+  origin: "*twai"
+  originDef: two
+  notes: The nominiative root in PGmc can not be confidently reconstructed. However, this form yields a result that matches other W.G. forms.

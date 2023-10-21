@@ -5,6 +5,12 @@
   origin: "*taubrą"
   originDef: magic, sorcery
 
+- def: maiden
+  type: noun
+  word: meid
+  origin: "*magaþs"
+  originDef: maiden
+
 - def: make
   type: verb
   synonyms: [create, build]
@@ -43,6 +49,18 @@
   origin: "*meluks"
   originDef: milk
 
+- def: month
+  type: noun
+  word: maand
+  origin: "*mēnōþs"
+  originDef: month
+
+- def: moon
+  type: noun
+  word: maan
+  origin: "*mēnô"
+  originDef: moon
+
 - def: more
   type: adjective
   word: meer
@@ -60,6 +78,12 @@
   word: mond
   origin: "*munþaz"
   originDef: mouth
+
+- def: much
+  type: adjective
+  word: mikel
+  origin: "*mikilaz"
+  originDef: much, many, large, great
 
 - def: my
   type: pronoun
