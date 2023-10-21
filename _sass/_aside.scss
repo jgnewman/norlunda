@@ -44,7 +44,6 @@
   &.active {
     color: var(--primary-color);
     font-weight: 500;
-    cursor: default;
   }
 
   &.active::before {

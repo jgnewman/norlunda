@@ -1,0 +1,42 @@
+.dictionary-content {
+
+  .spinner {
+    display: none;
+  }
+
+  &.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 36px;
+
+    .spinner {
+      display: block;
+    }
+  }
+}
+
+.dictionary-list {
+  @include vw-3 {
+    columns: 2;
+  }
+
+  .search-result {
+    transition: all .2s ease;
+    border-top: 1px solid var(--background-color);
+    border-bottom: 1px solid var(--background-color);
+  }
+
+  .search-result:hover {
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+  }
+
+  .search-result strong {
+    transition: all .2s ease;
+  }
+
+  .search-result:hover strong {
+    color: var(--primary-color);
+  }
+}

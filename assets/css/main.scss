@@ -19,6 +19,8 @@ $assets: "{{ site.baseurl }}/assets";
 @import "footer";
 @import "generator-modal";
 @import "prev-next";
+@import "spinner";
+@import "dictionary";
 
 @import "flex";
 @import "spacing";

@@ -32,8 +32,10 @@
     </div>
     <div class="header-right flex justify-content-space-between align-items-center flex-grow-2 flex-gap-2">
       <div class="header-inner-left search-container flex-grow-2">
-        <form class="search-field-wrapper">
-          <input type="text" class="field" placeholder="Search" />
+        <form id="search-form" class="search-field-wrapper">
+          <input id="search-field" type="text" class="field" disabled placeholder="Loading dictionary..." />
+          {% include spinner.svg %}
+          <div id="search-results" class="search-results-container"></div>
         </form>
       </div>
       <div class="header-inner-right flex-shrink-1 flex justify-content-flex-start align-items-center flex-gap-1">
@@ -55,15 +57,9 @@
       <ul id="nav-list" class="py-24 flex flex-direction-column">
         {% for nav in site.data.navigation %}
           <li>
-            {% if nav.url == page.url %}
-              <a class="aside-nav-link py-8 active">
-                <span>{{ nav.text}}</span>
-              </a>
-            {% else %}
-              <a class="aside-nav-link py-8" href="{{ nav.url | relative_url }}">
-                <span>{{ nav.text}}</span>
-              </a>
-            {% endif %}
+            <a class="aside-nav-link py-8 {% if nav.url == page.url %}active{% endif %}" href="{{ nav.url | relative_url }}">
+              <span>{{ nav.text }}</span>
+            </a>
           </li>
         {% endfor %}
       </ul>
@@ -112,9 +108,14 @@
   <script defer src="{{ '/assets/javascript/dictionary.js' | relative_url | append: cache_bust }}"></script>
   
   <script defer src="{{ '/assets/javascript/menu.js' | relative_url | append: cache_bust }}"></script>
+  <script defer src="{{ '/assets/javascript/search.js' | relative_url | append: cache_bust }}"></script>
   <script defer src="{{ '/assets/javascript/subnav.js' | relative_url | append: cache_bust }}"></script>
   <script defer src="{{ '/assets/javascript/modals.js' | relative_url | append: cache_bust }}"></script>
   <script defer src="{{ '/assets/javascript/generator-modal.js' | relative_url | append: cache_bust }}"></script>
   <script defer src="{{ '/assets/javascript/algorithm.js' | relative_url | append: cache_bust }}"></script>
+
+  {% if page.url contains 'dictionary' %}
+    <script defer src="{{ '/assets/javascript/dictionary-page.js' | relative_url | append: cache_bust }}"></script>
+  {% endif %}
 </body>
 </html>

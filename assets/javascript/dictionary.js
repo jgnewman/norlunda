@@ -1,35 +1,44 @@
 /* API
 
 window.norlundaTools.subscribe('dictionary:ready', async () => {
-  console.log('the dictionary is ready')
-
-  const result1 = await window.norlundaTools.queryDictionary('hello')
-  console.log('got result1', result1)
+    console.log('the dictionary is ready')
   
-  const result2 = await window.norlundaTools.queryDictionary('goodbye')
-  console.log('got result2', result2)
-})
+    const result1 = await window.norlundaTools.queryDictionary('e')
+    console.log('got result1', result1)
+    
+    const result2 = await window.norlundaTools.queryDictionary('er')
+    console.log('got result2', result2)
+
+    const result3 = await window.norlundaTools.listDictionary({ limit: 3, offset: 3 })
+    console.log('got result3', result3)
+  })
 
 */
 
 window.addEventListener('load', () => {
-  const baseUrl = document.querySelector('meta[name="baseurl"]').getAttribute('content')
+  const { publish, quickId, getBaseUrl } = window.norlundaTools
+  const baseUrl = getBaseUrl()
   const worker = new Worker(`${baseUrl}/assets/javascript/dictionary-worker.js`)
-  const { publish, quickId } = window.norlundaTools
 
   const queryQueue = []
-  const queryIdToResolverMap = new Map()
+  const requestIdToResolverMap = new Map()
   let dictionaryReady = false
   let queryInProgress = false
+
+  window.norlundaTools.formatWordType = (type) => {
+    if (type.length <= 4) return type[0] + '.'
+    const sliced = type.slice(0, 4)
+    return /[aeiouy]$/.test(sliced) ? type.slice(0, 3) + '.' : sliced + '.'
+  }
 
   window.norlundaTools.queryDictionary = (query) => {
     return new Promise((resolve, reject) => {
       if (!dictionaryReady) return reject('Dictionary not ready')
 
-      const queryId = quickId()
-      const queryAction = { type: 'QUERY', payload: { queryId, query } }
+      const id = quickId()
+      const queryAction = { type: 'QUERY', payload: { id, query } }
 
-      queryIdToResolverMap.set(queryId, resolve)
+      requestIdToResolverMap.set(id, resolve)
 
       if (!queryInProgress) {
         queryInProgress = true
@@ -43,23 +52,54 @@ window.addEventListener('load', () => {
   window.norlundaTools.listDictionary = ({ limit, offset }) => {
     return new Promise((resolve, reject) => {
       if (!dictionaryReady) return reject('Dictionary not ready')
+
+      const id = quickId()
+      const listAction = { type: 'LIST', payload: { id, limit, offset } }
+
+      requestIdToResolverMap.set(id, resolve)
+      worker.postMessage(listAction)
     })
   }
 
-  const handleQueryResponse = ({ queryId, result }) => {
-    const resolver = queryIdToResolverMap.get(queryId)
-    const nextQuery = queryQueue.shift()
-    
-    if (resolver) {
-      queryIdToResolverMap.delete(queryId)
-      resolver(result)
-    }
+  window.norlundaTools.readDictionary = (term) => {
+    return new Promise((resolve, reject) => {
+      if (!dictionaryReady) return reject('Dictionary not ready')
 
+      const id = quickId()
+      const readAction = { type: 'READ', payload: { id, term } }
+
+      requestIdToResolverMap.set(id, resolve)
+      worker.postMessage(readAction)
+    })
+  }
+
+  const handleResponse = (resultPayload) => {
+    const { id } = resultPayload
+    const resolver = requestIdToResolverMap.get(id)
+    if (resolver) {
+      requestIdToResolverMap.delete(id)
+      resolver(resultPayload)
+    }
+  }
+
+  const handleQueryResponse = (resultPayload) => {
+    handleResponse(resultPayload)
+
+    const nextQuery = queryQueue.shift()
+  
     if (nextQuery) {
       worker.postMessage(nextQuery)
     } else {
       queryInProgress = false
     }
+  }
+
+  const handleListResponse = (resultPayload) => {
+    handleResponse(resultPayload)
+  }
+
+  const handleReadResponse = (resultPayload) => {
+    handleResponse(resultPayload)
   }
 
   worker.onmessage = ({ data }) => {
@@ -71,6 +111,12 @@ window.addEventListener('load', () => {
 
       case 'QUERY':
         return handleQueryResponse(data.payload)
+      
+      case 'LIST':
+        return handleListResponse(data.payload)
+      
+      case 'READ':
+        return handleReadResponse(data.payload)
 
       case 'UNKNOWN':
         const { unknownType, unknownPayload } = data.payload
@@ -85,9 +131,4 @@ window.addEventListener('load', () => {
   }
 
   worker.postMessage({ type: 'BASE_URL', payload: baseUrl })
-
-  window.norlundaTools.subscribe('dictionary:ready', async () => {
-    const result1 = await window.norlundaTools.queryDictionary('e');
-    console.log(result1)
-  });
 })

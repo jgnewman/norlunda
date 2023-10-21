@@ -40,18 +40,77 @@ $button-padding: 8px 10px;
 
   &::before {
     content: url($assets + '/images/search.svg');
-    display: block;
+    display: none;
     position: absolute;
     top: 50%;
     left: 15px;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% - 1px));
     width: 20px;
     height: 20px;
+    z-index: 3;
   }
 
   @include vw-4 {
     max-width: 458px;
   }
+
+  .spinner {
+    position: absolute;
+    top: 7px;
+    left: 14px;
+  }
+
+  &.ready::before {
+    display: block;
+  }
+
+  &.ready .spinner {
+    display: none;
+  }
+
+  &.active {
+    position: absolute;
+    width: 92vw;
+    left: 4vw;
+    top: 21px;
+  }
+
+  @include vw-2 {
+    &.active {
+      position: relative;
+      width: 100%;
+      left: auto;
+      top: auto;
+    }
+  }
+}
+
+.search-results-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.search-results-inner {
+  background: var(--field-color);
+  border-radius: $border-radius;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.20);
+  padding-top: 75px;
+  overflow: hidden;
+}
+
+.search-result {
+  font-size: 16px;
+  
+  &.result-stripe {
+    background: rgba(255, 255, 255, 0.66);
+  }
+}
+
+html.dark .search-result.result-stripe {
+  background: rgba(0, 0, 0, 0.15);
 }
 
 html.dark .search-field-wrapper::before {
@@ -62,4 +121,6 @@ html.dark .search-field-wrapper::before {
 .search-field-wrapper .field {
   padding-left: 50px;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }

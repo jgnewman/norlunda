@@ -203,6 +203,34 @@ $code-font: 'Inconsolata', monospace;
   font-size: 400%;
 }
 
+.font-size-14 {
+  font-size: 14px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-18 {
+  font-size: 18px;
+}
+
+.font-size-22 {
+  font-size: 22px;
+}
+
+.font-size-24 {
+  font-size: 24px;
+}
+
+.font-size-36 {
+  font-size: 36px;
+}
+
+.font-size-48 {
+  font-size: 48px;
+}
+
 body, p, li, input {
   @extend .body-copy;
 }
@@ -331,4 +359,8 @@ audio {
 
 .tracking-2 {
   letter-spacing: 2px;
+}
+
+.semi-transparent {
+  opacity: .5;
 }

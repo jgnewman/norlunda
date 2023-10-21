@@ -7,29 +7,22 @@ permalink: /dictionary
 
 The content on this page is currently experimental. Full dictionary coming soon...
 
+<div id="dictionary-content" class="dictionary-content loading mb-36">
+  {% include spinner.svg %}
+</div>
 
-{% assign eng2nor = '' | split: '' %}
-
-{% for wordArr in site.data.dictionary %}
-  {% for word in wordArr %}
-    {% if word.first %}
-      {% assign eng2nor = eng2nor | concat: word %}
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-
-{% assign nor2eng = eng2nor | sort: 'word' %}
-
-{% for word in nor2eng %}
-  <div class="word-entry" markdown="1" >
-
-  {% if word.synonyms.first or word.notes.size > 0 %}{: .mb-0 }{% endif %}
-  **{{ word.word }}** ({{ word.type }}) - {% if word.type == 'verb' %}_to_ {% endif %} _{{ word.def }}_
-
-  {% if word.synonyms.first %}- Synonyms: {{ word.synonyms | sort | join: ', ' }}{% endif %}
-  {% if word.notes.size > 0 %}- {{ word.notes }}{% endif %}
-  
+<section id="dictionary-nav" class="hide flex justify-content-space-between align-items-center py-12">
+  <div class="flex justify-content-flex-start">
+    <a id="dictionary-prev-link" class="prev-next-link py-6 pl-4 pr-12 flex justify-content-space-between align-items-center flex-gap-1" href="#">
+      {% include chevron-left.svg %}
+      Previous
+    </a>
   </div>
-{% endfor %}
 
-{% include prev-next.html list="navigation" %}
+  <div class="flex justify-content-flex-end">
+    <a id="dictionary-next-link" class="prev-next-link py-6 pr-4 pl-12 flex justify-content-space-between align-items-center flex-gap-1" href="#">
+      Next
+      {% include chevron-right.svg %}
+    </a>
+  </div>
+</section>

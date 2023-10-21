@@ -1,13 +1,13 @@
 - def: a
   type: adjective
-  synonyms: [an]
+  synonyms: [an, singular indefinite article]
   word: an
   origin: "*ainaz"
   originDef: one
   hypothetical: false
   irregular: false
   custom: true
-  notes: Whereas the algorithm gives _ainaz → ein_, furthen evolution to → _an_ denotes consistent lack of stress on the word
+  notes: Whereas the algorithm gives _ainaz → ein_, further evolution to _→ an_ denotes consistent lack of stress on the word
 
 - def: adder
   type: noun
