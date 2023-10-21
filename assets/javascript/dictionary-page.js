@@ -15,12 +15,8 @@ window.addEventListener('load', () => {
   const navPrev = document.querySelector('#dictionary-prev-link')
   const navNext = document.querySelector('#dictionary-next-link')
 
-  const path = location.pathname.replace(/(^\/|\/$)/g, '').split('/')
-  const lastItemInPath = path[path.length - 1]
-  const nextToLastItemInPath = path[path.length - 2]
-  
-  const isListPage = lastItemInPath === 'dictionary' && nextToLastItemInPath !== 'dictionary'
-  const term = lastItemInPath
+  const term = (location.search.match(/term=([^&]*)/) || [])[1]
+  const isListPage = !term
 
   const buildListPage = async (offset) => {
     const { hasMoreItems, result: list } = await listDictionary({ limit: LIST_LIMIT, offset })
@@ -32,7 +28,7 @@ window.addEventListener('load', () => {
     list.forEach(({ word, type, def, synonyms = [] }) => {
       const wordEl = document.createElement('a')
       wordEl.classList.add('search-result', 'block', 'px-16', 'py-4')
-      wordEl.setAttribute('href', `${baseUrl}/dictionary/${word}`)
+      wordEl.setAttribute('href', `${baseUrl}/dictionary?term=${word}`)
       wordEl.innerHTML = `
         <strong>${word}</strong> <em class="semi-transparent px-4">${formatWordType(type)}</em>
         ${[def, ...synonyms].join(', ')}
