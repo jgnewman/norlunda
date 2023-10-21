@@ -40,6 +40,12 @@
   origin: "*gudą"
   originDef: god
 
+- def: gold
+  type: noun
+  word: gold
+  origin: "*gulþą"
+  originDef: gold
+
 - def: good
   type: adjective
   word: gud

@@ -26,6 +26,13 @@
   origin: "*hlasti"
   originDef: load, burden
 
+- def: long
+  type: adjective
+  synonyms: [tall]
+  word: lang
+  origin: "*langaz"
+  originDef: long, tall
+
 - def: lord
   type: noun
   synonyms: [master, mister]

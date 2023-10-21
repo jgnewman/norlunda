@@ -48,7 +48,7 @@ Note that Norlunda contains 6 short vowels, 4 long vowels, and 2 diphthongs. Lea
 | g | /g/ | **gold** (gold) |
 | h | /h/ | **hert** (heart) |
 | j | /j/ | **ja** (yes) |
-| k | /k/ | **kveen** (queen) |
+| k | /k/ | **konnan** (to be able) |
 | l | /l/ | **lovan** (to love) |
 | m | /m/ | **mann** (man) |
 | n | /n/ | **nord** (north) |

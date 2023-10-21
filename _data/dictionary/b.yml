@@ -26,6 +26,18 @@
   origin: "*furai *þanǭ"
   originDef: before that
 
+- def: bed
+  type: noun
+  word: bedd
+  origin: "*badją"
+  originDef: bed
+
+- def: bee
+  type: noun
+  word: bie
+  origin: "*bijō"
+  originDef: bee
+
 - def: before
   type: preposition
   word: for
@@ -44,6 +56,12 @@
   word: graat
   origin: "*grautaz"
   originDef: large
+
+- def: bind
+  type: verb
+  word: bindan
+  origin: "*bindaną"
+  originDef: to bind
 
 - def: bird
   type: noun
@@ -82,6 +100,12 @@
   word: jongmann
   origin: "*jungaz- *mannaz"
   originDef: young man
+
+- def: brown
+  type: adjective
+  word: braun
+  origin: "*brūnaz"
+  originDef: brown
 
 - def: by
   type: preposition

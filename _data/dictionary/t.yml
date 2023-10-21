@@ -29,7 +29,7 @@
   type: pronoun
   word: den
   custom: true
-  notes: Adopted from common N.G. patterns to fit Norlunda grammar rules.
+  notes: The plural "those" is formed by adding the plural suffix to arrive at _dene_. Adopted from common N.G. patterns to fit Norlunda grammar rules.
 
 - def: their (sing.)
   type: pronoun
@@ -97,6 +97,12 @@
   origin: "*þankijaną"
   originDef: to think
 
+- def: this
+  type: pronoun
+  word: dis
+  custom: true
+  notes: The plural "these" is formed by adding the plural suffix to arrive at _dise_. Adopted from English _this_ to fit modern Germanic vocabulary patterns for this word.
+
 - def: three
   type: numeral
   word: drie
@@ -155,6 +161,13 @@
   word: baam
   origin: "*bagmaz"
   originDef: tree
+
+- def: "true"
+  type: adjective
+  synonyms: [real, actual, genuine]
+  word: trau
+  origin: "*triwwiz"
+  originDef: true, faithful
 
 - def: turn
   type: verb

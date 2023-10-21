@@ -41,6 +41,12 @@
   custom: true
   notes: Agent form of the Norlunda verb _reknan_, meaning "to compute or calculate"
 
+- def: corn
+  type: noun
+  word: korn
+  origin: "*kurną"
+  originDef: corn, grain
+
 - def: count
   type: verb
   synonyms: [enumerate]

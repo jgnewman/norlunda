@@ -1,3 +1,10 @@
+- def: often
+  type: adverb
+  synonyms: [frequently, regularly]
+  word: oft
+  origin: "*ufta"
+  originDef: often, frequently
+
 - def: ointment
   type: noun
   synonyms: [balm, salve]
@@ -26,6 +33,13 @@
   word: efa
   origin: "*efþau"
   originDef: or
+
+- def: other
+  type: adjective
+  synonyms: [second, different, another]
+  word: ander
+  origin: "*anþeraz"
+  originDef: second, other
 
 - def: our
   type: pronoun

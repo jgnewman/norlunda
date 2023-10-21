@@ -10,6 +10,13 @@
   origin: "*handuz"
   originDef: hand
 
+- def: happy
+  type: adjective
+  synonyms: [glad, joyful, pleased]
+  word: glad
+  origin: "*gladaz"
+  originDef: happy, cheery, shining, bright
+
 - def: have
   type: verb
   synonyms: [own, possess, be in possession of]

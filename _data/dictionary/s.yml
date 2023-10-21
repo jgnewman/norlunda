@@ -190,6 +190,12 @@
   origin: "*stāną"
   originDef: to stand
 
+- def: stone
+  type: noun
+  word: stein
+  origin: "*stainaz"
+  originDef: stone
+
 - def: story
   type: noun
   synonyms: [tale]

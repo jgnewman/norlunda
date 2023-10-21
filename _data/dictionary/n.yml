@@ -1,3 +1,9 @@
+- def: native speech
+  type: noun
+  word: dautsh
+  origin: "*þiudiskaz"
+  originDef: native speech
+
 - def: need
   type: verb
   word: naadan

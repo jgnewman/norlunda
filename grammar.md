@@ -151,7 +151,7 @@ Ik **ar** glad.
 I am happy.
 
 {: .showcase }
-Hun **var** vodfoll.
+Hun **var** vudfoll.
 
 {: .source}
 She was furious.

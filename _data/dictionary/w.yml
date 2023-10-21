@@ -24,6 +24,13 @@
   origin: "*warmaz"
   originDef: warm
 
+- def: wash
+  type: verb
+  synonyms: [clean]
+  word: waskan
+  origin: "*waskaną"
+  originDef: to wash
+
 - def: water
   type: noun
   word: vator
@@ -60,6 +67,13 @@
   word: viet
   origin: "*hwītaz"
   originDef: white
+
+- def: why
+  type: adverb
+  word: varfor
+  hypothetical: true
+  origin: "*hwar *furai"
+  originDef: where before
 
 - def: wife
   type: noun
