@@ -2,9 +2,7 @@
 
 > A (mostly) algorithmically generated conlang merging north and west Germanic linguistic features
 
-<div style="display:inline-block; overflow:hidden; border-radius:12px; max-width: 300px;">
-<img src="https://jgnewman.github.io/norlunda/assets/images/flag.svg" alt="Norlunda flag" style="display:block;">
-</div>
+![Norlunda flag](https://jgnewman.github.io/norlunda/assets/images/flag.svg | width=300)
 
 This repository holds the code for the Norlunda algorithm itself as well as the code for the publicly-accessible website.
 
