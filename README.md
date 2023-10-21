@@ -16,12 +16,12 @@ There is one file per letter of the English alphabet and words are listed alphab
 - **type** (a single word; required) - This is the part of speech the word conforms to, for example noun, adjective, preposition, etc.
 - **synonyms** (a list of words; optional) - Other English words that this word can represent.
 - **word** (a single word; required) - This is the actual Norlunda word being defined.
-- **origin** (a single word; required) - This is the PGmc origin of the Norlunda word.
-- **originDef** (a word or phrase; required) - What the PGmc origin would have literally meant.
+- **origin** (a single word; required if this word has a PGmc. origin) - This is the PGmc origin of the Norlunda word.
+- **originDef** (a word or phrase; required if origin is provided) - What the PGmc origin would have literally meant.
 - **hypothetical** (true/false; required if true) - Whether the PGmc origin of this word is your own hypothetical reconstruction
 - **irregular** (true/false; required if true) - This field should _rarely_ be true. It should be true for irregular verbs or any other words that do not follow the normal rules.
 - **custom** (true/false; required if true) - A word is considered custom if it can not be auto-generated automatically by the algorithm for any reason.
-- **notes** (some text; required if any of the boolean fields were true) - Allows explaining why a word should be hypothetical, irregular, or custom. Otherwise, this is a good place for any extra useful notes about the word if you have any.
+- **notes** (some text; required if any of the boolean fields were true of if origin is left blank) - Allows explaining why a word should be hypothetical, irregular, or custom. Otherwise, this is a good place for any extra useful notes about the word if you have any.
 
 ## Running locally
 

@@ -4,8 +4,6 @@
   word: an
   origin: "*ainaz"
   originDef: one
-  hypothetical: false
-  irregular: false
   custom: true
   notes: Whereas the algorithm gives _ainaz → ein_, further evolution to _→ an_ denotes consistent lack of stress on the word
 
@@ -15,32 +13,18 @@
   word: nadar
   origin: "*nadrǭ"
   originDef: adder, snake
-  hypothetical: false
-  irregular: false
-  custom: false
-  notes: ""
 
 - def: all
   type: adjective
-  synonyms: []
   word: all
   origin: "*allaz"
   originDef: all, whole, entire
-  hypothetical: false
-  irregular: false
-  custom: false
-  notes: ""
 
 - def: and
   type: conjunction
-  synonyms: []
   word: end
   origin: "*andi"
   originDef: and
-  hypothetical: false
-  irregular: false
-  custom: false
-  notes: ""
 
 - def: annoy
   type: verb
@@ -48,18 +32,26 @@
   word: ergan
   origin: "*argijaną"
   originDef: to ruin
-  hypothetical: false
-  irregular: false
-  custom: false
-  notes: ""
 
 - def: apple
   type: noun
-  synonyms: []
   word: apal
   origin: "*aplaz"
   originDef: apple
-  hypothetical: false
-  irregular: false
-  custom: false
-  notes: ""
+
+- def: apportion
+  type: verb
+  synonyms: [distribute, dole out]
+  word: autdeilan
+  origin: "*ūt *dailą"
+  originDef: "portion out"
+  hypothetical: true
+  custom: true
+  notes: "Whereas the particles of this compound are not hypothetical, the compound itself is. This word also requires manual addition of the Norlunda infinitive suffix to become a verb."
+
+- def: algorithm
+  type: noun
+  synonyms: [computer program]
+  word: rekningrit
+  custom: true
+  notes: This is a compound of two Norlunda words, _rekning_ and _rit_, meaning "a writ of calculation"

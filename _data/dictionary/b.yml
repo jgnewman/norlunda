@@ -4,10 +4,6 @@
   word: ber
   origin: "*berô"
   originDef: bear
-  hypothetical: false
-  irregular: false
-  custom: true
-  notes: ""
 
 - def: before
   type: preposition
@@ -15,7 +11,3 @@
   word: for
   origin: "*furai"
   originDef: before
-  hypothetical: false
-  irregular: false
-  custom: true
-  notes: ""

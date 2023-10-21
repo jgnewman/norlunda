@@ -13,6 +13,8 @@ window.addEventListener('load', () => {
   const searchField = document.querySelector('#search-field')
   const searchResults = document.querySelector('#search-results')
 
+  searchForm.addEventListener('submit', (event) => event.preventDefault())
+
   searchField.addEventListener('focus', () => {
     searchForm.classList.add('active')
   })

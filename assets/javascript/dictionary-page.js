@@ -103,11 +103,13 @@ window.addEventListener('load', () => {
       <ul class="mb-32">
         <li>"${[def, ...synonyms].join(', ')}"</li>
         ${hypothetical ? `<li>The origin of this word is hypothetical</li>` : ''}
-        ${custom ? `<li>This word required customization</li>` : ''}
+        ${custom ? `<li>can not be automatically generated</li>` : ''}
       </ul>
-      <p>
-        Derived from ${hypothetical ? 'hypothetical ' : ' '}PGmc. <strong><em>${origin}</em></strong>, meaning "${originDef}". 
-      </p>
+      ${origin ? `
+        <p>
+          Derived from ${hypothetical ? 'hypothetical PGmc. construction' : 'PGmc.'} <strong><em>${origin}</em></strong>, meaning "${originDef}". 
+        </p>
+      `: ''}
       ${notes ? `<h3>Notes:</h3><p>${parseItalics(notes)}</p>` : ''}
     `
   }

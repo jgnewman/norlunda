@@ -1,0 +1,6 @@
+- def: solution
+  type: noun
+  synonyms: [calculation, computation, explanation]
+  word: rekning
+  custom: true
+  notes: A form of the Norlunda verb _reknan_, meaning "to calculate, compute, explain, or solve"
