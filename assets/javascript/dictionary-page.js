@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     formatWordType,
   } = window.norlundaTools
 
-  const LIST_LIMIT = 100
+  const LIST_LIMIT = 50
   
   const baseUrl = getBaseUrl()
   const output = document.querySelector('#dictionary-content')
@@ -63,7 +63,7 @@ window.addEventListener('load', () => {
     }
   }
 
-  const parseItalics = (str) => {
+  const parseSpecials = (str) => {
     let result = ''
     let isItalic = false
     for (let i = 0; i < str.length; i++) {
@@ -81,7 +81,7 @@ window.addEventListener('load', () => {
     if (isItalic) {
       result += '</em></strong>'
     }
-    return result
+    return result.replace(/\-\>/g, '→')
   }
 
   const buildWordPage = async () => {
@@ -110,7 +110,7 @@ window.addEventListener('load', () => {
           Derived from ${hypothetical ? 'hypothetical PGmc. construction' : 'PGmc.'} <strong><em>${origin}</em></strong>, meaning "${originDef}". 
         </p>
       `: ''}
-      ${notes ? `<h3>Notes:</h3><p>${parseItalics(notes)}</p>` : ''}
+      ${notes ? `<h3>Notes:</h3><p>${parseSpecials(notes)}</p>` : ''}
     `
   }
 

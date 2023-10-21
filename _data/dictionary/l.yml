@@ -1,0 +1,35 @@
+- def: less
+  type: adjective
+  word: minnere
+  custom: true
+  origin: "*minniz"
+  originDef: less
+  notes: Derived from PGmc _*minniz_ with the Norlunda comparative suffix appended.
+
+- def: life
+  type: noun
+  word: liv
+  origin: "*lībą"
+  originDef: life
+
+- def: load
+  type: noun
+  synonyms: [burden, a weight]
+  word: lest
+  origin: "*hlasti"
+  originDef: load, burden
+
+- def: lord
+  type: noun
+  synonyms: [master, mister]
+  word: frœ
+  origin: "*frawjô"
+  originDef: lord, master
+
+# TODO: talk to the group about this one
+- def: love
+  type: verb
+  synonyms: [adore, cherish]
+  word: lovan
+  origin: "*lubōną"
+  originDef: to love

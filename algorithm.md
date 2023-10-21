@@ -31,6 +31,8 @@ Some of the sections below make use of terms that need to be defined. Whenever o
 There are a few words that historically break the rules. A good example of this is _*kwemaną_ (to come). This word loses its **⟨w⟩** in all modern Germanic languages, however similar loss does not occur in other words of the same structure. So to begin, we identify these outliers, and massage them into a form that yields a more expected result. The outliers are as follows (and will be appended as we discover others):
 - _bagmaz_ → _baumaz_ (tree)
   - Change of **⟨ag⟩** to **⟨au⟩** is non-standard
+- frawjô → frǣjô (lord)
+  - This is the masculine form of the feminine _frawjǭ_ (lady). Both words need to be distinct in their modern forms but there is no standard rul we can apply to achieve this.
 - _kwemaną_ → _kumaną_ (to come)
   - Loss of **⟨w⟩** is non-standard
 - _nurþrą_ → _nurþą_ (north)

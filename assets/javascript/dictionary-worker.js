@@ -31,8 +31,6 @@
       return accum
     }, { strong: [], weak: [] })
 
-    console.log(result)
-
     postMessage({ type: 'QUERY', payload: { id, result: [...result.strong, ...result.weak] }})
   }
 

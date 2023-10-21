@@ -1,0 +1,47 @@
+- def: I
+  type: pronoun
+  word: ik
+  custom: true
+  notes: The 1st-person singular, subjective pronoun. Designed to represent the average pronunciation among other W.G. languages.
+
+- def: in
+  type: preposition
+  synonyms: [inside, into]
+  word: in
+  origin: "*in"
+  originDef: in, into
+
+- def: Ing
+  type: noun
+  word: Ing
+  origin: "*Inguz"
+  originDef: Ing
+  notes: The name of the god _Ing_, known as _Freyr_ in Old Norse, the eponymous ancestor of the Ingvaeonic peoples.
+
+- def: instance
+  type: noun
+  synonyms: [a time, an occurrence]
+  word: gaang
+  custom: true
+  origin: "*gāną"
+  originDef: to go
+  notes: A combination of the verb "to go" plus the suffix _-ing_ to form a noun.
+
+- def: intelligence
+  type: noun
+  synonyms: [smartness, cleverness, wit, wisdom]
+  word: vitt
+  origin: "*witją"
+  originDef: wit, knowledge
+
+- def: it
+  type: pronoun
+  word: dee
+  custom: true
+  notes: The 3rd-person singular, inanimate pronoun. Adopted from Norwegian _det_ to fit Norlunda grammar rules.
+
+- def: its
+  type: pronoun
+  word: des
+  custom: true
+  notes: The 3rd-person singular, inanimate, genitive pronoun. Adopted from Swedish _dess_ to fit Norlunda grammar rules.

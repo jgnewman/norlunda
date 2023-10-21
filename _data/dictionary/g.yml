@@ -1,0 +1,67 @@
+- def: garment
+  type: noun
+  synonyms: [an article of clothing]
+  word: kleid
+  origin: "*klaiþą"
+  originDef: cloth
+
+- def: girl
+  type: noun
+  word: jongfrau
+  hypothetical: true
+  origin: "*jungaz *frawjǭ"
+  originDef: young lady
+
+- def: give
+  type: verb
+  synonyms: [grant, bestow, present, offer]
+  word: gevan
+  origin: "*gebaną"
+  originDef: to give
+
+- def: glory
+  type: noun
+  synonyms: [honor, fame, renown]
+  word: voldar
+  origin: "*wuldrą"
+  originDef: glory
+  notes: Modern languages do not agree on a native word for glory, however _*wuldrą_ informs both O.E. _ƿuldor_ and O.H.G. _Vuldar_.
+
+- def: go
+  type: verb
+  word: gaan
+  origin: "*gāną"
+  originDef: to go, walk
+
+- def: god
+  type: noun
+  synonyms: [deity, divinity]
+  word: god
+  origin: "*gudą"
+  originDef: god
+
+- def: good
+  type: adjective
+  word: gud
+  origin: "*gōdaz"
+  originDef: good
+
+- def: green
+  type: adjective
+  word: grun
+  origin: "*grōniz"
+  originDef: green
+
+- def: ground
+  type: noun
+  synonyms: [earth, soil]
+  word: erd
+  origin: "*erþō"
+  originDef: earth
+
+- def: grove
+  type: noun
+  synonyms: [revered gathering place]
+  word: lund
+  custom: true
+  notes: Poetic. Derived from O.N. _lundr_, itself of unclear origin, possibly related to land. This word was retained from an earlier version of Norlunda as it is preserved in the name of the language and there is hesitancy to remove it.

@@ -11,6 +11,6 @@
   {% endfor %}
 {% endfor %}
 
-{% assign nor2eng = eng2nor | sort: 'word' %}
+{% assign nor2eng = eng2nor | sort_natural: 'word' %}
 
 {{ nor2eng | jsonify }}

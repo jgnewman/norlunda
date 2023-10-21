@@ -1,0 +1,50 @@
+- def: dance
+  type: verb
+  synonyms: [prance, frolic]
+  word: leikan
+  origin: "*laikaną"
+  originDef: to jump, play, move, swing about
+  notes: As attested in Gothic. It turns out that the PWGmc. root _þanson_ is apparently an early borrowing from elsewhere. PGmc's native evolution of the original PIE root is _*þinsaną_ "to stretch".
+
+- def: defeat
+  type: verb
+  synonyms: [overcome, outmatch, conquer]
+  word: uvervinnan
+  hypothetical: true
+  origin: "*uber *winnaną"
+  notes: This compound is attested in later proto languages, but only hypothetically exists in a PGmc. form.
+
+- def: do
+  type: verb
+  synonyms: [perform, execute, accomplish]
+  word: dun
+  origin: "*dōną"
+  originDef: to prepare
+
+- def: document
+  type: noun
+  synonyms: [record, file, script, inscription, written work]
+  word: rit
+  origin: "*writiz"
+  originDef: egraving, writing, inscription
+
+- def: dog
+  type: noun
+  synonyms: [canine]
+  word: hond
+  origin: "*hundaz"
+  originDef: dog
+
+- def: drink
+  type: verb
+  synonyms: [imbibe, sip, swallow]
+  word: drinkan
+  origin: "*drinkaną"
+  originDef: to drink
+
+- def: drive
+  type: verb
+  synonyms: [steer, propel, impel]
+  word: drievan
+  origin: "*drībaną"
+  originDef: to drive

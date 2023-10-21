@@ -1,0 +1,56 @@
+- def: can
+  type: verb
+  modal: true
+  synonyms: [be able to]
+  word: konnan
+  origin: "*kunnaną"
+  originDef: "can, to be able"
+
+- def: carry
+  type: verb
+  synonyms: [bear]
+  word: beran
+  origin: "*beraną"
+  originDef: "to carry"
+
+- def: cat
+  type: noun
+  synonyms: [feline]
+  word: katt
+  origin: "*kattuz"
+  originDef: cat
+
+- def: child
+  type: noun
+  synonyms: [kid, offspring]
+  word: kind
+  origin: "*kinþą"
+  originDef: child
+
+- def: come
+  type: verb
+  synonyms: [arrive, approach]
+  word: koman
+  origin: "*kwemaną"
+  originDef: to come
+
+- def: computer
+  type: noun
+  synonyms: [calculator]
+  word: reknar
+  custom: true
+  notes: Agent form of the Norlunda verb _reknan_, meaning "to compute or calculate"
+
+- def: count
+  type: verb
+  synonyms: [enumerate]
+  word: tellan
+  origin: "*taljaną"
+  originDef: to count
+
+- def: cow
+  type: noun
+  synonyms: [bovine]
+  word: kau
+  origin: "*kūz"
+  originDef: cow

@@ -1,0 +1,126 @@
+- def: half
+  type: noun
+  word: half
+  origin: "*halbaz"
+  originDef: half
+
+- def: hand
+  type: noun
+  word: hand
+  origin: "*handuz"
+  originDef: hand
+
+- def: have
+  type: verb
+  synonyms: [own, possess, be in possession of]
+  word: hebben
+  irregular: true
+  origin: "*habjaną"
+  originDef: to have
+  notes: The present tense form of this verb is always _har_ and the past tense form is always _hadde_.
+
+- def: he
+  type: pronoun
+  word: han
+  custom: true
+  notes: The 3rd-person singular, masculine, subjective pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
+
+- def: hear
+  type: verb
+  word: haaran
+  origin: "*hauzijaną"
+  originDef: to hear
+
+- def: heart
+  type: noun
+  word: hert
+  origin: "*hertô"
+  originDef: heart
+
+- def: heavy
+  type: adjective
+  word: sveer
+  origin: "*swēraz"
+  originDef: heavy
+
+- def: her
+  type: pronoun
+  word: hena
+  custom: true
+  notes: The 3rd-person singular, feminine, objective pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
+
+- def: here
+  type: pronoun
+  word: heer
+  origin: "*hēr"
+  originDef: here
+
+- def: hero
+  type: noun
+  word: held
+  origin: "*haliþaz"
+  originDef: hero
+
+- def: hers
+  type: pronoun
+  synonyms: [her]
+  word: henas
+  custom: true
+  notes: The 3rd-person singular, feminine, genitive pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
+
+- def: hight
+  type: verb
+  synonyms: [be called, be named]
+  word: heitan
+  origin: "*haitaną"
+  originDef: to be called
+
+- def: him
+  type: pronoun
+  word: hom
+  custom: true
+  notes: The 3rd-person singular, masculine, objective pronoun. Adopted from Swedish _honom_ to fit Norlunda grammar rules.
+
+- def: his
+  type: pronoun
+  word: hans
+  custom: true
+  notes: The 3rd-person singular, masculine, genitive pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
+
+- def: home
+  type: noun
+  synonyms: [country, region, realm, homeland, place of]
+  word: heim
+  origin: "*haimaz"
+  originDef: home
+
+- def: horse
+  type: noun
+  word: ross
+  origin: "*hrussą"
+  originDef: horse
+
+- def: hour
+  type: noun
+  synonyms: [moment in time]
+  word: stond
+  origin: "*stundō"
+  originDef: point in time
+
+- def: house
+  type: noun
+  word: haus
+  origin: "*hūsą"
+  originDef: house
+
+- def: hunt
+  type: verb
+  word: jakkan
+  origin: "*jakkōną"
+  originDef: to hunt
+
+- def: husband
+  type: noun
+  word: aamann
+  origin: "*aiwaz *mannaz"
+  originDef: "always man"

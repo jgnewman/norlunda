@@ -1,0 +1,49 @@
+- def: ointment
+  type: noun
+  synonyms: [balm, salve]
+  word: salf
+  origin: "*salbō"
+  originDef: salve
+
+- def: one
+  type: numeral
+  word: ein
+  origin: "*ainaz"
+  originDef: one
+
+- def: only
+  type: adverb
+  synonyms: [just, merely, nothing but, solely]
+  word: neer
+  custom: true
+  origin: "*nē *wēzī"
+  originDef: were not
+  notes: The full evolution here is _*nē-*wēzī -> n-veeri -> neer_.
+
+- def: or
+  type: conjunction
+  synonyms: [either, else, otherwise]
+  word: efa
+  origin: "*efþau"
+  originDef: or
+
+- def: our
+  type: pronoun
+  synonyms: [ours]
+  word: vor
+  custom: true
+  notes: The 1st-person plural, genitive pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
+
+- def: out
+  type: preposition
+  synonyms: [outside]
+  word: aut
+  origin: "*ūt"
+  originDef: out
+
+- def: over
+  type: preposition
+  synonyms: [above, beyond, on top of]
+  word: ofer
+  origin: "*uber"
+  originDef: over

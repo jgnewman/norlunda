@@ -1,0 +1,114 @@
+- def: family
+  type: noun
+  synonyms: [kin, clan, tribe]
+  word: kunn
+  origin: "*kunją"
+  originDef: family, kin, clan
+
+- def: fast
+  type: adjective
+  synonyms: [quick, rapid, swift]
+  word: sveft
+  origin: "*sweftaz"
+  originDef: swift
+
+- def: field
+  type: noun
+  synonyms: [meadow, pasture, plain, prairie, steppe, grassland]
+  word: feld
+  origin: "*felþą"
+  originDef: field, plain
+
+- def: finger
+  type: noun
+  word: fingar
+  origin: "*fingraz"
+  originDef: finger
+
+- def: fire
+  type: noun
+  synonyms: [flame]
+  word: brand
+  origin: "*brandaz"
+  originDef: fire, flash
+
+- def: five
+  type: numeral
+  word: fief
+  origin: "*fimf"
+  originDef: five
+
+- def: flee
+  type: verb
+  synonyms: [retreat, escape, run, avoid]
+  word: flien
+  origin: "*fleuhaną"
+  originDef: to flee
+
+- def: fly
+  type: verb
+  synonyms: [soar, glide]
+  word: fliegan
+  origin: "*fleuganą"
+  originDef: to fly
+
+- def: fool
+  type: noun
+  synonyms: [idiot, moron, simpleton]
+  word: halfvitt
+  hypothetical: true
+  origin: "*halbaz *witją"
+  originDef: half-wit
+
+- def: foot
+  type: noun
+  word: fot
+  origin: "*fōts"
+  originDef: foot
+
+- def: for
+  type: preposition
+  synonyms: [because, since, intended to be received by]
+  word: fur
+  origin: "*furi"
+  originDef: before, forward
+
+- def: forest
+  type: noun
+  synonyms: [forest, wood, grove]
+  word: holt
+  origin: "*hultą"
+  originDef: wood, grove
+
+- def: forever
+  type: noun
+  synonyms: [ever, eternity, always]
+  word: aa
+  origin: "*aiwaz"
+  originDef: long time, eternity, always
+
+- def: four
+  type: numeral
+  word: feer
+  origin: "*fedwōr"
+  originDef: four
+
+- def: fox
+  type: noun
+  word: foks
+  origin: "*fuhsaz"
+  originDef: fox
+
+- def: frenzy
+  type: noun
+  synonyms: [rage, fury, madness, insanity, mania]
+  word: vud
+  origin: "*wōdaz"
+  originDef: frenzy
+
+- def: full
+  type: adjective
+  synonyms: [entire]
+  word: foll
+  origin: "*fullaz"
+  originDef: full

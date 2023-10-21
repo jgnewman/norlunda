@@ -1,0 +1,61 @@
+- def: each
+  type: adjective
+  synonyms: [every]
+  word: alk
+  origin: "*aiwô- *ga- *hwilīkaz"
+  originDef: "every which"
+  custom: true
+  notes: Can be used as both an adjective and a noun. The full evolution here is _*aiwô-*ga-*hwilīkaz -> eigvilk -> eilk -> alk_. This is designed to match patterns of evolution in other modern languages.
+
+- def: ear
+  type: noun
+  word: or
+  origin: "*ausô"
+  originDef: ear
+
+- def: Earth
+  type: noun
+  synonyms: [as in the planet]
+  word: Folkheim
+  hypothetical: true
+  origin: "*fulką *haimaz"
+  originDef: people home
+
+- def: east
+  type: noun
+  word: ostar
+  origin: "*austraz"
+  originDef: east, eastern
+
+- def: eat
+  type: verb
+  synonyms: [consume, devour]
+  word: etan
+  origin: "*etaną"
+  originDef: to eat
+
+- def: eight
+  type: numeral
+  word: akt
+  origin: "*ahtōu"
+  originDef: eight
+
+- def: eleven
+  type: numeral
+  word: alf
+  custom: true
+  origin: "*ainalif"
+  originDef: one left
+  notes: The _n_ is dropped here to better match the most common N.G. and W.G. patterns. The full evolution here is _*ainalif -> einlif -> eilf -> alf_.
+
+- def: evening
+  type: noun
+  word: eevand
+  origin: "*ēbanþs"
+  originDef: evening
+
+- def: eye
+  type: noun
+  word: aaga
+  origin: "*augô"
+  originDef: eye

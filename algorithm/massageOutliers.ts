@@ -14,6 +14,11 @@ const outlierMap = {
   // Change of ag to au is non-standard
   "bagmaz": "baumaz",
 
+  // This is the masculine form of the feminine frawjǭ. Both words need to
+  // be distinct in their modern forms but there is no standard rule we
+  // can apply to achieve this.
+  "frawjô": "frǣjô",
+
   // Loss of the w is non-standard
   "kwemaną": "kumaną",
 

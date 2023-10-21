@@ -5,7 +5,7 @@
   origin: "*ainaz"
   originDef: one
   custom: true
-  notes: Whereas the algorithm gives _ainaz → ein_, further evolution to _→ an_ denotes consistent lack of stress on the word
+  notes: Whereas the algorithm gives _ainaz -> ein_, further evolution to _-> an_ denotes consistent lack of stress on the word
 
 - def: adder
   type: noun
@@ -44,7 +44,7 @@
   synonyms: [distribute, dole out]
   word: autdeilan
   origin: "*ūt *dailą"
-  originDef: "portion out"
+  originDef: "to portion out"
   hypothetical: true
   custom: true
   notes: "Whereas the particles of this compound are not hypothetical, the compound itself is. This word also requires manual addition of the Norlunda infinitive suffix to become a verb."
@@ -55,3 +55,17 @@
   word: rekningrit
   custom: true
   notes: This is a compound of two Norlunda words, _rekning_ and _rit_, meaning "a writ of calculation"
+
+- def: also
+  type: conjunction
+  synonyms: [foo, in addition, furthermore]
+  word: aak
+  origin: "*auk"
+  originDef: also, furthermore
+
+- def: army
+  type: noun
+  synonyms: [military, group of soldiers]
+  word: herr
+  origin: "*harjaz"
+  originDef: army, host, crowd

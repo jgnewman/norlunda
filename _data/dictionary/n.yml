@@ -1,0 +1,63 @@
+- def: need
+  type: verb
+  word: naadan
+  origin: "*naudijaną"
+  originDef: to compel, force
+
+- def: never
+  type: adverb
+  word: naat
+  custom: true
+  origin: "*ne- *tīdiz"
+  originDef: (at) no time
+  notes: Removal of _īdiz_ is meant to yield a similar result as Dutch _nooit_.
+
+- def: nine
+  type: numeral
+  word: nien
+  origin: "*newun"
+  originDef: nine
+
+- def: "no"
+  type: adverb
+  word: naa
+  origin: "*nai"
+  originDef: never
+
+- def: none
+  type: pronoun
+  synonyms: [no one]
+  word: nein
+  origin: "*nainaz"
+  originDef: none
+  notes: Mostly reserved for answering the questions "who" and "how many". Otherwise, _nak_ is preferred.
+
+- def: north
+  type: noun
+  word: nord
+  origin: "*nurþraz"
+  originDef: north
+
+- def: nose
+  type: noun
+  word: nas
+  origin: "*nasō"
+  originDef: nose
+
+- def: not
+  type: adverb
+  word: ekka
+  hypothetical: true
+  custom: true
+  origin: "*-at (neut.) *-gô"
+  originDef: not one
+  notes: Equivalent of Old Norse _ekki_ and its descendants. Constructed to fit the goal of leaning on N.G. grammar patterns.
+
+- def: nothing
+  type: pronoun
+  synonyms: [naught, nobody, not at all]
+  word: nak
+  custom: true
+  origin: "*nē *aiwaz *wihtą"
+  originDef: not ever a thing
+  notes: The full evolution here is _*nē *aiwaz *wihtą -> n-aa-vekt -> nak_.

@@ -1,13 +1,77 @@
+- def: be
+  type: verb
+  word: vesan
+  origin: "*wesaną"
+  originDef: to be
+  irregular: true
+  notes: The present tense form of this verb is always _ar_ and the past tense form is always _var_.
+
 - def: bear
   type: noun
-  synonyms: []
   word: ber
   origin: "*berô"
   originDef: bear
 
 - def: before
   type: preposition
-  synonyms: []
   word: for
   origin: "*furai"
   originDef: before
+
+- def: berry
+  type: noun
+  word: bœr
+  origin: "*bazją"
+  originDef: berry
+
+- def: big
+  type: adjective
+  synonyms: [large, great in size]
+  word: graat
+  origin: "*grautaz"
+  originDef: large
+
+- def: bird
+  type: noun
+  word: fogal
+  origin: "*fuglaz"
+  originDef: bird
+
+- def: black
+  type: adjective
+  word: svart
+  origin: "*swartaz"
+  originDef: black
+
+- def: blue
+  type: adjective
+  word: blee
+  origin: "*blēwaz"
+  originDef: blue, dark gray, black
+
+- def: book
+  type: noun
+  word: buk
+  origin: "*bōks"
+  originDef: written message
+
+- def: both
+  type: adjective
+  word: baad
+  origin: "*bai- *þanǭ"
+  originDef: both
+  custom: true
+  notes: Can be used both as an adjective or a noun. The original inflection here is not entirely clear, and seems to resemble _*twai_ "two". Designed to follow common patterns of evolution found in other languages.
+
+- def: boy
+  type: noun
+  word: jongmann
+  origin: "*jungaz- *mannaz"
+  originDef: young man
+
+- def: by
+  type: preposition
+  synonyms: [with, of, from, signifying instrumentation]
+  word: av
+  origin: "*ab"
+  originDef: "of"

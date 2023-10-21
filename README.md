@@ -20,8 +20,9 @@ There is one file per letter of the English alphabet and words are listed alphab
 - **originDef** (a word or phrase; required if origin is provided) - What the PGmc origin would have literally meant.
 - **hypothetical** (true/false; required if true) - Whether the PGmc origin of this word is your own hypothetical reconstruction
 - **irregular** (true/false; required if true) - This field should _rarely_ be true. It should be true for irregular verbs or any other words that do not follow the normal rules.
+- **modal** (true/false; required if true) - Signifies a modal verb.
 - **custom** (true/false; required if true) - A word is considered custom if it can not be auto-generated automatically by the algorithm for any reason.
-- **notes** (some text; required if any of the boolean fields were true of if origin is left blank) - Allows explaining why a word should be hypothetical, irregular, or custom. Otherwise, this is a good place for any extra useful notes about the word if you have any.
+- **notes** (some text; required if any of there is no origin or if the word is custom) - Allows explaining why a word should be hypothetical, irregular, or custom. Otherwise, this is a good place for any extra useful notes about the word if you have any.
 
 ## Running locally
 

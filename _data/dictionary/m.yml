@@ -1,0 +1,69 @@
+- def: magic
+  type: noun
+  synonyms: [wizardry, sorcery]
+  word: taavar
+  origin: "*taubrą"
+  originDef: magic, sorcery
+
+- def: make
+  type: verb
+  synonyms: [create, build]
+  word: makan
+  origin: "*makōną"
+  originDef: to make
+
+- def: man
+  type: noun
+  word: mann
+  origin: "*mann"
+  originDef: man, person
+
+- def: mare
+  type: noun
+  word: mera
+  origin: "*marhijō"
+  originDef: mare
+
+- def: me
+  type: pronoun
+  word: mei
+  custom: true
+  notes: The 1st-person singular, objective pronoun. Adopted from Norwegian _meg_ to fit Norlunda grammar rules.
+
+- def: mean
+  type: verb
+  synonyms: [signify, indicate]
+  word: daudan
+  origin: "*þiudijaną"
+  originDef: to interpret
+
+- def: milk
+  type: noun
+  word: melk
+  origin: "*meluks"
+  originDef: milk
+
+- def: more
+  type: adjective
+  word: meer
+  origin: "*maizô"
+  originDef: more
+
+- def: morning
+  type: noun
+  word: morgan
+  origin: "*murganaz"
+  originDef: morning
+
+- def: mouth
+  type: noun
+  word: mond
+  origin: "*munþaz"
+  originDef: mouth
+
+- def: my
+  type: pronoun
+  synonyms: [mine]
+  word: min
+  custom: true
+  notes: The 1st-person singular, genitive pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
