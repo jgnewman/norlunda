@@ -27,7 +27,7 @@
 - def: wash
   type: verb
   synonyms: [clean]
-  word: waskan
+  word: vashan
   origin: "*waskaną"
   originDef: to wash
 
