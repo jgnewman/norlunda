@@ -75,7 +75,7 @@
 
 - def: forest
   type: noun
-  synonyms: [forest, wood, grove]
+  synonyms: [a wood, grove]
   word: holt
   origin: "*hultą"
   originDef: wood, grove
