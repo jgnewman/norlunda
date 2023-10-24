@@ -32,7 +32,7 @@ There are a few words that historically break the rules. A good example of this 
 - _bagmaz_ → _baumaz_ (tree)
   - Change of **⟨ag⟩** to **⟨au⟩** is non-standard
 - frawjô → frǣjô (lord)
-  - This is the masculine form of the feminine _frawjǭ_ (lady). Both words need to be distinct in their modern forms but there is no standard rul we can apply to achieve this.
+  - This is the masculine form of the feminine _frawjǭ_ (lady). Both words need to be distinct in their modern forms but there is no standard rule we can apply to achieve this.
 - _kwemaną_ → _kumaną_ (to come)
   - Loss of **⟨w⟩** is non-standard
 - _nurþrą_ → _nurþą_ (north)
