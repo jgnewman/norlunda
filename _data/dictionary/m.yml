@@ -43,6 +43,13 @@
   origin: "*þiudijaną"
   originDef: to interpret
 
+- def: measure
+  type: verb
+  synonyms: [quantify]
+  word: metan
+  origin: "*metaną"
+  originDef: to measure
+
 - def: milk
   type: noun
   word: melk
@@ -84,6 +91,12 @@
   word: mikel
   origin: "*mikilaz"
   originDef: much, many, large, great
+
+- def: museum
+  type: noun
+  word: samninghaus
+  custom: true
+  notes: Literally "collection house" from the Norlunda verb _samnan_, meaning "to collect", and the Norlunda noun _haus_, meaning "house".
 
 - def: my
   type: pronoun

@@ -19,4 +19,4 @@ The sprig in the center of the flag is centered both vertically and horizontally
 
 The sprig, which we call the **Sprut**, is inspired by renditions of the mythological World Tree, commonly known as Yggdrasil (**Uvdrasell** in Norlunda), as seen in the medieval [Överhogdal tapestries](https://en.wikipedia.org/wiki/%C3%96verhogdal_tapestries). However, the Sprut is not the full, mature tree, but a young sprig, symbolizing the idea of a new world joined in togetherness coming in the future. It’s a hopeful ideal which Norlunda aspires to work toward in some small measure.
 
-{% include prev-next.html list="navigation" %}
+{% include prev-next.html list="getting_started" %}

@@ -37,4 +37,4 @@ Over time, decisions will need to be made to evolve the language. To serve as gu
 1. **Single words are better than compounds or multi-word phrases.** For simplicity’s sake, it is better to say “sorry” than “es tut mir leid” (sorry, German).
 1. **Community decisions are better than unilateral decisions.** Sometimes there’s no obvious solution to a problem and a bit of creativity is required. In those cases, the community should pick a creative solution together where possible. (Feel free to join [the Discord server](https://discord.gg/AGvmXRhscG).)
 
-{% include prev-next.html list="navigation" %}
+{% include prev-next.html list="getting_started" %}

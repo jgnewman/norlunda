@@ -19,6 +19,13 @@
   origin: "*leuhtą"
   originDef: light
 
+- def: like
+  type: verb
+  synonyms: [enjoy, prefer]
+  word: liekan
+  origin: "*līkāną"
+  originDef: to please, to like
+
 - def: load
   type: noun
   synonyms: [burden, a weight]

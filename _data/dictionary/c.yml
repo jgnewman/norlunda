@@ -27,6 +27,20 @@
   origin: "*kinþą"
   originDef: child
 
+- def: collect
+  type: verb
+  synonyms: [gather, assemble]
+  word: samnan
+  origin: "*samnōną"
+  originDef: to collect, gather, assemble, bring together
+
+- def: collection
+  type: noun
+  synonyms: [gathering, assembly]
+  word: samning
+  custom: true
+  notes: Noun form of the Norlunda verb _samnan_, meaning "to collect".
+
 - def: come
   type: verb
   synonyms: [arrive, approach]

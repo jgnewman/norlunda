@@ -1,6 +1,6 @@
 /* API
 
-window.norlundaTools.subscribe('dictionary:ready', async () => {
+window.norlundaTools.subscribe('dictionary:ready', async (totalWords) => {
     console.log('the dictionary is ready')
   
     const result1 = await window.norlundaTools.queryDictionary('e')
@@ -109,7 +109,7 @@ window.addEventListener('load', () => {
 
       case 'DICTIONARY_READY':
         dictionaryReady = true
-        return publish('dictionary:ready', data.payload)
+        return publish('dictionary:ready', data.payload) // Payload === total entries in dictionary
 
       case 'QUERY':
         return handleQueryResponse(data.payload)

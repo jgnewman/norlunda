@@ -72,7 +72,7 @@ $button-padding: 8px 10px;
     position: absolute;
     width: 92vw;
     left: 4vw;
-    top: 21px;
+    top: 20px;
   }
 
   @include vw-2 {
@@ -123,4 +123,12 @@ html.dark .search-field-wrapper::before {
   width: 100%;
   position: relative;
   z-index: 2;
+}
+
+.search-field-wrapper.active .field {
+  min-height: 38px;
+
+  @include vw-2 {
+    min-height: auto;
+  }
 }

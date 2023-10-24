@@ -20,6 +20,21 @@
   origin: "*uber *winnaną"
   notes: This compound is attested in later proto languages, but only hypothetically exists in a PGmc. form.
 
+- def: dictionary
+  type: noun
+  synonyms: [lexicon, wordbook, glossary]
+  word: vordbuk
+  hypothetical: true
+  origin: "*wurdą *bōks"
+  originDef: dictionary
+
+- def: dirt
+  type: noun
+  synonyms: [soil]
+  word: mold
+  origin: "*muldō"
+  originDef: mould, soil, dirt
+
 - def: do
   type: verb
   synonyms: [perform, execute, accomplish]

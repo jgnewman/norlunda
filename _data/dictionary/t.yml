@@ -125,7 +125,7 @@
 
 - def: time
   type: noun
-  synonyms: [period, season, spell, interval]
+  synonyms: [period, spell, interval]
   word: tied
   origin: "*tīdiz"
   originDef: time, period, interval

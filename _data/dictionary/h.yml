@@ -32,6 +32,20 @@
   custom: true
   notes: The 3rd-person singular, masculine, subjective pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
 
+- def: health
+  type: noun
+  word: sondheid
+  hypothetical: true
+  origin: "*sundaz *haiduz"
+  originDef: the manner of wholeness
+
+- def: healthy
+  type: adjective
+  synonyms: [well, sound]
+  word: sond
+  origin: "*sundaz"
+  originDef: healthy, sound, uninjured
+
 - def: hear
   type: verb
   word: haaran
@@ -101,6 +115,14 @@
   word: hans
   custom: true
   notes: The 3rd-person singular, masculine, genitive pronoun. Adopted from N.G. patterns to fit Norlunda grammar rules.
+
+- def: holy
+  type: adjective
+  word: heilig
+  custom: true
+  origin: "*hailaz"
+  originDef: whole, complete, healthy, intact
+  notes: This word can not be auto-generated because it contains the modern Norlunda suffix _-ig_, which is used for creating adjectives from nouns.
 
 - def: home
   type: noun

@@ -10,6 +10,7 @@ window.addEventListener('load', () => {
   const LIST_LIMIT = 50
   
   const baseUrl = getBaseUrl()
+  const countContaerin = document.querySelector('#dictionary-count')
   const output = document.querySelector('#dictionary-content')
   const nav = document.querySelector('#dictionary-nav')
   const navPrev = document.querySelector('#dictionary-prev-link')
@@ -102,17 +103,26 @@ window.addEventListener('load', () => {
       <h2 class="font-size-36 mb-8">${word} <em class="semi-transparent font-size-18">${modal ? 'modal ' : ''}${type} ${irregular ? 'irregular' : ''}</em></h2>
       <ul class="mb-32">
         <li>"${[def, ...synonyms].join(', ')}"</li>
-        ${hypothetical ? `<li>The origin of this word is hypothetical</li>` : ''}
         ${custom ? `<li>can not be automatically generated</li>` : ''}
       </ul>
       ${origin ? `
         <p>
-          Derived from ${hypothetical ? 'hypothetical PGmc. construction' : 'PGmc.'} <strong><em>${origin}</em></strong>, meaning "${originDef}". 
+          Derived from ${hypothetical ? 'hypothetical PGmc. construction using the root(s)' : 'PGmc.'} <strong><em>${origin}</em></strong>, meaning "${originDef}". 
         </p>
       `: ''}
       ${notes ? `<h3>Notes:</h3><p>${parseSpecials(notes)}</p>` : ''}
     `
   }
 
-  subscribe('dictionary:ready', () => isListPage ? buildListPage(0) : buildWordPage())
+  const displayCount = (totalEntries) => {
+    const count = document.createElement('div')
+    count.classList.add('byline', 'mb-32')
+    count.innerHTML = `Total words: ${totalEntries}`
+    countContaerin.appendChild(count)
+  }
+
+  subscribe('dictionary:ready', (totalEntries) => {
+    displayCount(totalEntries)
+    return isListPage ? buildListPage(0) : buildWordPage()
+  })
 })

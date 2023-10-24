@@ -106,6 +106,13 @@
   origin: "*wōdaz"
   originDef: frenzy
 
+- def: from
+  type: preposition
+  synonyms: [out of, signifying origin]
+  word: fan
+  origin: "*fanē"
+  originDef: from
+
 - def: full
   type: adjective
   synonyms: [entire]

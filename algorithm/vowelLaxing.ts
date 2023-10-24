@@ -112,6 +112,7 @@ const reduceVowelBasedSuffixes = (word: string) => {
   if (/j(a|ą)$/.test(word)) return word.replace(/j(a|ą)$/, !containsVowels(word.slice(0, -2)) ? 'ja' : '')
   if (/(ą|a)$/.test(word)) return word.replace(/(ą|a)$/, '')
 
+  if (/ē$/.test(word)) return word.replace(/ē$/, !containsVowels(word.slice(0, -1)) ? 'ē' : '')
   if (/į$/.test(word)) return word.replace(/į$/, 'a')
   if (/i$/.test(word)) return word.replace(/i$/, '')
   if (/u$/.test(word)) return word.replace(/u$/, 'a')
@@ -138,6 +139,10 @@ const fixTerminalMfNf = (word: string) => {
   })
 }
 
+const fixTerminalMb = (word: string) => {
+  return word.replace(/mb$/, 'm')
+}
+
 const handleUncomfortableEndCluster = (word: string) => {
   if (!endsWithUncomfortableConsonantCluster(word)) return word
   return fixUncomfortableEndCluster(word)
@@ -152,6 +157,7 @@ export default (word: string, context: Context) => {
     denasalize,
     handleLZ,
     fixTerminalMfNf,
+    fixTerminalMb,
     handleUncomfortableEndCluster,
   ])
 }

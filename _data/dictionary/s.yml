@@ -12,6 +12,12 @@
   origin: "*sagjaną"
   originDef: to say
 
+- def: season
+  type: noun
+  word: jeertied
+  origin: "*jērą *tīdiz"
+  originDef: time of year
+
 - def: seax
   type: noun
   synonyms: [dagger, short sword, short-bladed weapon]

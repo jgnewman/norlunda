@@ -5,3 +5,10 @@
   origin: "*matisahsą"
   originDef: food knife
   notes: It is not clear whether this construction existed in PGmc. This is a hypothetical reconstruction from PWGmc. _*matisahs_.
+
+- def: know
+  type: verb
+  synonyms: [be acquainted with]
+  word: kennan
+  origin: "*kannijaną"
+  originDef: to make known

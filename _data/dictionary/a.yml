@@ -7,6 +7,14 @@
   custom: true
   notes: Whereas the algorithm gives _ainaz -> ein_, further evolution to _-> an_ denotes consistent lack of stress on the word
 
+- def: about
+  type: preposition
+  synonyms: [around, concerning, regarding]
+  word: um
+  custom: true
+  origin: "*umbi"
+  originDef: around, about
+
 - def: adder
   type: noun
   synonyms: [venomous snake]

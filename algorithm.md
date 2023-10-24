@@ -146,6 +146,7 @@ All word-final, vowel-based endings are reduced into simpler forms.
 - wa, wą → **/ɑː/** if these are the only vowels in the word, otherwise drop
 - ja, ją → **/jɑ/** if these are the only vowels in the word, otherwise drop
 - ą, a → drop
+- ē → drop unless this is the only vowel in the word
 - į → **/ɑ/**
 - i → drop
 - u → **/ɑ/**
@@ -157,6 +158,8 @@ All remaining nasal vowels are de-nasalized.
 Both of the clusters **⟨lz⟩** and **⟨zl⟩**, are replaced by **⟨ll⟩**. Example: _*trozl_ → _*troll_.
 
 When either of the clusters **⟨mf⟩** or **⟨nf⟩** are word-terminal, the first consonant in the cluster is dropped. If the cluster is preceded by a short vowel, the vowel is lengthened. Example: _*fimf_ → _*fīf_.
+
+When the cluster **⟨mb⟩** is word-terminal, it is reduced to **⟨m⟩**. Example: _*ymb_ → _*ym_.
 
 If a word ends in an **uncomfortable consonant cluster**<sup>2</sup>, then **/ɑ/** is added between them. Example: _*woldr_ → _*woldar_.
 
@@ -291,4 +294,4 @@ Re-apply pre-cluster vowel shortening. Specifically, long vowels are shortened w
 
 Re-apply consonant de-doubling. Specifically, when a consonant cluster contains a doubled consonant plus another consonant, one of the double consonants is dropped. Example: _Villhelm_ → _Vilhelm_.
 
-{% include prev-next.html list="navigation" %}
+{% include prev-next.html list="docs" %}

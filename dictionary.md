@@ -3,9 +3,12 @@ layout: default
 permalink: /dictionary
 ---
 
-# Dictionary
+{: .mb-0 }
+# <span class="light-copy">Norlundas</span> **Vordbuken**
 
-The content on this page is currently experimental. Full dictionary coming soon...
+<div id="dictionary-count"></div>
+
+---
 
 <div id="dictionary-content" class="dictionary-content loading mb-36">
   {% include spinner.svg %}

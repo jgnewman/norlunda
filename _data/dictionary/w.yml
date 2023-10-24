@@ -68,6 +68,13 @@
   origin: "*hwītaz"
   originDef: white
 
+- def: whole
+  type: adjective
+  synonyms: [complete, intact]
+  word: heil
+  origin: "*hailaz"
+  originDef: whole, healthy, complete, intact
+
 - def: why
   type: adverb
   word: varfor

@@ -69,4 +69,4 @@ Apart from those listed above, Norlunda also uses foreign consonant letters for 
 Consonants in Norlunda may be doupled at times. When this happens, the doubled consonant is meant to be held longer than a single consonant. For instance, _mann_ is pronounced **/manː/**. It is highly unlikely that failing to pronounce a long consonant will result in being misunderstood.
 
 
-{% include prev-next.html list="navigation" %}
+{% include prev-next.html list="getting_started" %}

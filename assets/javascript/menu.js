@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
   const menuIcon = document.querySelector('#menu-icon')
   const navContainer = document.querySelector('#nav-container')
   const contentContainer = document.querySelector('#scrollable-content')
-  const navItems = Array.from(document.querySelectorAll('#nav-list a'))
+  const navItems = Array.from(document.querySelectorAll('#nav-container li a'))
 
   menuLink.addEventListener('click', () => {
     menuIcon.classList.toggle('menu-open')

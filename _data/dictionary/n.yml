@@ -1,8 +1,10 @@
 - def: native speech
   type: noun
+  synonyms: [of the people]
   word: dautsh
   origin: "*þiudiskaz"
-  originDef: native speech
+  originDef: of the people, popular, of the tribe
+  notes: In the same way that German is only called "German" outside of the German language, when speaking Norlunda it is acceptable to say _dautsh_ to refer to the language itself.
 
 - def: need
   type: verb
@@ -37,6 +39,12 @@
   origin: "*nainaz"
   originDef: none
   notes: Mostly reserved for answering the questions "who" and "how many". Otherwise, _nak_ is preferred.
+
+- def: Norlunda
+  type: noun
+  word: Norlunda
+  custom: true
+  notes: The name of the language itself, used when speaking other languages. When speaking Norlunda, it is preferable to refer to the language as _dautsh_. The reason this word can not be automatically generated is that it is a holdover from the first version of the language in which the sound-change algorithm was drastically different.
 
 - def: north
   type: noun

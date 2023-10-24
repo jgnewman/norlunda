@@ -93,7 +93,7 @@ They wash all the windows.
 
 ## Demonstratives
 
-Demonstrative pronouns in Norlunda can also be used as adjectives. When using a demonstrative as an adjective, there is no need to attach the definite suffix **-en** to the noun being described. However, if we are using a plural demonstrative adjective, the described noun should be plural as well.
+Demonstrative pronouns in Norlunda can also be used as adjectives. When using a demonstrative as an adjective, there is no need to attach the definite suffix **-en** to the noun being described. However, we do need to use a plural demonstrative if it describes a plural noun.
 
 <div class="scroll-size-1" markdown="1">
 
@@ -124,15 +124,31 @@ Hens haus ar in **jein** holt.
 {: .source}
 His/her/their house is in yonder grove.
 
+The demonstrative **den** is also useful for describing a concept as separate from an actual object. Consider the following examples:
+
+{: .showcase }
+**Den** follkomt mann ar aa glad.
+
+{: .source}
+The (conceptually) perfect man is always happy.
+
+{: .showcase }
+Follkomt mann**en** var aa glad.
+
+{: .source}
+The (actual) perfect man was always happy.
+
+In the first example, we use **den** to discuss the concept of a perfect man. In the second example, we use the definite suffix **-en** to refer an actual man described as perfect.
+
 ## Sentence structure
 
 Norlunda sentences are typically organized into subject-verb-object (SVO) order. Nouns are always either in standard case or genitive case (which is achieved by simply adding **-s**). When an indirect object is included, it may appear before the direct object or afterward if it is accompanied by a preposition.
 
 {: .showcase }
-Mannen**s** hond ar braun.
+Frauen**s** hond ar braun.
 
 {: .source}
-The man's dog is brown. 
+The woman's dog is brown. 
 
 {: .showcase }
 Ik gever Johan an apal. Han gever hans korn til mei.
@@ -238,7 +254,7 @@ Fogalen flieg**te**. Ik see**de** hem.
 {: .source }
 The bird flew. I saw him/her.
 
-> 1. The **⟨t⟩**-based suffixes are as follows: _-bte, -fte, -gte, -kte, -pte, -ste, -shte, -tte, -vte_. This should feel fairly intuitive to most Germanic-language speakers.
+> 1. The **⟨t⟩**-based suffixes are as follows: _-bte, -fte, -gte, -kte, -pte, -ste, -shte, -tte, -vte_, as well as any consonant cluster ending with **⟨t⟩**, for instance _-ndte_. This should feel fairly intuitive to most Germanic-language speakers.
 
 Sometimes a noun needs to be _described_ in terms of action it is currently performing. In this case, we use the present participle suffix **-ande** for consonant stems and **-nde** for vowel stems.
 
@@ -364,6 +380,36 @@ Du flier oft. Du ar an flie**jar**.
 {: .source }
 You often flee. You are a fleer.
 
+## Making adjectives
+
+Norlunda has two categories of adjectival suffixes. The first category creates qualitative adjectives. In other words, adjectives used to describe a noun as having a particular quality or state of being. This category includes the suffix **-ig** for consonant stems and **-liek** for vowel stems.
+
+The second category creates identitive adjectives. In other words, adjectives used to describe a noun in terms of its origin, belonging to a group, or behavioral tendency. This category includes the suffix **-sh** for most consonant stems, or **-ish** for stems where a vowel is required in order to make pronunciation possible. For vowel stems, the final vowel is dropped and replaced with **-ish**.
+
+{: .showcase }
+Han ar an heil**ig** mann.
+
+{: .source }
+He is a holy man.
+
+{: .showcase }
+Ik seede dur aaga**liek** vindogaen.
+
+{: .source }
+I looked through the eye-like window.
+
+{: .showcase }
+Hun ar an frank**ish** frau.
+
+{: .source }
+She is a French woman.
+
+{: .showcase }
+Du ar an kanad**ish** folk av Kanada.
+
+{: .source }
+You are a Canadian person from Canada.
+
 ## Other stuff (WIP)
 
 Coming soon...
@@ -374,4 +420,4 @@ Coming soon...
 
 
 
-{% include prev-next.html list="navigation" %}
+{% include prev-next.html list="getting_started" %}

@@ -50,7 +50,7 @@
 
 - def: out
   type: preposition
-  synonyms: [outside]
+  synonyms: ["off", outside]
   word: aut
   origin: "*ūt"
   originDef: out

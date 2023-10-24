@@ -54,8 +54,19 @@
   <aside id="nav-container">
     <nav class="pt-36 site-nav">
       <label>Getting started</label>
-      <ul id="nav-list" class="py-24 flex flex-direction-column">
-        {% for nav in site.data.navigation %}
+      <ul class="py-24 flex flex-direction-column">
+        {% for nav in site.data.getting_started %}
+          <li>
+            <a class="aside-nav-link py-8 {% if nav.url == page.url %}active{% endif %}" href="{{ nav.url | relative_url }}">
+              <span>{{ nav.text }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <hr/>
+      <label>Docs</label>
+      <ul class="py-24 flex flex-direction-column">
+        {% for nav in site.data.docs %}
           <li>
             <a class="aside-nav-link py-8 {% if nav.url == page.url %}active{% endif %}" href="{{ nav.url | relative_url }}">
               <span>{{ nav.text }}</span>

@@ -5,7 +5,7 @@
     const response = await fetch(`${baseUrl}/assets/javascript/dictionary.json`)
     const json = await response.json()
     dictionary = json
-    postMessage({ type: 'DICTIONARY_READY' })
+    postMessage({ type: 'DICTIONARY_READY', payload: json.length })
   }
 
   const handleIncomingQueryRequest = ({ id, query }) => {
