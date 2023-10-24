@@ -6,6 +6,12 @@
   irregular: true
   notes: The present tense form of this verb is always _ar_ and the past tense form is always _var_.
 
+- def: beach
+  type: noun
+  word: bek
+  origin: "*bakiz"
+  originDef: beach, strand, brook, stream
+
 - def: bear
   type: noun
   word: ber
@@ -75,11 +81,25 @@
   origin: "*swartaz"
   originDef: black
 
+- def: blood
+  type: noun
+  word: blud
+  origin: "*blōþą"
+  originDef: blood
+
 - def: blue
   type: adjective
   word: blee
   origin: "*blēwaz"
   originDef: blue, dark gray, black
+
+- def: body of water
+  type: noun
+  synonyms: [sea, lake, ocean]
+  word: saa
+  origin: "*saiwiz"
+  originDef: sea, lake, ocean
+  notes: This word can refer to a standing body of water of any relatively large size.
 
 - def: book
   type: noun

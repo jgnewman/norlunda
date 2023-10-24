@@ -5,6 +5,12 @@
   originDef: rain
   notes: The verb _regnan_ is from the same root. It is formed by adding the infinitive suffix _-an_ and removing the unstressed, middle vowel, as is standard in the sound change algorithm.
 
+- def: read
+  type: verb
+  word: lesan
+  origin: "*lesaną"
+  originDef: to gather, pick
+
 - def: ready
   type: adjective
   synonyms: [prepared]
@@ -26,6 +32,12 @@
   word: raad
   origin: "*raudaz"
   originDef: red
+
+- def: riverbank
+  type: noun
+  word: aara
+  origin: "*aurī"
+  originDef: riverbank
 
 - def: root
   type: noun

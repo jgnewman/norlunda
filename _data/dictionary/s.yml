@@ -12,6 +12,13 @@
   origin: "*sagjaną"
   originDef: to say
 
+- def: sea
+  type: noun
+  synonyms: [ocean]
+  word: mer
+  origin: "*mari"
+  originDef: sea, ocean
+
 - def: season
   type: noun
   word: jeertied
@@ -78,6 +85,12 @@
   word: sheep
   origin: "*skēpą"
   originDef: sheep
+
+- def: shore
+  type: noun
+  word: strand
+  origin: "*strandō"
+  originDef: edge, rim, shore, strand
 
 - def: sick
   type: adjective
@@ -209,6 +222,12 @@
   origin: "*sagǭ"
   originDef: story
 
+- def: strait
+  type: noun
+  word: eid
+  origin: "*aidiją"
+  originDef: strait, isthmus
+
 - def: strawberry
   type: noun
   word: erdbœr
@@ -236,3 +255,10 @@
   word: sonn
   origin: "*sunnǭ"
   originDef: sun
+
+- def: swamp
+  type: noun
+  synonyms: [fen, marsh]
+  word: fenn
+  origin: "*fanją"
+  originDef: fen, marsh, swamp

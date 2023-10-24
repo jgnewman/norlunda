@@ -27,6 +27,13 @@
   origin: "*dailą"
   originDef: part, portion
 
+- def: place
+  type: noun
+  synonyms: [location, stead, home]
+  word: sted
+  origin: "*stadiz"
+  originDef: place, location
+
 - def: plant
   type: noun
   word: vurt

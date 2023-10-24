@@ -1,3 +1,9 @@
+- def: narrow
+  type: adjective
+  word: ang
+  origin: "*anguz"
+  originDef: narrow, tight
+
 - def: native speech
   type: noun
   synonyms: [of the people]

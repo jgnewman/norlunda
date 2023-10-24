@@ -412,7 +412,7 @@ You are a Canadian person from Canada.
 
 ## Making nouns
 
-The standard way to make a noun out of any other kind of word in Norlunda is to add the suffix **-heid**.
+There are two noun-making suffixes in Norlunda: **-heid** and **-t/it**. The first is used similarly to English _-hood_ or _-ness_. It forms nouns from adjectives. The second is a re-purposing of the Norlunda stateful tense, in this case forming nouns from verbs.
 
 {: .showcase }
 Folkheim naader meer glad**heid**.
@@ -420,11 +420,16 @@ Folkheim naader meer glad**heid**.
 {: .source }
 The world needs more happiness.
 
+{: .showcase }
+Sholde vie heitan an buk an les**t**?
+
+{: .source }
+Should we refer to a book as a "read-thing"?
+
 ## Other stuff (WIP)
 
 Coming soon...
 
-- -ness, -hood
 - adverbs, etc...
 
 

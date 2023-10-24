@@ -32,6 +32,12 @@
   origin: "*brandaz"
   originDef: fire, flash
 
+- def: fish
+  type: noun
+  word: fesk
+  origin: "*fiskaz"
+  originDef: fish
+
 - def: five
   type: numeral
   word: fief

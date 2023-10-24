@@ -123,6 +123,13 @@
   originDef: thunder
   notes: Also the name of the Germanic thunder god, known as _Þórr_ in Old Norse.
 
+- def: tight
+  type: adjective
+  synonyms: [taut, tense]
+  word: dikt
+  origin: "*þinhtaz"
+  originDef: tight
+
 - def: time
   type: noun
   synonyms: [period, spell, interval]
@@ -142,6 +149,13 @@
   word: taa
   origin: "*taihwǭ"
   originDef: toe
+
+- def: tongue
+  type: noun
+  synonyms: [language, dialect]
+  word: tonga
+  origin: "*tungǭ"
+  originDef: tongue, speech, language
 
 - def: tooth
   type: noun

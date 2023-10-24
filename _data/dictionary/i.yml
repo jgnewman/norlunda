@@ -34,6 +34,21 @@
   origin: "*witją"
   originDef: wit, knowledge
 
+- def: island
+  type: noun
+  word: au
+  origin: "*awjō"
+  originDef: island, floodplain, meadow
+
+- def: isthmus
+  type: noun
+  word: landangt
+  hypothetical: true
+  custom: true
+  origin: "*landą *anguz"
+  originDef: narrow land
+  notes: A combination of "land" and "narrow", appended with the noun-creating suffix _-t_.
+
 - def: it
   type: pronoun
   word: dee

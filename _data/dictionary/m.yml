@@ -56,6 +56,15 @@
   origin: "*meluks"
   originDef: milk
 
+- def: might
+  type: noun
+  synonyms: [power]
+  word: magt
+  custom: true
+  origin: "*maganą"
+  originDef: may, to be able
+  notes: The noun _magt_ is a combination of the verb _maganą_ and the noun-creating suffix _-t_.
+
 - def: month
   type: noun
   word: maand
@@ -68,6 +77,12 @@
   origin: "*mēnô"
   originDef: moon
 
+- def: moor
+  type: noun
+  word: mœr
+  origin: "*mōraz"
+  originDef: moor
+
 - def: more
   type: adjective
   word: meer
@@ -79,6 +94,12 @@
   word: morgan
   origin: "*murganaz"
   originDef: morning
+
+- def: mountain
+  type: noun
+  word: berg
+  origin: "*bergaz"
+  originDef: mountain, hill, refuge, shelter
 
 - def: mouth
   type: noun

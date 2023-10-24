@@ -20,6 +20,12 @@
   origin: "*kattuz"
   originDef: cat
 
+- def: cheese
+  type: noun
+  word: jost
+  origin: "*justaz"
+  originDef: cheese
+
 - def: child
   type: noun
   synonyms: [kid, offspring]

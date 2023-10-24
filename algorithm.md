@@ -52,7 +52,7 @@ There are a few words that historically break the rules. A good example of this 
 For the sake of automating this algorithm, there are some sounds in Proto-Germanic that are traditionally spelled with letters that can not be easily represented as single-character strings in high-level code. Before proceeding, these characters should be replaced with machine-recognizable, single-character strings. In human speak, swap out the following characters for the listed equivalents.
 
 - `ą̄`  →  `ā`
-- `į̄`  →  `į`
+- `į̄`  →  `ī`
 - `ǫ̂`  →  `ǭ`
 - `ų̄`  →  `ų`
 
@@ -100,6 +100,7 @@ All diphthongs and some vowel clusters involving **/h, j/** are monophthongized.
 - /ɑuh, ɑu/ → /uː/
 - /ɑuh, ɑu, ouh, ou/ → /oː/
 - /ænh, enh/ → /eː/
+- /inh, īnh/ → /ih, īh/
 - /ehu, euh, eu, ewu, ew/ → /iː/
 - /eːɑ/ (usually spelled **⟨ēa⟩**)  → /ɑː/
 - /eːõː/ (usually spelled **⟨ēǭ⟩**) → /ɑː/
@@ -147,7 +148,7 @@ All word-final, vowel-based endings are reduced into simpler forms.
 - ja, ją → **/jɑ/** if these are the only vowels in the word, otherwise drop
 - ą, a → drop
 - ē → drop unless this is the only vowel in the word
-- į → **/ɑ/**
+- į, ī → **/ɑ/**
 - i → drop
 - u → **/ɑ/**
 - hw → if after a short vowel, lengthen the vowel; drop

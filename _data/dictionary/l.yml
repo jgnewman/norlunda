@@ -1,3 +1,16 @@
+- def: lake
+  type: noun
+  word: lag
+  origin: "*laguz"
+  originDef: lake, sea, ocean
+
+- def: leak
+  type: verb
+  synonyms: [drip, seep]
+  word: lekan
+  origin: "*lekaną"
+  originDef: to leak, to drip
+
 - def: less
   type: adjective
   word: minnere

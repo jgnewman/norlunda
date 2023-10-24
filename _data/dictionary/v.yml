@@ -1,0 +1,6 @@
+- def: valley
+  type: noun
+  synonyms: [dale]
+  word: dal
+  origin: "*dalą"
+  originDef: valley, dale

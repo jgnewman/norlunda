@@ -58,6 +58,13 @@
   origin: "*hertô"
   originDef: heart
 
+- def: heath
+  type: noun
+  synonyms: [heather, wasteland]
+  word: heida
+  origin: "*haiþī"
+  originDef: heath, wasteland
+
 - def: heavy
   type: adjective
   word: sveer
@@ -103,6 +110,12 @@
   word: heitan
   origin: "*haitaną"
   originDef: to be called
+
+- def: hill
+  type: noun
+  word: hull
+  origin: "*hulliz"
+  originDef: hill
 
 - def: him
   type: pronoun

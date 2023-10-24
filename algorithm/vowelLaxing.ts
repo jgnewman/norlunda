@@ -34,6 +34,7 @@ const monophthongize = (word: string) => {
     .replace(/auh?/g, 'ɔ')
     .replace(/ouh?/g, 'ō')
     .replace(/[æe]nh/, 'ē')
+    .replace(/(i|ī)nh/, '$1h')
     .replace(/(ehu|euh|eu|ewu|ew)/g, 'ī')
     .replace(/ēa/g, 'ā')
     .replace(/ēǭ/g, 'ā')
@@ -113,7 +114,7 @@ const reduceVowelBasedSuffixes = (word: string) => {
   if (/(ą|a)$/.test(word)) return word.replace(/(ą|a)$/, '')
 
   if (/ē$/.test(word)) return word.replace(/ē$/, !containsVowels(word.slice(0, -1)) ? 'ē' : '')
-  if (/į$/.test(word)) return word.replace(/į$/, 'a')
+  if (/(į|ī)$/.test(word)) return word.replace(/(į|ī)$/, 'a')
   if (/i$/.test(word)) return word.replace(/i$/, '')
   if (/u$/.test(word)) return word.replace(/u$/, 'a')
   if (/hw$/.test(word)) return isConsonant(word.slice(-3)[0]) ? word.replace(/hw$/, '') : lengthenFinalSylShortVowel(word.replace(/hw$/, ''))
