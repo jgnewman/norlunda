@@ -20,6 +20,12 @@
   originDef: (at) no time
   notes: Removal of _īdiz_ is meant to yield a similar result as Dutch _nooit_.
 
+- def: night
+  type: noun
+  word: nakt
+  origin: "*nahts"
+  originDef: night
+
 - def: nine
   type: numeral
   word: nien
