@@ -405,18 +405,27 @@ Hun ar an frank**ish** frau.
 She is a French woman.
 
 {: .showcase }
-Du ar an kanad**ish** folk av Kanada.
+Du ar an kanad**ish** folk fan Kanada.
 
 {: .source }
 You are a Canadian person from Canada.
+
+## Making nouns
+
+The standard way to make a noun out of any other kind of word in Norlunda is to add the suffix **-heid**.
+
+{: .showcase }
+Folkheim naader meer glad**heid**.
+
+{: .source }
+The world needs more happiness.
 
 ## Other stuff (WIP)
 
 Coming soon...
 
-- -y, -ish
 - -ness, -hood
-- adverbs
+- adverbs, etc...
 
 
 
