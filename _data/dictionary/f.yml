@@ -12,6 +12,19 @@
   origin: "*sweftaz"
   originDef: swift
 
+- def: feed
+  type: verb
+  word: fudan
+  origin: "*fōdijaną"
+  originDef: to feed, give berth
+
+- def: flock
+  type: noun
+  synonyms: [herd, group, pack]
+  word: flokk
+  origin: "*flukkaz"
+  originDef: crowd, troop, flock
+
 - def: field
   type: noun
   synonyms: [meadow, pasture, plain, prairie, steppe, grassland]
@@ -27,10 +40,9 @@
 
 - def: fire
   type: noun
-  synonyms: [flame]
-  word: brand
-  origin: "*brandaz"
-  originDef: fire, flash
+  word: fœr
+  origin: "*fōr"
+  originDef: fire
 
 - def: fish
   type: noun
@@ -44,6 +56,12 @@
   origin: "*fimf"
   originDef: five
 
+- def: flame
+  type: noun
+  word: brand
+  origin: "*brandaz"
+  originDef: fire, flash
+
 - def: flee
   type: verb
   synonyms: [retreat, escape, run, avoid]
@@ -51,12 +69,47 @@
   origin: "*fleuhaną"
   originDef: to flee
 
+- def: float
+  type: noun
+  synonyms: [buoy, raft, flotation device]
+  word: flot
+  origin: "*flutô"
+  originDef: float, raft, boat, ship
+
+- def: float
+  type: verb
+  synonyms: [drift]
+  word: flotan
+  origin: "*flutōną"
+  originDef: to float, drift
+
+- def: flounder
+  type: noun
+  synonyms: [flatfish]
+  word: flundar
+  origin: "*flunþrijǭ"
+  oringinDef: flounder, flatfish
+
 - def: fly
   type: verb
   synonyms: [soar, glide]
   word: fliegan
   origin: "*fleuganą"
   originDef: to fly
+
+- def: fodder
+  type: noun
+  synonyms: [animal feed]
+  word: fudar
+  origin: "*fōdrą"
+  originDef: fodder
+
+- def: food
+  type: noun
+  word: met
+  origin: "*matiz"
+  originDef: food
+  notes: Follows the N.G. pattern. The W.G. pattern uses a gerund form of the verb "to eat", yielding words such as _Essen_. However, Norlunda grammar does not produce a good match for this, requiring the hypothetical equivalent to be _eting_.
 
 - def: fool
   type: noun

@@ -92,3 +92,10 @@
   word: herr
   origin: "*harjaz"
   originDef: army, host, crowd
+
+- def: at
+  type: preposition
+  synonyms: [signifying current location]
+  word: at
+  origin: "*at"
+  originDef: at, toward, to

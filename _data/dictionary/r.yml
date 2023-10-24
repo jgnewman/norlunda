@@ -33,6 +33,12 @@
   origin: "*raudaz"
   originDef: red
 
+- def: river
+  type: noun
+  word: ak
+  origin: "*ahwō"
+  originDef: river
+
 - def: riverbank
   type: noun
   word: aara

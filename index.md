@@ -2,10 +2,10 @@
 layout: default
 ---
 
-# Vilkoman til Norlunda!
+# <span class="light-copy">Vilkoman at</span> **Norlunda!**
 
 {: .intro-copy }
-Norlunda is a **near-fully-automated**, Germanic conlang. It blends characteristics of both the North and West branches of the Germanic language family to create a smooth and pleasing result that’s quick and easy to learn for all Germanic speakers.
+Norlunda is a **largely-automated**, Germanic conlang. It blends characteristics of both the North and West branches of the Germanic language family to create a smooth and pleasing result that’s quick and easy to learn for all Germanic speakers.
 
 ## How it works
 
@@ -15,7 +15,7 @@ While it's possible to apply these rules by hand, it is much easier to let compu
 
 Norlunda is designed to be the easiest Germanic language to learn. Its grammar is fully digestible within a single day of study for any current Germanic speaker, and the language consists of equal parts North and West Germanic character.
 
-## Near-fully-automated?
+## Largely automated?
 
 Language evolution isn't perfectly mathematical. Sometimes it's necessary for humans to step in and make decisions. Also, whereas Norlunda's vocabulary can be algorithmically generated, its grammar can not. In order to achieve an equal measure of North and West Germanic character, Norlunda's vocabulary leans on West Germanic patterns while its grammar leans North. In the end, the language is unique, easy, and fun to learn.
 

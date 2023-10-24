@@ -412,19 +412,35 @@ You are a Canadian person from Canada.
 
 ## Making nouns
 
-There are two noun-making suffixes in Norlunda: **-heid** and **-t/it**. The first is used similarly to English _-hood_ or _-ness_. It forms nouns from adjectives. The second is a re-purposing of the Norlunda stateful tense, in this case forming nouns from verbs.
+There are three noun-making suffixes in Norlunda: **-heid**, **-ing**, and **-t/it**. The first is used similarly to English _-hood_ or _-ness_. It forms nouns from adjectives. The second has been discussed above. It allows you to refer to an occurrence of an action (for example, a meet**ing**). The third is a re-purposing of the Norlunda stateful tense, in this case forming nouns from verbs.
 
 {: .showcase }
 Folkheim naader meer glad**heid**.
 
 {: .source }
-The world needs more happiness.
+The world needs more happiness (quality of being happy).
+
+{: .showcase }
+Vie hadde an gud aut**ing**. 
+
+{: .source }
+We had a good outing (occurrence of going out).
 
 {: .showcase }
 Sholde vie heitan an buk an les**t**?
 
 {: .source }
-Should we refer to a book as a "read-thing"?
+Should we refer to a book as a "read-thing" (object of reading)?
+
+## Making verbs
+
+Just about any Norlunda word can be made into a working verb simply by adding the verb suffix **-an**.
+
+{: .showcase }
+Fogale liker flot**an** in vatoren.
+
+{: .source }
+Birds like to float in the water.
 
 ## Other stuff (WIP)
 

@@ -129,6 +129,7 @@ All word-final, vowel-based endings are reduced into simpler forms.
 - wijō, wijǭ → **/wɑ/** if after a vowel, otherwise **/ɑ/**
 - hijō, wijǭ → **/ɑ/**
 - ijō, ijǭ → **/iː/** if these are the only vowels in the word, otherwise drop
+- hwō, hwǭ → **/k/**
 - wō, wǭ → **/wɑ/** if after a vowel, otherwise drop
 - jō, jǭ → drop
 - ō, ǭ → **/ɑ/** if after a **velar consonant**<sup>1</sup>, otherwise drop
