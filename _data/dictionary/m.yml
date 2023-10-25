@@ -1,3 +1,10 @@
+- def: madder
+  type: noun
+  synonyms: [Rubia tinctorum]
+  word: madar
+  origin: "*madarǭ"
+  originDef: madder
+
 - def: magic
   type: noun
   synonyms: [wizardry, sorcery]
@@ -43,11 +50,26 @@
   origin: "*blōmô *mēnōþs"
   originDef: flower month
 
+- def: may
+  type: verb
+  modal: true
+  synonyms: [might, be able to]
+  word: magan
+  origin: "*maganą"
+  originDef: may, to be able
+
 - def: me
   type: pronoun
   word: mei
   custom: true
   notes: The 1st-person singular, objective pronoun. Adopted from Norwegian _meg_ to fit Norlunda grammar rules.
+
+- def: meager
+  type: adjective
+  synonyms: [lean, thin, skinny]
+  word: magar
+  origin: "*magraz"
+  originDef: meager, lean
 
 - def: mean
   type: verb

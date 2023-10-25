@@ -4,3 +4,10 @@
   word: dal
   origin: "*dalą"
   originDef: valley, dale
+
+- def: vat
+  type: noun
+  synonyms: [vessel]
+  word: fat
+  origin: "*fatą"
+  originDef: vat, vessel, container

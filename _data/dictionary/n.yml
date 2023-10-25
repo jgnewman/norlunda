@@ -38,6 +38,12 @@
   origin: "*newun"
   originDef: nine
 
+- def: Njord
+  type: noun
+  word: Nerd
+  origin: "*Nerþuz"
+  originDef: The Germanic god/goddess known as _Njǫrðr_ in Old Norse.
+
 - def: "no"
   type: adverb
   word: naa

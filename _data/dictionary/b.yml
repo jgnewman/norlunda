@@ -1,3 +1,21 @@
+- def: bald
+  type: adjective
+  word: kala
+  origin: "*kalwaz"
+  originDef: bald
+
+- def: basket
+  type: noun
+  word: korf
+  origin: "*kurbaz"
+  originDef: basket
+
+- def: bay
+  type: noun
+  word: viek
+  origin: "*wīkō"
+  originDef: village, town, bay, inlet, fjord
+
 - def: be
   type: verb
   word: vesan
@@ -93,6 +111,12 @@
   origin: "*blēwaz"
   originDef: blue, dark gray, black
 
+- def: body (human)
+  type: noun
+  word: likham
+  origin: "*līką *hamô"
+  originDef: body skin/garment
+
 - def: body of water
   type: noun
   synonyms: [sea, lake, ocean]
@@ -126,6 +150,13 @@
   word: braun
   origin: "*brūnaz"
   originDef: brown
+
+- def: bush
+  type: noun
+  synonyms: [brush, thicket]
+  word: bosk
+  origin: "*buskaz"
+  originDef: bush, thicket
 
 - def: by
   type: preposition

@@ -24,6 +24,13 @@
   origin: "*fōdijaną"
   originDef: to feed, give berth
 
+- def: ferment
+  type: verb
+  synonyms: [brew, distill, make alcohol]
+  word: jœran
+  origin: "*jazjaną"
+  originDef: to cause to ferment
+
 - def: flock
   type: noun
   synonyms: [herd, group, pack]
@@ -44,6 +51,21 @@
   word: feld
   origin: "*felþą"
   originDef: field, plain
+
+- def: fight
+  type: verb
+  synonyms: [struggle]
+  word: kempan
+  hypothetical: true
+  origin: "*kampijaną"
+  originDef: to fight, struggle
+  notes: The PWGmc form is _*kampijan_. Thus _*kampijaną_ is a plausible PGmc form.
+
+- def: fighter
+  type: noun
+  word: kempt
+  custom: true
+  notes: From Norlunda _kempan_ (to fight) + _-t_ (noun-making suffix).
 
 - def: finger
   type: noun
@@ -170,6 +192,12 @@
   word: fox
   origin: "*fuhsaz"
   originDef: fox
+
+- def: freeze
+  type: verb
+  word: friesan
+  origin: "*freusaną"
+  originDef: to freeze
 
 - def: frenzy
   type: noun

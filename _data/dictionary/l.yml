@@ -4,12 +4,30 @@
   origin: "*laguz"
   originDef: lake, sea, ocean
 
+- def: leaf
+  type: noun
+  word: laav
+  origin: "*laubą"
+  originDef: leaf
+
 - def: leak
   type: verb
   synonyms: [drip, seep]
   word: lekan
   origin: "*lekaną"
   originDef: to leak, to drip
+
+- def: leather
+  type: noun
+  word: ledar
+  origin: "*leþrą"
+  originDef: leather
+
+- def: leek
+  type: noun
+  word: laak
+  origin: "*laukaz"
+  originDef: leek
 
 - def: less
   type: adjective
@@ -18,6 +36,19 @@
   origin: "*minniz"
   originDef: less
   notes: Derived from PGmc _*minniz_ with the Norlunda comparative suffix appended.
+
+- def: lick
+  type: verb
+  word: lekkan
+  origin: "*likkōną"
+  originDef: to lick
+
+- def: lie down
+  type: verb
+  synonyms: [lay down, set down, place]
+  word: liggan
+  origin: "*ligjaną"
+  originDef: to lie down
 
 - def: life
   type: noun
@@ -39,6 +70,19 @@
   origin: "*līkāną"
   originDef: to please, to like
 
+- def: limb
+  type: noun
+  synonyms: [branch, member]
+  word: lim
+  origin: "*limuz"
+  originDef: limb
+
+- def: liver
+  type: noun
+  word: levar
+  origin: "*librō"
+  originDef: liver
+
 - def: load
   type: noun
   synonyms: [burden, a weight]
@@ -52,6 +96,13 @@
   word: lang
   origin: "*langaz"
   originDef: long, tall
+
+- def: loosen
+  type: verb
+  synonyms: [unfasten, untie, set free]
+  word: laasan
+  origin: "*lausjaną"
+  originDef: to loosen
 
 - def: lord
   type: noun

@@ -1,3 +1,22 @@
+- def: cake
+  type: noun
+  word: kaka
+  origin: "*kakǭ"
+  originDef: cake
+
+- def: calf
+  type: noun
+  word: kalf
+  origin: "*kalbaz"
+  originDef: calf
+
+- def: call
+  type: verb
+  synonyms: [shout]
+  word: kallan
+  origin: "*kalzōną"
+  originDef: to call, shout
+
 - def: can
   type: verb
   modal: true
@@ -20,6 +39,12 @@
   origin: "*kattuz"
   originDef: cat
 
+- def: chaff
+  type: noun
+  word: kaf
+  origin: "*kafą"
+  originDef: chaff
+
 - def: cheese
   type: noun
   word: jost
@@ -32,6 +57,27 @@
   word: kind
   origin: "*kinþą"
   originDef: child
+
+- def: chill
+  type: noun
+  synonyms: [coldness]
+  word: kel
+  origin: "*kaliz"
+  originDef: cold, coldness
+
+- def: clearing
+  type: noun
+  synonyms: [glade, meadow]
+  word: laa
+  origin: "*lauhaz"
+  originDef: clearing, meadow
+
+- def: cold
+  type: adjective
+  synonyms: [chilly, frigid]
+  word: kald
+  origin: "*kaldaz"
+  originDef: cold
 
 - def: collect
   type: verb
@@ -46,6 +92,12 @@
   word: samning
   custom: true
   notes: Noun form of the Norlunda verb _samnan_, meaning "to collect".
+
+- def: comb
+  type: noun
+  word: kam
+  origin: "*kambaz"
+  originDef: comb
 
 - def: come
   type: verb

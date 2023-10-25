@@ -4,6 +4,13 @@
   origin: "*jehwlą *mēnōþs"
   originDef: Yule month
 
+- def: jaw
+  type: noun
+  synonyms: [jowel]
+  word: kafal
+  origin: "*kaflaz"
+  originDef: jaw
+
 - def: join
   type: verb
   synonyms: [fit together, connect, conjoin]

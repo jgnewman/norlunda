@@ -4,6 +4,25 @@
   custom: true
   notes: The 1st-person singular, subjective pronoun. Designed to represent the average pronunciation among other W.G. languages.
 
+- def: ice
+  type: noun
+  word: ies
+  origin: "*īsą"
+  originDef: ice
+
+- def: icicle
+  type: noun
+  word: jekol
+  origin: "*jekulaz"
+  originDef: icicle
+
+- def: if
+  type: conjunction
+  synonyms: [conditionally, provided that]
+  word: jav
+  origin: "*jabai"
+  originDef: on the condition that
+
 - def: in
   type: preposition
   synonyms: [inside, into]

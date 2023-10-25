@@ -18,12 +18,25 @@
   origin: "*laugō *dagaz"
   originDef: lye day
 
+- def: saw
+  type: noun
+  synonyms: [cutting tool]
+  word: sag
+  origin: "*sagō"
+  originDef: saw (tool)
+
 - def: say
   type: verb
   synonyms: [tell]
   word: segan
   origin: "*sagjaną"
   originDef: to say
+
+- def: scythe
+  type: noun
+  word: lie
+  origin: "*lewô"
+  originDef: scythe
 
 - def: sea
   type: noun
@@ -211,6 +224,13 @@
   origin: "*laugō"
   originDef: lye, soap, wash, bath
 
+- def: song
+  type: noun
+  synonyms: [lay]
+  word: lied
+  origin: "*leuþą"
+  originDef: song, lay
+
 - def: sound
   type: noun
   synonyms: [noise, tone]
@@ -231,6 +251,13 @@
   custom: true
   notes: Modern Germanic languages do not retained a clearly native version of this word. The Norlunda word is adopted from German _bühne_, itself of obscure origin as no better candidate could be found.
 
+- def: stalk
+  type: noun
+  synonyms: [stem, trunk]
+  word: stengel
+  origin: "*stangilaz"
+  originDef: stalk, stem, trunk
+
 - def: stallion
   type: noun
   word: henxt
@@ -242,6 +269,13 @@
   word: staan
   origin: "*stāną"
   originDef: to stand
+
+- def: stomach
+  type: noun
+  synonyms: [maw, belly, gut]
+  word: mag
+  origin: "*magô"
+  originDef: stomach
 
 - def: stone
   type: noun
@@ -283,6 +317,12 @@
   word: strautan
   origin: "*strūtaną"
   originDef: to swell, be puffed up
+
+- def: stump
+  type: noun
+  word: stomp
+  origin: "*stumpaz"
+  originDef: stump
 
 - def: summer
   type: noun

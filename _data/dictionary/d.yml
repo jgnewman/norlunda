@@ -26,6 +26,13 @@
   origin: "*uber *winnaną"
   notes: This compound is attested in later proto languages, but only hypothetically exists in a PGmc. form.
 
+- def: delicious
+  type: adjective
+  synonyms: [tasty, savory, delectable]
+  word: lekkar
+  origin: "*likkraz"
+  originDef: delicious
+
 - def: dictionary
   type: noun
   synonyms: [lexicon, wordbook, glossary]

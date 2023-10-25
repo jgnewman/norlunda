@@ -212,6 +212,20 @@ Die eter **nak**.
 {: .source}
 They are eating nothing. / They are not eating anything.
 
+Another way to perform negation is via the prefix **un-**, which can be compared to the word "not". This prefix can even be added to nouns in order to indicate the opposite of the noun's meaning.
+
+{: .showcase }
+**Un**seg dene vorde!
+
+{: .source}
+Take back (un-say) those words!
+
+{: .showcase }
+Dis ar ekka an kraud. Dee ar an **un**kraud.
+
+{: .source}
+This is not a plant. It's a weed.
+
 ## Verbs
 
 Apart from **vesan**, Norlunda has one other irregular verb: **hebban** _"to have"_. The present tense form of this verb is always **har**, and the past tense form is always **hadde**.

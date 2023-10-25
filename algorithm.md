@@ -114,6 +114,7 @@ All overlong vowels become regular long vowels. Example: _*awô_ → _*awō_.
 
 {: .mb-8 }
 All infinitive suffixes merge as shown below. If the new infinitive suffix **-an** follows a vowel, it becomes **-han**. If **-han** follows a short vowel, the vowel is lengthened. Example: _*gāną_ → _*gāhan_, or _*sehwaną_ → _*seehan_. (Note that this step should not be applied to non-verbs.)
+- mbijaną → **/mɑn/**
 - wijaną → **/ɑn/**
 - ijaną → **/ɑn/**
 - janą → **/ɑn/**
@@ -133,7 +134,8 @@ All word-final, vowel-based endings are reduced into simpler forms.
 - hwō, hwǭ → **/k/**
 - wō, wǭ → **/wɑ/** if after a vowel, otherwise drop
 - jō, jǭ → drop
-- ō, ǭ → **/ɑ/** if after a **velar consonant**<sup>1</sup>, otherwise drop
+- ǭ → **/ɑ/** if after a **velar consonant**<sup>1</sup>, otherwise drop
+- ō → drop
 - wijo, wijǫ → **/wɑ/** if after a vowel, otherwise **/ɑ/**
 - ijo, ijǫ → drop
 - wo, wǫ → drop
@@ -162,7 +164,7 @@ Both of the clusters **⟨lz⟩** and **⟨zl⟩**, are replaced by **⟨ll⟩**
 
 When either of the clusters **⟨mf⟩** or **⟨nf⟩** are word-terminal, the first consonant in the cluster is dropped. If the cluster is preceded by a short vowel, the vowel is lengthened. Example: _*fimf_ → _*fīf_.
 
-When the cluster **⟨mb⟩** is word-terminal, it is reduced to **⟨m⟩**. Example: _*ymb_ → _*ym_.
+When any of the clusters **⟨mb, mbaz, mbiz, mbuz⟩** is word-terminal, it is reduced to **⟨m⟩**. Example: _*ymb_ → _*ym_.
 
 If a word ends in an **uncomfortable consonant cluster**<sup>2</sup>, then **/ɑ/** is added between them. Example: _*woldr_ → _*woldar_.
 

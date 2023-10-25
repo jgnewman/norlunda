@@ -50,6 +50,19 @@
   originDef: one left
   notes: The _n_ is dropped here to better match the most common N.G. and W.G. patterns. The full evolution here is _*ainalif -> einlif -> eilf -> alf_.
 
+- def: emperor
+  type: noun
+  word: keisar
+  origin: "*kaisaraz"
+  originDef: emperor (specifically, of Rome)
+
+- def: empty
+  type: adjective
+  synonyms: [vacant, void]
+  word: leer
+  origin: "*lēziz"
+  originDef: empty
+
 - def: envious
   type: adjective
   synonyms: [jealous]
@@ -69,6 +82,13 @@
   word: eevand
   origin: "*ēbanþs"
   originDef: evening
+
+- def: excite
+  type: verb
+  synonyms: [arouse, stimulate, agitate, exacerbate]
+  word: jusan
+  origin: "*jōsijaną"
+  originDef: to excite, stir up
 
 - def: eye
   type: noun

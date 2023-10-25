@@ -38,6 +38,12 @@
   custom: true
   notes: The 2nd-person plural, subjective pronoun. From English _ye_. Adapted here to avoid conflicts with other pronouns and to fit the Norlunda grammar system.
 
+- def: yoke
+  type: noun
+  word: jok
+  origin: "*juką"
+  originDef: yoke
+
 - def: yon
   type: pronoun
   synonyms: [yonder]
@@ -78,3 +84,19 @@
   word: jer
   custom: true
   notes: The 2nd-person plural, genitive pronoun. Adopted from English _your_ to avoid conflicts with other pronouns and to fit Norlunda grammar rules.
+
+- def: youth (conceptual)
+  type: noun
+  word: jongheid
+  origin: "*jungaz *haidaz"
+  originDef: manner of being young
+  notes: Denotes youth or youngness as a concept.
+
+- def: youth (person)
+  type: noun
+  synonyms: [youngster, youngling]
+  word: jongt
+  custom: true
+  origin: "*jungaz"
+  originDef: young
+  notes: Denotes a person who is young. Can not be auto-generated because it contains the noun-making suffix _-t_.

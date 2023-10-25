@@ -43,6 +43,13 @@
   custom: true
   notes: The 1st-person plural, subjective pronoun. Adopted from from common N.G. patterns to fit Norlunda grammar rules.
 
+- def: wedge
+  type: noun
+  synonyms: [pin]
+  word: kegel
+  origin: "*kagilaz"
+  originDef: stake, pole, pile, peg, pin
+
 - def: Wednesday
   type: noun
   word: Vodansdag
@@ -50,6 +57,19 @@
   origin: "*Wōdanaz *dagaz"
   originDef: Wōdanaz's day
   notes: Cannot be auto-generated because it contains the genitive grammatical marker _-s_.
+
+- def: weed
+  type: verb
+  word: jedan
+  origin: "*jedaną"
+  originDef: to weed
+
+- def: well
+  type: noun
+  synonyms: [spring]
+  word: bronn
+  origin: "*brunnô"
+  originDef: well, spring
 
 - def: west
   type: noun
@@ -62,6 +82,12 @@
   word: vat
   origin: "*hwat"
   originDef: what
+
+- def: when
+  type: adverb
+  word: van
+  origin: "*hwan"
+  originDef: when
 
 - def: which
   type: preposition

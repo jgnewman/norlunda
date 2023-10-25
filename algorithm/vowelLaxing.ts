@@ -53,6 +53,8 @@ const monophthongize = (word: string) => {
 }
 
 const reduceInfSuffixes = (word: string) => {
+  if (/mbijaną$/.test(word)) return word.replace(/mbijaną$/, 'man')
+
   const patterns = [/wijaną$/, /ijaną$/, /janą$/, /hwaną$/, /waną$/, /āną$/, /aną$/, /ōną$/, /oną$/, /ną$/]
   for (const pattern of patterns) {
     const truncated = word.replace(pattern, '')
@@ -95,7 +97,8 @@ const reduceVowelBasedSuffixes = (word: string) => {
   if (/w(ō|ǭ)$/.test(word)) return word.replace(/w(ō|ǭ)$/, isVowel(word.slice(-3)[0]) ? 'wa' : '')
   if (/j(ō|ǭ)$/.test(word)) return word.replace(/j(ō|ǭ)$/, '')
   // The velars rule is designed to produce saga from sagǭ, but could have unintended consequences.
-  if (/(ō|ǭ)$/.test(word)) return word.replace(/(ō|ǭ)$/, pgmcVelars.includes(word.slice(-2)[0]) ? 'a' : '')
+  if (/ǭ$/.test(word)) return word.replace(/ǭ$/, pgmcVelars.includes(word.slice(-2)[0]) ? 'a' : '')
+  if (/ō$/.test(word)) return word.replace(/ō$/, '')
   
   if (/wij(o|ǫ)$/.test(word)) return word.replace(/wij(o|ǫ)$/, isVowel(word.slice(-5)[0]) ? 'wa' : 'a')
   if (/ij(o|ǫ)$/.test(word)) return word.replace(/ij(o|ǫ)$/, '')
@@ -143,7 +146,7 @@ const fixTerminalMfNf = (word: string) => {
 }
 
 const fixTerminalMb = (word: string) => {
-  return word.replace(/mb$/, 'm')
+  return word.replace(/mb([aiu]z)?$/, 'm')
 }
 
 const handleUncomfortableEndCluster = (word: string) => {
