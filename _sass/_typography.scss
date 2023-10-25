@@ -415,3 +415,7 @@ hr {
 .semi-transparent {
   opacity: .5;
 }
+
+.no-col-break {
+  -webkit-column-break-inside: avoid;
+}

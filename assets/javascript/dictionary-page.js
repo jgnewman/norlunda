@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
     content.classList.add('dictionary-list')
     list.forEach(({ word, type, modal, def, synonyms = [] }) => {
       const wordEl = document.createElement('a')
-      wordEl.classList.add('search-result', 'block', 'px-16', 'py-4')
+      wordEl.classList.add('search-result', 'block', 'px-16', 'py-4', 'no-col-break')
       wordEl.setAttribute('href', `${baseUrl}/dictionary?term=${word}`)
       wordEl.innerHTML = `
         <strong>${word}</strong> <em class="semi-transparent px-4">${formatWordType(type, modal)}</em>
