@@ -17,6 +17,13 @@
   origin: "*gladaz"
   originDef: happy, cheery, shining, bright
 
+- def: harvest
+  type: noun
+  synonyms: [autumn, fall]
+  word: herfest
+  origin: "*harbistaz"
+  originDef: harvest, autumn, fall
+
 - def: have
   type: verb
   synonyms: [own, possess, be in possession of]
@@ -25,6 +32,12 @@
   origin: "*habjaną"
   originDef: to have
   notes: The present tense form of this verb is always _har_ and the past tense form is always _hadde_.
+
+- def: hay
+  type: noun
+  word: hau
+  origin: "*hawją"
+  originDef: hay
 
 - def: he
   type: pronoun

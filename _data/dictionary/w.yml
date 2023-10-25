@@ -43,6 +43,14 @@
   custom: true
   notes: The 1st-person plural, subjective pronoun. Adopted from from common N.G. patterns to fit Norlunda grammar rules.
 
+- def: Wednesday
+  type: noun
+  word: Vodansdag
+  custom: true
+  origin: "*Wōdanaz *dagaz"
+  originDef: Wōdanaz's day
+  notes: Cannot be auto-generated because it contains the genitive grammatical marker _-s_.
+
 - def: west
   type: noun
   word: vestar
@@ -94,12 +102,24 @@
   origin: "*winnaną"
   originDef: to win, toil, strive
 
+- def: wine
+  type: noun
+  word: vien
+  origin: "*wīną"
+  originDef: wine
+
 - def: window
   type: noun
   word: vindoga
   hypothetical: true
   origin: "*windaz augô"
   originDef: wind eye
+
+- def: winter
+  type: noun
+  word: vintar
+  origin: "*wintruz"
+  originDef: winter
 
 - def: with
   type: preposition

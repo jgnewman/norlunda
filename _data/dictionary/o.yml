@@ -1,3 +1,9 @@
+- def: October
+  type: noun
+  word: Vienmaand
+  origin: "*wīną *mēnōþs"
+  originDef: wine month
+
 - def: often
   type: adverb
   synonyms: [frequently, regularly]

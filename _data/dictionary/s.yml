@@ -1,9 +1,22 @@
+- def: sacrifice
+  type: noun
+  synonyms: [offering]
+  word: blut
+  origin: "*blōtą"
+  originDef: sacrifice, offering
+
 - def: same
   type: adjective
   synonyms: [alike]
   word: sam
   origin: "*samaz"
   originDef: same
+
+- def: Saturday
+  type: noun
+  word: Laagadag
+  origin: "*laugō *dagaz"
+  originDef: lye day
 
 - def: say
   type: verb
@@ -45,6 +58,12 @@
   word: self
   origin: "*selbaz"
   originDef: self
+
+- def: September
+  type: noun
+  word: Herfestmaand
+  origin: "*harbistaz *mēnōþs"
+  originDef: harvest month
 
 - def: serpent
   type: noun
@@ -170,12 +189,27 @@
   originDef: incantation, spell
   notes: The verb form _galdran_ "to chant, enchant" is from the same root. It is formed by adding the infinitive suffix _-an_ and removing the unstressed, middle vowel, as is standard in the sound change algorithm.
 
+- def: spring
+  type: noun
+  synonyms: [springtime, a yearly season]
+  word: veirr
+  origin: "*wazrą"
+  originDef: spring season
+  notes: W.G. languages do not agree on a word for spring so this word follows N.G. patterns.
+
 - def: sprout
   type: noun
   synonyms: [sprig, bud, shoot]
   word: sprut
   origin: "*sprutô"
   originDef: sprout, shoot
+
+- def: soap
+  type: noun
+  synonyms: [lye]
+  word: laaga
+  origin: "*laugō"
+  originDef: lye, soap, wash, bath
 
 - def: sound
   type: noun
@@ -250,11 +284,23 @@
   origin: "*strūtaną"
   originDef: to swell, be puffed up
 
+- def: summer
+  type: noun
+  word: somar
+  origin: "*sumaraz"
+  originDef: summer
+
 - def: sun
   type: noun
   word: sonn
   origin: "*sunnǭ"
   originDef: sun
+
+- def: Sunday
+  type: noun
+  word: Sonndag
+  origin: "*sunnǭ *dagaz"
+  originDef: sun day
 
 - def: swamp
   type: noun

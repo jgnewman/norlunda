@@ -102,6 +102,7 @@ All diphthongs and some vowel clusters involving **/h, j/** are monophthongized.
 - /ænh, enh/ → /eː/
 - /inh, īnh/ → /ih, īh/
 - /ehu, euh, eu, ewu, ew/ → /iː/
+- /ehw/ → /æː/
 - /eːɑ/ (usually spelled **⟨ēa⟩**)  → /ɑː/
 - /eːõː/ (usually spelled **⟨ēǭ⟩**) → /ɑː/
 - /iuh, iu/ → /yː/

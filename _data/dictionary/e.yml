@@ -23,9 +23,11 @@
 
 - def: east
   type: noun
+  synonyms: [Easter, Eostre]
   word: ostar
   origin: "*austraz"
   originDef: east, eastern
+  notes: The PGmc word _Austrǭ_ yields the same result, thus merging the word for the direction with the name of a Germanic goddess.
 
 - def: eat
   type: verb

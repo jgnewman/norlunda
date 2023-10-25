@@ -123,6 +123,14 @@
   originDef: thunder
   notes: Also the name of the Germanic thunder god, known as _Þórr_ in Old Norse.
 
+- def: Thursday
+  type: noun
+  word: Donarsdag
+  custom: true
+  origin: "*Þunraz *dagaz"
+  originDef: Þunraz's day
+  notes: Cannot be auto-generated because it contains the genitive grammatical marker _-s_.
+
 - def: tight
   type: adjective
   synonyms: [taut, tense]
@@ -182,6 +190,14 @@
   word: trau
   origin: "*triwwiz"
   originDef: true, faithful
+
+- def: Tuesday
+  type: noun
+  word: Tiesdag
+  custom: true
+  origin: "*tīwaz *dagaz"
+  originDef: Tiwaz' day
+  notes: Cannot be auto-generated because it contains the genitive grammatical marker _-s_.
 
 - def: turn
   type: verb

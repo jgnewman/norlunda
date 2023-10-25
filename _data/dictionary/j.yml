@@ -1,6 +1,24 @@
+- def: January
+  type: noun
+  word: Jœlmaand
+  origin: "*jehwlą *mēnōþs"
+  originDef: Yule month
+
 - def: join
   type: verb
   synonyms: [fit together, connect, conjoin]
   word: fugan
   origin: "*fōgijaną"
   originDef: to join, fit together
+
+- def: July
+  type: noun
+  word: Haumaand
+  origin: "*hawją *mēnōþs"
+  originDef: hay month
+
+- def: June
+  type: noun
+  word: Somarmaand
+  origin: "*sumaraz *mēnōþs"
+  originDef: summer month

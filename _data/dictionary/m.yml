@@ -24,11 +24,24 @@
   origin: "*mann"
   originDef: man, person
 
+- def: March
+  type: noun
+  word: Lentinmaand
+  hypothetical: true
+  origin: "*langtīnaz *mēnōþs"
+  originDef: long-day month
+
 - def: mare
   type: noun
   word: mera
   origin: "*marhijō"
   originDef: mare
+
+- def: May
+  type: noun
+  word: Blummaand
+  origin: "*blōmô *mēnōþs"
+  originDef: flower month
 
 - def: me
   type: pronoun
@@ -64,6 +77,12 @@
   origin: "*maganą"
   originDef: may, to be able
   notes: The noun _magt_ is a combination of the verb _maganą_ and the noun-creating suffix _-t_.
+
+- def: Monday
+  type: noun
+  word: Maandag
+  origin: "*mēnô *dagaz"
+  originDef: moon day
 
 - def: month
   type: noun
@@ -112,6 +131,13 @@
   word: mikel
   origin: "*mikilaz"
   originDef: much, many, large, great
+
+- def: mud
+  type: noun
+  synonyms: [muck, mire]
+  word: sol
+  origin: "*sulą"
+  originDef: mud, muck, mire, spot
 
 - def: museum
   type: noun

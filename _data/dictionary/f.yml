@@ -12,6 +12,12 @@
   origin: "*sweftaz"
   originDef: swift
 
+- def: February
+  type: noun
+  word: Solmaand
+  origin: "*sulą *mēnōþs"
+  originDef: mud month
+
 - def: feed
   type: verb
   word: fudan
@@ -24,6 +30,13 @@
   word: flokk
   origin: "*flukkaz"
   originDef: crowd, troop, flock
+
+- def: flower
+  type: noun
+  synonyms: [bloom]
+  word: blum
+  origin: "*blōmô"
+  originDef: flower
 
 - def: field
   type: noun
@@ -164,6 +177,14 @@
   word: vud
   origin: "*wōdaz"
   originDef: frenzy
+
+- def: Friday
+  type: noun
+  word: Friesdag
+  custom: true
+  origin: "*Frijjō *dagaz"
+  originDef: Frijjō's day
+  notes: Cannot be auto-generated because it contains the genitive grammatical marker _-s_.
 
 - def: from
   type: preposition

@@ -78,6 +78,13 @@
   custom: true
   notes: "Whereas the particles of this compound are not hypothetical, the compound itself is. This word also requires manual addition of the Norlunda infinitive suffix to become a verb."
 
+- def: April
+  type: noun
+  word: Ostarmaand
+  origin: "*Austrǭ *mēnōþs"
+  originDef: Easter month
+  notes: In this case _Austrǭ_ signifies the name of a Germanic goddess. This has merged in Norlunda with the common word for "east".
+
 - def: arise
   type: verb
   synonyms: [get up, stand up, rise]
@@ -99,3 +106,9 @@
   word: at
   origin: "*at"
   originDef: at, toward, to
+
+- def: August
+  type: noun
+  word: Kornmaand
+  origin: "*kurną *mēnōþs"
+  originDef: corn month

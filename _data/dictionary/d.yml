@@ -12,6 +12,12 @@
   origin: "*dagaz"
   originDef: day
 
+- def: December
+  type: noun
+  word: Vintarmaand
+  origin: "*wintruz *mēnōþs"
+  originDef: winter month
+
 - def: defeat
   type: verb
   synonyms: [overcome, outmatch, conquer]
