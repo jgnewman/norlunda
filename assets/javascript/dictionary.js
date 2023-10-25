@@ -18,7 +18,7 @@ window.norlundaTools.subscribe('dictionary:ready', async (totalWords) => {
 window.addEventListener('load', () => {
   const { publish, quickId, getBaseUrl } = window.norlundaTools
   const baseUrl = getBaseUrl()
-  const worker = new Worker(`${baseUrl}/assets/javascript/dictionary-worker.js`)
+  const worker = new Worker(`${baseUrl}/assets/javascript/dictionary-worker.js?cachebust=true`)
 
   const queryQueue = []
   const requestIdToResolverMap = new Map()
