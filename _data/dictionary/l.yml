@@ -97,6 +97,13 @@
   origin: "*langaz"
   originDef: long, tall
 
+- def: loose
+  type: adjective
+  synonyms: [free, unbound]
+  word: laas
+  origin: "*lausaz"
+  originDef: loose, free, unbound
+
 - def: loosen
   type: verb
   synonyms: [unfasten, untie, set free]

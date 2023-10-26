@@ -152,6 +152,12 @@
   origin: "*tilą"
   originDef: goal
 
+- def: today
+  type: noun
+  word: hœda
+  custom: true
+  notes: Designed to match the pattern of German _heute_ and Frisian _hjoed_, which are ultimately from a contracted form of PGmc _hinō dagō_.
+
 - def: toe
   type: noun
   word: taa

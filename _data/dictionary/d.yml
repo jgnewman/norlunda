@@ -6,6 +6,12 @@
   originDef: to jump, play, move, swing about
   notes: As attested in Gothic. It turns out that the PWGmc. root _þanson_ is apparently an early borrowing from elsewhere. PGmc's native evolution of the original PIE root is _*þinsaną_ "to stretch".
 
+- def: dark
+  type: adjective
+  word: donkal
+  origin: "*dunkalaz"
+  originDef: dark
+
 - def: day
   type: noun
   word: dag

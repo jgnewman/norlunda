@@ -11,6 +11,13 @@
   origin: "*wandijaną"
   originDef: to turn
 
+- def: want
+  type: verb
+  synonyms: [desire]
+  word: villan
+  origin: "*wiljaną"
+  originDef: to want
+
 - def: war
   type: noun
   synonyms: [battle, fight]

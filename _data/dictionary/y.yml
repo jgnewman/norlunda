@@ -38,6 +38,12 @@
   custom: true
   notes: The 2nd-person plural, subjective pronoun. From English _ye_. Adapted here to avoid conflicts with other pronouns and to fit the Norlunda grammar system.
 
+- def: yesterday
+  type: noun
+  word: ggster
+  origin: "*gesteraz"
+  originDef: yesterday
+
 - def: yoke
   type: noun
   word: jok

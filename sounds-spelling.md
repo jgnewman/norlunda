@@ -66,7 +66,7 @@ Note that Norlunda contains 6 short vowels, 4 long vowels, and 2 diphthongs. Lea
 
 Apart from those listed above, Norlunda also uses foreign consonant letters for spelling words with sounds that do not exist natively in Norlunda. For example, English _zoom_ and German _holz_ may both be spelled with **⟨z⟩**. There is no need to approximate these sounds with different spellings.
 
-Consonants in Norlunda may be doupled at times. When this happens, the doubled consonant is meant to be held longer than a single consonant. For instance, _mann_ is pronounced **/manː/**. It is highly unlikely that failing to pronounce a long consonant will result in being misunderstood.
+Consonants in Norlunda may be doubled at times. When this happens, the doubled consonant is meant to be held longer than a single consonant. For instance, _mann_ is pronounced **/manː/**. It is highly unlikely that failing to pronounce a long consonant will result in being misunderstood.
 
 
 {% include prev-next.html list="getting_started" %}

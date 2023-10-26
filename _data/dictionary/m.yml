@@ -132,9 +132,11 @@
 
 - def: morning
   type: noun
+  synonyms: [tomorrow, morrow]
   word: morgan
   origin: "*murganaz"
   originDef: morning
+  notes: The same word is used for both "morning" and "tomorrow" as a pattern in W.G. languages.
 
 - def: mountain
   type: noun
@@ -160,6 +162,12 @@
   word: sol
   origin: "*sulą"
   originDef: mud, muck, mire, spot
+
+- def: murder
+  type: noun
+  word: mordar
+  origin: "*murþrą"
+  originDef: murder
 
 - def: museum
   type: noun
