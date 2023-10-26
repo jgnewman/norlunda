@@ -21,22 +21,22 @@
     columns: 2;
   }
 
-  .search-result {
+  .list-result {
     transition: all .2s ease;
     border-top: 1px solid var(--background-color);
     border-bottom: 1px solid var(--background-color);
   }
 
-  .search-result:hover {
+  .list-result:hover {
     border-top: 1px solid var(--primary-color);
     border-bottom: 1px solid var(--primary-color);
   }
 
-  .search-result strong {
+  .list-result strong {
     transition: all .2s ease;
   }
 
-  .search-result:hover strong {
+  .list-result:hover strong {
     color: var(--primary-color);
   }
 }

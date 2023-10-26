@@ -16,7 +16,8 @@ window.addEventListener('load', () => {
   const navPrev = document.querySelector('#dictionary-prev-link')
   const navNext = document.querySelector('#dictionary-next-link')
 
-  const term = (location.search.match(/term=([^&]*)/) || [])[1]
+  const rawTerm = (location.search.match(/term=([^&]*)/) || [])[1]
+  const term = rawTerm ? decodeURIComponent(rawTerm) : rawTerm
   const isListPage = !term
 
   const buildListPage = async (offset) => {
@@ -28,7 +29,7 @@ window.addEventListener('load', () => {
     content.classList.add('dictionary-list')
     list.forEach(({ word, type, modal, def, synonyms = [] }) => {
       const wordEl = document.createElement('a')
-      wordEl.classList.add('search-result', 'block', 'px-16', 'py-4', 'no-col-break')
+      wordEl.classList.add('list-result', 'block', 'px-16', 'py-4', 'no-col-break')
       wordEl.setAttribute('href', `${baseUrl}/dictionary?term=${word}`)
       wordEl.innerHTML = `
         <strong>${word}</strong> <em class="semi-transparent px-4">${formatWordType(type, modal)}</em>
