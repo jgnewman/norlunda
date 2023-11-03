@@ -93,6 +93,12 @@
   origin: "*fuglaz"
   originDef: bird
 
+- def: bitter (taste)
+  type: adjective
+  word: betar
+  origin: "*bitraz"
+  originDef: bitter
+
 - def: black
   type: adjective
   word: svart
@@ -124,7 +130,13 @@
   origin: "*saiwiz"
   originDef: sea, lake, ocean
   notes: This word can refer to a standing body of water of any relatively large size.
-
+  
+- def: bone
+  type: noun
+  word: bein
+  origin: "*bainą"
+  originDef: leg, bone
+  
 - def: book
   type: noun
   word: buk
