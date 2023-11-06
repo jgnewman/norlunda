@@ -28,7 +28,7 @@ There is one file per letter of the English alphabet and words are listed alphab
 
 The Norlunda algorithm can be executed independently and can also be bundled into a JS file that is used in the Norlunda website.
 
-The algorithm is bundled with npm and esbuild while the website itself runs on Jekyll.
+The algorithm is bundled with npm and esbuild while the website itself runs on Jekyll, currenly relying on Ruby 3.2.2.
 
 To test the algorithm, run `npm run word -- YOUR_WORD_HERE`. For a larger test, you can run `npm run wordlist` to see the output of a pre-set list of test words all at once.
 

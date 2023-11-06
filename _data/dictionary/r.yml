@@ -5,6 +5,14 @@
   originDef: rain
   notes: The verb _regnan_ is from the same root. It is formed by adding the infinitive suffix _-an_ and removing the unstressed, middle vowel, as is standard in the sound change algorithm.
 
+- def: rain
+  type: verb
+  word: regnan
+  custom: true
+  origin: "*regną"
+  originDef: rain
+  notes: Formed by adding the infinitive suffix _-an_ and removing the unstressed, middle vowel, as is standard in the sound change algorithm.
+
 - def: read
   type: verb
   word: lesan
