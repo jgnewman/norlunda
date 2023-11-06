@@ -1,3 +1,9 @@
+- def: name
+  type: noun
+  word: nam
+  origin: "*namô"
+  originDef: name
+
 - def: narrow
   type: adjective
   word: ang
@@ -12,6 +18,12 @@
   originDef: of the people, popular, of the tribe
   notes: In the same way that German is only called "German" outside of the German language, when speaking Norlunda it is acceptable to say _dautsh_ to refer to the language itself.
 
+- def: neck
+  type: noun
+  word: hals
+  origin: "*halsaz"
+  originDef: neck, throat
+  
 - def: need
   type: verb
   word: naadan
